@@ -1,0 +1,24 @@
+{
+  "name": "webauto",
+  "version": "1.0.0",
+  "description": "Rasekon autolainaussovelluksen Web-pohjainen seurantasovellus",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElinaSa/WebAuto.git"
+  },
+  "author": "elina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElinaSa/WebAuto/issues"
+  },
+  "homepage": "https://github.com/ElinaSa/WebAuto#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
+    "nodemon": "^3.1.10"
+  }
+}
