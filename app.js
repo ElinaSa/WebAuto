@@ -32,14 +32,13 @@ app.set('view engine','handlebars');
 app.get('/',(req, res) => {
 
     // Tämä on leikisti dynaamista dataa, joka on tullut tietokannasta
-    let today = 'keskiviikko';
-    let food = 'nakit ja muusi';
+    let today = 'tiistai';
+    
 
     // Mudostetaan JSON-objekti, joka voidaan lähettää sivulle korvaamaan {{}}-muuttujat
 
     let dataToSend = {
-    'dayName': today,
-    'menu': food
+    'dayName': today,    
     };
 
     // Renderöidään kotisivu lähettämällä sinne data
@@ -51,7 +50,7 @@ app.get('/about',(req, res) => {
     // Simuloidaan dynaamista dataa
     
     let aboutData = {
-        'team': 'TiVi20oa'
+        'team': 'Elina, Kata, Heikki ja Jonna'
     };
     res.render('about', aboutData);
 
