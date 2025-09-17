@@ -46,13 +46,17 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Määritellään polut kansioihin
+// Defining paths to folders
 // Määritellään polku staattisten tiedostojen kansioon
+// Specifying the path to the static files folder
 app.use(express.static('public'));
 
 // Määritellään polku sivujen näkymiin
+// Defining the path to page views
 app.set('views', './views');
 
 // Tehdään palvelimen express-asetukset
+// Creating server express-settings
 app.engine('handlebars', engine());
 app.set('view engine','handlebars');
 
