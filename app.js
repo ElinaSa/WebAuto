@@ -64,19 +64,22 @@ app.set('view engine','handlebars');
 // -----------------------
 
 // Kotisivu, so. URL pelkästään palvelimen osoite
+// Homepage, so.URL just the server adress
 app.get('/',(req, res) => {
 
     // Tämä on leikisti dynaamista dataa, joka on tullut tietokannasta
+    // Dynamic data from the Database
     let today = 'tiistai';
     
 
     // Mudostetaan JSON-objekti, joka voidaan lähettää sivulle korvaamaan {{}}-muuttujat
-
+    // Creating a JSON object that can be sent to the page to replace {{}} variables
     let dataToSend = {
     'dayName': today,    
     };
 
     // Renderöidään kotisivu lähettämällä sinne data
+    // Render the homepage by sending data to it
     res.render('index', dataToSend);
 });
 
