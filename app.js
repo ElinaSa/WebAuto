@@ -1,12 +1,33 @@
-// NODE.JS-POHJAINEN WEB-PALVELIN EXPRESS-KIRJASTOLLA TOTEUTETTUNA
+// WEB APPLICATION FOR SERVING RASEKO'S VEHICLE LENDING DATABASE
 // ===============================================================
 
-// KIRJASTOT
+// LIBRARIES
 // ---------
+
+// External libraries
+// ------------------
 
 const express = require('express');
 const {engine} = require('express-handlebars');
 
+// Local libraries and modules
+// ---------------------------
+
+// INITIALIZATION
+// --------------
+
+// URL ROUTES
+// ----------
+
+// SERVER START
+// ------------
+
+
+// TÄHÄN ASTI TEHTY MUOKKAUKSIA MIKAN MUKANA
+
+
+// NÄMÄ ALLA OVAT VANHASTA KOPIOITUJA, JOTKA TÄYTYY MUOKATA
+// KIELI ENGLANNIKSI JA RYHMITTELY JÄRKEVÄKSI
 // Luodaan palvelin
 const app = express();
 
