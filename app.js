@@ -15,6 +15,16 @@ const {engine} = require('express-handlebars');
 
 // INITIALIZATION
 // --------------
+// Create an express app
+const app = express();
+
+// Define a TCP-port to listen: read env or use 8080 in undefined
+const PORT = process.env.PORT || 8080;
+
+// Set a folder for static files like CSS or images
+
+
+// Setup templating
 
 // URL ROUTES
 // ----------
