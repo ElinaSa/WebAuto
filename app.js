@@ -29,6 +29,8 @@ const PORT = process.env.PORT || 8080;
 // URL ROUTES
 // ----------
 
+// A test route to test.handlebars page
+
 // SERVER START
 // ------------
 
