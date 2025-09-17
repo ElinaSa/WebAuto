@@ -50,7 +50,7 @@ app.get('/about',(req, res) => {
     // Simuloidaan dynaamista dataa
     
     let aboutData = {
-        'team': 'Elina, Kata, Heikki ja Jonna'
+        'team': 'Elina, Kata, Heikki ja Jonna. Keskiviikkona mukaan liittyi Nikki.'
     };
     res.render('about', aboutData);
 
