@@ -53,9 +53,11 @@ const selectQuery = async (sqlstatement) => {
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
-// Update data with SQL statement
 
-// Delete data with SQL statement
+
+// TODO:Update data with SQL statement
+
+// TODO:Delete data with SQL statement
 
 // APP SPECIFIC QUERIES
 // --------------------
@@ -162,4 +164,6 @@ const getLocationByReg = async (values) => {
 
 // EXPORT FUNCTIONS
 // ----------------
+
+// TODO: Export all functions
 module.exports = {insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getVehicleDetails2, getDiary, runQueryWithValues, getLocationByReg};
