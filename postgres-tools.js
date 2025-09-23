@@ -58,8 +58,8 @@ const selectQuery = async (sqlstatement) => {
 // Delete data with SQL statement
 
 // APP SPECIFIC QUERIES
+// --------------------
 
-// Home page
 
 /** 
 * Get free vehicles from database.
@@ -131,14 +131,28 @@ const runQueryWithValues = async (query) => {
     let resultset = await pool.query(query);
     return resultset;
 }
+/** 
+* Get vehicle diaries from database.
+* @summary Returns all rows from view ajopaivakirja (diary).
+* @async
+* @return {Promise} Returns a promise that resolves to the result set of the query.
+*/
 
-// Diary page - all vehicles
 const getDiary = async () => { 
     let sqlstatement = 'SELECT * from public.ajopaivakirja';
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
 // Location page - location by register number -> create a view for this
+
+/** 
+* Get vehicle location from database.
+* @summary Returns all rows from view sijainti (location).
+* @async
+* @param {Array} values - Array of register numbers to be used in the query.
+* @return {Promise} Returns a promise that resolves to the result set of the query.
+*/
+
 
 const getLocationByReg = async (values) => {
     let sqlstatement = 'SELECT * FROM public.sijainti WHERE rekisterinumero = $1';
