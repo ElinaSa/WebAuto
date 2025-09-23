@@ -27,13 +27,28 @@ const pool = new Pool(connection);
 
 // CRUD FUNCTIONS
 
-// Create data with SQL statement and get results
+/** 
+* A function to insert data into database.
+* @summary Allows you to insert data into database with SQL statement and values.
+* @async
+* @param {string} sqlstatement - SQL statement for inserting data. 
+* @param {Array} values - Array of values to be inserted.
+* @return {Promise} Returns a promise that resolves to the result set of the query.
+*/
+
 const insertQuery = async (sqlstatement, values) => {
     let resultset = await pool.query(sqlstatement, values);
     return resultset;
 } 
 
-// Read data with SQL statement
+/** 
+* Select data from database.
+* @summary Runs a select query with given SQL statement.
+* @async    
+* @param {string} sqlstatement - SQL statement for selecting data.
+* @return {Promise} Returns a promise that resolves to the result set of the query.
+*/
+
 const selectQuery = async (sqlstatement) => {
     let resultset = await pool.query(sqlstatement);
     return resultset;
@@ -46,26 +61,53 @@ const selectQuery = async (sqlstatement) => {
 
 // Home page
 
-// Vehicle list page - list of vehicles free and in use
+/** 
+* Get free vehicles from database.
+* @summary Returns all rows from view vapaana (free vehicles).
+* @async
+* @return {Promise} Returns a promise that resolves to the result set of the query.
+*/
+
 const getFreeVehicles = async () => {
     let sqlstatement = 'SELECT * FROM public.vapaana';
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
 
+/** 
+* Get vehicles in use from database.
+* @summary Returns all rows from view ajossa (vehicles in use).
+* @async
+* @return {Promise} Returns a promise that resolves to the result set of the query.
+*/
+
 const getVehiclesInUse = async () => {
     let sqlstatement = 'SELECT * FROM public.ajossa';
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
-// Vehicle details page - vehicle in use by register number: embedded SQL
+
+/** 
+* Get vehicle details from database.
+* @summary Returns all rows from view ajopaivakirja (vehicle details).
+* @async
+* @return {Promise} Returns a promise that resolves to the result set of the query.
+*/
+
 const getVehicleDetails = async () => {
     let sqlstatement = "SELECT * FROM public.ajopaivakirja WHERE rekisterinumero = 'XYZ-123'";
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
 
-// Vehicle details page - vehicle in use by register number: SQL + value
+/** 
+* Get vehicle details from database.
+* @summary Returns all rows from view ajopaivakirja (diary).
+* @async
+* @param {Array} values - Array of register numbers to be used in the query.
+* @return {Promise} Returns a promise that resolves to the result set of the query.
+*/
+
 const getVehicleDetails2 = async (values) => {
     let sqlstatement = 'SELECT * FROM public.ajopaivakirja WHERE rekisterinumero = $1';
     let resultset = await pool.query(sqlstatement, values);
@@ -77,7 +119,15 @@ const query = {
     text: 'SELECT * FROM public.ajopaivakirja WHERE rekisterinumero = $1',
     values: ['XYZ-123']
 }
-const getVehicleDetails3 = async (query) => {
+    
+/** 
+* A generic function to run a query with pre-structured statement and values.
+* @summary Executes a SQL query with the provided parameters.
+* @param {Object} query - The query object containing text and values.
+* @return {Promise} Returns a promise that resolves to the result set of the query.
+*/
+
+const runQueryWithValues = async (query) => {
     let resultset = await pool.query(query);
     return resultset;
 }
@@ -88,9 +138,14 @@ const getDiary = async () => {
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
-// Location page - location by register number
+// Location page - location by register number -> create a view for this
 
-getVehicleDetails2(['XYZ-123'])
+const getLocationByReg = async (values) => {
+    let sqlstatement = 'SELECT * FROM public.sijainti WHERE rekisterinumero = $1';
+    let resultset = await pool.query(sqlstatement, values);
+    return resultset;
+}
+
 // EXPORT FUNCTIONS
 // ----------------
-module.exports = {}
+module.exports = {insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getVehicleDetails2, getDiary, runQueryWithValues, getLocationByReg};
