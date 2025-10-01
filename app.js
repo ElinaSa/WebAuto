@@ -6,15 +6,16 @@
 
 // External libraries
 // ------------------
-
 const express = require('express');
 const {engine} = require('express-handlebars');
 
 // Local libraries and modules
 // ---------------------------
+const pgtools = require('./postgres-tools');
 
 // INITIALIZATION
 // --------------
+
 // Create an express app
 const app = express();
 
@@ -22,80 +23,84 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Set a folder for static files like CSS or images
-
+app.use(express.static('public'));
 
 // Setup templating
+app.engine('handlebars', engine());
+app.set('view engine','handlebars');
+app.set('views', './views');
+
+// Setup URL parser to use extended option
+app.use(express.urlencoded({extended: true}));
 
 // URL ROUTES
 // ----------
 
 // A test route to test.handlebars page
-
-// SERVER START
-// ------------
-
-
-// TÄHÄN ASTI TEHTY MUOKKAUKSIA MIKAN MUKANA
-
-
-// NÄMÄ ALLA OVAT VANHASTA KOPIOITUJA, JOTKA TÄYTYY MUOKATA
-// KIELI ENGLANNIKSI JA RYHMITTELY JÄRKEVÄKSI
-// Luodaan palvelin
-const app = express();
-
-// Määritellään TCP-portti, jota palvelin kuuntelee
-// Se luetaan ympärisömuuttujasta PORT tai jos sitä ei ole käytetään porttia 8080
-const PORT = process.env.PORT || 8080;
-
-// Määritellään polut kansioihin
-// Defining paths to folders
-// Määritellään polku staattisten tiedostojen kansioon
-// Specifying the path to the static files folder
-app.use(express.static('public'));
-
-// Määritellään polku sivujen näkymiin
-// Defining the path to page views
-app.set('views', './views');
-
-// Tehdään palvelimen express-asetukset
-// Creating server express-settings
-app.engine('handlebars', engine());
-app.set('view engine','handlebars');
-
-// MÄÄRITELLÄÄN URL-REITIT
-// -----------------------
-
-// Kotisivu, so. URL pelkästään palvelimen osoite
-// Homepage, so.URL just the server adress
-app.get('/',(req, res) => {
-
-    // Tämä on leikisti dynaamista dataa, joka on tullut tietokannasta
-    // Dynamic data from the Database
-    let today = 'tiistai';
-    
-
-    // Mudostetaan JSON-objekti, joka voidaan lähettää sivulle korvaamaan {{}}-muuttujat
-    // Creating a JSON object that can be sent to the page to replace {{}} variables
-    let dataToSend = {
-    'dayName': today,    
-    };
-
-    // Renderöidään kotisivu lähettämällä sinne data
-    // Render the homepage by sending data to it
-    res.render('index', dataToSend);
+// TODO: muokkaa handlebars sivu!
+app.get('/test', (req, res) => {
+    testData ={'testKey': 'Hippopotamus is virtahepo in Finnish'};
+    pgtools.selectQuery('SELECT * FROM public.vapaana').then((resultset) => {
+        console.log(resultset.rows)
+    })
+    res.render('test', testData)
 });
 
+// Route to home page
+app.get('/',(req, res) => {
+    res.send('This text will be replace by a handlebars homepage. Navigate to /test to see dynamic data in action')      
+});
+
+// Route to vehicle listing page: free vehicles and vehicles in use
+app.get('/vehicles', (req, res) => {
+    pgtools.getVehicleData().then((resultset) => {
+        // Lets give a key for the resultset and render it to the page
+        res.render('vehicles', {vehicleList : resultset.rows});       
+    })
+});
+
+// Route to indivisual vehicle page: select vehicle by register number
+app.get('/vehicleDetail', (req, res) => {
+    pgtools.getVehicleDetails2(['FNK-129']).then((resultset) => {
+        // Lets give a key for the resultset and render it to the page
+           res.render('vehicleDetail', resultset.rows[0]);
+    })               
+});
+
+// TODO: Route to diary containing all vehicles
+app.get('/diary', (req, res) => {
+    pgtools.getDiary().then((resultset) => {
+        // Lets give a key for the resultset and render it to the page
+        res.render('diary', {diaryData: resultset.rows});
+    })
+
+})
+// TODO: Route to vehicle's diary page: all entries for individual vehicle by register number
+app.get('/diary', (req, res) => {
+        pgtools.getDiary().then((resultset) => {
+            res.render('diary', diaryData, resultset.rows[0]
+            )
+        })        
+        
+});
+
+
+// TODO: Route to vehicle's tracking page: location by register number
+
+
+// TODO: POISTETAAN TÄMÄ PÄTKÄ KUN KAIKKI ON VALMISTA
 // URL-reitti About-sivulle
 app.get('/about',(req, res) => {
-    // Simuloidaan dynaamista dataa
-    
+    // Simuloidaan dynaamista dataa   
     let aboutData = {
         'team': 'Elina, Kata, Heikki ja Jonna. Keskiviikkona mukaan liittyi Nikki.'
     };
     res.render('about', aboutData);
-
 });
 
-// Käynnistetään palvelin
+
+// SERVER START
+// ------------
+
 app.listen(PORT);
-console.log('Palvelin käynnistetty portissa', PORT);
+console.log('Server started on port, ${PORT}');
