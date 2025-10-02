@@ -68,6 +68,14 @@ app.get('/vehicleDetail', (req, res) => {
     })               
 });
 
+// TODO: Route to vehicle listing using cards (tämän lisäsin)
+app.get('/vehiclelist', (req, res) => {
+    pgtools.getVehicleData().then((resultset) => {
+        // Lets give a key for the resultset and render it to the page
+        res.render('vehiclelist', {vehicleList: resultset.rows});
+    })
+});
+
 // TODO: Route to diary containing all vehicles
 app.get('/diary', (req, res) => {
     pgtools.getDiary().then((resultset) => {
