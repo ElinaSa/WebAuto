@@ -24,6 +24,7 @@ const PORT = process.env.PORT || 8080;
 
 // Set a folder for static files like CSS or images
 app.use(express.static('public'));
+app.use('/images', express.static('public/images'));
 
 // Setup templating
 app.engine('handlebars', engine());
@@ -37,7 +38,7 @@ app.use(express.urlencoded({extended: true}));
 // ----------
 
 // A test route to test.handlebars page
-// TODO: muokkaa handlebars sivu!
+// TODO: muokkaa handlebars sivu! 
 app.get('/test', (req, res) => {
     testData ={'testKey': 'Hippopotamus is virtahepo in Finnish'};
     pgtools.selectQuery('SELECT * FROM public.vapaana').then((resultset) => {
@@ -55,7 +56,7 @@ app.get('/',(req, res) => {
 app.get('/vehicles', (req, res) => {
     pgtools.getVehicleData().then((resultset) => {
         // Lets give a key for the resultset and render it to the page
-        res.render('vehicles', {vehicleList : resultset.rows});       
+        res.render('vehicles', {vehicleList: resultset.rows});       
     })
 });
 

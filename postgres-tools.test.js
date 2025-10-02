@@ -44,7 +44,7 @@ describe('postgres-tools functions testing', () => {
   });
  
     // 2nd test for runQueryWithValues function
-    test('runQueryWithValues', () => {
+    test('runQueryWithValues test', () => {
       // Define a SQL statement to be used
         let query = {
             text:'SELEC * FROM jest_test WHERE id = $1',
