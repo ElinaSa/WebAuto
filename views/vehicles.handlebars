@@ -1,23 +1,29 @@
 <h1>Rasekon autot</h1>
 
-<h2>Ajoneuvojen tiedot järjestämättömänä listana</h2>
-<ul>
-  {{#each vehicleList}}
-    <li>{{merkki}} {{malli}} {{status}}</li>
-  {{/each}}
-</ul>
+{{!-- <h2>Ajoneuvojen tiedot järjestämättömänä listana</h2> --}}
+{{!-- <ul> --}}
+  {{!-- {{#each vehicleList}} --}}
+    {{!-- <li>{{rekisterinumero}} {{merkki}} {{malli}} {{henkilomaara}} {{automaatti}} {{status}}</li> --}}
+  {{!-- {{/each}} --}}
+{{!-- </ul> --}}
 
-<h2>Samat tiedot taulukkona</h2>
+<h2>Ajoneuvojen tiedot taulukkona</h2>
 <table>
     <tr>
+        <th>Rekisterinumero</th>
         <th>Merkki</th>
         <th>Malli</th>
+        <th>Henkilömäärä</th>
+        <th>Automaatti</th>
         <th>Status</th>
     </tr>
     {{#each vehicleList}}
     <tr>
+        <td>{{rekisterinumero}}</td>
         <td>{{merkki}}</td>
         <td>{{malli}}</td>
+        <td>{{henkilomaara}}</td>
+        <td>{{automaatti}}</td>
         <td>{{status}}</td>
     </tr>
     {{/each}}
