@@ -2,12 +2,20 @@
     box-sizing: border-box;
 }
 
+title {
+    font-family: Kanit, Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: extra bold;
+    color: #df2070;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #e8dde4;
 }
+
 h1 {
     color: #333;
 }
@@ -26,14 +34,52 @@ a:hover {
     text-decoration: underline;
 }
 
+.raseko-blue {
+    color: #1b3259;
+}
+
+.raseko-pink {
+    color: #df2070;
+}
+
+.raseko-pink-lighter {
+    color: #df2070;
+    opacity: 80%;
+}
+
+.raseko-pink-light {
+    color: #df2070;
+    opacity: 60%;
+}
+
+.raseko-pink-verylight {
+    color: #df2070;
+    opacity: 40%;
+}
+
+.raseko-turquoise-light {
+    color: #4bbcc5;
+    opacity: 80%;
+}
+
+.raseko-turquoise-dark {
+    color: #0095b2;
+}
+
+.raseko-grey {
+    color: #efefef;
+}
+
+/* Common settings for Containers*/
 .container {
     width: 80%;
     margin: auto;
     padding: 20px;
-    background: #9c1010;
+    background: #eee9ed;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+/* Styling for ordinary buttons */
 .button {
     display: inline-block;
     padding: 10px 20px;

@@ -36,6 +36,16 @@ a:hover {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+.single-vehicle-container {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    align-content: space-around;
+}
+
 /* Styling for ordinary buttons */
 .button {
     display: inline-block;
@@ -161,6 +171,18 @@ a:hover {
     margin-bottom: 10px;
     color: #333;
 }
+
+.vehicle-detail {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: stretch;
+    justify-content: space-between;
+}
+
 /* Responsive adjustments for small screens*/
 @media (max-width: 600px) {
     .card {

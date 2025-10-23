@@ -27,11 +27,13 @@ const PORT = process.env.PORT || 8080;
 app.use(express.static('public'));
 app.use('/images', express.static('public/images'));
 app.use('/css', express.static('public/css'));
+app.use('/icons', express.static('public/icons'));
 
 // Setup templating (kokeiltu Stackoverflown mallia)
 app.engine('handlebars', engine({
     layoutsDir:__dirname + '/views/layouts',
 }));
+// app.engine('handlebars', engine());
 
 app.set('view engine','handlebars');
 app.set('views', './views');
@@ -67,9 +69,10 @@ app.get('/vehicles', (req, res) => {
 
 // Route to indivisual vehicle page: select vehicle by register number
 app.get('/vehicleDetail', (req, res) => {
-    pgtools.getVehicleDetails2(['FNK-129']).then((resultset) => {
+    let register = req.query.register;
+    pgtools.getVehicleDetails2([register]).then((resultset) => {
         // Lets give a key for the resultset and render it to the page
-           res.render('vehicleDetail', resultset.rows[0]);
+        res.render('vehicleDetail', resultset.rows[0]);
     })               
 });
 
@@ -97,6 +100,10 @@ app.get('/diary', (req, res) => {
 app.get('/vlistFlex', (req, res) => {
         res.render('vlistFlex');
     })
+
+app.get('vlistColumns', (reg, res) => {
+    res.render('vlistColumns');
+})
 
 // TODO: POISTETAAN/MUOKATAAN TÄMÄ PÄTKÄ KUN KAIKKI ON VALMISTA
 // URL-reitti About-sivulle
