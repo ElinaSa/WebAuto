@@ -1,4 +1,5 @@
-*{
+/* Set size to follow parent's size*/
+* {
     box-sizing: border-box;
 }
 
@@ -74,6 +75,7 @@ a:hover {
 .container {
     width: 80%;
     margin: auto;
+    overflow: hidden;
     padding: 20px;
     background: #eee9ed;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -130,6 +132,32 @@ a:hover {
     color: #fff;    
 }
 
+/* Styling for dynamic buttons */
+.vapaana-btn {
+    display: block;
+    margin: 0 auto;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none !important;
+    font-size: 24px;
+}
+.ajossa-btn {
+    display: block;
+    margin: 0 auto;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none !important;
+    font-size: 24px;
+}
+
 /* Card layout for vehicle list */
 .card-group {
     float: left;
@@ -184,7 +212,6 @@ a:hover {
 }
 
 .vehicle-image {
-
     /* Set image size relative to viewport width (4 columns)*/
     width: 23vw;
     height: auto;

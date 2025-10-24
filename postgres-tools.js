@@ -59,7 +59,6 @@ const selectQuery = async (sqlstatement) => {
 
 // APP SPECIFIC QUERIES
 // --------------------
-
 /** 
 * Get all current vehicles and their status.
 * @summary Reads vehicle information from view autojen_tila (vehicle status).
@@ -154,7 +153,6 @@ const getDiary = async () => {
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
-
 // Location page - location by register number -> create a view for this
 
 /** 

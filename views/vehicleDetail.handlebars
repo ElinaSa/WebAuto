@@ -1,5 +1,4 @@
-
-<div class "container">         
+<div class "container">
     <img class="vehicle-image" src="/images/{{rekisterinumero}}.png" /> 
     <h1> Auto {{rekisterinumero}}</h1>
         <img src="/icons/user.svg" alt="Kuljettaja">
@@ -18,4 +17,10 @@
         {{!-- <i class="material-symbols-outlined">nest_clock_farsight_analog</i> --}}
         {{!-- <h2>{{otto}}</h2> --}}
     {{!-- </div>            --}}
+    
 </div>
+
+ <div class="card-{{status}}"><img class="vehicle-image" src="/images/{{rekisterinumero}}.png" />
+     <div class="card-body">
+         <h4 class="card-title">{{rekisterinumero}} <br>on {{status}}</h4>
+         <p class="card-text">{{merkki}} {{malli}}<br />henkilömäärä {{henkilomaara}}<br />automaatti {{automaatti}} <br>{{status}}</p>

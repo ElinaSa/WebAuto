@@ -68,6 +68,7 @@ app.get('/vehicles', (req, res) => {
 });
 
 // Route to indivisual vehicle page: select vehicle by register number
+// TODO: VehicleDetail ei toimi mulla, vain icons näkyy selaimessa
 app.get('/vehicleDetail', (req, res) => {
     let register = req.query.register;
     pgtools.getVehicleDetails2([register]).then((resultset) => {
