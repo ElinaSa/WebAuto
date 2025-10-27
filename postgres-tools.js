@@ -16,7 +16,7 @@ const Pool = require('pg').Pool;
 
 // Connection settings
 const connection = {host: '127.0.0.1',
-    port: '5433',
+    port: '5432',
     database: 'autolainaus',
     user: 'websovellus',
     password: 'Q2werty7'

@@ -23,18 +23,11 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Set a folder for static files like CSS or images
-// app.use(express.static('public'));
 app.use(express.static('public'));
 app.use('/images', express.static('public/images'));
-app.use('/css', express.static('public/css'));
-app.use('/icons', express.static('public/icons'));
 
-// Setup templating (kokeiltu Stackoverflown mallia)
-app.engine('handlebars', engine({
-    layoutsDir:__dirname + '/views/layouts',
-}));
-// app.engine('handlebars', engine());
-
+// Setup templating
+app.engine('handlebars', engine());
 app.set('view engine','handlebars');
 app.set('views', './views');
 
@@ -77,7 +70,8 @@ app.get('/vehicleDetail', (req, res) => {
     })               
 });
 
-// Route to vehicle listing using cards
+
+// TODO: Route to vehicle listing using cards (tämän lisäsin)
 app.get('/vehiclelist', (req, res) => {
     pgtools.getVehicleData().then((resultset) => {
         // Lets give a key for the resultset and render it to the page
@@ -85,7 +79,7 @@ app.get('/vehiclelist', (req, res) => {
     })
 });
 
-// Route to diary containing all vehicles
+// TODO: Route to diary containing all vehicles
 app.get('/diary', (req, res) => {
     pgtools.getDiary().then((resultset) => {
         // Lets give a key for the resultset and render it to the page
@@ -94,24 +88,24 @@ app.get('/diary', (req, res) => {
 
 })
 // TODO: Route to vehicle's diary page: all entries for individual vehicle by register number
+app.get('/diary', (req, res) => {
+        pgtools.getDiary().then((resultset) => {
+            res.render('diary', diaryData, resultset.rows[0]
+            )
+        })        
+        
+});
 
 
 // TODO: Route to vehicle's tracking page: location by register number
 
-app.get('/vlistFlex', (req, res) => {
-        res.render('vlistFlex');
-    })
 
-app.get('vlistColumns', (reg, res) => {
-    res.render('vlistColumns');
-})
-
-// TODO: POISTETAAN/MUOKATAAN TÄMÄ PÄTKÄ KUN KAIKKI ON VALMISTA
+// TODO: POISTETAAN TÄMÄ PÄTKÄ KUN KAIKKI ON VALMISTA
 // URL-reitti About-sivulle
 app.get('/about',(req, res) => {
     // Simuloidaan dynaamista dataa   
     let aboutData = {
-        'team': 'Elina, Kata, Heikki, Nikki ja Jonna.'
+        'team': 'Elina, Kata, Heikki ja Jonna. Keskiviikkona mukaan liittyi Nikki.'
     };
     res.render('about', aboutData);
 });
@@ -121,4 +115,4 @@ app.get('/about',(req, res) => {
 // ------------
 
 app.listen(PORT);
-console.log(`Server started on port ${PORT}`);
+console.log('Server started on port, ${PORT}');
