@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="ringUser" viewBox="0 0 24 24">
+        <circle cx="12.07" cy="12.072" r="10.74" style="fill:var(--icon-background-color);stroke-linecap:round;stroke-linejoin:round;stroke:var(--icon-stroke-color)"/>
+        <ellipse cx="12.377" cy="8.6564" rx="3.5448" ry="3.8489" style="fill:var(--icon-fill-color);stroke-linecap:round;stroke-linejoin:round;stroke:var(--icon-stroke-color)"/>
+        <path d="m3.3754 18.309c-2.3064-2.265 3.57-4.3546 8.6943-4.296 5.1244 0.0586 8.592 4.3983 8.592 4.3983s-7.5479 9.4615-17.286-0.10229z" style="fill:var(--icon-fill-color);stroke-linecap:round;stroke-linejoin:round;stroke:var(--icon-stroke-color)"/>
+    </symbol>
+    <symbol id="openFolderColor" viewBox="0 0 24 24">
+        <path d="M2.106,6.677l-0.112,14.224l17.254,-0.128l0.223,-17.674l-7.372,-0l-0,3.45l-9.993,0.128Z" style="fill:#e6a91a;stroke:#000;stroke-width:1px;"/><path d="M19.409,6.652l3.354,0l-3.515,14.121" style="fill:#725501;stroke:#000;stroke-width:1px;"/>
+    </symbol>
+  </defs>
+</svg>

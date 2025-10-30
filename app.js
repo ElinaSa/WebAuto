@@ -29,7 +29,7 @@ app.use('/images', express.static('public/images'));
 app.use('/css', express.static('public/css'));
 app.use('/icons', express.static('public/icons'));
 
-// Setup templating (kokeiltu Stackoverflown mallia)
+// Setup templating (ylimpänä kokeiltu Stackoverflown mallia)
 app.engine('handlebars', engine({
     layoutsDir:__dirname + '/views/layouts',
 }));
@@ -68,16 +68,24 @@ app.get('/vehicles', (req, res) => {
 });
 
 // Route to indivisual vehicle page: select vehicle by register number
-// TODO: VehicleDetail ei toimi mulla, vain icons näkyy selaimessa
 app.get('/vehicleDetail', (req, res) => {
     let register = req.query.register;
-    pgtools.getVehicleDetails2([register]).then((resultset) => {
+    pgtools.getVehicleDetails2(['FNK-129']).then((resultset) => {
         // Lets give a key for the resultset and render it to the page
         res.render('vehicleDetail', resultset.rows[0]);
     })               
 });
 
-// Route to vehicle listing using cards
+// Toinen vaihtoehto
+// app.get('/vehicleDetail', (req, res) => {
+    // let register = req.query.register;
+    // pgtools.getVehicleDetails2([register]).then((resultset) => {
+        
+        // res.render('vehicleDetail', resultset.rows[0]);
+    // })
+
+
+// TODO:Route to vehicle listing using cards
 app.get('/vehiclelist', (req, res) => {
     pgtools.getVehicleData().then((resultset) => {
         // Lets give a key for the resultset and render it to the page
@@ -91,9 +99,34 @@ app.get('/diary', (req, res) => {
         // Lets give a key for the resultset and render it to the page
         res.render('diary', {diaryData: resultset.rows});
     })
-
 })
+
+app.get('/vlistFlex', (req, res)=> {
+    res.render('vlistFlex');
+})
+
+app.get('/icontest', (req, res)=> {
+    res.render('icontest');
+})
+
+app.get('/svgtest', (req, res)=> {
+    res.render('svgtest');
+})
+
+app.get('/vlistColums', (req, res)=> {
+    res.render('vlistColumns');
+})
+
 // TODO: Route to vehicle's diary page: all entries for individual vehicle by register number
+// kokeilu
+app.get('/diary', (req, res) => {
+    let register = req.query.register;
+    pgtools.getVehicleDiary(['FNK-129']).then((resultset) => {
+        // Lets give a key for the resultset and render it to the page
+        res.render('diary', resultset.rows[0]);
+    })               
+});
+
 
 
 // TODO: Route to vehicle's tracking page: location by register number
