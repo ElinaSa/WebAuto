@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="driver" viewBox="0 0 25 25">
+        <circle cx="12.5" cy="7.26" r="4.24" style="fill:none;stroke:#000;stroke-width:1px;"/><path d="M3.558,19.029c0,0 1.519,-5.534 8.942,-5.457c7.508,0.078 8.636,5.856 8.636,5.856c-0,0 -2.846,4.145 -8.636,4.145c-5.465,0 -8.942,-4.544 -8.942,-4.544Z" style="fill:none;stroke:#000;stroke-width:1px;"/>
+    </symbol>
+
+    <symbol id="location" viewBox="0 0 25 25">
+        <circle cx="12.5" cy="12.5" r="11.073" style="fill:none;stroke:#000;stroke-width:1px;"/><circle cx="10.516" cy="6.72" r="1.984" style="fill:none;stroke:#000;stroke-width:1px;"/><path d="M11.264,8.704l2.937,12.212" style="fill:none;stroke:#000;stroke-width:1px;"/>
+    </symbol>
+
+    <symbol id="time" viewBox="0 0 25 25">
+        <circle cx="12.5" cy="12.5" r="9.845" style="fill:none;stroke:#000;stroke-width:1px;"/><path d="M12.008,12.5l-4.31,-4.06" style="fill:none;stroke:#000;stroke-width:1px;"/><path d="M19.26,8.44l-7.252,4.06" style="fill:none;stroke:#000;stroke-width:1px;"/><path d="M7.698,8.44l4.31,5.666l7.252,-5.666" style="fill:none;stroke:#000;stroke-width:1px;"/>
+    </symbol>
+
+    <symbol id="reason" viewBox="0 0 25 25">
+        <path d="M22.737,5.474l-0,7.685c-0,2.12 -1.722,3.842 -3.842,3.842l-4.054,-0l-0.641,6.587l-4.161,-6.587l-4.541,-0c-2.121,-0 -3.843,-1.722 -3.843,-3.842l0,-7.685c0,-2.121 1.722,-3.842 3.843,-3.842l13.397,-0c2.12,-0 3.842,1.721 3.842,3.842Z" style="fill:none;stroke:#000;stroke-width:1px;"/><g transform="matrix(15.4499,0,0,15.4499,16.8272,15.1451)"></g><text x="7.39px" y="15.145px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:15.45px;">?</text>
+    </symbol>
+  </defs>
+</svg>

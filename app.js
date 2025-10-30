@@ -139,6 +139,10 @@ app.get('vlistColumns', (reg, res) => {
     res.render('vlistColumns');
 })
 
+app.get('/iconList', (req, res) => {
+    res.render('iconList');
+})
+
 // TODO: POISTETAAN/MUOKATAAN TÄMÄ PÄTKÄ KUN KAIKKI ON VALMISTA
 // URL-reitti About-sivulle
 app.get('/about',(req, res) => {
