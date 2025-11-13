@@ -61,17 +61,18 @@ app.get('/vehicles', (req, res) => {
 });
 
 // Route to indivisual vehicle page: select vehicle by register number
-// TODO: VehicleDetail ei toimi mulla, vain icons näkyy selaimessa
 app.get('/vehicleDetail', (req, res) => {
     let register = req.query.register;
     pgtools.getVehicleDetails2([register]).then((resultset) => {
         // Lets give a key for the resultset and render it to the page
+        let userFriendlyTimestamp = pgtools.convertToDateTimeObject(resultset.rows[0].otto);
+        let dateTimeValue = userFriendlyTimestamp.date + ' kello ' + userFriendlyTimestamp.time
+        resultset.rows[0].otto = dateTimeValue
         res.render('vehicleDetail', resultset.rows[0]);
     })               
 });
 
 
-// TODO: Route to vehicle listing using cards (tämän lisäsin)
 app.get('/vehiclelist', (req, res) => {
     pgtools.getVehicleData().then((resultset) => {
         // Lets give a key for the resultset and render it to the page
@@ -97,7 +98,17 @@ app.get('/diary', (req, res) => {
 });
 
 
+
 // TODO: Route to vehicle's tracking page: location by register number
+
+app.get('/vlistFlex', (req, res) => {
+        res.render('vlistFlex');
+    })
+
+app.get('vlistColumns', (reg, res) => {
+    res.render('vlistColumns');
+})
+
 
 
 // TODO: POISTETAAN TÄMÄ PÄTKÄ KUN KAIKKI ON VALMISTA

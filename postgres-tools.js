@@ -169,6 +169,15 @@ const getLocationByReg = async (values) => {
     return resultset;
 }
 
+const convertToDateTimeObject = (timestamp) => {
+    let isoTimestamp = timestamp.toISOString();
+    let splittedISOTimestamp = isoTimestamp.split('T');
+    let splittedTime = splittedISOTimestamp[1].split('.')
+    let result = {date: splittedISOTimestamp[0],
+        time: splittedTime[0]
+    };
+    return result; 
+}
 /*selectQuery('SELECT * FROM jest_test').then((resultset) => {
     console.log(resultset.rows)
 })
@@ -177,4 +186,4 @@ const getLocationByReg = async (values) => {
 // ----------------
 
 // TODO: Export all functions and the pool itself. Jest needs the pool to run tests
-module.exports = {pool, insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getVehicleDetails2, getDiary, runQueryWithValues, getLocationByReg, getVehicleData};
+module.exports = {pool, insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getVehicleDetails2, getDiary, runQueryWithValues, getLocationByReg, getVehicleData, convertToDateTimeObject};

@@ -14,7 +14,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #e8dde4;
+    background-color: #efefef;
 }
 
 h1 {
@@ -148,7 +148,7 @@ a:hover {
 .ajossa-btn {
     display: block;
     margin: 0 auto;
-    background-color: #dc3545;
+    background-color: #df2070;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -185,8 +185,8 @@ a:hover {
     float: left;    
     width: 25%;
     margin: 1%;
-    background-image: linear-gradient(to bottom , #fd3636, #f2bcbc);
-    border: 1px solid #ddd;
+    background-color: #4ddcc5;
+    border: 1px solid #abdcd4;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     padding: 10px;  
