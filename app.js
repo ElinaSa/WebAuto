@@ -63,7 +63,7 @@ app.get('/vehicles', (req, res) => {
 // Route to indivisual vehicle page: select vehicle by register number
 app.get('/vehicleDetail', (req, res) => {
     let register = req.query.register;
-    pgtools.getVehicleDetails2([register]).then((resultset) => {
+    pgtools.getVehicleDetails([register]).then((resultset) => {
         // Lets give a key for the resultset and render it to the page
         let userFriendlyTimestamp = pgtools.convertToDateTimeObject(resultset.rows[0].otto);
         let dateTimeValue = userFriendlyTimestamp.date + ' kello ' + userFriendlyTimestamp.time
