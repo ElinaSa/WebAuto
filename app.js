@@ -80,23 +80,40 @@ app.get('/vehiclelist', (req, res) => {
     })
 });
 
-// TODO: Route to diary containing all vehicles
+// Route to diary containing all vehicles
 app.get('/diary', (req, res) => {
     pgtools.getDiary().then((resultset) => {
         // Lets give a key for the resultset and render it to the page
-        res.render('diary', {diaryData: resultset.rows});
+        //console.log(resultset.rows[1])
+        let rows = resultset.rows
+        console.log(rows[0])
+        let row = 0
+        let formattedTake = {}
+        let formattedReturn = {}
+        for (row in rows) {
+            if (rows[row].otto == null) {
+                formattedTake.date = '-'
+                formattedTake.time = '-'
+            }
+            else {
+            formattedTake = pgtools.convertToDateTimeObject(rows[row].otto);
+            }
+             if (rows[row].palautus == null) {
+                formattedReturn.date = '-'
+                formattedReturn.time = '-'
+            }
+            else {
+            formattedReturn = pgtools.convertToDateTimeObject(rows[row].palautus);
+            }
+            rows[row].otto = formattedTake.date + ' klo: ' + formattedTake.time;
+            rows[row].palautus = formattedReturn.date + ' klo:' + formattedReturn.time;
+            console.log(rows[row].otto)
+            console.log(rows[row].palautus)
+        }
+        res.render('diary', {diaryData: rows});
     })
-
-})
-// TODO: Route to vehicle's diary page: all entries for individual vehicle by register number
-app.get('/diary', (req, res) => {
-        pgtools.getDiary().then((resultset) => {
-            res.render('diary', diaryData, resultset.rows[0]
-            )
-        })        
-        
+    
 });
-
 
 
 // TODO: Route to vehicle's tracking page: location by register number
