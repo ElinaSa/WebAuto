@@ -82,8 +82,8 @@ app.get('/vehicleDetail', (req, res) => {
         // console.log(resultset.rows[0].otto);
     // 
         // Converts timestamp to user friendly string NÄMÄ RIVIT HUKKAAVAT IKONIT VÄLILLÄ, EIKÄ AIKA NÄY JÄRKEVÄSTI
-        let userFriendlyTimeStamp = pgtools.convertToDateTimeObject(resultset.rows[0].otto);
-        let dateTimeValue = userFriendlyTimeStamp.date + ' kello ' + userFriendlyTimeStamp.time
+        let userFriendlyTimestamp = pgtools.convertToDateTimeObject(resultset.rows[0].otto);
+        let dateTimeValue = userFriendlyTimestamp.date + ' kello ' + userFriendlyTimestamp.time
 
         // Change original timestamp to string value
         resultset.rows[0].otto = dateTimeValue;

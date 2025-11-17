@@ -1,4 +1,5 @@
 :root {
+    --icon-stroke-width: 1px;
     --icon-stroke-color: black;
     --icon-fill-color: none;
     --icon-background-color: none;
@@ -44,6 +45,10 @@ p {
     padding: 20px;
     background: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+     /* Adjust width for smaller screens */
+    @media (max-width: 600px) {
+        width: 100%;
+    }
 }
 .align-center {
     text-align: center;
@@ -72,7 +77,6 @@ p {
     border-radius: 20px;
     box-shadow: 0 5px 8px var(--shadow-raseko-pink);
     padding: 10px;
-
     /* Adjust width for smaller screens */
     @media (max-width: 600px) {
         width: 100%;
@@ -85,23 +89,22 @@ p {
     /* Set card width to 25% for 4 columns */
     width: 25%;
     margin: 1%;
-    border: 2px solid var(--color-raseko-dark-blue);
+    border: 2px solid var(--color-raseko-blue);
     border-radius: 20px;
-    box-shadow: 0 5px 8px var(--shadow-raseko-dark-blue);
+    box-shadow: 0 5px 8px var(--shadow-raseko-blue);
     padding: 10px;
-
     /* Adjust width for smaller screens */
     @media (max-width: 600px) {
         width: 100%;
     }
 }
+
 .vehicle-image {
     /* Set image size relative to viewport width (4 columns)*/
     width: 25vw;
     height: auto;
     border-radius: 5px;
     margin-bottom: 15px;
-
     /* Adjust width for smaller screens */
     @media (max-width: 600px) {
         width: 80vw;
@@ -113,8 +116,7 @@ p {
     width: 80vw;
     height: auto;
     border-radius: 5px;
-    margin-bottom: 15px;
-   
+    margin-bottom: 15px; 
 }
 
 .card-text {
@@ -135,7 +137,7 @@ p {
 .vapaana-btn {
     display: block;
     margin: 0 auto;
-    background-color: var(--color-raseko-dark-blue);
+    background-color: var(--color-raseko-blue);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -161,6 +163,7 @@ p {
     width: 1em;
     height: 1em;
 }
+
 .icon-big{
     width: 3em;
     height: 3em;
@@ -223,12 +226,17 @@ p {
 
 th {
     padding: 10px;
+    font-size: small;
+    color: var(--color-raseko-grey);
+    background-color: var(--color-raseko-blue);
+    border: 1px solid var(--color-raseko-blue);
 }
 
-/* tästä välistä puuttuu jotain */
-
 td {
-    border: 1px solid var (var(--color-raseko-turquoise-dark));
+    padding: 10px;
+    font-size: small;
+    color: var(--color-raseko-turquoise-dark);
+    border: 1px solid var(--color-raseko-turquoise-dark);
 }
 
 tr:nth-child(even) {
