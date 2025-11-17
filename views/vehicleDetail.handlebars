@@ -1,16 +1,41 @@
-<div class "container">
-    <img class="vehicle-image" src="/images/{{rekisterinumero}}.png" /> 
-    <h1> Auto {{rekisterinumero}}</h1>
-        <img src="/icons/user.svg" alt="Kuljettaja">
-        <img src="/icons/person.svg" alt="Kuljettaja2">
-        <h2>{{kuljettaja}}</h2>
-        <img src="/icons/reason.svg" alt="Ajon tarkoitus">
-        {{!-- <img src="/icons/truck.svg" alt="Ajon tarkoitus2"> --}}
-        {{!-- <img src="/icons/bus.svg" alt="Ajon tarkoitus3"> --}}
-        {{!-- <img src="/icons/car.svg" alt="Ajon tarkoitus4"> --}}
-        <h2>{{tarkoitus}}</h2>
-        <img src="/icons/time.svg" alt="Lähtöaika">
-        <h2>{{otto}}</h2>
+<body>
+    
+{{!-- <div class "container"> --}}
+    {{!-- <img class="vehicle-image" src="/images/{{rekisterinumero}}.png" />  --}}
+       {{!-- <h1> Auto {{rekisterinumero}}</h1> --}}
+        {{!-- <img src="/icons/user.svg" alt="Kuljettaja"> --}}
+        {{!-- <h2>{{kuljettaja}}</h2> --}}
+        {{!-- <img src="/icons/reason.svg" alt="Ajon tarkoitus">         --}}
+        {{!-- <h2>{{tarkoitus}}</h2> --}}
+        {{!-- <img src="/icons/time.svg" alt="Lähtöaika"> --}}
+        {{!-- <h2>{{otto}}</h2> --}}
+{{!-- </div> --}}
+
+
+
+{{!-- TARKISTA LISÄÄ MUOTOILUT Aika näkyy mulla hullusti ja vaihda Mikan muotoilemat spritesikonit omiin?--}}
+ <div class="container">
+    <img class="vehicle-detail-image" src="images/{{rekisterinumero}}.png" alt="Auto">
+    <h1 class="big-text align-center">{{rekisterinumero}}</h1>
+    <div class="alignment-box">
+        <table class="drive-information">
+            <tr>
+                <td class="drive-information"><svg class="icon-huge icon-raseko-colors"><use href="icons/webAutoSprites.svg#driver" /></svg></td>
+                <td class="big-text drive-information">{{kuljettaja}}</td>
+            </tr>
+            <tr>
+                <td class="drive-information"><svg class="icon-huge icon-raseko-colors"><use href="icons/webAutoSprites.svg#reason" /></svg></td>
+                <td class="big-text drive-information">{{tarkoitus}}</td>
+            </tr>
+            <tr>
+                <td class="drive-information"><svg class="icon-huge icon-raseko-colors"><use href="icons/webAutoSprites.svg#time" /></svg></td>
+                <td class="big-text drive-information">{{otto}}</td>
+            </tr>
+        </table>
+        </div>
+    </div>
+{{!--  --}}
+</body>
 
     {{!-- Alla oleva esimerkki Google-fontin kanssa --}}
     {{!-- <div style="font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 0, 'ppsz' 48;"> --}}
@@ -30,7 +55,7 @@
          {{!-- </div> --}}
     {{!-- </div> --}}
 
-</div>
+
 
 
 

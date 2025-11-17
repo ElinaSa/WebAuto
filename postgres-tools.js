@@ -99,26 +99,13 @@ const getVehiclesInUse = async () => {
 
 /** 
 * Get vehicle details from database.
-* @summary Returns a row about vehivle currently in use by hard coded register number
-* @async
-* @return {Promise} Returns a promise that resolves to the result set of the query.
-*/
-
-const getVehicleDetails = async () => {
-    let sqlstatement = "SELECT * FROM public.aktiivinen_ajo WHERE rekisterinumero = 'XYZ-123'";
-    let resultset = await pool.query(sqlstatement);
-    return resultset;
-}
-
-/** 
-* Get vehicle details from database.
 * @summary Returns details about a vehicle currently in use
 * @async
 * @param {Array} values - Array of register numbers to be used in the query.
 * @return {Promise} Returns a promise that resolves to the result set of the query.
 */
 
-const getVehicleDetails2 = async (values) => {
+const getVehicleDetails = async (values) => {
     let sqlstatement = 'SELECT * FROM public.aktiivinen_ajo WHERE rekisterinumero = $1';
     let resultset = await pool.query(sqlstatement, values);
     return resultset;
@@ -168,7 +155,22 @@ const getLocationByReg = async (values) => {
     let resultset = await pool.query(sqlstatement, values);
     return resultset;
 }
+// TODO:Tarkista itseltä mikä tuohon ison T:n tilalle tulee, Mika lyhentänyt Timen jossain kohtaa näin
+/**
+ * Converts PostgreSQL timestamp to user friendly string format.
+ * @param {timestamp} timestamp - Timestamp to be converted to string
+ * @returns {object} Object containing date and time as string.
+ */
 
+const convertToDateTimeObject = (timestamp) => {
+    let isoTimestamp = timestamp.toISOString();
+    let splittedISOTimestamp = isoTimestamp.split('T');
+    let splittedTime = splittedISOTimestamp[1].split('.');
+    let result = {date: splittedISOTimestamp[0],
+        time: splittedTime[0]
+    };
+    return result;
+}
 /*selectQuery('SELECT * FROM jest_test').then((resultset) => {
     console.log(resultset.rows)
 })
@@ -177,4 +179,4 @@ const getLocationByReg = async (values) => {
 // ----------------
 
 // TODO: Export all functions and the pool itself. Jest needs the pool to run tests
-module.exports = {pool, insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getVehicleDetails2, getDiary, runQueryWithValues, getLocationByReg, getVehicleData};
+module.exports = {pool, insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getDiary, runQueryWithValues, getLocationByReg, getVehicleData, convertToDateTimeObject};

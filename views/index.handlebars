@@ -1,7 +1,13 @@
-<h1>Tämä on kotisivu</h1>
-<p>Tämä on staattista tekstiä, joka on tällä sivulla aina.</p>
-
-<h2>Tästä eteenpäin sisältö on dynaamista, eli app.js generoi sisällön</h2>
-
-<h3>Tänään on {{dayName}}</h3>
-<p>Tämä on kopioitu testimielessä aiemmasta projektista.</p>
+{{!-- Home page for login --}}
+{{!-- (control ja tähti antaa kommentin) --}}
+<div class="container">
+    <div class="alignment-box">
+    <form action="/welcome">
+        <label for="user">Sähköpostiosoite</label><br>
+        <input class="input-field" type="email" name="user" id="user"><br>
+        <label for="password">Salasana</label><br>
+        <input class="input-field" type="password" name="password" id="password"><br>
+        <input class="raseko-button" type="submit" value="Kirjaudu">
+    </form>
+    </div>
+</div>

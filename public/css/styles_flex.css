@@ -1,3 +1,21 @@
+:root {
+    --icon-stroke-color: black;
+    --icon-fill-color: none;
+    --icon-background-color: none;
+    --color-raseko-blue: rgb(27, 51, 89);
+    --color-raseko-turquoise-dark: rgb(0, 150, 179);
+    --color-raseko-tuorquoise-light: rgba(75, 188, 197, 0.8);
+    --color-raseko-pink: rgb(232, 32, 112);
+    --color-raseko-pink-lighter: rgba(232, 32, 112, 0.8);
+    --color-raseko-pink-light: rgba(232, 32, 112, 0.6);
+    --color-raseko-pink-verylight: rgba(232, 32, 112, 0.4);
+    --color-raseko-grey: rgb(239, 239, 239);
+    --color-info-box-bg: rgb(199, 221, 36);
+    --shadow-raseko-pink:  rgb(232, 32, 112, 0.4);
+    --shadow-raseko-blue:  rgb(27, 51, 89, 0.4);
+    --color-raseko-highlighter:rgba(75, 188, 197, 0.3);
+}
+
 /* Set size to follow parent's size. This is important so anything else will work. */
 * {
     box-sizing: border-box;
@@ -17,112 +35,44 @@ p {
     color: #262626;
     line-height: 1.6;
 }
-/* Link styling */
-a {
-    color: #007BFF;
-    text-decoration: none;
-}
 
-a:hover {
-    text-decoration: underline;
-}
-/* Common settings for Containers*/
+/* Common settings for Containers */
 .container {
     width: 80%;
     margin: auto;
-    overflow: hidden;
+    overflow: auto;
     padding: 20px;
     background: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
-
-.single-vehicle-container {
-    width: auto;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-    align-content: space-around;
-}
-
-/* Styling for ordinary buttons */
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+.align-center {
     text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #28a745;
-    border: none;
-    border-radius: 5px;
 }
 
-.button:hover {
-    background-color: #218838;
+.alignment-box {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
-/* Styling for buttons indicating status vapaana (available)*/
-.vapaana {
-   display: block;
-   margin: 0 auto;
-   background-color: #218838;
-   color: #fff;
-   border: none;
-   border-radius: 5px;
-   padding: 10px 50px;    
-}
-
-.vapaana_bg {
-    background-color: #218838;
-    color: #fff;    
-}
-
-/* Styling for buttons indicating status ajossa (occupied)*/
-.ajossa {
-    display: block;
-    margin: 0 auto;
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 50px;
-}
-.ajossa-bg {
-    background-color: #d78089;
-    color: #fff;    
-}
 /* Card layout for vehicle list */
 .card-group {
     display: flex;
     flex-wrap: wrap;
 }
 
-/* Individual card styling */
-.card {
-    /* Prevent cards to occupy empty space in the page*/
-    flex: none;
-    margin: 1%;
-    background: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    padding: 10px;
-}
 .card-ajossa {
     float: left;
     /* Set card width to 25% for 4 columns */
     width: 25%;
     margin: 1%;
-    background-image: linear-gradient(to bottom , #fd3636, #f2bcbc);
-    /*background: #f2bcbc;*/
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 2px solid var(--color-raseko-pink);
+    border-radius: 20px;
+    box-shadow: 0 5px 8px var(--shadow-raseko-pink);
     padding: 10px;
+
     /* Adjust width for smaller screens */
     @media (max-width: 600px) {
         width: 100%;
@@ -131,15 +81,15 @@ a:hover {
 
 .card-vapaana {
     float: left;
+
     /* Set card width to 25% for 4 columns */
     width: 25%;
     margin: 1%;
-    background-image: linear-gradient(to bottom , #36fd57, #bcf2c3);
-    /*background: #baf4bd;*/
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 2px solid var(--color-raseko-dark-blue);
+    border-radius: 20px;
+    box-shadow: 0 5px 8px var(--shadow-raseko-dark-blue);
     padding: 10px;
+
     /* Adjust width for smaller screens */
     @media (max-width: 600px) {
         width: 100%;
@@ -151,18 +101,27 @@ a:hover {
     height: auto;
     border-radius: 5px;
     margin-bottom: 15px;
+
     /* Adjust width for smaller screens */
     @media (max-width: 600px) {
         width: 80vw;
     }
 }
-.card-body {
+
+.vehicle-detail-image {
+    /* Set image size relative to viewport width (4 columns)*/
+    width: 80vw;
+    height: auto;
+    border-radius: 5px;
     margin-bottom: 15px;
+   
 }
 
 .card-text {
+    padding: 10px;
     font-size: 14px;
-    color: #555;
+    background-color: #cfd1d5;
+    color: #151515;
 }
 
 .card-title {
@@ -172,15 +131,131 @@ a:hover {
     color: #333;
 }
 
-.vehicle-detail {
-    width: 100%;
-    height: auto;
+/* Styling for dynamic buttons */
+.vapaana-btn {
+    display: block;
+    margin: 0 auto;
+    background-color: var(--color-raseko-dark-blue);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none !important;
+    font-size: 24px;
+}
+.ajossa-btn {
+    display: block;
+    margin: 0 auto;
+    background-color: var(--color-raseko-pink);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none !important;
+    font-size: 24px;
+}
+
+.icon-normal {
+    width: 1em;
+    height: 1em;
+}
+.icon-big{
+    width: 3em;
+    height: 3em;
+}
+
+.icon-medium{
+    width: 2em;
+    height: 2em;
+}
+
+.icon-huge{
+    width: 6em;
+    height: 6em;
+}
+
+.icon-enermous{
+    width: 8em;
+    height: 8em;
+}
+
+.icon-raseko-colors{
+    --icon-stroke-color:black;
+    --icon-fill-color: var(--color-raseko-pink);
+    --icon-background-color: var(--color-raseko-grey);
+}
+
+.icon-raseko-colors-dark{
+    --icon-stroke-color:var(--color-raseko-grey);
+    --icon-fill-color: var(--color-raseko-blue);
+    --icon-background-color: var(--color-raseko-grey);
+}
+
+.icon-percentage-size{
+    width: 20%;
+}
+
+.info-box {
+    width: 100;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     align-content: stretch;
-    justify-content: space-between;
+    justify-content: space-around;
+    column-gap: 30px;
+    background-color: var(--color-info-box-bg);
+    margin: 20px 0;
+    padding: 10px 20px;
+}
+
+.drive-information {
+    border: none !important;
+    background-color: white;
+    border-spacing: 30px;
+}
+
+.big-text {
+    font-size: 3em;
+}
+
+th {
+    padding: 10px;
+}
+
+/* tästä välistä puuttuu jotain */
+
+td {
+    border: 1px solid var (var(--color-raseko-turquoise-dark));
+}
+
+tr:nth-child(even) {
+    background-color: var(--color-raseko-grey);
+}
+
+tr:hover {
+    background-color: var(--color-raseko-highlighter);    
+}
+
+table {
+    width: auto;
+    border: 1px solid var(--color-raseko-turquoise-dark);
+    border-collapse: collapse;
+}
+
+.input-field {
+    font-size: x-large;
+    margin-bottom: 20px;
+}
+
+.raseko-button {
+    font-size: larger;
+    color: var(--color-raseko-grey);
+    background-color: var(--color-raseko-blue);
+    border-radius: 5px;
+    padding: 10px 20px; 
 }
 
 /* Responsive adjustments for small screens*/
@@ -189,7 +264,3 @@ a:hover {
         flex: 100%;
     } 
 }
-    
-
-
-

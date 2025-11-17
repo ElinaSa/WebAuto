@@ -3,9 +3,9 @@
     --icon-stroke-color: black;
     --icon-fill-color: none;
     --icon-background-color: none;
-    --color-raseko-dark-blue: rgb(27, 51, 89);
-    --color-raseko-blue: rgb(0, 150, 179);
-    --color-raseko-light-blue: rgb(75, 188, 197);
+    --color-raseko-blue: rgb(27, 51, 89);
+    --color-raseko-turquoise-dark: rgb(0, 150, 179);
+    --color-raseko-tuorquoise-light: rgb(75, 188, 197);
     --color-raseko-pink: rgb(232, 32, 112);
     --color-raseko-grey: rgb(239, 239, 239);
 }
@@ -291,7 +291,7 @@ a:hover {
 .icon-raseko-colors{
     --icon-stroke-color:black;
     --icon-fill-color: var(--color-raseko-pink);
-    --icon-background-color: var(--color-raseko-light-blue);
+    --icon-background-color: var(--color-raseko-turquoise-light);
 }
 
 .icon-percentage-size{
