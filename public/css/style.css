@@ -160,9 +160,8 @@ a:hover {
 
 /* Card layout for vehicle list */
 .card-group {
-    float: left;
-    gap: 20px;
-    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .card {
@@ -238,7 +237,6 @@ a:hover {
     margin-bottom: 10px;
     color: #333;
 }
-
 /* Responsive adjustments for small screens*/
 @media (min-width: 600px) {
     .card-group {

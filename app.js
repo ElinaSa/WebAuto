@@ -37,19 +37,11 @@ app.use(express.urlencoded({extended: true}));
 // URL ROUTES
 // ----------
 
-// A test route to test.handlebars page
-// TODO: muokkaa handlebars sivu! 
-app.get('/test', (req, res) => {
-    testData ={'testKey': 'Hippopotamus is virtahepo in Finnish'};
-    pgtools.selectQuery('SELECT * FROM public.vapaana').then((resultset) => {
-        console.log(resultset.rows)
-    })
-    res.render('test', testData)
-});
+
 
 // Route to home page
 app.get('/',(req, res) => {
-    res.send('This text will be replace by a handlebars homepage. Navigate to /test to see dynamic data in action')      
+    res.render('index')
 });
 
 // Route to vehicle listing page: free vehicles and vehicles in use
@@ -72,6 +64,10 @@ app.get('/vehicleDetail', (req, res) => {
     })               
 });
 
+app.get('/welcome', (req, res) => {
+    let user = req.query.user
+    res.render('welcome', {user: user})
+});
 
 app.get('/vehiclelist', (req, res) => {
     pgtools.getVehicleData().then((resultset) => {
@@ -115,7 +111,13 @@ app.get('/diary', (req, res) => {
     
 });
 
-
+app.get('/filterDiary', (req, res) => {
+        pgtools.selectQuery('SELECT rekisterinumero FROM auto;').then((resultset) => {
+            console.log(resultset.rows)
+            let options = {registers: resultset.rows}
+            res.render('filterDiary', options);
+        })
+    });
 // TODO: Route to vehicle's tracking page: location by register number
 
 app.get('/vlistFlex', (req, res) => {
