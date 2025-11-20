@@ -112,12 +112,31 @@ app.get('/diary', (req, res) => {
 });
 
 app.get('/filterDiary', (req, res) => {
-        pgtools.selectQuery('SELECT rekisterinumero FROM auto;').then((resultset) => {
-            console.log(resultset.rows)
-            let options = {registers: resultset.rows}
-            res.render('filterDiary', options);
+    let options = {}
+    let registerList = []
+    let driverList = []
+    let reasonList = []
+
+    pgtools.selectQuery('SELECT * FROM webrekisterit;').then((resultset) => {
+        registerList = resultset.rows;
+
+        pgtools.selectQuery('SELECT * FROM webtarkoitukset;').then((resultset) => {
+            reasonList = resultset.rows
+
+            pgtools.selectQuery('SELECT * FROM webkuljettajat;').then((resultset) => {
+                driverList = resultset.rows;
+
+                options = {registers: registerList,
+                    reasons: reasonList,
+                    drivers: driverList
+                };
+                res.render('filterDiary', options)
+
+            })
         })
-    });
+    })
+    
+});
 // TODO: Route to vehicle's tracking page: location by register number
 
 app.get('/vlistFlex', (req, res) => {
