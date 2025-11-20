@@ -12,6 +12,7 @@ const {engine} = require('express-handlebars');
 // Local libraries and modules
 // ---------------------------
 const pgtools = require('./postgres-tools');
+const { on } = require('pg-pool');
 
 // INITIALIZATION
 // --------------
@@ -44,16 +45,6 @@ app.use(express.urlencoded({extended: true}));
 // URL ROUTES
 // ----------
 
-// A test route to test.handlebars page
-// TODO: muokkaa handlebars sivu! 
-app.get('/test', (req, res) => {
-    testData ={'testKey': 'Hippopotamus is virtahepo in Finnish'};
-    pgtools.selectQuery('SELECT * FROM public.vapaana').then((resultset) => {
-        console.log(resultset.rows)
-    })
-    res.render('test', testData)
-});
-
 // Route to home page
 app.get('/',(req, res) => {
     res.render('index')     
@@ -65,7 +56,7 @@ app.get('/welcome', (req, res) => {
     res.render('welcome', {user:user})
 })
 
-// Route to vehicle listing page: free vehicles and vehicles in use
+// Route to vehicle listing page: free vehicles and vehicles in use as a table
 app.get('/vehicles', (req, res) => {
     pgtools.getVehicleData().then((resultset) => {
         // Lets give a key for the resultset and render it to the page
@@ -73,8 +64,16 @@ app.get('/vehicles', (req, res) => {
     })
 });
 
+// Route to vehicle listing page: free vehicles and vehicles in use using cards
+app.get('/vehiclelist', (req, res) => {
+    pgtools.getVehicleData().then((resultset) => {
+        // Lets give a key for the resultset and render it to the page
+        res.render('vehiclelist', {vehicleList: resultset.rows});
+    })
+});
+
 // Route to indivisual vehicle page: select vehicle by register number
-// TODO: onko otto määritelty jossain muussa sivussa
+// TODO: Tarkista toimivuus! (onko otto määritelty jossain muussa sivussa)
 app.get('/vehicleDetail', (req, res) => {
     let register = req.query.register;
     pgtools.getVehicleDetails([register]).then((resultset) => {
@@ -103,15 +102,6 @@ app.get('/vehicleDetail', (req, res) => {
         // res.render('vehicleDetail', resultset.rows[0]);
     // })
 
-
-// TODO:Route to vehicle listing using cards
-app.get('/vehiclelist', (req, res) => {
-    pgtools.getVehicleData().then((resultset) => {
-        // Lets give a key for the resultset and render it to the page
-        res.render('vehiclelist', {vehicleList: resultset.rows});
-    })
-});
-
 // Route to diary containing all vehicles
 app.get('/diary', (req, res) => {
     pgtools.getDiary().then((resultset) => {
@@ -119,20 +109,20 @@ app.get('/diary', (req, res) => {
         // console.log(resultset.rows[0])
         let rows = resultset.rows
         let row = 0
-        let formattedTake = {}
-        let formattedReturn = {}
+        let formattedTake = {};
+        let formattedReturn = {};
         for (row in rows) {
             if (rows[row].otto == null) {
-                formattedTake.date = '-'
-                formattedTake.time = '-'
+                formattedTake.date = '-';
+                formattedTake.time = '-';
             }
             else {
                 formattedTake = pgtools.convertToDateTimeObject(rows[row].otto);
             }
             
             if (rows[row].palautus == null) {
-                formattedReturn.date = '-'
-                formattedReturn.time = '-'
+                formattedReturn.date = '-';
+                formattedReturn.time = '-';
             }
 
             else {
@@ -141,23 +131,115 @@ app.get('/diary', (req, res) => {
             
             rows[row].otto = formattedTake.date + ' kello ' + formattedTake.time;
             rows[row].palautus = formattedReturn.date + ' kello ' + formattedReturn.time;
-            // console.log(rows[row].otto);
-            // console.log(rows[row].palautus);
+            console.log(rows[row].otto);
+            console.log(rows[row].palautus);
         }
 
         res.render('diary', {diaryData: rows});
     })
 });
 
-
 app.get('/filterDiary', (req, res) => {
-    pgtools.selectQuery('SELECT rekisterinumero FROM public.auto;').then((resultset) => {
-        console.log(resultset.rows)
-        let options = {registers: resultset.rows}
-        console.log(options)
-        res.render('filterDiary', options);
+    let options = {}
+    let registerList = []
+    let driverList = []
+    let reasonList = []
+
+    pgtools.selectQuery('SELECT * FROM public.webrekisterit;').then((resultset) => {
+        // console.log(resultset.rows)
+        registerList = resultset.rows;
+
+        pgtools.selectQuery('SELECT * FROM public.webtarkoitukset;').then((resultset) => {
+            // console.log(resultset.rows)
+            reasonList = resultset.rows; 
+
+            pgtools.selectQuery('SELECT * FROM public.webkuljettajat;').then((resultset) => {
+                // console.log(resultset.rows)
+                driverList = resultset.rows;
+
+                    options = {registers: registerList,
+                    reasons: reasonList,
+                    drivers: driverList
+                };
+            // console.log(options)
+            res.render('filterDiary', options)
+            })
+        })      
+               
     })
+    // pgtools.selectQuery('SELECT * FROM public.webtarkoitukset;').then((resultset) => {
+        // console.log(resultset.rows)
+        // reasonList = resultset.rows       
+    // })
+    // pgtools.selectQuery('SELECT * FROM public.webkuljettajat;').then((resultset) => {
+        // console.log(resultset.rows)
+        // driverNames = resultset.rows       
+    // })
+    // options = {registers: registerNumbers,
+        // reasons: reasonList,
+        // drivers: driverNames
+    // }
+    // console.log(options)
+    // res.render('filterDiary', options);
 });
+
+app.get('/filteredDiary', (req, res) => {
+    let registerFilter = req.query.rekisterinumero
+    let registerFilterValid = req.query.rekisterisuodatus
+    let reasonFilter = req.query.tarkoitus
+    let reasonFilterValid = req.query.tarkoitussuodatus
+    let driverFilter = req.query.nimi
+    let driverFilterValid = req.query.kuljettajasuodatus
+    let startFilter = req.query.alkaa
+    let endFilter = req.query.loppuu
+    let dateFiltersValid = req.query.ottosuodatus
+    
+    let conditions = ''
+    if (registerFilterValid == 'on') {
+        conditions = conditions + 'rekisterinumero = '+ registerFilter + ' AND ';
+    }
+    if (reasonFilterValid == 'on') {
+        conditions = conditions + 'tarkoitus  =' + reasonFilter + ' AND ';
+    }
+    if (driverFilterValid == 'on') {
+        conditions = conditions + 'nimi =' + driverFilter + ' AND ';
+    }
+    if (dateFiltersValid == 'on') {
+        conditions = conditions +  'otto BETWEEN ' + startFilter +  ' AND ' + endFilter;
+    }    
+
+    // TODO:Tämä lauseen pitäisi siivota and pois näkyvistä, mutta ei toimi
+    let whereClause = 'WHERE' + conditions
+    let cleanwhereClause = ''
+    console.log(whereClause.endsWith(' AND '))
+    if (whereClause.endsWith(' AND ')) {
+        let position = whereClause.lastIndexOf(' AND ')
+        cleanwhereClause = whereClause.substring(0, position)
+        console.log(position)
+    }
+
+    console.log(registerFilter)
+    console.log(registerFilterValid)
+    console.log(cleanwhereClause)
+    
+    // res.render('filteredDiary');
+})
+
+// TODO: Route to vehicle's diary page: all entries for individual vehicle by register number
+// kokeilu
+app.get('/diary', (req, res) => {
+    let register = req.query.register;
+    pgtools.getVehicleDiary(['FNK-129']).then((resultset) => {
+        // Lets give a key for the resultset and render it to the page
+        res.render('diary', resultset.rows[0]);
+    })               
+});
+
+// TODO: Route to vehicle's tracking page: location by register number
+
+
+// Different kind of tests
+// -----------------------
 
 app.get('/vlistFlex', (req, res)=> {
     res.render('vlistFlex');
@@ -174,18 +256,6 @@ app.get('/svgtest', (req, res)=> {
 app.get('/vlistColums', (req, res)=> {
     res.render('vlistColumns');
 })
-
-// TODO: Route to vehicle's diary page: all entries for individual vehicle by register number
-// kokeilu
-app.get('/diary', (req, res) => {
-    let register = req.query.register;
-    pgtools.getVehicleDiary(['FNK-129']).then((resultset) => {
-        // Lets give a key for the resultset and render it to the page
-        res.render('diary', resultset.rows[0]);
-    })               
-});
-
-// TODO: Route to vehicle's tracking page: location by register number
 
 app.get('/vlistFlex', (req, res) => {
         res.render('vlistFlex');
@@ -209,6 +279,19 @@ app.get('/about',(req, res) => {
     res.render('about', aboutData);
 });
 
+// A test route to test.handlebars page
+// TODO: muokkaa handlebars sivu! 
+app.get('/test', (req, res) => {
+    testData ={'testKey': 'Hippopotamus is virtahepo in Finnish'};
+    pgtools.selectQuery('SELECT * FROM public.vapaana').then((resultset) => {
+        console.log(resultset.rows)
+    })
+    res.render('test', testData)
+});
+
+app.get('/formTest', (req, res) => {
+    res.render('formtest');
+})
 
 // SERVER START
 // ------------

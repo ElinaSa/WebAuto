@@ -24,14 +24,16 @@
 
 /* Basic styling for body and text elements */
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
 }
+
 h1 {
     color: #333;
 }
+
 p {
     color: #262626;
     line-height: 1.6;
@@ -40,6 +42,7 @@ p {
 /* Common settings for Containers */
 .container {
     width: 80%;
+    height: fit-content;
     margin: auto;
     overflow: auto;
     padding: 20px;
@@ -50,6 +53,7 @@ p {
         width: 100%;
     }
 }
+
 .align-center {
     text-align: center;
 }
@@ -235,7 +239,7 @@ th {
 td {
     padding: 10px;
     font-size: small;
-    color: var(--color-raseko-turquoise-dark);
+    color: var(--color-raseko-blue);
     border: 1px solid var(--color-raseko-turquoise-dark);
 }
 
@@ -243,18 +247,20 @@ tr:nth-child(even) {
     background-color: var(--color-raseko-grey);
 }
 
-tr:hover {
+
+.tr-highlighted:hover {
     background-color: var(--color-raseko-highlighter);    
 }
 
 table {
     width: auto;
-    border: 1px solid var(--color-raseko-turquoise-dark);
+    /* border: 1px solid var(--color-raseko-turquoise-dark); */
     border-collapse: collapse;
 }
 
 .input-field {
-    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
     margin-bottom: 20px;
 }
 
@@ -266,6 +272,16 @@ table {
     padding: 10px 20px; 
 }
 
+/* td.centered { */
+    /* text-align: center; */
+/* } */
+/*  */
+.big-checkbox {
+    width: 20px;
+    height: 20px;
+    /* transform: scale(2); */
+    /* padding: 0px 20px; */
+}
 /* Responsive adjustments for small screens*/
 @media (max-width: 600px) {
     .card {
