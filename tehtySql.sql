@@ -75,6 +75,12 @@ ALTER TABLE IF EXISTS public.jest_test
     OWNER to postgres;
 
 
+
+
+
+
+-- TEHTY 20.11.2025 seuraavat näkymät 
+
 -- View: public.webajot
 
 -- DROP VIEW public.webajot;
@@ -96,3 +102,53 @@ COMMENT ON VIEW public.webajot
 
 GRANT ALL ON TABLE public.webajot TO postgres;
 GRANT SELECT ON TABLE public.webajot TO websovellus;
+
+
+-- View: public.webrekisterit
+
+-- DROP VIEW public.webrekisterit;
+
+CREATE OR REPLACE VIEW public.webrekisterit
+ AS
+ SELECT DISTINCT rekisterinumero
+   FROM webajot
+  ORDER BY rekisterinumero;
+
+ALTER TABLE public.webrekisterit
+    OWNER TO postgres;
+
+GRANT ALL ON TABLE public.webrekisterit TO postgres;
+GRANT SELECT ON TABLE public.webrekisterit TO websovellus;
+
+-- View: public.webtarkoitukset
+
+-- DROP VIEW public.webtarkoitukset;
+
+CREATE OR REPLACE VIEW public.webtarkoitukset
+ AS
+ SELECT DISTINCT tarkoitus
+   FROM webajot
+  ORDER BY tarkoitus;
+
+ALTER TABLE public.webtarkoitukset
+    OWNER TO postgres;
+
+GRANT ALL ON TABLE public.webtarkoitukset TO postgres;
+GRANT SELECT ON TABLE public.webtarkoitukset TO websovellus;
+
+-- View: public.webkuljettajat
+
+-- DROP VIEW public.webkuljettajat;
+
+CREATE OR REPLACE VIEW public.webkuljettajat
+ AS
+ SELECT DISTINCT nimi
+   FROM webajot
+  ORDER BY nimi;
+
+ALTER TABLE public.webkuljettajat
+    OWNER TO postgres;
+
+GRANT ALL ON TABLE public.webkuljettajat TO postgres;
+GRANT SELECT ON TABLE public.webkuljettajat TO websovellus;
+
