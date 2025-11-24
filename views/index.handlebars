@@ -1,8 +1,9 @@
 {{!-- Home page for login --}}
 {{!-- (control ja tähti antaa kommentin) --}}
+{{!-- Lisätty metodi post, muuten ottaa automaattisesti get --}}
 <div class="container">
     <div class="alignment-box">
-    <form action="/welcome">
+    <form action="/welcome" method="post"> 
         <label for="user">Sähköpostiosoite</label><br>
         <input class="input-field" type="email" name="user" id="user"><br>
         <label for="password">Salasana</label><br>

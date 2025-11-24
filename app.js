@@ -6,8 +6,15 @@
 
 // External libraries
 // ------------------
+
+// Express Web Server
 const express = require('express');
+
+// Handlebars templating engine for Express
 const {engine} = require('express-handlebars');
+
+// Session handler to store login information
+const session = require('express-session');
 
 // Local libraries and modules
 // ---------------------------
@@ -31,10 +38,10 @@ app.use('/images', express.static('public/images'));
 app.use('/icons', express.static('public/icons'));
 
 // Setup templating (ylimpänä kokeiltu Stackoverflown mallia)
-app.engine('handlebars', engine({
-    layoutsDir:__dirname + '/views/layouts',
-}));
-// app.engine('handlebars', engine());
+// app.engine('handlebars', engine({
+    // layoutsDir:__dirname + '/views/layouts',
+// }));
+app.engine('handlebars', engine());
 
 app.set('view engine','handlebars');
 app.set('views', './views');
@@ -42,19 +49,90 @@ app.set('views', './views');
 // Setup URL parser to use extended option
 app.use(express.urlencoded({extended: true}));
 
+// Setup session handler
+app.use(session({
+    secret: 'hippopotamus', // Signing passphrase for cookies
+    resave: false, // Unmodified sessions will not be saved
+    saveUninitialized: false, // Unmodified new sessions will not be saved
+    cookie: {
+        maxAge: 600000 // Max lifetime for the cookie in ms, 10 minutes
+    }
+}));
+
 // URL ROUTES
 // ----------
 
 // Route to home page
-app.get('/',(req, res) => {
+app.get('/', (req, res) => {
     res.render('index')     
 });
 
-app.get('/welcome', (req, res) => {
+// app.get('/welcome', (req, res) => {
     // console.log(req)
-    let user = req.query.user
-    res.render('welcome', {user:user})
-})
+    // let user = req.query.user
+    // res.render('welcome', {user:user})
+// })
+app.post('/welcome', (req, res) => {
+    console.log('Login information', req.body)
+    let user = req.body.user;
+    let inputPassword = req.body.inputPassword;
+    let userRole = '';
+    let userPassword = '';
+    pgtools.getWebUserData([user]).then((resultset) => {
+        let userData = resultset.rows[0];
+        console.log('Database information', userData);
+        console.log(userData.user_role);
+        if (userData) {
+            console.log('Dataa saatiin');
+            res.render('welcome',{user: user, role: userData.user_role})
+        } else {
+            console.log('Ei saatu dataa')
+            res.render('invalidUserName', {user: user})
+        }
+            // userPassword = userData.password;
+            // userRole = userData.user_role;
+            // if (userPassword == inputPassword) {
+               
+            // } 
+            // else {
+                // res.render('invalidPassword');
+            // }
+        // } 
+        // else {
+            // res.render('invalidUserName');
+        // }
+        console.log('Database information', userData);
+        // res.render('welcome',{user: user, role: userData.user_role});
+    });
+    
+});
+
+// app.post('/welcome', (req, res) => {
+    // console.log('Welcome-sivulle lähetetty dataa POST-metodilla');
+    // console.log('Body-osa', req.body);
+    // Set session data
+    // req.session.user =
+        // { id: 1, username: req.body.user, authorized : true };
+    // res.render('welcome', {user: req.body.user});
+// });
+// 
+app.get('/cookieTest', (req, res) => {
+    console.log('Istuntotiedot cookieTest-sivu:', req.session)
+    res.render('cookieTest', {sessionUser: req.session.user.username,
+        sessionEnds: req.session.cookie_expires
+    })
+});
+
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if(err) {
+            res.render('logoutError');
+        }
+        else {
+            res.render('logout');
+        }
+    })
+});
 
 // Route to vehicle listing page: free vehicles and vehicles in use as a table
 app.get('/vehicles', (req, res) => {
@@ -79,7 +157,7 @@ app.get('/vehicleDetail', (req, res) => {
     pgtools.getVehicleDetails([register]).then((resultset) => {
         // console.log(resultset.rows[0]);
         // console.log(resultset.rows[0].otto);
-    // 
+        // 
         // Converts timestamp to user friendly string NÄMÄ RIVIT HUKKAAVAT IKONIT VÄLILLÄ, EIKÄ AIKA NÄY JÄRKEVÄSTI
         let userFriendlyTimestamp = pgtools.convertToDateTimeObject(resultset.rows[0].otto);
         let dateTimeValue = userFriendlyTimestamp.date + ' kello ' + userFriendlyTimestamp.time
@@ -91,7 +169,7 @@ app.get('/vehicleDetail', (req, res) => {
         res.render('vehicleDetail', resultset.rows[0]);  
 
         // console.log(pgtools.convertToISODateTime(resultset.rows[otto]));
-    });             
+    })             
 });
 
 // Toinen vaihtoehto, jostain syystö mulla ei hae auton kuvaa tällä
@@ -189,23 +267,26 @@ app.get('/filteredDiary', (req, res) => {
     let reasonFilter = req.query.tarkoitus
     let reasonFilterValid = req.query.tarkoitussuodatus
     let driverFilter = req.query.nimi
-    let driverFilterValid = req.query.kuljettajasuodatus
+    let driverFilterValid = req.query.kuljettajasuodatus       
     let startFilter = req.query.alkaa
+    let startFilterString = startFilter.toString()
+    console.log(startFilterString)
+
     let endFilter = req.query.loppuu
     let dateFiltersValid = req.query.ottosuodatus
     
     let conditions = ''
     if (registerFilterValid == 'on') {
-        conditions = conditions + 'rekisterinumero = '+ registerFilter + ' AND ';
+        conditions = conditions + `rekisterinumero = '${registerFilter}'  AND `;
     }
     if (reasonFilterValid == 'on') {
-        conditions = conditions + 'tarkoitus  =' + reasonFilter + ' AND ';
+        conditions = conditions + `tarkoitus  = '${reasonFilter}' AND `;
     }
     if (driverFilterValid == 'on') {
-        conditions = conditions + 'nimi =' + driverFilter + ' AND ';
+        conditions = conditions + `nimi =' '${driverFilter}' AND `;
     }
     if (dateFiltersValid == 'on') {
-        conditions = conditions +  'otto BETWEEN ' + startFilter +  ' AND ' + endFilter;
+        conditions = conditions +  `otto BETWEEN '${startFilter} ' AND ' ${endFilter}`;
     }    
 
     // TODO:Tämä lauseen pitäisi siivota and pois näkyvistä, mutta ei toimi
@@ -217,13 +298,18 @@ app.get('/filteredDiary', (req, res) => {
         cleanwhereClause = whereClause.substring(0, position)
         console.log(position)
     }
-
+    else {
+        cleanwhereClause = whereClause
+    }
     console.log(registerFilter)
     console.log(registerFilterValid)
     console.log(cleanwhereClause)
+    console.log(startFilter)
+    console.log(endFilter)
+    console.log(req.query)
     
     // res.render('filteredDiary');
-})
+});
 
 // TODO: Route to vehicle's diary page: all entries for individual vehicle by register number
 // kokeilu
