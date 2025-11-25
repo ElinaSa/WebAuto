@@ -12,6 +12,7 @@ const {engine} = require('express-handlebars');
 // Local libraries and modules
 // ---------------------------
 const pgtools = require('./postgres-tools');
+const { on } = require('pg-pool');
 
 // INITIALIZATION
 // --------------
@@ -43,6 +44,26 @@ app.use(express.urlencoded({extended: true}));
 app.get('/',(req, res) => {
     res.render('index')
 });
+app.post('/welcome', (req, res) => {
+    console.log('Login information', req.body)
+    let user = req.body.user;
+    let inputPassword = req.body.inputPassword;
+    let userRole = '';
+    let userPassword = '';
+    pgtools.getWebUserData([user]).then((resultset) => {
+        let userData = resultset.rows[0];
+        if (userData) {
+            console.log('Dataa saatiin');
+            res.render('welcome', {user: user, role: userData.user_role})
+        } else {
+            console.log('Ei tullu dataa');
+            res.render('invalidUserName', {user: user})
+        }
+        console.log('Database information', userData);
+        //res.render('welcome', {user: user, role: userData.user_role})
+        
+})
+});
 
 // Route to vehicle listing page: free vehicles and vehicles in use
 app.get('/vehicles', (req, res) => {
@@ -64,10 +85,7 @@ app.get('/vehicleDetail', (req, res) => {
     })               
 });
 
-app.get('/welcome', (req, res) => {
-    let user = req.query.user
-    res.render('welcome', {user: user})
-});
+
 
 app.get('/vehiclelist', (req, res) => {
     pgtools.getVehicleData().then((resultset) => {
@@ -137,15 +155,49 @@ app.get('/filterDiary', (req, res) => {
     })
     
 });
-// TODO: Route to vehicle's tracking page: location by register number
 
-app.get('/vlistFlex', (req, res) => {
-        res.render('vlistFlex');
-    })
 
-app.get('vlistColumns', (reg, res) => {
-    res.render('vlistColumns');
-})
+app.get('/filteredDiary', (req, res) => {
+    let registerFilter = req.query.rekisterinumero
+    let registerFilterValid = req.query.rekisterisuodatus
+    let reasonFilter = req.query.tarkoitus
+    let reasonFilterValid = req.query.tarkoitussuodatus
+    let driverFilter = req.query.nimi
+    let driverFilterValid = req.query.kuljettajasuodatus
+    let startFilter = req.query.alkaa
+    let startFilterString = startFilter.toString()
+    console.log(startFilterString)
+    console.log(req.query.alkaa)
+    let endFilter = req.query.loppuu
+    let dateFiltersValid = req.query.ottosuodatus
+    
+    let conditions = ''
+    if (registerFilterValid == 'on') {
+        conditions = conditions + `rekisterinumero = '${registerFilter}' AND `;
+    }
+    if (reasonFilterValid == 'on') {
+        conditions = conditions + `tarkoitus = '${reasonFilter}' AND `;
+    }
+    if (driverFilterValid == 'on') {
+        conditions = conditions + `nimi = '${driverFilter}' AND `;
+    }
+    if (dateFiltersValid == 'on') {
+         conditions = conditions +  `otto BETWEEN '${startFilter}' AND '${endFilter}'`;
+    }
+
+    let whereClause = 'WHERE ' + conditions
+    let cleanwhereClause = ''
+    console.log(whereClause.endsWith(' AND '))
+    if (whereClause.endsWith(' AND ')) {
+        let position = whereClause.lastIndexOf(' AND ')
+        cleanwhereClause = whereClause.substring(0, position)
+        console.log(position)
+    }
+    else {
+        cleanwhereClause = whereClause
+    }
+   console.log('Where clause is:', cleanwhereClause)
+});
 
 
 

@@ -3,21 +3,17 @@
     --icon-stroke-color: black;
     --icon-fill-color: none;
     --icon-background-color: none;
-    --color-raseko-blue: rgb(27, 51, 89);
-    --color-raseko-turquoise-dark: rgb(0, 150, 179);
-    --color-raseko-tuorquoise-light: rgba(75, 188, 197, 0.8);
+    --color-raseko-dark-blue: rgb(27, 51, 89);
+    --color-raseko-blue: rgb(0, 150, 179);
+    --color-raseko-light-blue: rgb(75, 188, 197);
     --color-raseko-pink: rgb(232, 32, 112);
-    --color-raseko-pink-lighter: rgba(232, 32, 112, 0.8);
-    --color-raseko-pink-light: rgba(232, 32, 112, 0.6);
-    --color-raseko-pink-verylight: rgba(232, 32, 112, 0.4);
     --color-raseko-grey: rgb(239, 239, 239);
-    --color-info-box-bg: rgb(199, 221, 36);
-    --shadow-raseko-pink:  rgb(232, 32, 112, 0.4);
-    --shadow-raseko-blue:  rgb(27, 51, 89, 0.4);
-    --color-raseko-highlighter:rgba(75, 188, 197, 0.3);
+    --color-info-box-bg: #cfd1d5;
+    --shadow-raseko-dark-blue: rgba(27, 51, 89, 0.3);
+    --shadow-raseko-pink: rgb(232, 32, 112, 0.3);
+    --color-raseko-highlighter: rgba(75, 188, 197, 0.2);
 }
-
-/* Set size to follow parent's size. This is important so anything else will work. */
+/* Set size to follow parent's size */
 * {
     box-sizing: border-box;
 }
@@ -37,15 +33,17 @@ p {
     line-height: 1.6;
 }
 
-/* Common settings for Containers */
+
+/* Common settings for Containers*/
 .container {
     width: 80%;
+    height: fit-content;
     margin: auto;
     overflow: auto;
     padding: 20px;
     background: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-     /* Adjust width for smaller screens */
+    /* Adjust width for smaller screens */
     @media (max-width: 600px) {
         width: 100%;
     }
@@ -62,6 +60,7 @@ p {
     height: 100%;
 }
 
+
 /* Card layout for vehicle list */
 .card-group {
     display: flex;
@@ -77,6 +76,7 @@ p {
     border-radius: 20px;
     box-shadow: 0 5px 8px var(--shadow-raseko-pink);
     padding: 10px;
+
     /* Adjust width for smaller screens */
     @media (max-width: 600px) {
         width: 100%;
@@ -89,22 +89,23 @@ p {
     /* Set card width to 25% for 4 columns */
     width: 25%;
     margin: 1%;
-    border: 2px solid var(--color-raseko-blue);
+    border: 2px solid var(--color-raseko-dark-blue);
     border-radius: 20px;
-    box-shadow: 0 5px 8px var(--shadow-raseko-blue);
+    box-shadow: 0 5px 8px var(--shadow-raseko-dark-blue);
     padding: 10px;
+
     /* Adjust width for smaller screens */
     @media (max-width: 600px) {
         width: 100%;
     }
 }
-
 .vehicle-image {
     /* Set image size relative to viewport width (4 columns)*/
     width: 25vw;
     height: auto;
     border-radius: 5px;
     margin-bottom: 15px;
+
     /* Adjust width for smaller screens */
     @media (max-width: 600px) {
         width: 80vw;
@@ -116,7 +117,8 @@ p {
     width: 80vw;
     height: auto;
     border-radius: 5px;
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
+   
 }
 
 .card-text {
@@ -137,7 +139,7 @@ p {
 .vapaana-btn {
     display: block;
     margin: 0 auto;
-    background-color: var(--color-raseko-blue);
+    background-color: var(--color-raseko-dark-blue);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -163,7 +165,6 @@ p {
     width: 1em;
     height: 1em;
 }
-
 .icon-big{
     width: 3em;
     height: 3em;
@@ -192,10 +193,9 @@ p {
 
 .icon-raseko-colors-dark{
     --icon-stroke-color:var(--color-raseko-grey);
-    --icon-fill-color: var(--color-raseko-blue);
+    --icon-fill-color: var(--color-raseko-dark-blue);
     --icon-background-color: var(--color-raseko-grey);
 }
-
 .icon-percentage-size{
     width: 20%;
 }
@@ -220,56 +220,57 @@ p {
     border-spacing: 30px;
 }
 
+
 .big-text {
     font-size: 3em;
 }
-
 th {
     padding: 10px;
     font-size: small;
     color: var(--color-raseko-grey);
-    background-color: var(--color-raseko-blue);
-    border: 1px solid var(--color-raseko-blue);
+    background-color: var(--color-raseko-dark-blue);
+    border: 1px solid var(--color-raseko-dark-blue);
 }
 
 td {
     padding: 10px;
     font-size: small;
-    color: var(--color-raseko-turquoise-dark);
-    border: 1px solid var(--color-raseko-turquoise-dark);
+    color: var(--color-raseko-dark-blue);
+    
+    border: 1px solid var(--color-raseko-dark-blue);
 }
-
 tr:nth-child(even) {
     background-color: var(--color-raseko-grey);
 }
 
-tr:hover {
-    background-color: var(--color-raseko-highlighter);    
+.tr-highlighted:hover {
+    background-color: var(--color-raseko-highlighter); 
 }
 
 table {
     width: auto;
-    border: 1px solid var(--color-raseko-turquoise-dark);
     border-collapse: collapse;
 }
 
 .input-field {
-    font-size: x-large;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
     margin-bottom: 20px;
 }
 
 .raseko-button {
     font-size: larger;
     color: var(--color-raseko-grey);
-    background-color: var(--color-raseko-blue);
+    background-color: var(--color-raseko-dark-blue);
     border-radius: 5px;
-    padding: 10px 20px; 
+    padding: 5px 10px;;
 }
-.diary-table {
-    border: 1px solid var(--color-raseko-blue);
-    border-collapse: collapse;
-    font-size: small;
-    padding: 10px;
+
+
+
+.big-checkbox {
+ width: 20px;
+ height: 20px;
 }
 /* Responsive adjustments for small screens*/
 @media (max-width: 600px) {
@@ -277,3 +278,4 @@ table {
         flex: 100%;
     } 
 }
+  

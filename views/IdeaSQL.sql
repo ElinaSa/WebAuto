@@ -30,3 +30,4 @@ SELECT auto.rekisterinumero,
 	text 'ajossa' AS status
 FROM public.auto INNER JOIN public.lainaus ON auto.rekisterinumero = lainaus.rekisterinumero
 WHERE auto.kaytettavissa = TRUE AND lainaus.palautusaika IS NULL;
+
