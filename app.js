@@ -31,23 +31,10 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Set a folder for static files like CSS or images
-// app.use(express.static('public'));
 app.use(express.static('public'));
 app.use('/css', express.static('public/css'));
 app.use('/images', express.static('public/images'));
 app.use('/icons', express.static('public/icons'));
-
-// Setup templating (ylimpänä kokeiltu Stackoverflown mallia)
-// app.engine('handlebars', engine({
-    // layoutsDir:__dirname + '/views/layouts',
-// }));
-app.engine('handlebars', engine());
-
-app.set('view engine','handlebars');
-app.set('views', './views');
-
-// Setup URL parser to use extended option
-app.use(express.urlencoded({extended: true}));
 
 // Setup session handler
 app.use(session({
@@ -59,6 +46,14 @@ app.use(session({
     }
 }));
 
+// Setup templating 
+app.engine('handlebars', engine());
+app.set('view engine','handlebars');
+app.set('views', './views');
+
+// Setup URL parser to use extended option
+app.use(express.urlencoded({extended: true}));
+
 // URL ROUTES
 // ----------
 
@@ -67,98 +62,90 @@ app.get('/', (req, res) => {
     res.render('index')     
 });
 
-// app.get('/welcome', (req, res) => {
-    // console.log(req)
-    // let user = req.query.user
-    // res.render('welcome', {user:user})
-// })
 app.post('/welcome', (req, res) => {
-    console.log('Login information', req.body)
-    let user = req.body.user;
-    let inputPassword = req.body.inputPassword;
+
+    // Collect login data from body
+    let inputEmail = req.body.user;
+    let inputPassword = req.body.password;
+
+    // Get session data
+    let sessionData = req.session;
+    console.log(sessionData)
+
+    // Define variables for users Role and stored password
     let userRole = '';
     let userPassword = '';
-    pgtools.getWebUserData([user]).then((resultset) => {
-        let userData = resultset.rows[0];
-        console.log('Database information', userData);
-        console.log(userData.user_role);
+
+    // Get user data from database using given email address
+    pgtools.getWebUserData([inputEmail]).then((resultset) => {
+        let userData = resultset.rows[0]; 
+
+        // Check if query returns anything
         if (userData) {
-            console.log('Dataa saatiin');
-            res.render('welcome',{user: user, role: userData.user_role})
+
+            // Parse user information from resultset
+            userEmail = userData.email;
+            userRole = userData.userRole;       // kuuluuko tässä olla user_role?
+            userPassword = userData.password;
+             
+            // Check if given password matches stored password
+            if (inputPassword == userPassword) {
+
+                // Success update session data and render welcome page
+                sessionData.user= {role:userRole}
+                res.render('welcome',{user: inputEmail, role: userRole});
+            }
+            else {
+                 res.render('invalidPassword');
+            }
+
         } else {
-            console.log('Ei saatu dataa')
-            res.render('invalidUserName', {user: user})
-        }
-            // userPassword = userData.password;
-            // userRole = userData.user_role;
-            // if (userPassword == inputPassword) {
-               
-            // } 
-            // else {
-                // res.render('invalidPassword');
-            // }
-        // } 
-        // else {
-            // res.render('invalidUserName');
-        // }
-        console.log('Database information', userData);
-        // res.render('welcome',{user: user, role: userData.user_role});
+            res.render('invalidUserName', {user: inputEmail})
+        }                
     });
     
 });
 
-// app.post('/welcome', (req, res) => {
-    // console.log('Welcome-sivulle lähetetty dataa POST-metodilla');
-    // console.log('Body-osa', req.body);
-    // Set session data
-    // req.session.user =
-        // { id: 1, username: req.body.user, authorized : true };
-    // res.render('welcome', {user: req.body.user});
-// });
-// 
-app.get('/cookieTest', (req, res) => {
-    console.log('Istuntotiedot cookieTest-sivu:', req.session)
-    res.render('cookieTest', {sessionUser: req.session.user.username,
-        sessionEnds: req.session.cookie_expires
-    })
-});
-
-app.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if(err) {
-            res.render('logoutError');
-        }
-        else {
-            res.render('logout');
-        }
-    })
-});
-
-// Route to vehicle listing page: free vehicles and vehicles in use as a table
-app.get('/vehicles', (req, res) => {
-    pgtools.getVehicleData().then((resultset) => {
-        // Lets give a key for the resultset and render it to the page
-        res.render('vehicles', {vehicleList: resultset.rows});       
-    })
-});
-
-// Route to vehicle listing page: free vehicles and vehicles in use using cards
+// Route to vehicle listing page: free vehicles and vehicles in use 
 app.get('/vehiclelist', (req, res) => {
-    pgtools.getVehicleData().then((resultset) => {
+    userRole = req.session.user;
+    console.log(userRole);
+    if (userRole) {
+        pgtools.getVehicleData().then((resultset) => {
         // Lets give a key for the resultset and render it to the page
         res.render('vehiclelist', {vehicleList: resultset.rows});
-    })
+    })  
+    }
+    else {
+        res.render('notAuthorized');
+    }
 });
 
+// TODO: TARKISTA NÄIDEN KOHTALO?
+// 
+// Route to vehicle listing page: free vehicles and vehicles in use as a table
+// app.get('/vehicles', (req, res) => {
+    // pgtools.getVehicleData().then((resultset) => {
+        // Lets give a key for the resultset and render it to the page
+        // res.render('vehicles', {vehicleList: resultset.rows});       
+    // })
+// });
+// 
+// Route to vehicle listing page: free vehicles and vehicles in use using cards
+// app.get('/vehiclelist', (req, res) => {
+    // pgtools.getVehicleData().then((resultset) => {
+        // Lets give a key for the resultset and render it to the page
+        // res.render('vehiclelist', {vehicleList: resultset.rows});
+    // })
+// });
+// 
 // Route to indivisual vehicle page: select vehicle by register number
 // TODO: Tarkista toimivuus! (onko otto määritelty jossain muussa sivussa)
 app.get('/vehicleDetail', (req, res) => {
     let register = req.query.register;
     pgtools.getVehicleDetails([register]).then((resultset) => {
-        // console.log(resultset.rows[0]);
-        // console.log(resultset.rows[0].otto);
-        // 
-        // Converts timestamp to user friendly string NÄMÄ RIVIT HUKKAAVAT IKONIT VÄLILLÄ, EIKÄ AIKA NÄY JÄRKEVÄSTI
+
+        // Converts timestamp to user friendly string
         let userFriendlyTimestamp = pgtools.convertToDateTimeObject(resultset.rows[0].otto);
         let dateTimeValue = userFriendlyTimestamp.date + ' kello ' + userFriendlyTimestamp.time
 
@@ -167,42 +154,31 @@ app.get('/vehicleDetail', (req, res) => {
         // 
         // Render it to the page
         res.render('vehicleDetail', resultset.rows[0]);  
-
-        // console.log(pgtools.convertToISODateTime(resultset.rows[otto]));
     })             
 });
-
-// Toinen vaihtoehto, jostain syystö mulla ei hae auton kuvaa tällä
-// app.get('/vehicleDetail', (req, res) => {
-    // let register = req.query.register;
-    // pgtools.getVehicleDetails2([register]).then((resultset) => {
-        
-        // res.render('vehicleDetail', resultset.rows[0]);
-    // })
 
 // Route to diary containing all vehicles
 app.get('/diary', (req, res) => {
     pgtools.getDiary().then((resultset) => {
         // Lets give a key for the resultset and render it to the page
-        // console.log(resultset.rows[0])
-        let rows = resultset.rows
-        let row = 0
+        let rows = resultset.rows;
+        let row = 0;
         let formattedTake = {};
         let formattedReturn = {};
         for (row in rows) {
+
             if (rows[row].otto == null) {
                 formattedTake.date = '-';
                 formattedTake.time = '-';
             }
             else {
-                formattedTake = pgtools.convertToDateTimeObject(rows[row].otto);
+            formattedTake = pgtools.convertToDateTimeObject(rows[row].otto);
             }
             
             if (rows[row].palautus == null) {
                 formattedReturn.date = '-';
                 formattedReturn.time = '-';
             }
-
             else {
             formattedReturn = pgtools.convertToDateTimeObject(rows[row].palautus);
             }
@@ -212,54 +188,81 @@ app.get('/diary', (req, res) => {
             console.log(rows[row].otto);
             console.log(rows[row].palautus);
         }
-
         res.render('diary', {diaryData: rows});
     })
 });
 
 app.get('/filterDiary', (req, res) => {
-    let options = {}
-    let registerList = []
-    let driverList = []
-    let reasonList = []
 
-    pgtools.selectQuery('SELECT * FROM public.webrekisterit;').then((resultset) => {
-        // console.log(resultset.rows)
-        registerList = resultset.rows;
+    // Set user role to none
+    let userRole = 'none'
 
-        pgtools.selectQuery('SELECT * FROM public.webtarkoitukset;').then((resultset) => {
+    // Read session data
+    console.log(req.session)    
+    if (req.session.user) {
+        userRole = req.session.user.role
+
+        if(userRole = 'none') {
+            res.render('notAuthorized');
+        } else {
+            // Set query parameters
+            let options = {};
+            let registerList = [];
+            let driverList = [];
+            let reasonList = [];
+
+            pgtools.selectQuery('SELECT * FROM public.webrekisterit;').then((resultset) => {
+                registerList = resultset.rows;
+
+                pgtools.selectQuery('SELECT * FROM public.webtarkoitukset;').then((resultset) => {
+                    reasonList = resultset.rows; 
+
+                    pgtools.selectQuery('SELECT * FROM public.webkuljettajat;').then((resultset) => {
+                        driverList = resultset.rows;
+
+                        options = {registers: registerList,
+                            reasons: reasonList,
+                            drivers: driverList
+                        };
+                        res.render('filterDiary', options)
+                    })
+                })                     
+            }) 
+        }
+    }
+// TODO: Tästä if else kesken
+    if (userRole == 'opettaja' || userRole == 'hallinto') {
+        // Set query parameters
+        let options = {}
+        let registerList = []
+        let driverList = []
+        let reasonList = []
+    } else {
+        res.render('notAuthorized')
+    }   
+
+        pgtools.selectQuery('SELECT * FROM public.webrekisterit;').then((resultset) => {
             // console.log(resultset.rows)
-            reasonList = resultset.rows; 
+            registerList = resultset.rows;
 
-            pgtools.selectQuery('SELECT * FROM public.webkuljettajat;').then((resultset) => {
+            pgtools.selectQuery('SELECT * FROM public.webtarkoitukset;').then((resultset) => {
                 // console.log(resultset.rows)
-                driverList = resultset.rows;
+                reasonList = resultset.rows; 
+
+                pgtools.selectQuery('SELECT * FROM public.webkuljettajat;').then((resultset) => {
+                    // console.log(resultset.rows)
+                    driverList = resultset.rows;
 
                     options = {registers: registerList,
-                    reasons: reasonList,
-                    drivers: driverList
-                };
-            // console.log(options)
-            res.render('filterDiary', options)
-            })
-        })      
-               
-    })
-    // pgtools.selectQuery('SELECT * FROM public.webtarkoitukset;').then((resultset) => {
-        // console.log(resultset.rows)
-        // reasonList = resultset.rows       
-    // })
-    // pgtools.selectQuery('SELECT * FROM public.webkuljettajat;').then((resultset) => {
-        // console.log(resultset.rows)
-        // driverNames = resultset.rows       
-    // })
-    // options = {registers: registerNumbers,
-        // reasons: reasonList,
-        // drivers: driverNames
-    // }
-    // console.log(options)
-    // res.render('filterDiary', options);
-});
+                        reasons: reasonList,
+                        drivers: driverList
+                    };
+                    // console.log(options)
+                    res.render('filterDiary', options)
+                })
+            })                     
+        }) 
+    });
 
 app.get('/filteredDiary', (req, res) => {
     let registerFilter = req.query.rekisterinumero
@@ -307,25 +310,34 @@ app.get('/filteredDiary', (req, res) => {
     console.log(startFilter)
     console.log(endFilter)
     console.log(req.query)
+    console.log('Where clause is:', cleanwhereClause);
     
-    // res.render('filteredDiary');
 });
 
 // TODO: Route to vehicle's diary page: all entries for individual vehicle by register number
-// kokeilu
-app.get('/diary', (req, res) => {
-    let register = req.query.register;
-    pgtools.getVehicleDiary(['FNK-129']).then((resultset) => {
-        // Lets give a key for the resultset and render it to the page
-        res.render('diary', resultset.rows[0]);
-    })               
-});
 
 // TODO: Route to vehicle's tracking page: location by register number
 
 
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if(err) {
+            res.render('logoutError');
+        }
+        else {
+            res.render('logout');
+        }
+    })
+});
+
 // Different kind of tests
 // -----------------------
+app.get('/cookieTest', (req, res) => {
+    console.log('Istuntotiedot cookieTest-sivu:', req.session)
+    res.render('cookieTest', {sessionUser: req.session.user.username, //vai .role?
+        sessionEnds: req.session.cookie_expires
+    })
+});
 
 app.get('/vlistFlex', (req, res)=> {
     res.render('vlistFlex');
