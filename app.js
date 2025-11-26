@@ -8,6 +8,7 @@
 // ------------------
 const express = require('express');
 const {engine} = require('express-handlebars');
+const session = require('express-session');
 
 // Local libraries and modules
 // ---------------------------
@@ -26,6 +27,17 @@ const PORT = process.env.PORT || 8080;
 // Set a folder for static files like CSS or images
 app.use(express.static('public'));
 app.use('/images', express.static('public/images'));
+app.use('/icons', express.static('public/icons'));
+
+//setup session engine 
+app.use(session({
+secret: 'hippopotamus on virtahepo', // Singing passphrase for cookies
+resave: false, // Unmodified session will not be saved
+saveUninitialized: false, // Unmodified new session will not be saved
+cookie: {
+    maxAge: 6000000 // Max lifetime for the cookie in ms, 10 minutes
+}
+}));
 
 // Setup templating
 app.engine('handlebars', engine());
@@ -46,16 +58,35 @@ app.get('/',(req, res) => {
 });
 app.post('/welcome', (req, res) => {
     console.log('Login information', req.body)
-    let user = req.body.user;
-    let inputPassword = req.body.inputPassword;
+    let inputEmail = req.body.user;
+    let inputPassword = req.body.password;
+
+    let sessionData = req.session; // TÄMÄ JATKUU VIELÄ 
     let userRole = '';
     let userPassword = '';
-    pgtools.getWebUserData([user]).then((resultset) => {
+    pgtools.getWebUserData([inputEmail]).then((resultset) => {
         let userData = resultset.rows[0];
+
         if (userData) {
-            console.log('Dataa saatiin');
-            res.render('welcome', {user: user, role: userData.user_role})
-        } else {
+
+            userEmail = userData.email;
+            userRole = userData.user_role;
+            userPassword = userData.password;
+
+            //Check if given password matches stored password
+            if (inputPassword == userPassword) {
+
+                // Success update session data and welcome page
+                sessionData.user = {role: userRole}
+                res.render('welcome', {user: inputEmail, role: userRole});
+            }
+            
+             
+            else {
+                            res.render('invalidPassword');
+            }
+        } 
+        else {
             console.log('Ei tullu dataa');
             res.render('invalidUserName', {user: user})
         }
@@ -88,10 +119,17 @@ app.get('/vehicleDetail', (req, res) => {
 
 
 app.get('/vehiclelist', (req, res) => {
-    pgtools.getVehicleData().then((resultset) => {
-        // Lets give a key for the resultset and render it to the page
-        res.render('vehiclelist', {vehicleList: resultset.rows});
-    })
+        userRole = req.session.userRole
+        if (userRole) {
+            pgtools.getVehicleData().then((resultset) => {
+                res.render('vehiclelist', {vehicleList: resultset.rows});
+        })
+    }
+        else {
+            res.render('notAuthorized')
+            }
+       
+     
 });
 
 // Route to diary containing all vehicles
