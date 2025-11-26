@@ -119,7 +119,7 @@ app.get('/vehicleDetail', (req, res) => {
 
 
 app.get('/vehiclelist', (req, res) => {
-        userRole = req.session.userRole
+        let userRole = req.session.user;
         if (userRole) {
             pgtools.getVehicleData().then((resultset) => {
                 res.render('vehiclelist', {vehicleList: resultset.rows});
@@ -168,30 +168,71 @@ app.get('/diary', (req, res) => {
 });
 
 app.get('/filterDiary', (req, res) => {
-    let options = {}
-    let registerList = []
-    let driverList = []
-    let reasonList = []
+        // Set user role to none
+    let userRole = 'none'
+    
+    // Read session data
+    console.log(req.session);
+    if (req.session.user) {
+        userRole = req.session.user.role
 
-    pgtools.selectQuery('SELECT * FROM webrekisterit;').then((resultset) => {
-        registerList = resultset.rows;
+        if (userRole = 'none') {
+            res.render('notAuthorized');
+        } else {
+                // Set query parameters
 
-        pgtools.selectQuery('SELECT * FROM webtarkoitukset;').then((resultset) => {
-            reasonList = resultset.rows
+        let options = {}
+        let registerList = []
+        let driverList = []
+        let reasonList = []
 
-            pgtools.selectQuery('SELECT * FROM webkuljettajat;').then((resultset) => {
-                driverList = resultset.rows;
+        pgtools.selectQuery('SELECT * FROM webrekisterit;').then((resultset) => {
+            registerList = resultset.rows;
 
-                options = {registers: registerList,
-                    reasons: reasonList,
-                    drivers: driverList
-                };
-                res.render('filterDiary', options)
+            pgtools.selectQuery('SELECT * FROM webtarkoitukset;').then((resultset) => {
+                reasonList = resultset.rows
 
-            })
+                pgtools.selectQuery('SELECT * FROM webkuljettajat;').then((resultset) => {
+                    driverList = resultset.rows;
+
+                    options = {registers: registerList,
+                        reasons: reasonList,
+                        drivers: driverList
+                    };
+                    res.render('filterDiary', options)
+
+                })
         })
     })
     
+}
+    }
+    if (userRole == 'opettaja' || userRole == 'hallinto') {
+        // Set query parameters
+        let options = {};
+        let registerList = [];
+        let driverList = [];
+        let reasonList = [];
+
+        pgtools.selectQuery('SELECT * FROM webrekisterit;').then((resultset) => {
+            registerList = resultset.rows;
+
+            pgtools.selectQuery('SELECT * FROM webtarkoitukset;').then((resultset) => {
+                reasonList = resultset.rows
+
+                pgtools.selectQuery('SELECT * FROM webkuljettajat;').then((resultset) => {
+                    driverList = resultset.rows;
+
+                    options = {registers: registerList,
+                        reasons: reasonList,
+                        drivers: driverList
+                    };
+                    res.render('filterDiary', options)
+
+                })
+            })
+        })
+    } 
 });
 
 
