@@ -19,7 +19,6 @@ const session = require('express-session');
 // Local libraries and modules
 // ---------------------------
 const pgtools = require('./postgres-tools');
-const { on } = require('pg-pool');
 
 // INITIALIZATION
 // --------------
@@ -109,9 +108,10 @@ app.post('/welcome', (req, res) => {
 // Route to vehicle listing page: free vehicles and vehicles in use 
 app.get('/vehiclelist', (req, res) => {
     userRole = req.session.user;
-    console.log(userRole);
     if (userRole) {
         pgtools.getVehicleData().then((resultset) => {
+            let vehicleData = resultset.rows;
+           
         // Lets give a key for the resultset and render it to the page
         res.render('vehiclelist', {vehicleList: resultset.rows});
     })  
@@ -156,11 +156,48 @@ app.get('/vehicleDetail', (req, res) => {
         res.render('vehicleDetail', resultset.rows[0]);  
     })             
 });
+// TODO: korjattavaa jossain, selain cannot GET vehicleDiary
+// Route to diary of single vehicle by register number
+app.get('vehicleDiary', (req, res) => {
+    let register =req.query.register
+    pgtools.getVehicleDiary([register]).then((resultset) =>{
+        console.log(resultset.rows);
+        // Cycle rows and convert timestamps to user friendly format
+        let rows = resultset.rows;
+        let row = 0;
+        let formattedTake = {};
+        let formattedReturn = {};
+        for (row in rows) {
+
+            if (rows[row].otettu == null) {
+                formattedTake.date = '-';
+                formattedTake.time = '-';
+            }
+            else {
+            formattedTake = pgtools.convertToDateTimeObject(rows[row].otettu);
+            }
+            
+            if (rows[row].palautettu == null) {
+                formattedReturn.date = '-';
+                formattedReturn.time = '-';
+            }
+            else {
+            formattedReturn = pgtools.convertToDateTimeObject(rows[row].palautettu);
+            }
+            
+            rows[row].otettu = formattedTake.date + ' kello ' + formattedTake.time;
+            rows[row].palautettu = formattedReturn.date + ' kello ' + formattedReturn.time;
+        }
+        res.render('vehicleDiary', {diaryData: resultset.rows})
+    })
+});
+
 
 // Route to diary containing all vehicles
 app.get('/diary', (req, res) => {
     pgtools.getDiary().then((resultset) => {
-        // Lets give a key for the resultset and render it to the page
+        
+        // Cycle rows and convert timestamps to user friendly format
         let rows = resultset.rows;
         let row = 0;
         let formattedTake = {};
@@ -185,9 +222,8 @@ app.get('/diary', (req, res) => {
             
             rows[row].otto = formattedTake.date + ' kello ' + formattedTake.time;
             rows[row].palautus = formattedReturn.date + ' kello ' + formattedReturn.time;
-            console.log(rows[row].otto);
-            console.log(rows[row].palautus);
         }
+        // Lets give a key for the resultset and render it to the page
         res.render('diary', {diaryData: rows});
     })
 });
@@ -198,7 +234,7 @@ app.get('/filterDiary', (req, res) => {
     let userRole = 'none'
 
     // Read session data
-    console.log(req.session)    
+    // console.log(req.session)    
     if (req.session.user) {
         userRole = req.session.user.role
 
@@ -273,7 +309,7 @@ app.get('/filteredDiary', (req, res) => {
     let driverFilterValid = req.query.kuljettajasuodatus       
     let startFilter = req.query.alkaa
     let startFilterString = startFilter.toString()
-    console.log(startFilterString)
+    // console.log(startFilterString)
 
     let endFilter = req.query.loppuu
     let dateFiltersValid = req.query.ottosuodatus
@@ -294,8 +330,8 @@ app.get('/filteredDiary', (req, res) => {
 
     // TODO:Tämä lauseen pitäisi siivota and pois näkyvistä, mutta ei toimi
     let whereClause = 'WHERE' + conditions
-    let cleanwhereClause = ''
-    console.log(whereClause.endsWith(' AND '))
+    // let cleanwhereClause = ''
+    // console.log(whereClause.endsWith(' AND '))
     if (whereClause.endsWith(' AND ')) {
         let position = whereClause.lastIndexOf(' AND ')
         cleanwhereClause = whereClause.substring(0, position)

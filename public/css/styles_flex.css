@@ -266,10 +266,17 @@ table {
 
 .raseko-button {
     font-size: larger;
+    text-decoration: none !important;
     color: var(--color-raseko-grey);
     background-color: var(--color-raseko-blue);
     border-radius: 5px;
-    padding: 10px 20px; 
+    margin: 40px;
+    padding: 10px 30px; 
+}
+
+.highlite-text{
+    font-weight: bold;
+    color: var(--color-raseko-pink);
 }
 
 /* td.centered { */
