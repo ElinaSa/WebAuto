@@ -175,3 +175,73 @@ REVOKE ALL ON TABLE public.webuser FROM websovellus;
 GRANT ALL ON TABLE public.webuser TO postgres;
 
 GRANT REFERENCES, SELECT ON TABLE public.webuser TO websovellus;
+
+
+
+--maanantai 1.12. tehdyt näkymät
+
+-- View: public.web_autojen_tila
+
+-- DROP VIEW public.web_autojen_tila;
+
+CREATE OR REPLACE VIEW public.web_autojen_tila
+ AS
+(
+         SELECT auto.rekisterinumero,
+            auto.merkki,
+            auto.malli,
+            auto.henkilomaara,
+            auto.automaatti,
+            'vapaana'::text AS status,
+            false AS ajossa
+           FROM auto
+          WHERE auto.kaytettavissa = true
+        EXCEPT
+         SELECT auto.rekisterinumero,
+            auto.merkki,
+            auto.malli,
+            auto.henkilomaara,
+            auto.automaatti,
+            'vapaana'::text AS status,
+            false AS ajossa
+           FROM auto
+             JOIN lainaus ON auto.rekisterinumero::text = lainaus.rekisterinumero::text
+          WHERE auto.kaytettavissa = true AND lainaus.palautus IS NULL
+) UNION
+ SELECT auto.rekisterinumero,
+    auto.merkki,
+    auto.malli,
+    auto.henkilomaara,
+    auto.automaatti,
+    'ajossa'::text AS status,
+    true AS ajossa
+   FROM auto
+     JOIN lainaus ON auto.rekisterinumero::text = lainaus.rekisterinumero::text
+  WHERE auto.kaytettavissa = true AND lainaus.palautus IS NULL;
+
+ALTER TABLE public.web_autojen_tila
+    OWNER TO postgres;
+
+GRANT ALL ON TABLE public.web_autojen_tila TO postgres;
+GRANT SELECT, REFERENCES ON TABLE public.web_autojen_tila TO websovellus;
+
+
+-- View: public.webajot_localtime
+
+-- DROP VIEW public.webajot_localtime;
+
+CREATE OR REPLACE VIEW public.webajot_localtime
+ AS
+ SELECT rekisterinumero,
+    tarkoitus,
+    (sukunimi::text || ' '::text) || etunimi::text AS nimi,
+    (otto AT TIME ZONE 'Europe/Helsinki'::text) AS otettu,
+    (palautus AT TIME ZONE 'Europe/Helsinki'::text) AS palautettu
+   FROM ajopaivakirja
+  ORDER BY rekisterinumero, otto DESC;
+
+ALTER TABLE public.webajot_localtime
+    OWNER TO postgres;
+
+GRANT ALL ON TABLE public.webajot_localtime TO postgres;
+GRANT SELECT, REFERENCES ON TABLE public.webajot_localtime TO websovellus;

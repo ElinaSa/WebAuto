@@ -127,7 +127,37 @@ app.get('/vehiclelist', (req, res) => {
        
      
 });
-
+// Route to diary of single vehicle by register number
+app.get('/vehicleDiary', (req, res) => {
+    let register = req.query.register
+    pgtools.getVehicleDiary([register]).then((resultset) =>{
+        console.log(resultset.rows);
+        // Cycle rows and conver timestamps to user friendy format
+        let rows = resultset.rows;
+        let row = 0;
+        let formattedTake = {};
+        let formattedReturn = {};
+        for (row in rows) {
+            if (rows[row].otettu == null) {
+                formattedTake.date = '-';
+                formattedTake.time = '-';
+            }
+            else {
+            formattedTake = pgtools.convertToDateTimeObject(rows[row].otettu);
+            }
+             if (rows[row].palautettu == null) {
+                formattedReturn.date = '-';
+                formattedReturn.time = '-';
+            }
+            else {
+            formattedReturn = pgtools.convertToDateTimeObject(rows[row].palautettu);
+            }
+            rows[row].otettu = formattedTake.date + ' klo: ' + formattedTake.time;
+            rows[row].palautettu = formattedReturn.date + ' klo: ' + formattedReturn.time;
+        }
+        res.render('vehicleDiary', {diaryData: resultset.rows})
+    })
+});
 // Route to diary containing all vehicles
 app.get('/diary', (req, res) => {
     pgtools.getDiary().then((resultset) => {
