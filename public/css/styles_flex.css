@@ -260,10 +260,12 @@ table {
 
 .raseko-button {
     font-size: larger;
+    text-decoration: none !important;
     color: var(--color-raseko-grey);
     background-color: var(--color-raseko-dark-blue);
     border-radius: 5px;
-    padding: 5px 10px;;
+    margin: 40px;
+    padding: 10px 30px;
 }
 
 
@@ -271,6 +273,11 @@ table {
 .big-checkbox {
  width: 20px;
  height: 20px;
+}
+.highligh-text {
+font-weight: bold;
+color: var(--color-raseko-pink);
+
 }
 /* Responsive adjustments for small screens*/
 @media (max-width: 600px) {

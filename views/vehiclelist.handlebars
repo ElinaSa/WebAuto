@@ -1,17 +1,25 @@
 <body>
     <!-- Main container of the page is card-group -->
     <div class="card-group">
-
         <!-- Loop through vehicle list and render dynamic data -->
         {{#each vehicleList}}
-
         <!-- Create a card for every vehicle and set style according to status -->
         <div class="card-{{status}}"><img class="vehicle-image" src="/images/{{rekisterinumero}}.png" />
             <div class="card-body">
                 <h4 class="card-title">{{rekisterinumero}} <br>on {{status}}</h4>
-                <p class="card-text">{{merkki}} {{malli}}<br />henkilömäärä {{henkilomaara}}<br />automaatti {{automaatti}} <br>{{status}}</p>
-                    <!-- Add link to individual vehicle and style it as a button -->
-                    <a class="{{status}}-btn" href="http://localhost:8080/vehicleDetail?register={{rekisterinumero}}">Näytä</a>
+                <p class="card-text">{{merkki}} {{malli}}<br />henkilömäärä {{henkilomaara}}<br />
+                {{#if automaatti}} 
+                automaattivaihteet
+                {{else}}
+                manuaalivaihteet
+                {{/if}}
+                </p>
+                    
+                {{#if ajossa}}
+                <a class="{{status}}-btn" href="http://localhost:8080/vehicleDetail?register={{rekisterinumero}}">Näytä</a>
+                {{else}}
+                <a class="{{status}}-btn" href="http://localhost:8080/vehicleDiary?register={{rekisterinumero}}">Näytä</a>
+                {{/if}}                                                                                                                                   
             </div>
         </div>
         {{/each}}

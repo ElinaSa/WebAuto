@@ -50,51 +50,44 @@ app.use(express.urlencoded({extended: true}));
 // URL ROUTES
 // ----------
 
-
-
 // Route to home page
 app.get('/',(req, res) => {
     res.render('index')
 });
 app.post('/welcome', (req, res) => {
-    console.log('Login information', req.body)
+    
+    // Collect login data from body
     let inputEmail = req.body.user;
     let inputPassword = req.body.password;
-
-    let sessionData = req.session; // TÄMÄ JATKUU VIELÄ 
+    // Get session data
+    let sessionData = req.session;
+    // Define variables for users Role and Stored password
     let userRole = '';
     let userPassword = '';
+    // Get user data from database using given email address
     pgtools.getWebUserData([inputEmail]).then((resultset) => {
         let userData = resultset.rows[0];
-
+        // Check if query returns anything
         if (userData) {
-
+            // Parse user information from resultset to avoid timing conflicts
             userEmail = userData.email;
             userRole = userData.user_role;
             userPassword = userData.password;
-
-            //Check if given password matches stored password
+            // Check if given password matches stored password
             if (inputPassword == userPassword) {
-
-                // Success update session data and welcome page
+                // Success update session data and render welcome page
                 sessionData.user = {role: userRole}
                 res.render('welcome', {user: inputEmail, role: userRole});
             }
-            
-             
             else {
-                            res.render('invalidPassword');
+                res.render('invalidPassword');
             }
-        } 
-        else {
-            console.log('Ei tullu dataa');
-            res.render('invalidUserName', {user: user})
         }
-        console.log('Database information', userData);
-        //res.render('welcome', {user: user, role: userData.user_role})
-        
+        else {  
+            res.render('invalidUserName', {user: inputEmail})
+        }    
+    })
 })
-});
 
 // Route to vehicle listing page: free vehicles and vehicles in use
 app.get('/vehicles', (req, res) => {
@@ -108,26 +101,29 @@ app.get('/vehicles', (req, res) => {
 app.get('/vehicleDetail', (req, res) => {
     let register = req.query.register;
     pgtools.getVehicleDetails([register]).then((resultset) => {
-        // Lets give a key for the resultset and render it to the page
+        //Convert time stamp to user friendly string
         let userFriendlyTimestamp = pgtools.convertToDateTimeObject(resultset.rows[0].otto);
         let dateTimeValue = userFriendlyTimestamp.date + ' kello ' + userFriendlyTimestamp.time
+        //Change original timestamp to string value
         resultset.rows[0].otto = dateTimeValue
+        //Render it to the page
         res.render('vehicleDetail', resultset.rows[0]);
     })               
 });
 
 
-
+//Route to vehiclelisting page: free vehicles and vehicles in use
 app.get('/vehiclelist', (req, res) => {
         let userRole = req.session.user;
         if (userRole) {
             pgtools.getVehicleData().then((resultset) => {
+                //Lets give a key for the resultset and render it to page
                 res.render('vehiclelist', {vehicleList: resultset.rows});
         })
     }
         else {
             res.render('notAuthorized')
-            }
+        }
        
      
 });
