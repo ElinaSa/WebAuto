@@ -221,51 +221,63 @@ app.get('/filterDiary', (req, res) => {
 
 
 app.get('/filteredDiary', (req, res) => {
-    let registerFilter = req.query.rekisterinumero
-    let registerFilterValid = req.query.rekisterisuodatus
-    let reasonFilter = req.query.tarkoitus
-    let reasonFilterValid = req.query.tarkoitussuodatus
-    let driverFilter = req.query.nimi
-    let driverFilterValid = req.query.kuljettajasuodatus
-    let startFilter = req.query.alkaa
-    let startFilterString = startFilter.toString()
-    console.log(startFilterString)
-    console.log(req.query.alkaa)
-    let endFilter = req.query.loppuu
-    let dateFiltersValid = req.query.ottosuodatus
-    
-    let conditions = ''
-    if (registerFilterValid == 'on') {
-        conditions = conditions + `rekisterinumero = '${registerFilter}' AND `;
-    }
-    if (reasonFilterValid == 'on') {
-        conditions = conditions + `tarkoitus = '${reasonFilter}' AND `;
-    }
-    if (driverFilterValid == 'on') {
-        conditions = conditions + `nimi = '${driverFilter}' AND `;
-    }
-    if (dateFiltersValid == 'on') {
-         conditions = conditions +  `otettu BETWEEN '${startFilter}' AND '${endFilter}'`;
-    }
+    if (req.session.user) {
+        userRole = req.session.user.role
+        if (userRole == 'opettaja' || userRole == 'hallinto') {
+            let registerFilter = req.query.rekisterinumero
+            let registerFilterValid = req.query.rekisterisuodatus
+            let reasonFilter = req.query.tarkoitus
+            let reasonFilterValid = req.query.tarkoitussuodatus
+            let driverFilter = req.query.nimi
+            let driverFilterValid = req.query.kuljettajasuodatus
+            let startFilter = req.query.alkaa
+            let startFilterString = startFilter.toString()
+            console.log(startFilterString)
+            console.log(req.query.alkaa)
+            let endFilter = req.query.loppuu
+            let dateFiltersValid = req.query.ottosuodatus
+            
+            let conditions = ''
+            if (registerFilterValid == 'on') {
+                conditions = conditions + `rekisterinumero = '${registerFilter}' AND `;
+            }
+            if (reasonFilterValid == 'on') {
+                conditions = conditions + `tarkoitus = '${reasonFilter}' AND `;
+            }
+            if (driverFilterValid == 'on') {
+                conditions = conditions + `nimi = '${driverFilter}' AND `;
+            }
+            if (dateFiltersValid == 'on') {
+                conditions = conditions +  `otettu BETWEEN '${startFilter}' AND '${endFilter}'`;
+            }
 
-    let whereClause = 'WHERE ' + conditions;
-    let cleanwhereClause = '';
-    
-    if (whereClause.endsWith(' AND ')) {
-        let position = whereClause.lastIndexOf(' AND ');
-        cleanwhereClause = whereClause.substring(0, position);
-        
+            let whereClause = 'WHERE ' + conditions;
+            let cleanwhereClause = '';
+            
+            if (whereClause.endsWith(' AND ')) {
+                let position = whereClause.lastIndexOf(' AND ');
+                cleanwhereClause = whereClause.substring(0, position);
+                
+            }
+            else {
+                cleanwhereClause = whereClause
+            }
+        console.log(cleanwhereClause);
+            let sqlstatement = 'SELECT * FROM public.webajopaivakirja ' + cleanwhereClause
+            pgtools.selectQuery(sqlstatement).then((resultset) => {
+                res.render('filteredDiary', {diaryData: resultset.rows});
+
+            })
     }
     else {
-        cleanwhereClause = whereClause
+        res.render('notAuthorized')
     }
-   console.log(cleanwhereClause);
-    let sqlstatement = 'SELECT * FROM public.webajopaivakirja ' + cleanwhereClause
-    pgtools.selectQuery(sqlstatement).then((resultset) => {
-        res.render('filteredDiary', {diaryData: resultset.rows});
+}
 
-    })
-    
+    else {
+        res.render('notSingnedIn')
+
+}  
 });
 
 
