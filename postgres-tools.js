@@ -9,17 +9,26 @@
 // Pg-pool 
 const Pool = require('pg').Pool;
 
+// Environment variables handling
+const dotenv =require('dotenv');
+
 // LOCAL LIBRARIES AND MODULES
 
 // DEFINITIONS
 // -----------
 
+// Initialize environment
+dotenv.config();
+
+// Read environment variables
+const currentEnv = process.env
+
 // Connection settings
-const connection = {host: '127.0.0.1',
-    port: '5433',
-    database: 'autolainaus',
-    user: 'websovellus',
-    password: 'Q2werty7'
+const connection = {host: currentEnv.HOST,
+    port: currentEnv.DB_PORT,
+    database: currentEnv.DB,
+    user: currentEnv.APP_USER,
+    password: currentEnv.APP_PASSWORD
 };
 
 // Create pool object for transactions
@@ -118,14 +127,14 @@ const getVehiclesInUse = async () => {
 */
 
 const getVehicleDetails = async (values) => {
-    let sqlstatement = 'SELECT * FROM public.aktiivinen_ajo WHERE rekisterinumero = $1';
+    let sqlstatement = 'SELECT * FROM public.web_aktiivinen_ajo WHERE rekisterinumero = $1';
     let resultset = await pool.query(sqlstatement, values);
     return resultset;
 }
 
 // Vehicle details page - vehicle in use by register number: SQL + value 2nd method
 const query = {
-    text: 'SELECT * FROM public.aktiivinen_ajo WHERE rekisterinumero = $1',
+    text: 'SELECT * FROM public.web_aktiivinen_ajo WHERE rekisterinumero = $1',
     values: ['XYZ-123']
 }
     
@@ -148,7 +157,7 @@ const runQueryWithValues = async (query) => {
 */
 
 const getDiary = async () => { 
-    let sqlstatement = 'SELECT * from public.ajopaivakirja';
+    let sqlstatement = 'SELECT * from public.webajopaivakirja';
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
@@ -160,7 +169,7 @@ const getDiary = async () => {
 */
 
 const getVehicleDiary = async (register) => {
-    let sqlstatement = 'SELECT * from public.webajot_localtime WHERE rekisterinumero = $1';
+    let sqlstatement = 'SELECT * from public.webajopaivakirja WHERE rekisterinumero = $1';
     let resultset = await pool.query(sqlstatement, register);
     return resultset;
 }

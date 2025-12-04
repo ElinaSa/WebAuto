@@ -84,7 +84,7 @@ app.post('/welcome', (req, res) => {
 
             // Parse user information from resultset
             userEmail = userData.email;
-            userRole = userData.userRole;       // kuuluuko tässä olla user_role?
+            userRole = userData.user_role; 
             userPassword = userData.password;
              
             // Check if given password matches stored password
@@ -140,214 +140,159 @@ app.get('/vehiclelist', (req, res) => {
 // });
 // 
 // Route to indivisual vehicle page: select vehicle by register number
-// TODO: Tarkista toimivuus! (onko otto määritelty jossain muussa sivussa)
 app.get('/vehicleDetail', (req, res) => {
+    let user = req.session.user;
     let register = req.query.register;
-    pgtools.getVehicleDetails([register]).then((resultset) => {
+    if (user.role) {
+        if (user.role == 'opettaja' || user.role == 'hallinto') {        
+            pgtools.getVehicleDetails([register]).then((resultset) => {
 
-        // Converts timestamp to user friendly string
-        let userFriendlyTimestamp = pgtools.convertToDateTimeObject(resultset.rows[0].otto);
-        let dateTimeValue = userFriendlyTimestamp.date + ' kello ' + userFriendlyTimestamp.time
-
-        // Change original timestamp to string value
-        resultset.rows[0].otto = dateTimeValue;
-        // 
         // Render it to the page
         res.render('vehicleDetail', resultset.rows[0]);  
-    })             
-});
-// TODO: korjattavaa jossain, selain cannot GET vehicleDiary
-// Route to diary of single vehicle by register number
-app.get('vehicleDiary', (req, res) => {
-    let register =req.query.register
-    pgtools.getVehicleDiary([register]).then((resultset) =>{
-        console.log(resultset.rows);
-        // Cycle rows and convert timestamps to user friendly format
-        let rows = resultset.rows;
-        let row = 0;
-        let formattedTake = {};
-        let formattedReturn = {};
-        for (row in rows) {
-
-            if (rows[row].otettu == null) {
-                formattedTake.date = '-';
-                formattedTake.time = '-';
-            }
-            else {
-            formattedTake = pgtools.convertToDateTimeObject(rows[row].otettu);
-            }
-            
-            if (rows[row].palautettu == null) {
-                formattedReturn.date = '-';
-                formattedReturn.time = '-';
-            }
-            else {
-            formattedReturn = pgtools.convertToDateTimeObject(rows[row].palautettu);
-            }
-            
-            rows[row].otettu = formattedTake.date + ' kello ' + formattedTake.time;
-            rows[row].palautettu = formattedReturn.date + ' kello ' + formattedReturn.time;
+        }) 
+        } else {
+            res.render('notAuthorized')
         }
-        res.render('vehicleDiary', {diaryData: resultset.rows})
-    })
+
+    }  else {
+        res.render('notSignedIn')
+    }  
+
 });
 
+// Route to diary of single vehicle by register number
+app.get('/vehicleDiary', (req, res) => {
+    let user = req.session.user;
+    let register = req.query.register;
+    if (user) {
+        if (user.role == 'opettaja' || user.role == 'hallinto') {       
+            pgtools.getVehicleDiary([register]).then((resultset) => {
+            res.render('vehicleDiary', {diaryData: resultset.rows});
+        }) 
+        } else {
+            res.render('notAuthorized');
+        }                                                                 
+    } else {
+        res.render('notSignIn')
+    }
+});
 
 // Route to diary containing all vehicles
 app.get('/diary', (req, res) => {
-    pgtools.getDiary().then((resultset) => {
-        
-        // Cycle rows and convert timestamps to user friendly format
-        let rows = resultset.rows;
-        let row = 0;
-        let formattedTake = {};
-        let formattedReturn = {};
-        for (row in rows) {
-
-            if (rows[row].otto == null) {
-                formattedTake.date = '-';
-                formattedTake.time = '-';
-            }
-            else {
-            formattedTake = pgtools.convertToDateTimeObject(rows[row].otto);
-            }
-            
-            if (rows[row].palautus == null) {
-                formattedReturn.date = '-';
-                formattedReturn.time = '-';
-            }
-            else {
-            formattedReturn = pgtools.convertToDateTimeObject(rows[row].palautus);
-            }
-            
-            rows[row].otto = formattedTake.date + ' kello ' + formattedTake.time;
-            rows[row].palautus = formattedReturn.date + ' kello ' + formattedReturn.time;
+    let user = req.session.user;
+    let register = req.query.register;
+    if (user) {
+        if (user.role == 'opettaja' || user.role == 'hallinto') {
+            pgtools.getDiary().then((resultset) => {
+            res.render('diary', {diaryData: resultset.rows});
+        })
+        } else {
+            res.render('notAuthorized')
         }
-        // Lets give a key for the resultset and render it to the page
-        res.render('diary', {diaryData: rows});
-    })
+    } else {
+        res.render('notSignedIn')
+    }    
 });
 
 app.get('/filterDiary', (req, res) => {
-
-    // Set user role to none
-    let userRole = 'none'
-
-    // Read session data
-    // console.log(req.session)    
+    
     if (req.session.user) {
-        userRole = req.session.user.role
-
-        if(userRole = 'none') {
-            res.render('notAuthorized');
-        } else {
-            // Set query parameters
-            let options = {};
-            let registerList = [];
-            let driverList = [];
-            let reasonList = [];
-
+        let userRole = req.session.user.role
+        if (userRole == 'opettaja' || userRole == 'hallinto') {
+           // Set query parameters
+            let options = {}
+            let registerList = []
+            let driverList = []
+            let reasonList = []     
+            
             pgtools.selectQuery('SELECT * FROM public.webrekisterit;').then((resultset) => {
-                registerList = resultset.rows;
-
-                pgtools.selectQuery('SELECT * FROM public.webtarkoitukset;').then((resultset) => {
-                    reasonList = resultset.rows; 
-
-                    pgtools.selectQuery('SELECT * FROM public.webkuljettajat;').then((resultset) => {
-                        driverList = resultset.rows;
-
-                        options = {registers: registerList,
-                            reasons: reasonList,
-                            drivers: driverList
-                        };
-                        res.render('filterDiary', options)
-                    })
-                })                     
-            }) 
-        }
-    }
-// TODO: Tästä if else kesken
-    if (userRole == 'opettaja' || userRole == 'hallinto') {
-        // Set query parameters
-        let options = {}
-        let registerList = []
-        let driverList = []
-        let reasonList = []
-    } else {
-        res.render('notAuthorized')
-    }   
-
-        pgtools.selectQuery('SELECT * FROM public.webrekisterit;').then((resultset) => {
-            // console.log(resultset.rows)
             registerList = resultset.rows;
 
             pgtools.selectQuery('SELECT * FROM public.webtarkoitukset;').then((resultset) => {
-                // console.log(resultset.rows)
-                reasonList = resultset.rows; 
+            reasonList = resultset.rows; 
 
-                pgtools.selectQuery('SELECT * FROM public.webkuljettajat;').then((resultset) => {
-                    // console.log(resultset.rows)
-                    driverList = resultset.rows;
+            pgtools.selectQuery('SELECT * FROM public.webkuljettajat;').then((resultset) => {
+            driverList = resultset.rows;
 
-                    options = {registers: registerList,
-                        reasons: reasonList,
-                        drivers: driverList
-                    };
-                    // console.log(options)
-                    res.render('filterDiary', options)
-                })
+            options = {registers: registerList,
+                reasons: reasonList,
+                drivers: driverList
+            };
+            // console.log(options)
+                res.render('filterDiary', options)
+
+            })
             })                     
-        }) 
-    });
+            }) 
 
-app.get('/filteredDiary', (req, res) => {
-    let registerFilter = req.query.rekisterinumero
-    let registerFilterValid = req.query.rekisterisuodatus
-    let reasonFilter = req.query.tarkoitus
-    let reasonFilterValid = req.query.tarkoitussuodatus
-    let driverFilter = req.query.nimi
-    let driverFilterValid = req.query.kuljettajasuodatus       
-    let startFilter = req.query.alkaa
-    let startFilterString = startFilter.toString()
-    // console.log(startFilterString)
+        } else {
+            res.render('notAuthorized')
+        }      
 
-    let endFilter = req.query.loppuu
-    let dateFiltersValid = req.query.ottosuodatus
-    
-    let conditions = ''
-    if (registerFilterValid == 'on') {
-        conditions = conditions + `rekisterinumero = '${registerFilter}'  AND `;
-    }
-    if (reasonFilterValid == 'on') {
-        conditions = conditions + `tarkoitus  = '${reasonFilter}' AND `;
-    }
-    if (driverFilterValid == 'on') {
-        conditions = conditions + `nimi =' '${driverFilter}' AND `;
-    }
-    if (dateFiltersValid == 'on') {
-        conditions = conditions +  `otto BETWEEN '${startFilter} ' AND ' ${endFilter}`;
-    }    
-
-    // TODO:Tämä lauseen pitäisi siivota and pois näkyvistä, mutta ei toimi
-    let whereClause = 'WHERE' + conditions
-    // let cleanwhereClause = ''
-    // console.log(whereClause.endsWith(' AND '))
-    if (whereClause.endsWith(' AND ')) {
-        let position = whereClause.lastIndexOf(' AND ')
-        cleanwhereClause = whereClause.substring(0, position)
-        console.log(position)
     }
     else {
-        cleanwhereClause = whereClause
+        res.render('notSignedIn')
     }
-    console.log(registerFilter)
-    console.log(registerFilterValid)
-    console.log(cleanwhereClause)
-    console.log(startFilter)
-    console.log(endFilter)
-    console.log(req.query)
-    console.log('Where clause is:', cleanwhereClause);
     
+
+    // Read session data                                     
+   
+});
+
+app.get('/filteredDiary', (req, res) => {
+    if (user) {
+        userRole = req.session.user.role;
+        if (userRole == 'opettaja' || userRole == 'hallinto') {
+    
+            let registerFilter = req.query.rekisterinumero
+            let registerFilterValid = req.query.rekisterisuodatus
+            let reasonFilter = req.query.tarkoitus
+            let reasonFilterValid = req.query.tarkoitussuodatus
+            let driverFilter = req.query.nimi
+            let driverFilterValid = req.query.kuljettajasuodatus       
+            let startFilter = req.query.alkaa
+            let startFilterString = startFilter.toString()
+            // console.log(startFilterString)
+            let endFilter = req.query.loppuu
+            let dateFiltersValid = req.query.ottosuodatus
+        
+            let conditions = ''
+            if (registerFilterValid == 'on') {
+                conditions = conditions + `rekisterinumero = '${registerFilter}'  AND `;
+            }
+            if (reasonFilterValid == 'on') {
+                conditions = conditions + `tarkoitus  = '${reasonFilter}' AND `;
+            }
+            if (driverFilterValid == 'on') {
+                conditions = conditions + `nimi =' '${driverFilter}' AND `;
+            }
+            if (dateFiltersValid == 'on') {
+                conditions = conditions +  `otettu BETWEEN '${startFilter} ' AND ' ${endFilter}`;
+            }    
+        
+            // TODO:Tämä lauseen pitäisi siivota and pois näkyvistä, mutta ei toimi
+            let whereClause = 'WHERE' + conditions
+            let cleanwhereClause = '';
+            // console.log(whereClause.endsWith(' AND '))
+            if (whereClause.endsWith(' AND ')) {
+                let position = whereClause.lastIndexOf(' AND ')
+                cleanwhereClause = whereClause.substring(0, position)
+                // console.log(position)
+            }
+            else {
+                cleanwhereClause = whereClause
+            }
+            console.log(cleanwhereClause);
+            let sqlstatement = 'SELECT * FROM public.ajopaivakirja' + cleanwhereClause
+            pgtools.selectQuery(sqlstatement).then((resultset) => {
+            res.render('filteredDiary', {diaryData: resultset.rows});
+            })
+        } else {
+            res.render('notAuthorized')
+        }
+    } else {
+    res.render('notSignedIn')
+    }    
 });
 
 // TODO: Route to vehicle's diary page: all entries for individual vehicle by register number
