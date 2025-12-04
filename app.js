@@ -54,6 +54,13 @@ app.use(express.urlencoded({extended: true}));
 app.get('/',(req, res) => {
     res.render('index')
 });
+
+app.get('/menu',(req, res) =>{
+     
+    res.render('menu');
+
+});
+
 app.post('/welcome', (req, res) => {
     
     // Collect login data from body
