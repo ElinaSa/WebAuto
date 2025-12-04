@@ -212,21 +212,27 @@ app.get('/filteredDiary', (req, res) => {
         conditions = conditions + `nimi = '${driverFilter}' AND `;
     }
     if (dateFiltersValid == 'on') {
-         conditions = conditions +  `otto BETWEEN '${startFilter}' AND '${endFilter}'`;
+         conditions = conditions +  `otettu BETWEEN '${startFilter}' AND '${endFilter}'`;
     }
 
-    let whereClause = 'WHERE ' + conditions
-    let cleanwhereClause = ''
-    console.log(whereClause.endsWith(' AND '))
+    let whereClause = 'WHERE ' + conditions;
+    let cleanwhereClause = '';
+    
     if (whereClause.endsWith(' AND ')) {
-        let position = whereClause.lastIndexOf(' AND ')
-        cleanwhereClause = whereClause.substring(0, position)
-        console.log(position)
+        let position = whereClause.lastIndexOf(' AND ');
+        cleanwhereClause = whereClause.substring(0, position);
+        
     }
     else {
         cleanwhereClause = whereClause
     }
-   console.log(cleanwhereClause)
+   console.log(cleanwhereClause);
+    let sqlstatement = 'SELECT * FROM public.webajopaivakirja ' + cleanwhereClause
+    pgtools.selectQuery(sqlstatement).then((resultset) => {
+        res.render('filteredDiary', {diaryData: resultset.rows});
+
+    })
+    
 });
 
 
