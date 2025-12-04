@@ -1,0 +1,88 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3">
+  <diagram name="Page-1" id="n_teVHFc1mOMJxvJ4JgB">
+    <mxGraphModel dx="417" dy="289" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" source="-os_lHEW-LIpbZ4Oigml-1" target="-os_lHEW-LIpbZ4Oigml-8" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="140" y="68" />
+              <mxPoint x="140" y="618" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-23" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" parent="1" source="-os_lHEW-LIpbZ4Oigml-1" target="-os_lHEW-LIpbZ4Oigml-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="140" y="68" />
+              <mxPoint x="140" y="108" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-1" value="WebAuto&lt;div&gt;(projektin juuri)&lt;/div&gt;" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Folder_Blank.svg;" parent="1" vertex="1">
+          <mxGeometry x="40" y="40" width="69" height="56.00000000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-2" value="public" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Folder_Blank.svg;" parent="1" vertex="1">
+          <mxGeometry x="160" y="80" width="69" height="56.00000000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-5" value="views" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Folder_Blank.svg;" parent="1" vertex="1">
+          <mxGeometry x="160" y="370" width="69" height="56.00000000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-6" value="css" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Folder_Blank.svg;" parent="1" vertex="1">
+          <mxGeometry x="270" y="120" width="69" height="56.00000000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-7" value="partials" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Folder_Blank.svg;" parent="1" vertex="1">
+          <mxGeometry x="270" y="534" width="69" height="56.00000000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-8" value="docs" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Folder_Blank.svg;" parent="1" vertex="1">
+          <mxGeometry x="160" y="590" width="69" height="56.00000000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-9" value="pictures" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Folder_Blank.svg;" parent="1" vertex="1">
+          <mxGeometry x="270" y="660" width="69" height="56.00000000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-13" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.536;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" parent="1" source="-os_lHEW-LIpbZ4Oigml-2" target="-os_lHEW-LIpbZ4Oigml-6" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-14" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.014;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" parent="1" source="-os_lHEW-LIpbZ4Oigml-5" target="-os_lHEW-LIpbZ4Oigml-7" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="400" />
+              <mxPoint x="250" y="562" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-15" value="images" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Folder_Blank.svg;" parent="1" vertex="1">
+          <mxGeometry x="270" y="200" width="69" height="56.00000000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-18" value="icons" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Folder_Blank.svg;" parent="1" vertex="1">
+          <mxGeometry x="270" y="280" width="69" height="56.00000000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-19" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.589;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" parent="1" source="-os_lHEW-LIpbZ4Oigml-2" target="-os_lHEW-LIpbZ4Oigml-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-22" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.536;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" parent="1" source="-os_lHEW-LIpbZ4Oigml-2" target="-os_lHEW-LIpbZ4Oigml-18" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="-os_lHEW-LIpbZ4Oigml-25" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.014;entryY=0.561;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;" parent="1" source="-os_lHEW-LIpbZ4Oigml-8" target="-os_lHEW-LIpbZ4Oigml-9" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MWxbZnGsPEEDxK4KMRJZ-1" value="layouts" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/general/Folder_Blank.svg;" vertex="1" parent="1">
+          <mxGeometry x="268" y="430" width="69" height="56.00000000000001" as="geometry" />
+        </mxCell>
+        <mxCell id="MWxbZnGsPEEDxK4KMRJZ-4" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="140" y="400" as="sourcePoint" />
+            <mxPoint x="160" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MWxbZnGsPEEDxK4KMRJZ-5" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="458" as="sourcePoint" />
+            <mxPoint x="268" y="457.65999999999997" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

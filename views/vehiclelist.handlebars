@@ -1,36 +1,6 @@
 <body>
-<!-- Simulate a smartphone / tablet -->
-<div class="mobile-container">
+    {{> menu}}
 
-<!-- Top Navigation Menu -->
-<div class="topnav">
-  <a href="#home" class="active">Seuranta</a>
-  <div id="myLinks">
-    <a href="/vehiclelist">Ajoneuvot</a>
-    <a href="/diary">Ajopäiväkirjat</a>
-    <a href="/filterDiary">Ajopäiväkirjahaku</a>
-    <a href="#">Kirjaudu ulos</a>
-  </div>
-
-  <a href="javascript:void(0);" class="icon"  onclick="myFunction()"><img src="/icons/menu.svg" alt="icon">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
- 
- {{{body}}}
-<script>
-function myFunction() {
-  var x = document.getElementById("myLinks");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
-}
-</script>
-    
-    
-    
     <!-- Main container of the page is card-group -->
     <div class="card-group">
 

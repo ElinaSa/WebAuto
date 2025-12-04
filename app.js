@@ -41,7 +41,7 @@ app.use(session({
     resave: false, // Unmodified sessions will not be saved
     saveUninitialized: false, // Unmodified new sessions will not be saved
     cookie: {
-        maxAge: 600000 // Max lifetime for the cookie in ms, 10 minutes
+        maxAge: 1800000 // Max lifetime for the cookie in ms, 30 minutes
     }
 }));
 
@@ -139,6 +139,7 @@ app.get('/vehiclelist', (req, res) => {
     // })
 // });
 // 
+
 // Route to indivisual vehicle page: select vehicle by register number
 app.get('/vehicleDetail', (req, res) => {
     let user = req.session.user;
@@ -311,13 +312,23 @@ app.get('/logout', (req, res) => {
     })
 });
 
+// Route to menu bar
+
+app.get('/menu', (req,res) => {
+    res.render('menu');
+});
+
 // Different kind of tests
 // -----------------------
 app.get('/cookieTest', (req, res) => {
-    console.log('Istuntotiedot cookieTest-sivu:', req.session)
+    // console.log('Istuntotiedot cookieTest-sivu:', req.session)
     res.render('cookieTest', {sessionUser: req.session.user.username, //vai .role?
         sessionEnds: req.session.cookie_expires
     })
+});
+
+app.get('/menuTest', (req, res) => {
+    res.render('menuTest'); 
 });
 
 app.get('/vlistFlex', (req, res)=> {
