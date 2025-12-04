@@ -55,11 +55,7 @@ app.get('/',(req, res) => {
     res.render('index')
 });
 
-app.get('/menu',(req, res) =>{
-     
-    res.render('menu');
 
-});
 
 app.post('/welcome', (req, res) => {
     
