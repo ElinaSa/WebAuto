@@ -118,14 +118,14 @@ const getVehiclesInUse = async () => {
 */
 
 const getVehicleDetails = async (values) => {
-    let sqlstatement = 'SELECT * FROM public.aktiivinen_ajo WHERE rekisterinumero = $1';
+    let sqlstatement = 'SELECT * FROM public.webaktiivinen_ajo WHERE rekisterinumero = $1';
     let resultset = await pool.query(sqlstatement, values);
     return resultset;
 }
 
 // Vehicle details page - vehicle in use by register number: SQL + value 2nd method
 const query = {
-    text: 'SELECT * FROM public.aktiivinen_ajo WHERE rekisterinumero = $1',
+    text: 'SELECT * FROM public.webaktiivinen_ajo WHERE rekisterinumero = $1',
     values: ['XYZ-123']
 }
     

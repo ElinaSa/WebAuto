@@ -99,16 +99,26 @@ app.get('/vehicles', (req, res) => {
 
 // Route to indivisual vehicle page: select vehicle by register number
 app.get('/vehicleDetail', (req, res) => {
+    let user = req.session.user; 
     let register = req.query.register;
-    pgtools.getVehicleDetails([register]).then((resultset) => {
-        //Convert time stamp to user friendly string
-        let userFriendlyTimestamp = pgtools.convertToDateTimeObject(resultset.rows[0].otto);
-        let dateTimeValue = userFriendlyTimestamp.date + ' kello ' + userFriendlyTimestamp.time
-        //Change original timestamp to string value
-        resultset.rows[0].otto = dateTimeValue
-        //Render it to the page
-        res.render('vehicleDetail', resultset.rows[0]);
-    })               
+
+    if (user) {
+        if (user.role == 'opettaja' || user.role == 'hallinto') {
+            
+            pgtools.getVehicleDetails([register]).then((resultset) => {
+
+                //Render it to the page
+                res.render('vehicleDetail', resultset.rows[0]);
+        })
+    }
+    else {
+        res.render('notAuthorized')
+    }
+}
+else {
+    res.render('notSignedIn')
+}
+
 });
 
 
@@ -129,12 +139,25 @@ app.get('/vehiclelist', (req, res) => {
 });
 // Route to diary of single vehicle by register number
 app.get('/vehicleDiary', (req, res) => {
+    let user = req.session.user;
     let register = req.query.register
+    if (user){
+        if (user.role == 'opettaja' || user.role == 'hallinto') { 
+
     pgtools.getVehicleDiary([register]).then((resultset) =>{
         console.log(resultset.rows);
         res.render('vehicleDiary', {diaryData: resultset.rows})
     })
+}
+else {
+    res.render('notAuthorized')
+}
+}
+else {
+    res.render('notSignedIn')
+}
 });
+
 // Route to diary containing all vehicles
 app.get('/diary', (req, res) => {
     pgtools.getDiary().then((resultset) => {
