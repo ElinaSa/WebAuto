@@ -160,11 +160,21 @@ else {
 
 // Route to diary containing all vehicles
 app.get('/diary', (req, res) => {
-    pgtools.getDiary().then((resultset) => {
-        // Lets give a key for the resultset and render it to the page
-        res.render('diary', {diaryData: resultset.rows});
-    })
-    
+    let user = req.session.user;
+    if (user) {
+        if (user.role == 'opettaja' || user.role == 'hallinto') {     
+            pgtools.getDiary().then((resultset) => {
+                // Lets give a key for the resultset and render it to the page
+                res.render('diary', {diaryData: resultset.rows});
+            })
+}
+else {
+    res.render('notAuthorized')
+}
+} 
+else {
+    res.render('notSignedIn')
+}
 });
 
 app.get('/filterDiary', (req, res) => {
