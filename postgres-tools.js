@@ -9,17 +9,25 @@
 // Pg-pool 
 const Pool = require('pg').Pool;
 
+//Enviroment variables handling
+const dotenv = require('dotenv');
+
 // LOCAL LIBRARIES AND MODULES
 
 // DEFINITIONS
 // -----------
+// Initialize enviroment
+dotenv.config();
+
+//Read enviroment variables
+const currentEnv = process.env
 
 // Connection settings
-const connection = {host: '127.0.0.1',
-    port: '5432',
-    database: 'autolainaus',
-    user: 'websovellus',
-    password: 'Q2werty7'
+const connection = {host: currentEnv.HOST,
+    port: currentEnv.DB_PORT,
+    database: currentEnv.DB,
+    user: currentEnv.APP_USER,
+    password: currentEnv.APP_PASSWORD
 };
 
 // Create pool object for transactions
