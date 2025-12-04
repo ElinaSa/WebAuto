@@ -148,7 +148,7 @@ const runQueryWithValues = async (query) => {
 */
 
 const getDiary = async () => { 
-    let sqlstatement = 'SELECT * from public.ajopaivakirja';
+    let sqlstatement = 'SELECT * from public.webajopaivakirja';
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
@@ -161,7 +161,7 @@ const getDiary = async () => {
 */
 
 const getVehicleDiary = async (register) => {
-    let sqlstatement = 'SELECT * from public.webajot_localtime WHERE rekisterinumero = $1'
+    let sqlstatement = 'SELECT * from public.webajopaivakirja WHERE rekisterinumero = $1'
     let resultset = await pool.query(sqlstatement, register);
     return resultset;
 
