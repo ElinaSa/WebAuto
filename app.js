@@ -56,8 +56,8 @@ app.get('/',(req, res) => {
 });
 
 
-
 app.post('/welcome', (req, res) => {
+    
     
     // Collect login data from body
     let inputEmail = req.body.user;
@@ -88,9 +88,10 @@ app.post('/welcome', (req, res) => {
         }
         else {  
             res.render('invalidUserName', {user: inputEmail})
-        }    
-    })
-})
+        } 
+           
+    });
+});
 
 // Route to vehicle listing page: free vehicles and vehicles in use
 app.get('/vehicles', (req, res) => {
