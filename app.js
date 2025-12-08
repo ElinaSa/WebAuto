@@ -313,9 +313,20 @@ app.get('/logout', (req, res) => {
 });
 
 // Route to menu bar
-
 app.get('/menu', (req,res) => {
     res.render('menu');
+});
+
+// Route to sign out page
+app.get('/signOut', (req,res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            res.render('signOutError');
+        } else {
+            res.render('signOutSuccess');
+        }
+    })
+    res.render('signOutSuccess')
 });
 
 // Different kind of tests
