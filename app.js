@@ -284,7 +284,17 @@ app.get('/filteredDiary', (req, res) => {
 }  
 });
 
+app.get('/signOut', (req,res) =>{
+    req.session.destroy((err) =>{
+        if (err) {
+            res.render('signOutError');
 
+        }
+        else {
+            res.render('signOutSuccess');
+        }
+    })
+});
 
 // TODO: POISTETAAN TÄMÄ PÄTKÄ KUN KAIKKI ON VALMISTA
 // URL-reitti About-sivulle
