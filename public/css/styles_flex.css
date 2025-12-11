@@ -366,7 +366,8 @@ table {
 
 /* Style the hamburger menu */
 .topnav a.icon {
-  background: black;
+  /* background: #333; */
+  color: white;
   display: block;
   position: absolute;
   right: 0;

@@ -1,0 +1,489 @@
+﻿lahtopaiva;lahtoaika;lahto_osoite;lahto_matkamittari;tarkoitus;kuljettaja;paluupaiva;paluuaika;paluu_osoite;paluu_matkamittari;km;ajoaika;paikallaanaika
+5.1.2024;12:27;EK3, Eeronkuja 3, 21200 Raisio, FIN;596;Varaosien nouto;Tuukka Leino;5.1.2024;12:37;Pläkkisepänkatu 2b, 20320 Turku, FIN;600;4;0:09:47;0:23:55
+5.1.2024;13:01;Pläkkisepänkatu 2b, 20320 Turku, FIN;600;Varaosien nouto;Tuukka Leino;5.1.2024;13:12;Kuloistentie 3, 21280 Raisio, FIN;605;4,7;0:10:52;0:01:22
+5.1.2024;13:13;Kuloistentie 3, 21280 Raisio, FIN;605;Varaosien nouto;Tuukka Leino;5.1.2024;13:18;Itäniityntie 13, 21280 Raisio, FIN;606;1,2;0:04:58;0:16:40
+5.1.2024;13:35;Itäniityntie 13, 21280 Raisio, FIN;606;Varaosien nouto;Tuukka Leino;5.1.2024;13:45;EK3, Eeronkuja 3, 21200 Raisio, FIN;611;5,1;0:10:11;70:27:38
+8.1.2024;12:13;EK3, Eeronkuja 3, 21200 Raisio, FIN;611;Varaosien nouto;Tuukka Leino;8.1.2024;12:23;Vuorelankatu 5, 20320 Raisio, FIN;617;5,9;0:10:27;0:06:37
+8.1.2024;12:30;Vuorelankatu 5, 20320 Raisio, FIN;617;Varaosien nouto;Tuukka Leino;8.1.2024;12:33;Kuninkaanväylä 22, 20320 Raisio, FIN;617;0,6;0:03:54;0:04:35
+8.1.2024;12:38;Kuninkaanväylä 22, 20320 Raisio, FIN;617;Varaosien nouto;Tuukka Leino;8.1.2024;12:49;EK3, Eeronkuja 3, 21200 Raisio, FIN;623;5,4;0:11:21;1:02:20
+8.1.2024;13:52;EK3, Eeronkuja 3, 21200 Raisio, FIN;623;Varaosien nouto;Tuukka Leino;8.1.2024;14:06;Kalustekatu 1B, 20320 Raisio, FIN;627;4,7;0:14:03;0:09:54
+8.1.2024;14:16;Kalustekatu 1B, 20320 Raisio, FIN;627;Varaosien nouto;Tuukka Leino;8.1.2024;14:21;Vuorelankatu 5, 20320 Raisio, FIN;629;1,5;0:05:12;0:13:34
+8.1.2024;14:34;Vuorelankatu 5, 20320 Raisio, FIN;629;Varaosien nouto;Tuukka Leino;8.1.2024;14:49;EK3, Eeronkuja 3, 21200 Raisio, FIN;634;5,6;0:14:27;20:16:54
+9.1.2024;11:06;EK3, Eeronkuja 3, 21200 Raisio, FIN;634;Varaosien nouto;Tuukka Leino;9.1.2024;11:11;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;636;1,3;0:05:09;0:22:35
+9.1.2024;11:34;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;636;Varaosien nouto;Tuukka Leino;9.1.2024;11:41;Pläkkisepänkatu 2, 20320 Turku, FIN;639;3,4;0:07:04;0:07:29
+9.1.2024;11:48;Pläkkisepänkatu 2, 20320 Turku, FIN;639;Varaosien nouto;Tuukka Leino;9.1.2024;12:00;Itäniityntie 13, 21280 Raisio, FIN;645;6,1;0:12:00;0:12:46
+9.1.2024;12:13;Itäniityntie 13, 21280 Raisio, FIN;645;Varaosien nouto;Tuukka Leino;9.1.2024;12:23;EK3, Eeronkuja 3, 21200 Raisio, FIN;651;5,9;0:09:44;0:37:16
+9.1.2024;13:00;EK3, Eeronkuja 3, 21200 Raisio, FIN;651;Varaosien nouto;Tuukka Leino;9.1.2024;13:10;Pläkkisepänkatu 5, 20320 Turku, FIN;656;4,5;0:10:08;0:08:17
+9.1.2024;13:18;Pläkkisepänkatu 5, 20320 Turku, FIN;656;Varaosien nouto;Tuukka Leino;9.1.2024;13:31;Vuorelankatu 5, 20320 Raisio, FIN;661;5,3;0:12:23;0:02:22
+9.1.2024;13:33;Vuorelankatu 5, 20320 Raisio, FIN;661;Varaosien nouto;Tuukka Leino;9.1.2024;13:45;EK3, Eeronkuja 3, 21200 Raisio, FIN;667;5,5;0:11:55;0:03:01
+9.1.2024;13:48;EK3, Eeronkuja 3, 21200 Raisio, FIN;667;Varaosien nouto;Tuukka Leino;9.1.2024;14:01;Kuninkaanväylä 35a, 20320 Raisio, FIN;673;6,7;0:12:45;0:02:23
+9.1.2024;14:03;Kuninkaanväylä 35a, 20320 Raisio, FIN;673;Varaosien nouto;Tuukka Leino;9.1.2024;14:13;EK3, Eeronkuja 3, 21200 Raisio, FIN;678;5,2;0:10:20;0:11:30
+9.1.2024;14:25;EK3, Eeronkuja 3, 21200 Raisio, FIN;678;Varaosien nouto;Tuukka Leino;9.1.2024;14:38;Kalustekatu 1b, 20320 Raisio, FIN;683;4,8;0:12:46;0:01:16
+9.1.2024;14:39;Kalustekatu 1b, 20320 Raisio, FIN;683;Varaosien nouto;Tuukka Leino;9.1.2024;14:49;EK3, Eeronkuja 3, 21200 Raisio, FIN;688;4,4;0:09:50;18:43:03
+10.1.2024;9:32;EK3, Eeronkuja 3, 21200 Raisio, FIN;688;Varaosien nouto;Tuukka Leino;10.1.2024;9:52;Maahistenkuja 2, 20400 Turku, FIN;702;14,4;0:20:16;0:49:31
+10.1.2024;10:42;Maahistenkuja 2, 20400 Turku, FIN;702;Varaosien nouto;Tuukka Leino;10.1.2024;10:57;EK3, Käpsänkatu 6, 21200 Raisio, FIN;716;13,5;0:15:23;2:38:02
+10.1.2024;13:35;EK3, Käpsänkatu 6, 21200 Raisio, FIN;716;Varaosien nouto;Tuukka Leino;10.1.2024;14:03;EK3, Eeronkuja 3, 21200 Raisio, FIN;727;11,2;0:28:01;0:10:19
+10.1.2024;14:13;EK3, Eeronkuja 3, 21200 Raisio, FIN;727;Varaosien nouto;Tuukka Leino;10.1.2024;14:21;Raisiontie 93, 21280 Raisio, FIN;729;2,6;0:07:52;0:14:21
+10.1.2024;14:36;Raisiontie 87, 21280 Raisio, FIN;729;Varaosien nouto;Tuukka Leino;10.1.2024;14:43;EK3, Eeronkuja 3, 21200 Raisio, FIN;732;2,4;0:07:39;0:38:12
+10.1.2024;15:22;EK3, Eeronkuja 3, 21200 Raisio, FIN;732;Varaosien nouto;Tuukka Leino;10.1.2024;15:29;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;733;1,2;0:07:02;0:01:09
+10.1.2024;15:30;Martinkatu 1, 21200 Raisio, FIN;733;Varaosien nouto;Tuukka Leino;10.1.2024;15:37;Vesilaitoksentie 2, 21200 Raisio, FIN;735;1,9;0:06:57;0:01:18
+10.1.2024;15:38;Vesilaitoksentie 2, 21200 Raisio, FIN;735;Varaosien nouto;Tuukka Leino;10.1.2024;15:49;EK3, Eeronkuja 3, 21200 Raisio, FIN;738;2,7;0:10:57;114:08:56
+15.1.2024;9:58;EK3, Eeronkuja 3, 21200 Raisio, FIN;738;Varaosien nouto;Tuukka Leino;15.1.2024;10:08;Kuninkaanväylä 35a, 20320 Raisio, FIN;743;5,5;0:09:55;0:01:25
+15.1.2024;10:09;Kuninkaanväylä 35a, 20320 Raisio, FIN;743;Varaosien nouto;Tuukka Leino;15.1.2024;10:20;EK3, Eeronkuja 3, 21200 Raisio, FIN;748;5,2;0:11:01;2:36:12
+15.1.2024;12:56;EK3, Eeronkuja 3, 21200 Raisio, FIN;748;Varaosien nouto;Tuukka Leino;15.1.2024;13:09;Vuorelankatu 5, 20320 Raisio, FIN;754;5,9;0:12:40;0:08:53
+15.1.2024;13:18;Vuorelankatu 5, 20320 Raisio, FIN;754;Varaosien nouto;Tuukka Leino;15.1.2024;13:31;EK3, Eeronkuja 3, 21200 Raisio, FIN;760;5,7;0:13:13;20:40:43
+16.1.2024;10:12;EK3, Eeronkuja 3, 21200 Raisio, FIN;760;Varaosien nouto;Tuukka Leino;16.1.2024;10:22;Pläkkisepänkatu 2, 20320 Turku, FIN;764;4,7;0:10:24;0:09:11
+16.1.2024;10:31;Pläkkisepänkatu 2, 20320 Turku, FIN;764;Varaosien nouto;Tuukka Leino;16.1.2024;10:41;EK3, Eeronkuja 3, 21200 Raisio, FIN;769;4,8;0:09:52;1:36:19
+16.1.2024;12:18;EK3, Eeronkuja 3, 21200 Raisio, FIN;769;Varaosien nouto;Tuukka Leino;16.1.2024;12:28;Vuorelankatu 5, 20320 Raisio, FIN;775;5,8;0:10:48;0:07:46
+16.1.2024;12:36;Vuorelankatu 5, 20320 Raisio, FIN;775;Varaosien nouto;Tuukka Leino;16.1.2024;12:48;EK3, Käpsänkatu 6, 21200 Raisio, FIN;781;5,6;0:12:14;1:06:30
+16.1.2024;13:55;EK3, Käpsänkatu 6, 21200 Raisio, FIN;781;Varaosien nouto;Tuukka Leino;16.1.2024;14:03;Raisiontie 93, 21280 Raisio, FIN;783;2,2;0:08:31;0:18:21
+16.1.2024;14:22;Raisiontie 93, 21280 Raisio, FIN;783;Varaosien nouto;Tuukka Leino;16.1.2024;14:31;EK3, Eeronkuja 3, 21200 Raisio, FIN;785;2,4;0:09:24;22:04:46
+17.1.2024;12:36;EK3, Eeronkuja 3, 21200 Raisio, FIN;785;Varaosien nouto;Tuukka Leino;17.1.2024;12:52;Myyrätie 15, 21220 Raisio, FIN;792;6,2;0:16:17;0:09:23
+17.1.2024;13:02;Myyrätie 15, 21220 Raisio, FIN;792;Varaosien nouto;Tuukka Leino;17.1.2024;13:17;EK3, Käpsänkatu 6, 21200 Raisio, FIN;799;7,3;0:15:26;0:22:19
+17.1.2024;13:39;EK3, Eeronkuja 3, 21200 Raisio, FIN;799;Varaosien nouto;Tuukka Leino;17.1.2024;13:52;Itäniityntie 13, 21280 Raisio, FIN;805;5,6;0:12:45;0:07:59
+17.1.2024;14:00;Itäniityntie 13, 21280 Raisio, FIN;805;Varaosien nouto;Tuukka Leino;17.1.2024;14:09;Voudinkatu 13, 21200 Raisio, FIN;809;4,8;0:09:05;0:12:52
+17.1.2024;14:22;Voudinkatu 13, 21200 Raisio, FIN;809;Varaosien nouto;Tuukka Leino;17.1.2024;14:30;Itäniityntie 13, 21280 Raisio, FIN;814;4,6;0:07:54;0:01:50
+17.1.2024;14:32;Itäniityntie 13, 21280 Raisio, FIN;814;Varaosien nouto;Tuukka Leino;17.1.2024;14:45;EK3, Eeronkuja 3, 21200 Raisio, FIN;820;6;0:13:28;43:59:21
+19.1.2024;10:45;EK3, Eeronkuja 3, 21200 Raisio, FIN;820;Varaosien nouto;Tuukka Leino;19.1.2024;10:58;Pläkkisepänkatu 2b, 20320 Turku, FIN;825;4,8;0:13:06;0:19:51
+19.1.2024;11:18;Pläkkisepänkatu 2b, 20320 Turku, FIN;825;Varaosien nouto;Tuukka Leino;19.1.2024;11:30;EK3, Eeronkuja 3, 21200 Raisio, FIN;829;4,7;0:12:28;69:14:26
+22.1.2024;8:45;EK3, Eeronkuja 3, 21200 Raisio, FIN;829;Varaosien nouto;Tuukka Leino;22.1.2024;8:59;Nuppulantie 33, 20320 Turku, FIN;835;5,4;0:14:06;0:01:06
+22.1.2024;9:00;Nuppulantie 33, 20320 Turku, FIN;835;Varaosien nouto;Tuukka Leino;22.1.2024;9:14;EK3, Eeronkuja 3, 21200 Raisio, FIN;841;5,6;0:14:15;4:17:28
+22.1.2024;13:31;EK3, Eeronkuja 3, 21200 Raisio, FIN;841;Varaosien nouto;Tuukka Leino;22.1.2024;13:44;Raumantie 714, 21250 Masku, FIN;850;9,2;0:12:48;0:06:51
+22.1.2024;13:51;Raumantie 714, 21250 Masku, FIN;850;Varaosien nouto;Tuukka Leino;22.1.2024;14:06;EK3, Eeronkuja 3, 21200 Raisio, FIN;859;9,4;0:14:34;0:45:20
+22.1.2024;14:51;EK3, Eeronkuja 3, 21200 Raisio, FIN;859;Varaosien nouto;Tuukka Leino;22.1.2024;15:00;Raisiontie 85, 21280 Raisio, FIN;862;2,4;0:09:11;0:08:16
+22.1.2024;15:08;Raisiontie 85, 21280 Raisio, FIN;862;Varaosien nouto;Tuukka Leino;22.1.2024;15:17;EK3, Eeronkuja 3, 21200 Raisio, FIN;864;2,5;0:08:56;17:09:45
+23.1.2024;8:27;EK3, Eeronkuja 3, 21200 Raisio, FIN;864;Varaosien nouto;Tuukka Leino;23.1.2024;8:40;Nuppulantie 29, 20320 Turku, FIN;870;5,6;0:12:27;0:05:02
+23.1.2024;8:45;Nuppulantie 33, 20320 Turku, FIN;870;Varaosien nouto;Tuukka Leino;23.1.2024;9:03;EK3, Eeronkuja 3, 21200 Raisio, FIN;875;5,7;0:18:08;0:33:07
+23.1.2024;9:36;EK3, Eeronkuja 3, 21200 Raisio, FIN;875;Varaosien nouto;Tuukka Leino;23.1.2024;9:55;EK3, Eeronkuja 3, 21200 Raisio, FIN;879;4,1;0:19:24;3:49:14
+23.1.2024;13:44;EK3, Eeronkuja 3, 21200 Raisio, FIN;879;Varaosien nouto;Tuukka Leino;23.1.2024;13:57;Kuninkaanväylä 35a, 20320 Raisio, FIN;885;5,9;0:12:16;0:10:11
+23.1.2024;14:07;Kuninkaanväylä 35a, 20320 Raisio, FIN;885;Varaosien nouto;Tuukka Leino;23.1.2024;14:22;EK3, Eeronkuja 3, 21200 Raisio, FIN;891;5,6;0:14:35;41:56:00
+25.1.2024;8:18;EK3, Eeronkuja 3, 21200 Raisio, FIN;891;Varaosien nouto;Tuukka Leino;25.1.2024;8:25;Voudinkatu 5, 21200 Raisio, FIN;892;1,7;0:07:04;0:02:01
+25.1.2024;8:27;Voudinkatu 5, 21200 Raisio, FIN;892;Varaosien nouto;Tuukka Leino;25.1.2024;8:37;Raumantie 714, 21250 Masku, FIN;900;8;0:10:33;0:15:19
+25.1.2024;8:52;Raumantie 714, 21250 Masku, FIN;900;Varaosien nouto;Tuukka Leino;25.1.2024;9:06;EK3, Eeronkuja 3, 21200 Raisio, FIN;910;9,3;0:13:11;97:49:58
+29.1.2024;10:56;EK3, Eeronkuja 3, 21200 Raisio, FIN;910;Varaosien nouto;Tuukka Leino;29.1.2024;11:04;Kuloistentie 3, 21280 Raisio, FIN;914;3,9;0:08:24;0:01:12
+29.1.2024;11:05;Kuloistentie 3, 21280 Raisio, FIN;914;Varaosien nouto;Tuukka Leino;29.1.2024;11:12;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;917;3;0:06:58;0:19:07
+29.1.2024;11:31;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;917;Varaosien nouto;Tuukka Leino;29.1.2024;11:37;EK3, Eeronkuja 3, 21200 Raisio, FIN;918;1,2;0:05:16;1:05:06
+29.1.2024;12:42;EK3, Eeronkuja 3, 21200 Raisio, FIN;918;Varaosien nouto;Tuukka Leino;29.1.2024;12:52;Vuorelankatu 5, 20320 Raisio, FIN;924;5,8;0:10:33;0:03:24
+29.1.2024;12:56;Vuorelankatu 5, 20320 Raisio, FIN;924;Varaosien nouto;Tuukka Leino;29.1.2024;13:09;EK3, Eeronkuja 3, 21200 Raisio, FIN;929;5,5;0:13:10;20:09:25
+30.1.2024;9:18;EK3, Eeronkuja 3, 21200 Raisio, FIN;929;Varaosien nouto;Tuukka Leino;30.1.2024;9:34;Rimpikuja 4, 21110 Naantali, FIN;939;9,5;0:15:56;0:02:47
+30.1.2024;9:37;Rimpikuja 4, 21110 Naantali, FIN;939;Varaosien nouto;Tuukka Leino;30.1.2024;9:41;Rimpikuja 4, 21110 Naantali, FIN;939;0,5;0:03:46;0:03:12
+30.1.2024;9:44;Rimpikuja 4, 21110 Naantali, FIN;939;Varaosien nouto;Tuukka Leino;30.1.2024;9:48;Rimpikuja 1, 21110 Naantali, FIN;940;0,6;0:04:16;4:25:22
+30.1.2024;14:14;Rimpikuja 1, 21110 Naantali, FIN;940;Varaosien nouto;Tuukka Leino;30.1.2024;14:30;EK3, Eeronkuja 3, 21200 Raisio, FIN;949;9,5;0:16:40;19:06:03
+31.1.2024;9:36;EK3, Eeronkuja 3, 21200 Raisio, FIN;949;Varaosien nouto;Tuukka Leino;31.1.2024;9:49;Pläkkisepänkatu 2, 20320 Turku, FIN;954;4,9;0:12:26;0:12:17
+31.1.2024;10:01;Pläkkisepänkatu 2, 20320 Turku, FIN;954;Varaosien nouto;Tuukka Leino;31.1.2024;10:12;EK3, Eeronkuja 3, 21200 Raisio, FIN;959;4,8;0:10:54;1:00:54
+31.1.2024;11:13;EK3, Eeronkuja 3, 21200 Raisio, FIN;959;Varaosien nouto;Tuukka Leino;31.1.2024;11:20;Raisiontie 93, 21280 Raisio, FIN;961;2,3;0:07:04;0:03:22
+31.1.2024;11:23;Raisiontie 83, 21280 Raisio, FIN;961;Varaosien nouto;Tuukka Leino;31.1.2024;11:31;Raisiontori 11, 21200 Raisio, FIN;963;2;0:08:16;0:06:13
+31.1.2024;11:38;Raisiontori 11, 21200 Raisio, FIN;963;Varaosien nouto;Tuukka Leino;31.1.2024;11:45;EK3, Käpsänkatu 6, 21200 Raisio, FIN;965;1,5;0:07:01;0:44:25
+31.1.2024;12:29;EK3, Käpsänkatu 6, 21200 Raisio, FIN;965;Varaosien nouto;Tuukka Leino;31.1.2024;12:57;Apilakatu 7, 20740 Turku, FIN;980;14,8;0:27:33;0:39:53
+31.1.2024;13:37;Apilakatu 7, 20740 Turku, FIN;980;Varaosien nouto;Tuukka Leino;31.1.2024;14:10;EK3, Eeronkuja 3, 21200 Raisio, FIN;995;15,7;0:33:03;117:24:05
+5.2.2024;11:34;EK3, Eeronkuja 3, 21200 Raisio, FIN;995;Varaosien nouto;Tuukka Leino;5.2.2024;12:01;EK3, Eeronkuja 3, 21200 Raisio, FIN;1006;11;0:26:55;1:43:58
+5.2.2024;13:45;EK3, Eeronkuja 3, 21200 Raisio, FIN;1006;Varaosien nouto;Tuukka Leino;5.2.2024;13:52;Voudinkatu 3, 21200 Raisio, FIN;1008;1,7;0:07:01;0:01:26
+5.2.2024;13:53;Voudinkatu 3, 21200 Raisio, FIN;1008;Varaosien nouto;Tuukka Leino;5.2.2024;14:05;Raumantie 714, 21250 Masku, FIN;1016;8;0:12:10;0:04:20
+5.2.2024;14:10;Raumantie 714, 21250 Masku, FIN;1016;Varaosien nouto;Tuukka Leino;5.2.2024;14:24;EK3, Eeronkuja 3, 21200 Raisio, FIN;1025;9,4;0:14:24;22:59:52
+6.2.2024;13:24;EK3, Eeronkuja 3, 21200 Raisio, FIN;1025;Varaosien nouto;Tuukka Leino;6.2.2024;13:35;Kuninkaanväylä 35a, 20320 Raisio, FIN;1031;6,1;0:11:10;0:11:39
+6.2.2024;13:47;Kuninkaanväylä 35a, 20320 Raisio, FIN;1031;Varaosien nouto;Tuukka Leino;6.2.2024;13:58;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1037;5,4;0:11:14;1:41:03
+6.2.2024;15:39;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1037;Varaosien nouto;Tuukka Leino;6.2.2024;15:51;Kuninkaanväylä 35a, 20320 Raisio, FIN;1043;5,8;0:12:29;0:03:21
+6.2.2024;15:55;Kuninkaanväylä 35a, 20320 Raisio, FIN;1043;Varaosien nouto;Tuukka Leino;6.2.2024;16:07;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1048;5,3;0:11:57;17:39:24
+7.2.2024;9:46;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1048;Varaosien nouto;Tuukka Leino;7.2.2024;9:59;Vuorelankatu 5, 20320 Raisio, FIN;1054;5,9;0:12:31;0:09:17
+7.2.2024;10:08;Vuorelankatu 5, 20320 Raisio, FIN;1054;Varaosien nouto;Tuukka Leino;7.2.2024;10:20;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1059;5,5;0:11:45;3:13:50
+7.2.2024;13:33;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1059;Varaosien nouto;Tuukka Leino;7.2.2024;13:43;Vuorelankatu 5, 20320 Raisio, FIN;1065;5,8;0:09:45;0:13:57
+7.2.2024;13:57;Vuorelankatu 5, 20320 Raisio, FIN;1065;Varaosien nouto;Tuukka Leino;7.2.2024;14:01;Kuninkaanväylä 22, 20320 Raisio, FIN;1066;0,6;0:04:17;0:01:33
+7.2.2024;14:03;Kuninkaanväylä 22, 20320 Raisio, FIN;1066;Varaosien nouto;Tuukka Leino;7.2.2024;14:16;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1071;5,2;0:12:47;18:12:00
+8.2.2024;8:28;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1071;Varaosien nouto;Tuukka Leino;8.2.2024;8:37;Konekuja 55, 21200 Raisio, FIN;1074;3;0:09:26;0:16:22
+8.2.2024;8:54;Konekuja 55, 21200 Raisio, FIN;1074;Varaosien nouto;Tuukka Leino;8.2.2024;9:02;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1077;2,9;0:08:10;0:29:29
+8.2.2024;9:31;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1077;Varaosien nouto;Tuukka Leino;8.2.2024;9:36;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;1078;1,1;0:04:48;0:02:21
+8.2.2024;9:38;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;1078;Varaosien nouto;Tuukka Leino;8.2.2024;9:44;Vesilaitoksentie 2, 21200 Raisio, FIN;1080;1,7;0:05:39;0:02:57
+8.2.2024;9:47;Vesilaitoksentie 2, 21200 Raisio, FIN;1080;Varaosien nouto;Tuukka Leino;8.2.2024;9:55;EK3, Eeronkuja 3, 21200 Raisio, FIN;1083;2,7;0:07:32;0:01:48
+8.2.2024;9:56;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1083;Varaosien nouto;Tuukka Leino;8.2.2024;10:04;Vesilaitoksentie 2, 21200 Raisio, FIN;1085;2,7;0:07:46;0:02:05
+8.2.2024;10:06;Vesilaitoksentie 2, 21200 Raisio, FIN;1085;Varaosien nouto;Tuukka Leino;8.2.2024;10:14;EK3, Eeronkuja 3, 21200 Raisio, FIN;1088;2,7;0:08:04;2:29:41
+8.2.2024;12:44;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1088;Varaosien nouto;Tuukka Leino;8.2.2024;12:56;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1091;3;0:12:23;0:00:16
+8.2.2024;12:57;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1091;Varaosien nouto;Tuukka Leino;8.2.2024;13:12;Avantintie 11, 21420 Lieto, FIN;1107;15,8;0:14:55;0:16:58
+8.2.2024;13:28;Avantintie 11, 21420 Lieto, FIN;1107;Varaosien nouto;Tuukka Leino;8.2.2024;13:59;Raumantie 714, 21250 Masku, FIN;1133;26,2;0:30:35;0:02:06
+8.2.2024;14:01;Raumantie 712, 21250 Masku, FIN;1133;Varaosien nouto;Tuukka Leino;8.2.2024;14:13;EK3, Eeronkuja 3, 21200 Raisio, FIN;1142;9,3;0:12:01;90:29:37
+12.2.2024;8:43;EK3, Eeronkuja 3, 21200 Raisio, FIN;1142;Varaosien nouto;Tuukka Leino;12.2.2024;8:53;20320 Raisio, FIN;1148;5,7;0:10:04;0:01:01
+12.2.2024;8:54;20320 Raisio, FIN;1148;Varaosien nouto;Tuukka Leino;12.2.2024;9:04;EK3, Eeronkuja 3, 21200 Raisio, FIN;1153;5,3;0:10:36;0:34:01
+12.2.2024;9:39;EK3, Eeronkuja 3, 21200 Raisio, FIN;1153;Varaosien nouto;Tuukka Leino;12.2.2024;9:50;Vuorelankatu 5, 20320 Raisio, FIN;1159;5,9;0:11:17;0:15:26
+12.2.2024;10:05;Vuorelankatu 5, 20320 Raisio, FIN;1159;Varaosien nouto;Tuukka Leino;12.2.2024;10:16;EK3, Eeronkuja 3, 21200 Raisio, FIN;1165;5,5;0:11:10;23:20:59
+13.2.2024;9:37;EK3, Eeronkuja 3, 21200 Raisio, FIN;1165;Varaosien nouto;Tuukka Leino;13.2.2024;9:53;Avantintie 11, 21420 Lieto, FIN;1181;15,8;0:15:19;0:21:59
+13.2.2024;10:15;Avantintie 11, 21420 Lieto, FIN;1181;Varaosien nouto;Tuukka Leino;13.2.2024;10:29;EK3, Eeronkuja 3, 21200 Raisio, FIN;1196;15,7;0:14:39;74:48:53
+16.2.2024;13:18;EK3, Eeronkuja 3, 21200 Raisio, FIN;1196;Varaosien nouto;Tuukka Leino;16.2.2024;13:41;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1207;10,9;0:22:20;238:52:41
+26.2.2024;12:33;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1207;Varaosien nouto;Tuukka Leino;26.2.2024;12:56;Polttolaitoksenkatu 9, 20380 Turku, FIN;1219;11,6;0:22:57;0:11:21
+26.2.2024;13:08;Polttolaitoksenkatu 9, 20380 Turku, FIN;1219;Varaosien nouto;Tuukka Leino;26.2.2024;13:22;EK3, Eeronkuja 3, 21200 Raisio, FIN;1230;11,4;0:14:45;0:15:04
+26.2.2024;13:37;EK3, Eeronkuja 3, 21200 Raisio, FIN;1230;Varaosien nouto;Tuukka Leino;26.2.2024;13:47;Voudinkatu 11, 21200 Raisio, FIN;1232;2;0:09:11;0:02:39
+26.2.2024;13:49;Voudinkatu 11, 21200 Raisio, FIN;1232;Varaosien nouto;Tuukka Leino;26.2.2024;13:59;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1234;2,1;0:09:33;162:51:16
+4.3.2024;8:50;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1234;Varaosien nouto;Tuukka Leino;4.3.2024;9:07;Orikedonkatu 9, 20380 Turku, FIN;1245;11,3;0:17:03;0:07:37
+4.3.2024;9:15;Orikedonkatu 9, 20380 Turku, FIN;1245;Varaosien nouto;Tuukka Leino;4.3.2024;9:32;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1257;11,7;0:17:48;3:27:30
+4.3.2024;13:00;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1257;Varaosien nouto;Tuukka Leino;4.3.2024;13:04;PK1, Purokatu 3, 21200 Raisio, FIN;1258;1,1;0:04:26;1:00:13
+4.3.2024;14:05;PK1, Purokatu 3, 21200 Raisio, FIN;1258;Varaosien nouto;Tuukka Leino;4.3.2024;14:11;EK3, Eeronkuja 3, 21200 Raisio, FIN;1259;1,1;0:05:52;21:45:12
+5.3.2024;11:56;EK3, Eeronkuja 3, 21200 Raisio, FIN;1259;Varaosien nouto;Tuukka Leino;5.3.2024;12:14;Avantintie 11, 21420 Lieto, FIN;1276;17;0:17:51;0:01:37
+5.3.2024;12:15;Avantintie 11, 21420 Lieto, FIN;1276;Varaosien nouto;Tuukka Leino;5.3.2024;12:34;EK3, Eeronkuja 3, 21200 Raisio, FIN;1293;17;0:18:36;72:17:32
+8.3.2024;12:51;EK3, Eeronkuja 3, 21200 Raisio, FIN;1293;Varaosien nouto;Tuukka Leino;8.3.2024;12:59;Vesilaitoksentie 2, 21200 Raisio, FIN;1296;2,6;0:07:34;0:02:20
+8.3.2024;13:01;Vesilaitoksentie 2, 21200 Raisio, FIN;1296;Varaosien nouto;Tuukka Leino;8.3.2024;13:07;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;1298;1,7;0:06:03;0:00:19
+8.3.2024;13:08;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;1298;Varaosien nouto;Tuukka Leino;8.3.2024;13:15;EK3, Eeronkuja 3, 21200 Raisio, FIN;1299;1,2;0:06:59;67:19:34
+11.3.2024;8:34;EK3, Eeronkuja 3, 21200 Raisio, FIN;1299;Varaosien nouto;Tuukka Leino;11.3.2024;8:54;Avantintie 11, 21420 Lieto, FIN;1315;15,7;0:19:24;0:01:17
+11.3.2024;8:55;Avantintie 11, 21420 Lieto, FIN;1315;Varaosien nouto;Tuukka Leino;11.3.2024;9:22;EK3, Eeronkuja 3, 21200 Raisio, FIN;1333;18,2;0:27:04;3:55:16
+11.3.2024;13:17;EK3, Eeronkuja 3, 21200 Raisio, FIN;1333;Varaosien nouto;Tuukka Leino;11.3.2024;13:28;Kuninkaanväylä 35a, 20320 Raisio, FIN;1338;5,6;0:10:21;0:02:29
+11.3.2024;13:30;Kuninkaanväylä 35a, 20320 Raisio, FIN;1338;Varaosien nouto;Tuukka Leino;11.3.2024;13:40;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1344;5,3;0:10:02;45:04:57
+13.3.2024;10:45;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1344;Varaosien nouto;Tuukka Leino;13.3.2024;10:53;Voudinkatu 13, 21200 Raisio, FIN;1346;2,1;0:07:35;0:02:32
+13.3.2024;10:55;Voudinkatu 7, 21200 Raisio, FIN;0;Varaosien nouto;Tuukka Leino;13.3.2024;11:03;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1348;1,9;0:08:18;22:40:34
+14.3.2024;9:44;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1348;Varaosien nouto;Tuukka Leino;14.3.2024;9:58;Kuormakatu 7, 20380 Turku, FIN;1360;12,5;0:13:58;0:06:28
+14.3.2024;10:04;Kuormakatu 7, 20380 Turku, FIN;1360;Varaosien nouto;Tuukka Leino;14.3.2024;10:11;Piiskakuja 10, 20380 Turku, FIN;1362;1,7;0:06:59;0:05:02
+14.3.2024;10:16;Piiskakuja 10, 20380 Turku, FIN;1362;Varaosien nouto;Tuukka Leino;14.3.2024;10:42;Juhaninkuja 2, 21200 Raisio, FIN;1375;12,9;0:25:17;0:00:44
+14.3.2024;10:42;21200 Raisio, FIN;1375;Varaosien nouto;Tuukka Leino;14.3.2024;10:46;EK3, Eeronkuja 3, 21200 Raisio, FIN;1375;0,5;0:03:47;95:16:06
+18.3.2024;10:02;EK3, Eeronkuja 3, 21200 Raisio, FIN;1375;Varaosien nouto;Tuukka Leino;18.3.2024;10:19;20300 Turku, FIN;1382;6,9;0:16:39;0:11:59
+18.3.2024;10:31;20300 Turku, FIN;1382;Varaosien nouto;Tuukka Leino;18.3.2024;10:36;Asentajankatu 6, 20320 Turku, FIN;1384;1,9;0:05:21;0:03:27
+18.3.2024;10:40;Asentajankatu 6, 20320 Turku, FIN;1384;Varaosien nouto;Tuukka Leino;18.3.2024;10:57;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1390;6;0:17:36;100:31:32
+22.3.2024;15:29;Käpsänkatu 6, 21200 Raisio, FIN;1390;Varaosien nouto;Tuukka Leino;22.3.2024;15:40;Kuninkaanväylä 35a, 20320 Raisio, FIN;1396;5,5;0:10:38;0:03:26
+22.3.2024;15:43;Kuninkaanväylä 35a, 20320 Raisio, FIN;1396;Varaosien nouto;Tuukka Leino;22.3.2024;15:55;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1401;5,2;0:11:33;113:12:20
+27.3.2024;9:07;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1401;Varaosien nouto;Tuukka Leino;27.3.2024;9:18;Nuppulantie 33, 20320 Turku, FIN;1406;5,5;0:11:32;0:00:58
+27.3.2024;9:19;Nuppulantie 33, 20320 Turku, FIN;1406;Varaosien nouto;Tuukka Leino;27.3.2024;9:32;Polttolaitoksenkatu 9, 20380 Turku, FIN;1413;6,2;0:13:06;0:02:48
+27.3.2024;9:35;Polttolaitoksenkatu 9, 20380 Turku, FIN;1413;Varaosien nouto;Tuukka Leino;27.3.2024;9:44;Vanha Tampereentie 108, 20300 Turku, FIN;1415;2,3;0:08:25;0:03:15
+27.3.2024;9:47;Jokipellonkuja 1, 20300 Turku, FIN;1415;Varaosien nouto;Tuukka Leino;27.3.2024;10:04;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1424;8,6;0:17:26;0:10:16
+27.3.2024;10:15;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1424;Varaosien nouto;Tuukka Leino;27.3.2024;10:25;Kuninkaanväylä 35a, 20320 Raisio, FIN;1429;5,4;0:10:24;0:15:05
+27.3.2024;10:40;Kuninkaanväylä 35a, 20320 Raisio, FIN;1429;Varaosien nouto;Tuukka Leino;27.3.2024;10:48;Voudinkatu 11, 21200 Raisio, FIN;1433;4,2;0:07:51;0:06:56
+27.3.2024;10:55;Voudinkatu 11, 21200 Raisio, FIN;1433;Varaosien nouto;Tuukka Leino;27.3.2024;11:04;EK3, Eeronkuja 3, 21200 Raisio, FIN;1435;2,1;0:09:18;0:11:25
+27.3.2024;11:16;EK3, Eeronkuja 3, 21200 Raisio, FIN;1435;Varaosien nouto;Tuukka Leino;27.3.2024;11:23;Raisiontori 11, 21200 Raisio, FIN;1437;1,5;0:06:53;0:24:49
+27.3.2024;11:47;Raisiontori 11, 21200 Raisio, FIN;1437;Varaosien nouto;Tuukka Leino;27.3.2024;11:53;EK3, Eeronkuja 3, 21200 Raisio, FIN;1438;1,5;0:05:55;21:40:53
+28.3.2024;9:34;EK3, Eeronkuja 3, 21200 Raisio, FIN;1438;Varaosien nouto;Tuukka Leino;28.3.2024;9:46;Pläkkisepänkatu 2b, 20320 Turku, FIN;1444;5,8;0:12:09;0:34:42
+28.3.2024;10:21;Pläkkisepänkatu 2b, 20320 Turku, FIN;1444;Varaosien nouto;Tuukka Leino;28.3.2024;10:32;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1449;4,9;0:11:29;116:40:30
+2.4.2024;8:13;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1449;Varaosien nouto;Tuukka Leino;2.4.2024;8:38;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1460;11,4;0:24:49;3:41:35
+2.4.2024;12:19;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1460;Varaosien nouto;Tuukka Leino;2.4.2024;12:37;EK3, Eeronkuja 3, 21200 Raisio, FIN;1465;4,7;0:17:08;20:39:19
+3.4.2024;9:16;EK3, Eeronkuja 3, 21200 Raisio, FIN;1465;Varaosien nouto;Tuukka Leino;3.4.2024;9:29;Pläkkisepänkatu 2, 20320 Turku, FIN;1470;4,8;0:13:36;0:13:55
+3.4.2024;9:43;Pläkkisepänkatu 2, 20320 Turku, FIN;1470;Varaosien nouto;Tuukka Leino;3.4.2024;9:53;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1474;4,5;0:09:52;3:18:50
+3.4.2024;13:12;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1474;Varaosien nouto;Tuukka Leino;3.4.2024;13:17;Martinkatu 2, 21200 Raisio, FIN;1475;1,2;0:04:45;0:02:40
+3.4.2024;13:19;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;1475;Varaosien nouto;Tuukka Leino;3.4.2024;13:26;Myllynkatu 1-60, 21280 Raisio, FIN;1478;2,3;0:06:41;0:01:46
+3.4.2024;13:28;Myllynkatu 1-60, 21280 Raisio, FIN;1478;Varaosien nouto;Tuukka Leino;3.4.2024;13:34;Tuotekatu 12, 21200 Raisio, FIN;1480;1,8;0:05:56;0:01:21
+3.4.2024;13:35;Tuotekatu 12, 21200 Raisio, FIN;1480;Varaosien nouto;Tuukka Leino;3.4.2024;13:46;EK3, Eeronkuja 3, 21200 Raisio, FIN;1484;4;0:10:20;165:36:43
+10.4.2024;11:22;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1484;Varaosien nouto;Tuukka Leino;10.4.2024;11:30;Raisiontori 11, 21200 Raisio, FIN;1485;1,8;0:07:19;0:25:54
+10.4.2024;11:55;Raisiontori 11, 21200 Raisio, FIN;1485;Varaosien nouto;Tuukka Leino;10.4.2024;12:00;Voudinkatu 11, 21200 Raisio, FIN;1487;1,2;0:04:03;0:02:12
+10.4.2024;12:02;Voudinkatu 11, 21200 Raisio, FIN;1487;Varaosien nouto;Tuukka Leino;10.4.2024;12:07;Martinkatu 2, 21200 Raisio, FIN;1488;1;0:05:07;0:00:19
+10.4.2024;12:07;Martinkatu 2, 21200 Raisio, FIN;1488;Varaosien nouto;Tuukka Leino;10.4.2024;12:12;EK3, Eeronkuja 3, 21200 Raisio, FIN;1489;1,2;0:05:04;19:58:24
+11.4.2024;8:11;EK3, Eeronkuja 3, 21200 Raisio, FIN;1489;Varaosien nouto;Tuukka Leino;11.4.2024;8:26;Piiskakuja 10, 20380 Turku, FIN;1500;10,9;0:15:08;0:03:35
+11.4.2024;8:29;Piiskakuja 10, 20380 Turku, FIN;1500;Varaosien nouto;Tuukka Leino;11.4.2024;8:36;Kuormakatu 7, 20380 Turku, FIN;1502;1,8;0:06:54;0:02:35
+11.4.2024;8:39;Kuormakatu 7, 20380 Turku, FIN;1502;Varaosien nouto;Tuukka Leino;11.4.2024;8:55;EK3, Eeronkuja 3, 21200 Raisio, FIN;1513;11,9;0:15:49;97:12:40
+15.4.2024;10:07;EK3, Eeronkuja 3, 21200 Raisio, FIN;1514;Varaosien nouto;Tuukka Leino;15.4.2024;10:58;EK3, Eeronkuja 3, 21200 Raisio, FIN;1553;39,3;0:50:51;1:36:37
+15.4.2024;12:35;EK3, Eeronkuja 3, 21200 Raisio, FIN;1553;Varaosien nouto;Tuukka Leino;15.4.2024;12:49;Nuppulantie 29, 20320 Turku, FIN;1559;5,7;0:14:05;0:14:27
+15.4.2024;13:03;Nuppulantie 29, 20320 Turku, FIN;1559;Varaosien nouto;Tuukka Leino;15.4.2024;13:16;EK3, Eeronkuja 3, 21200 Raisio, FIN;1564;5,6;0:12:12;22:55:57
+16.4.2024;12:11;EK3, Eeronkuja 3, 21200 Raisio, FIN;1564;Varaosien nouto;Tuukka Leino;16.4.2024;12:21;Kuninkaanväylä 22, 20320 Raisio, FIN;1570;5,3;0:09:50;0:07:36
+16.4.2024;12:29;Kuninkaanväylä 22, 20320 Raisio, FIN;1570;Varaosien nouto;Tuukka Leino;16.4.2024;12:38;Kyläpajankatu 2, 21200 Raisio, FIN;1575;5,1;0:09:31;0:07:15
+16.4.2024;12:46;Kyläpajankatu 2, 21200 Raisio, FIN;1575;Varaosien nouto;Tuukka Leino;16.4.2024;12:52;EK3, Eeronkuja 3, 21200 Raisio, FIN;1576;1,1;0:06:40;45:37:26
+18.4.2024;10:30;EK3, Eeronkuja 3, 21200 Raisio, FIN;1576;Varaosien nouto;Tuukka Leino;18.4.2024;10:35;Alhaistentie 6, 21200 Raisio, FIN;1577;1,1;0:05:31;0:00:51
+18.4.2024;10:36;Alhaistentie 6, 21200 Raisio, FIN;1577;Varaosien nouto;Tuukka Leino;18.4.2024;10:41;EK3, Eeronkuja 3, 21200 Raisio, FIN;1578;1,1;0:05:11;23:13:53
+19.4.2024;9:55;EK3, Eeronkuja 3, 21200 Raisio, FIN;1578;Varaosien nouto;Tuukka Leino;19.4.2024;10:03;Nikkarinkatu 1, 21280 Raisio, FIN;1582;3,6;0:07:59;0:01:35
+19.4.2024;10:05;Nikkarinkatu 1, 21280 Raisio, FIN;1582;Varaosien nouto;Tuukka Leino;19.4.2024;10:13;Voudinkatu 13, 21200 Raisio, FIN;1585;2,9;0:08:23;0:00:10
+19.4.2024;10:13;Voudinkatu 13, 21200 Raisio, FIN;1585;Varaosien nouto;Tuukka Leino;19.4.2024;10:23;EK3, Eeronkuja 3, 21200 Raisio, FIN;1587;2,1;0:09:35;122:44:10
+24.4.2024;13:07;EK3, Eeronkuja 3, 21200 Raisio, FIN;1587;Varaosien nouto;Tuukka Leino;24.4.2024;13:24;Rieskalähteentie 89, 20300 Turku, FIN;1594;7;0:16:38;0:04:14
+24.4.2024;13:28;Rieskalähteentie 89, 20300 Turku, FIN;1594;Varaosien nouto;Tuukka Leino;24.4.2024;13:45;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1601;7,7;0:17:13;117:31:54
+29.4.2024;11:17;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1601;Varaosien nouto;Tuukka Leino;29.4.2024;11:28;Postikatu 2a, 20250 Turku, FIN;1608;6,6;0:11:19;0:27:06
+29.4.2024;11:55;Postikatu 2a, 20250 Turku, FIN;1608;Varaosien nouto;Tuukka Leino;29.4.2024;12:07;EK3, Eeronkuja 3, 21200 Raisio, FIN;1614;6,4;0:11:31;92:10:54
+3.5.2024;8:18;EK3, Eeronkuja 3, 21200 Raisio, FIN;1614;Varaosien nouto;Tuukka Leino;3.5.2024;8:34;Rieskalähteentie 77, 20300 Turku, FIN;1622;7,3;0:16:15;0:02:01
+3.5.2024;8:36;Rieskalähteentie 77, 20300 Turku, FIN;1622;Varaosien nouto;Tuukka Leino;3.5.2024;8:51;Voudinkatu 13, 21200 Raisio, FIN;1629;6,9;0:14:36;0:06:42
+3.5.2024;8:57;Voudinkatu 13, 21200 Raisio, FIN;1629;Varaosien nouto;Tuukka Leino;3.5.2024;9:06;EK3, Eeronkuja 3, 21200 Raisio, FIN;1631;2,1;0:08:14;0:20:10
+3.5.2024;9:26;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1631;Varaosien nouto;Tuukka Leino;3.5.2024;9:36;Itäniityntie 13, 21280 Raisio, FIN;1636;5,2;0:10:10;0:16:53
+3.5.2024;9:53;Itäniityntie 13, 21280 Raisio, FIN;1636;Varaosien nouto;Tuukka Leino;3.5.2024;9:57;Kuloistentie 3, 21280 Raisio, FIN;1637;1,2;0:03:48;0:08:28
+3.5.2024;10:05;Kuloistentie 3, 21280 Raisio, FIN;1637;Varaosien nouto;Tuukka Leino;3.5.2024;10:14;EK3, Eeronkuja 3, 21200 Raisio, FIN;1641;4;0:08:30;119:15:02
+8.5.2024;9:29;EK3, Eeronkuja 3, 21200 Raisio, FIN;1641;Varaosien nouto;Tuukka Leino;8.5.2024;9:45;Rieskalähteentie 89, 20300 Turku, FIN;1648;6,9;0:16:02;0:03:06
+8.5.2024;9:48;Rieskalähteentie 89, 20300 Turku, FIN;1648;Varaosien nouto;Tuukka Leino;8.5.2024;10:02;EK3, Eeronkuja 3, 21200 Raisio, FIN;1655;7;0:14:29;484:01:18
+28.5.2024;14:04;EK3, Eeronkuja 3, 21200 Raisio, FIN;1655;Varaosien nouto;Tuukka Leino;28.5.2024;14:45;Turuntie 117, 23310 Taivassalo, FIN;1701;45,5;0:41:44;0:42:36
+28.5.2024;15:28;Turuntie 117, 23310 Taivassalo, FIN;1701;Varaosien nouto;Tuukka Leino;28.5.2024;16:10;EK3, Eeronkuja 3, 21200 Raisio, FIN;1744;43,4;0:41:56;18:12:32
+29.5.2024;10:22;EK3, Eeronkuja 3, 21200 Raisio, FIN;1744;Varaosien nouto;Tuukka Leino;29.5.2024;10:28;Alhaistentie 6, 21200 Raisio, FIN;1745;0,8;0:05:13;0:00:54
+29.5.2024;10:29;Alhaistentie 6, 21200 Raisio, FIN;1745;Varaosien nouto;Tuukka Leino;29.5.2024;10:34;EK3, Eeronkuja 3, 21200 Raisio, FIN;1746;1;0:04:55;0:07:55
+29.5.2024;10:41;EK3, Eeronkuja 3, 21200 Raisio, FIN;1746;Varaosien nouto;Tuukka Leino;29.5.2024;10:44;EK3, Eeronkuja 3, 21200 Raisio, FIN;1746;0,2;0:02:35;120:15:21
+3.6.2024;10:59;EK3, Eeronkuja 3, 21200 Raisio, FIN;1746;Varaosien nouto;Tuukka Leino;3.6.2024;11:05;Kirkkoväärtinkuja 4, 21200 Raisio, FIN;1747;0,9;0:05:26;0:33:37
+3.6.2024;11:38;Kirkkoväärtinkuja 4, 21200 Raisio, FIN;1747;Varaosien nouto;Tuukka Leino;3.6.2024;11:49;EK3, Eeronkuja 3, 21200 Raisio, FIN;1750;2,7;0:11:01;93:32:11
+7.6.2024;9:22;EK3, Eeronkuja 3, 21200 Raisio, FIN;1750;Varaosien nouto;Tuukka Leino;7.6.2024;9:31;Kuninkaanväylä 35a, 20320 Raisio, FIN;1755;5,4;0:09:51;0:04:15
+7.6.2024;9:36;Kuninkaanväylä 35a, 20320 Raisio, FIN;1755;Varaosien nouto;Tuukka Leino;7.6.2024;9:41;Itäniityntie 13, 21280 Raisio, FIN;1756;1,3;0:04:52;0:06:57
+7.6.2024;9:48;Itäniityntie 13, 21280 Raisio, FIN;1756;Varaosien nouto;Tuukka Leino;7.6.2024;9:52;Kyntäjänkatu 1, 21280 Raisio, FIN;1758;1,4;0:04:45;0:12:21
+7.6.2024;10:05;Kyntäjänkatu 1, 21280 Raisio, FIN;1758;Varaosien nouto;Tuukka Leino;7.6.2024;10:09;Allastie 3, 21200 Raisio, FIN;1759;0,9;0:04:07;0:00:17
+7.6.2024;10:09;Allastie 3, 21200 Raisio, FIN;1759;Varaosien nouto;Tuukka Leino;7.6.2024;10:17;EK3, Eeronkuja 3, 21200 Raisio, FIN;1762;3,5;0:07:29;0:02:09
+7.6.2024;10:19;EK3, Eeronkuja 3, 21200 Raisio, FIN;1762;Varaosien nouto;Tuukka Leino;7.6.2024;10:26;Kyntäjänkatu 1, 21280 Raisio, FIN;1766;4;0:07:34;0:11:32
+7.6.2024;10:38;Kyntäjänkatu 1, 21280 Raisio, FIN;1766;Varaosien nouto;Tuukka Leino;7.6.2024;10:48;EK3, Eeronkuja 3, 21200 Raisio, FIN;1770;4,3;0:10:31;6:38:42
+7.6.2024;17:27;EK3, Eeronkuja 3, 21200 Raisio, FIN;1771;Varaosien nouto;Tuukka Leino;7.6.2024;17:44;Uuhikuja 20, 21290 Rusko, FIN;1782;11,2;0:16:47;15:05:42
+8.6.2024;8:49;Uuhikuja 20, 21290 Rusko, FIN;1782;Varaosien nouto;Tuukka Leino;8.6.2024;8:58;Kuninkaanväylä 22, 20320 Raisio, FIN;1788;5,8;0:08:41;0:03:22
+8.6.2024;9:02;Kuninkaanväylä 22, 20320 Raisio, FIN;1788;Varaosien nouto;Tuukka Leino;8.6.2024;9:10;EK3, Eeronkuja 3, 21200 Raisio, FIN;1793;5,4;0:08:41;216:45:07
+17.6.2024;9:55;EK3, Eeronkuja 3, 21200 Raisio, FIN;1793;Varaosien nouto;Tuukka Leino;17.6.2024;10:11;Kytkinkatu 1, 20380 Turku, FIN;1805;11,9;0:15:28;0:03:07
+17.6.2024;10:14;Kytkinkatu 1, 20380 Turku, FIN;1805;Varaosien nouto;Tuukka Leino;17.6.2024;10:26;Kyntäjänkatu 1, 21280 Raisio, FIN;1814;9,3;0:11:38;0:18:42
+17.6.2024;10:44;Kyntäjänkatu 1, 21280 Raisio, FIN;1814;Varaosien nouto;Tuukka Leino;17.6.2024;10:53;Martinkatu 2a, 21200 Raisio, FIN;1818;3,5;0:08:59;0:02:17
+17.6.2024;10:56;Martinkatu 2a, 21200 Raisio, FIN;1818;Varaosien nouto;Tuukka Leino;17.6.2024;11:02;EK3, Eeronkuja 3, 21200 Raisio, FIN;1819;1,2;0:05:58;24:06:56
+18.6.2024;11:08;EK3, Eeronkuja 3, 21200 Raisio, FIN;1819;Varaosien nouto;Tuukka Leino;18.6.2024;11:15;Martinkatu 2, 21200 Raisio, FIN;1820;1,2;0:06:08;0:33:07
+18.6.2024;11:48;Martinkatu 2, 21200 Raisio, FIN;1820;Varaosien nouto;Tuukka Leino;18.6.2024;11:54;EK3, Eeronkuja 3, 21200 Raisio, FIN;1821;1,2;0:06:19;335:57:01
+2.7.2024;11:51;EK3, Eeronkuja 3, 21200 Raisio, FIN;1822;Varaosien nouto;Tuukka Leino;2.7.2024;11:56;Raisiontori 11, 21200 Raisio, FIN;1823;1,5;0:05:20;0:29:27
+2.7.2024;12:26;Raisiontori 11, 21200 Raisio, FIN;1823;Varaosien nouto;Tuukka Leino;2.7.2024;12:32;EK3, Eeronkuja 3, 21200 Raisio, FIN;1825;1,5;0:06:31;25:47:52
+3.7.2024;14:20;EK3, Eeronkuja 3, 21200 Raisio, FIN;1825;Varaosien nouto;Tuukka Leino;3.7.2024;14:25;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1825;0,3;0:04:51;0:00:39
+3.7.2024;14:26;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1825;Varaosien nouto;Tuukka Leino;3.7.2024;14:31;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1825;0,4;0:04:59;691:07:10
+1.8.2024;9:38;EK3, Eeronkuja 3, 21200 Raisio, FIN;1825;Varaosien nouto;Tuukka Leino;1.8.2024;9:42;Martinkatu 2, 21200 Raisio, FIN;1826;1;0:04:26;0:27:08
+1.8.2024;10:09;Martinkatu 2, 21200 Raisio, FIN;1826;Varaosien nouto;Tuukka Leino;1.8.2024;10:14;EK3, Eeronkuja 3, 21200 Raisio, FIN;1828;1,2;0:05:01;1:46:43
+1.8.2024;12:01;EK3, Eeronkuja 3, 21200 Raisio, FIN;1828;Varaosien nouto;Tuukka Leino;1.8.2024;12:11;Kuninkaanväylä 31, 20320 Raisio, FIN;1833;5,3;0:10:08;0:08:23
+1.8.2024;12:20;Kuninkaanväylä 31, 20320 Raisio, FIN;1833;Varaosien nouto;Tuukka Leino;1.8.2024;12:24;Itäniityntie 13, 21280 Raisio, FIN;1834;1,3;0:03:55;0:26:58
+1.8.2024;12:51;Itäniityntie 13, 21280 Raisio, FIN;1834;Varaosien nouto;Tuukka Leino;1.8.2024;13:03;EK3, Eeronkuja 3, 21200 Raisio, FIN;1840;5,8;0:12:39;115:22:50
+6.8.2024;8:26;EK3, Eeronkuja 3, 21200 Raisio, FIN;1840;Varaosien nouto;Tuukka Leino;6.8.2024;8:42;Läntinen Pitkäkatu 12 B, 20100 Turku, FIN;1848;8;0:15:52;0:17:47
+6.8.2024;9:00;Läntinen Pitkäkatu 12 B, 20100 Turku, FIN;1848;Varaosien nouto;Tuukka Leino;6.8.2024;9:14;EK3, Eeronkuja 3, 21200 Raisio, FIN;1856;8;0:14:32;0:01:32
+6.8.2024;9:16;EK3, Eeronkuja 3, 21200 Raisio, FIN;1856;Varaosien nouto;Tuukka Leino;6.8.2024;9:22;Voudinkatu 5, 21200 Raisio, FIN;1858;1,7;0:06:17;0:06:52
+6.8.2024;9:29;Voudinkatu 5, 21200 Raisio, FIN;1858;Varaosien nouto;Tuukka Leino;6.8.2024;9:36;Ruopankatu 8, 20360 Turku, FIN;1866;7,9;0:07:20;0:01:42
+6.8.2024;9:38;Ruopankatu 8, 20360 Turku, FIN;1866;Varaosien nouto;Tuukka Leino;6.8.2024;9:44;Kuninkaanväylä 35a, 20320 Raisio, FIN;1870;4,8;0:06:09;0:05:24
+6.8.2024;9:50;Kuninkaanväylä 22, 20320 Raisio, FIN;1871;Varaosien nouto;Tuukka Leino;6.8.2024;9:57;Tuotekatu 18, 21200 Raisio, FIN;1874;3,3;0:07:32;0:22:01
+6.8.2024;10:19;Tuotekatu 18, 21200 Raisio, FIN;1874;Varaosien nouto;Tuukka Leino;6.8.2024;10:30;EK3, Eeronkuja 3, 21200 Raisio, FIN;1878;3,9;0:11:09;27:12:39
+7.8.2024;13:43;EK3, Eeronkuja 3, 21200 Raisio, FIN;1878;Varaosien nouto;Tuukka Leino;7.8.2024;13:51;Itäniityntie 13, 21280 Raisio, FIN;1883;5,4;0:08:14;0:25:48
+7.8.2024;14:17;Itäniityntie 13, 21280 Raisio, FIN;1883;Varaosien nouto;Tuukka Leino;7.8.2024;14:24;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;1888;4,2;0:07:26;0:00:10
+7.8.2024;14:25;Martinkatu 2, 21200 Raisio, FIN;1888;Varaosien nouto;Tuukka Leino;7.8.2024;14:30;EK3, Eeronkuja 3, 21200 Raisio, FIN;1889;1,3;0:05:09;0:28:30
+7.8.2024;14:58;EK3, Eeronkuja 3, 21200 Raisio, FIN;1889;Varaosien nouto;Tuukka Leino;7.8.2024;15:01;EK3, Eeronkuja 3, 21200 Raisio, FIN;1889;0,2;0:03:02;0:21:44
+7.8.2024;15:23;EK3, Eeronkuja 3, 21200 Raisio, FIN;1889;Varaosien nouto;Tuukka Leino;7.8.2024;15:28;EK3, Kunnaankatu 9, 21200 Raisio, FIN;1890;0,5;0:05:21;115:42:39
+12.8.2024;11:11;EK3, Eeronkuja 3, 21200 Raisio, FIN;1890;Varaosien nouto;Tuukka Leino;12.8.2024;11:16;Martinkatu 2, 21200 Raisio, FIN;1891;1;0:05:04;0:35:14
+12.8.2024;11:51;Martinkatu 2, 21200 Raisio, FIN;1891;Varaosien nouto;Tuukka Leino;12.8.2024;12:00;EK3, Eeronkuja 3, 21200 Raisio, FIN;1893;2;0:08:21;20:10:31
+13.8.2024;8:10;EK3, Eeronkuja 3, 21200 Raisio, FIN;1893;Varaosien nouto;Tuukka Leino;13.8.2024;8:57;EK3, Eeronkuja 3, 21200 Raisio, FIN;1928;35,1;0:46:43;2:05:52
+13.8.2024;11:03;EK3, Eeronkuja 3, 21200 Raisio, FIN;1928;Varaosien nouto;Tuukka Leino;13.8.2024;11:16;Haunistentie 15, 21280 Raisio, FIN;1931;3,1;0:13:28;0:07:56
+13.8.2024;11:24;Haunistentie 15, 21280 Raisio, FIN;1931;Varaosien nouto;Tuukka Leino;13.8.2024;11:32;Pläkkisepänkatu 2b, 20320 Turku, FIN;1935;3,6;0:08:10;0:24:33
+13.8.2024;11:57;Pläkkisepänkatu 2b, 20320 Turku, FIN;1935;Varaosien nouto;Tuukka Leino;13.8.2024;12:08;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1940;4,8;0:10:55;0:08:44
+13.8.2024;12:17;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1940;Varaosien nouto;Tuukka Leino;13.8.2024;12:29;Pläkkisepänkatu 2, 20320 Turku, FIN;1944;4,7;0:12:47;0:38:43
+13.8.2024;13:08;Pläkkisepänkatu 2, 20320 Turku, FIN;1944;Varaosien nouto;Tuukka Leino;13.8.2024;13:17;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1949;4,6;0:09:22;23:09:21
+14.8.2024;12:27;EK3, Käpsänkatu 6, 21200 Raisio, FIN;1949;Varaosien nouto;Tuukka Leino;14.8.2024;12:38;Kalustekatu 1b, 20320 Raisio, FIN;1953;4,6;0:11:45;0:06:32
+14.8.2024;12:45;Kalustekatu 1b, 20320 Raisio, FIN;1953;Varaosien nouto;Tuukka Leino;14.8.2024;12:57;EK3, Eeronkuja 3, 21200 Raisio, FIN;1958;4,4;0:11:34;19:24:50
+15.8.2024;8:21;EK3, Eeronkuja 3, 21200 Raisio, FIN;1958;Varaosien nouto;Tuukka Leino;15.8.2024;8:38;Nuppulantie 29, 20320 Turku, FIN;1965;6,8;0:16:12;0:04:16
+15.8.2024;8:42;Nuppulantie 29, 20320 Turku, FIN;1965;Varaosien nouto;Tuukka Leino;15.8.2024;8:55;EK3, Eeronkuja 3, 21200 Raisio, FIN;1972;7,2;0:13:02;4:53:37
+15.8.2024;13:49;EK3, Eeronkuja 3, 21200 Raisio, FIN;1972;Varaosien nouto;Tuukka Leino;15.8.2024;13:58;Pläkkisepänkatu 2, 20320 Turku, FIN;1976;4,6;0:09:14;0:15:22
+15.8.2024;14:13;Pläkkisepänkatu 2, 20320 Turku, FIN;1976;Varaosien nouto;Tuukka Leino;15.8.2024;14:23;EK3, Eeronkuja 3, 21200 Raisio, FIN;1981;4,6;0:09:46;94:45:08
+19.8.2024;13:08;EK3, Eeronkuja 3, 21200 Raisio, FIN;1981;Varaosien nouto;Tuukka Leino;19.8.2024;13:20;Vuorelankatu 5, 20320 Raisio, FIN;1987;5,9;0:11:30;0:09:44
+19.8.2024;13:29;Vuorelankatu 5, 20320 Raisio, FIN;1987;Varaosien nouto;Tuukka Leino;19.8.2024;13:41;EK3, Eeronkuja 3, 21200 Raisio, FIN;1993;5,5;0:11:16;20:50:32
+20.8.2024;10:31;EK3, Eeronkuja 3, 21200 Raisio, FIN;1993;Varaosien nouto;Tuukka Leino;20.8.2024;10:36;Martinkatu 2a, 21200 Raisio, FIN;1994;1,1;0:04:36;0:01:11
+20.8.2024;10:37;Martinkatu 2a, 21200 Raisio, FIN;1994;Varaosien nouto;Tuukka Leino;20.8.2024;10:43;Allastie 3, 21200 Raisio, FIN;1996;2,5;0:06:15;0:01:52
+20.8.2024;10:45;Allastie 3, 21200 Raisio, FIN;1996;Varaosien nouto;Tuukka Leino;20.8.2024;10:53;Itäniityntie 13, 20320 Turku, FIN;1999;3;0:08:28;0:20:29
+20.8.2024;11:14;Itäniityntie 13, 20320 Turku, FIN;1999;Varaosien nouto;Tuukka Leino;20.8.2024;11:21;Ruopankatu 8, 20360 Turku, FIN;2005;5,2;0:07:10;0:11:28
+20.8.2024;11:33;Ruopankatu 8, 20360 Turku, FIN;2005;Varaosien nouto;Tuukka Leino;20.8.2024;11:39;Itäniityntie 13, 20320 Turku, FIN;2010;5;0:06:44;0:03:04
+20.8.2024;11:42;Itäniityntie 13, 21280 Raisio, FIN;2010;Varaosien nouto;Tuukka Leino;20.8.2024;11:52;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;2014;4,6;0:09:43;0:14:16
+20.8.2024;12:06;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;2014;Varaosien nouto;Tuukka Leino;20.8.2024;12:12;EK3, Eeronkuja 3, 21200 Raisio, FIN;2015;1,3;0:05:23;20:39:49
+21.8.2024;8:52;EK3, Eeronkuja 3, 21200 Raisio, FIN;2015;Varaosien nouto;Tuukka Leino;21.8.2024;8:58;Tasalanaukio 10, 21200 Raisio, FIN;2017;1,5;0:05:58;0:02:34
+21.8.2024;9:00;Raisiontori 6, 21200 Raisio, FIN;2017;Varaosien nouto;Tuukka Leino;21.8.2024;9:07;Tuotekatu 19, 21200 Raisio, FIN;2020;2,7;0:07:02;0:00:07
+21.8.2024;9:07;Tuotekatu 19, 21200 Raisio, FIN;2020;Varaosien nouto;Tuukka Leino;21.8.2024;9:16;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2023;3,6;0:08:27;48:26:09
+23.8.2024;9:42;EK3, Eeronkuja 3, 21200 Raisio, FIN;2023;Varaosien nouto;Tuukka Leino;23.8.2024;9:48;Alhaistentie 6, 21200 Raisio, FIN;2024;1,1;0:06:25;0:01:16
+23.8.2024;9:50;Alhaistentie 6, 21200 Raisio, FIN;2024;Varaosien nouto;Tuukka Leino;23.8.2024;10:10;Varastomiehenkatu 6, 20780 Kaarina, FIN;2045;20;0:20:39;0:07:54
+23.8.2024;10:18;Varastomiehenkatu 6, 20780 Kaarina, FIN;2045;Varaosien nouto;Tuukka Leino;23.8.2024;10:34;Ruopankatu 8, 20360 Turku, FIN;2058;13,2;0:15:53;0:15:45
+23.8.2024;10:50;Ruopankatu 8, 20360 Turku, FIN;2058;Varaosien nouto;Tuukka Leino;23.8.2024;10:57;Kuninkaanväylä 22, 20320 Raisio, FIN;2063;4,9;0:07:32;0:04:34
+23.8.2024;11:02;Kuninkaanväylä 22, 20320 Raisio, FIN;2063;Varaosien nouto;Tuukka Leino;23.8.2024;11:06;Allastie 3, 21200 Raisio, FIN;2064;1,8;0:04:35;0:01:03
+23.8.2024;11:08;Allastie 3, 21200 Raisio, FIN;2064;Varaosien nouto;Tuukka Leino;23.8.2024;11:15;Martinkatu 2, 21200 Raisio, FIN;2068;3,2;0:07:49;0:00:43
+23.8.2024;11:16;Martinkatu 2, 21200 Raisio, FIN;2068;Varaosien nouto;Tuukka Leino;23.8.2024;11:21;EK3, Eeronkuja 3, 21200 Raisio, FIN;2069;1,2;0:04:50;2:06:13
+23.8.2024;13:27;EK3, Eeronkuja 3, 21200 Raisio, FIN;2069;Varaosien nouto;Tuukka Leino;23.8.2024;14:04;EK3, Eeronkuja 3, 21200 Raisio, FIN;2069;0,2;0:37:16;2:24:56
+23.8.2024;16:29;EK3, Eeronkuja 3, 21200 Raisio, FIN;2069;Varaosien nouto;Tuukka Leino;23.8.2024;16:45;20300 Turku, FIN;2076;7;0:15:55;0:06:11
+23.8.2024;16:51;20300 Turku, FIN;2076;Varaosien nouto;Tuukka Leino;23.8.2024;17:02;Pläkkisepänkatu 2, 20320 Turku, FIN;2080;4;0:10:55;0:15:33
+23.8.2024;17:18;Pläkkisepänkatu 2, 20320 Turku, FIN;2080;Varaosien nouto;Tuukka Leino;23.8.2024;17:28;EK3, Eeronkuja 3, 21200 Raisio, FIN;2085;4,5;0:09:47;62:59:57
+26.8.2024;8:28;EK3, Eeronkuja 3, 21200 Raisio, FIN;2085;Varaosien nouto;Tuukka Leino;26.8.2024;8:40;Nuppulantie 33, 20320 Turku, FIN;2090;5,6;0:12:04;0:01:52
+26.8.2024;8:42;Nuppulantie 33, 20320 Turku, FIN;2090;Varaosien nouto;Tuukka Leino;26.8.2024;8:59;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2096;5,8;0:17:06;1:22:16
+26.8.2024;10:21;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2096;Varaosien nouto;Tuukka Leino;26.8.2024;10:28;Voudinkatu 11, 21200 Raisio, FIN;2098;2;0:07:30;0:04:39
+26.8.2024;10:33;Voudinkatu 11, 21200 Raisio, FIN;2098;Varaosien nouto;Tuukka Leino;26.8.2024;10:40;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2100;2,1;0:07:18;2:06:19
+26.8.2024;12:47;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2100;Varaosien nouto;Tuukka Leino;26.8.2024;12:54;Alhaistentie 6, 21200 Raisio, FIN;2103;2,5;0:07:39;0:01:37
+26.8.2024;12:56;Alhaistentie 6, 21200 Raisio, FIN;2103;Varaosien nouto;Tuukka Leino;26.8.2024;13:04;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2106;2,7;0:08:31;1:38:54
+26.8.2024;14:43;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2106;Varaosien nouto;Tuukka Leino;26.8.2024;14:56;Ruopankatu 8, 20360 Turku, FIN;2115;9,2;0:12:32;0:23:51
+26.8.2024;15:20;Ruopankatu 8, 20360 Turku, FIN;2115;Varaosien nouto;Tuukka Leino;26.8.2024;15:37;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2124;9,4;0:17:13;46:04:55
+28.8.2024;13:42;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2124;Varaosien nouto;Tuukka Leino;28.8.2024;13:53;Vuorelankatu 5, 20320 Raisio, FIN;2130;5,9;0:11:18;0:04:05
+28.8.2024;13:57;Vuorelankatu 5, 20320 Raisio, FIN;2130;Varaosien nouto;Tuukka Leino;28.8.2024;14:18;Kuninkaanväylä 22, 20320 Raisio, FIN;2141;11,3;0:20:15;0:05:34
+28.8.2024;14:23;Kuninkaanväylä 22, 20320 Raisio, FIN;2141;Varaosien nouto;Tuukka Leino;28.8.2024;14:33;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2147;5,3;0:10:13;19:03:29
+29.8.2024;9:37;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2147;Varaosien nouto;Tuukka Leino;29.8.2024;9:51;Ruopankatu 8, 20360 Turku, FIN;2156;9,3;0:14:02;0:17:43
+29.8.2024;10:09;Ruopankatu 8, 20360 Turku, FIN;2156;Varaosien nouto;Tuukka Leino;29.8.2024;10:22;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2165;9,4;0:13:24;1:58:31
+29.8.2024;12:20;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2165;Varaosien nouto;Tuukka Leino;29.8.2024;12:33;Nuppulantie 33, 20320 Turku, FIN;2171;5,7;0:12:46;0:01:42
+29.8.2024;12:35;Nuppulantie 30, 20320 Turku, FIN;2171;Varaosien nouto;Tuukka Leino;29.8.2024;12:46;Ruopankatu 8, 20360 Turku, FIN;2179;7,7;0:11:14;0:13:58
+29.8.2024;13:00;Ruopankatu 8, 20360 Turku, FIN;2179;Varaosien nouto;Tuukka Leino;29.8.2024;13:13;EK3, Eeronkuja 3, 21200 Raisio, FIN;2188;9,3;0:12:53;1:01:44
+29.8.2024;14:15;EK3, Eeronkuja 3, 21200 Raisio, FIN;2188;Varaosien nouto;Tuukka Leino;29.8.2024;14:27;Ruopankatu 8, 20360 Turku, FIN;2197;9,2;0:12:23;0:28:45
+29.8.2024;14:56;Ruopankatu 8, 20360 Turku, FIN;2197;Varaosien nouto;Tuukka Leino;29.8.2024;15:09;EK3, Eeronkuja 3, 21200 Raisio, FIN;2207;9,3;0:12:42;19:17:39
+30.8.2024;10:26;EK3, Eeronkuja 3, 21200 Raisio, FIN;2207;Varaosien nouto;Tuukka Leino;30.8.2024;10:37;Pläkkisepänkatu 2, 20320 Turku, FIN;2212;5,2;0:10:33;0:16:50
+30.8.2024;10:54;Pläkkisepänkatu 2, 20320 Turku, FIN;2212;Varaosien nouto;Tuukka Leino;30.8.2024;11:04;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2216;4,7;0:10:14;70:27:19
+2.9.2024;9:31;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2216;Varaosien nouto;Tuukka Leino;2.9.2024;9:43;Nuppulantie 33, 20320 Turku, FIN;2222;5,5;0:11:38;0:00:59
+2.9.2024;9:44;Nuppulantie 30, 20320 Turku, FIN;2222;Varaosien nouto;Tuukka Leino;2.9.2024;9:56;Ruopankatu 8, 20360 Turku, FIN;2230;7,7;0:12:08;0:04:19
+2.9.2024;10:00;Ruopankatu 8, 20360 Turku, FIN;2230;Varaosien nouto;Tuukka Leino;2.9.2024;10:13;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2239;9,3;0:13:01;23:17:11
+3.9.2024;9:30;EK3, Eeronkuja 3, 21200 Raisio, FIN;2239;Varaosien nouto;Tuukka Leino;3.9.2024;9:47;Vajossuonkatu 7, 20360 Turku, FIN;2250;10,6;0:16:31;0:02:07
+3.9.2024;9:49;Vajossuonkatu 7, 20360 Turku, FIN;2250;Varaosien nouto;Tuukka Leino;3.9.2024;10:05;Kalustekatu 1b, 20320 Raisio, FIN;2262;12,3;0:15:57;0:03:46
+3.9.2024;10:09;Kalustekatu 1B, 20320 Raisio, FIN;2262;Varaosien nouto;Tuukka Leino;3.9.2024;10:20;EK3, Eeronkuja 3, 21200 Raisio, FIN;2267;4,5;0:10:45;2:07:14
+3.9.2024;12:27;EK3, Eeronkuja 3, 21200 Raisio, FIN;2267;Varaosien nouto;Tuukka Leino;3.9.2024;12:36;Tuotekatu 10, 21200 Raisio, FIN;2270;3,1;0:08:45;0:20:24
+3.9.2024;12:56;Tuotekatu 10, 21200 Raisio, FIN;2270;Varaosien nouto;Tuukka Leino;3.9.2024;13:03;Tuotekatu 10, 21200 Raisio, FIN;2270;0,2;0:07:17;0:02:18
+3.9.2024;13:06;Tuotekatu 10, 21200 Raisio, FIN;2270;Varaosien nouto;Tuukka Leino;3.9.2024;13:17;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2274;4,3;0:11:03;43:09:48
+5.9.2024;8:26;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2274;Varaosien nouto;Tuukka Leino;5.9.2024;8:38;Ruopankatu 8, 20360 Turku, FIN;2284;9,3;0:11:53;0:16:41
+5.9.2024;8:55;Ruopankatu 8, 20360 Turku, FIN;2284;Varaosien nouto;Tuukka Leino;5.9.2024;9:06;EK3, Eeronkuja 3, 21200 Raisio, FIN;2293;9,3;0:10:47;23:28:15
+6.9.2024;8:34;EK3, Eeronkuja 3, 21200 Raisio, FIN;2293;Varaosien nouto;Tuukka Leino;6.9.2024;8:48;Orikedonkatu 5, 20380 Turku, FIN;2304;11,5;0:13:45;0:17:54
+6.9.2024;9:06;Orikedonkatu 5, 20380 Turku, FIN;2304;Varaosien nouto;Tuukka Leino;6.9.2024;9:19;Alhaistentie 6, 21200 Raisio, FIN;2316;11,5;0:12:57;0:07:52
+6.9.2024;9:26;Alhaistentie 6, 21200 Raisio, FIN;2316;Varaosien nouto;Tuukka Leino;6.9.2024;9:33;EK3, Eeronkuja 3, 21200 Raisio, FIN;2317;1,2;0:06:07;2:57:48
+6.9.2024;12:30;EK3, Eeronkuja 3, 21200 Raisio, FIN;2317;Varaosien nouto;Tuukka Leino;6.9.2024;12:40;Itäniityntie 13, 21280 Raisio, FIN;2323;5,5;0:10:01;0:03:53
+6.9.2024;12:44;Itäniityntie 13, 21280 Raisio, FIN;2323;Varaosien nouto;Tuukka Leino;6.9.2024;12:55;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2329;5,8;0:10:19;92:38:18
+10.9.2024;9:33;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2329;Varaosien nouto;Tuukka Leino;10.9.2024;9:41;Tuotekatu 12, 21200 Raisio, FIN;2332;3,4;0:07:54;0:13:39
+10.9.2024;9:54;Tuotekatu 12, 21200 Raisio, FIN;2332;Varaosien nouto;Tuukka Leino;10.9.2024;10:06;Orikedonkatu 5, 20380 Turku, FIN;2341;9,2;0:11:43;0:12:21
+10.9.2024;10:19;Orikedonkatu 5, 20380 Turku, FIN;2341;Varaosien nouto;Tuukka Leino;10.9.2024;10:24;Piiskakuja 10, 20380 Turku, FIN;2343;1,6;0:05:38;0:11:11
+10.9.2024;10:35;Piiskakuja 10, 20380 Turku, FIN;2343;Varaosien nouto;Tuukka Leino;10.9.2024;10:42;Ruopankatu 8, 20360 Turku, FIN;2346;2,8;0:06:30;0:01:56
+10.9.2024;10:44;Ruopankatu 8, 20360 Turku, FIN;2346;Varaosien nouto;Tuukka Leino;10.9.2024;10:59;EK3, Eeronkuja 3, 21200 Raisio, FIN;2356;10,1;0:15:00;0:00:22
+10.9.2024;10:59;EK3, Eeronkuja 3, 21200 Raisio, FIN;2356;Varaosien nouto;Tuukka Leino;10.9.2024;11:05;EK3, Eeronkuja 3, 21200 Raisio, FIN;2356;0,3;0:05:32;1:13:58
+10.9.2024;12:19;EK3, Eeronkuja 3, 21200 Raisio, FIN;2356;Varaosien nouto;Tuukka Leino;10.9.2024;12:31;Nuppulantie 33, 20320 Turku, FIN;2361;5,4;0:12:25;0:02:46
+10.9.2024;12:34;Nuppulantie 30, 20320 Turku, FIN;2361;Varaosien nouto;Tuukka Leino;10.9.2024;12:49;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2367;5,6;0:15:26;2:54:58
+10.9.2024;15:44;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2367;Varaosien nouto;Tuukka Leino;10.9.2024;15:59;Kalustekatu 1b, 20320 Raisio, FIN;2371;4,4;0:14:47;0:01:10
+10.9.2024;16:00;Kalustekatu 1b, 20320 Raisio, FIN;2371;Varaosien nouto;Tuukka Leino;10.9.2024;16:13;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2376;4,5;0:12:51;20:11:38
+11.9.2024;12:25;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2376;Varaosien nouto;Tuukka Leino;11.9.2024;12:38;Tammimäenkatu 4, 20320 Raisio, FIN;2382;6,3;0:12:59;0:03:01
+11.9.2024;12:41;Tammimäenkatu 4, 20320 Raisio, FIN;2382;Varaosien nouto;Tuukka Leino;11.9.2024;12:57;Avantintie 20, 21420 Lieto, FIN;2394;12;0:16:42;0:05:47
+11.9.2024;13:03;Avantintie 20, 21420 Lieto, FIN;2394;Varaosien nouto;Tuukka Leino;11.9.2024;13:29;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2411;17,3;0:25:26;20:03:28
+12.9.2024;9:32;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2411;Varaosien nouto;Tuukka Leino;12.9.2024;9:42;Pläkkisepänkatu 2b, 20320 Turku, FIN;2416;4,9;0:09:34;0:07:58
+12.9.2024;9:50;Pläkkisepänkatu 2b, 20320 Turku, FIN;2416;Varaosien nouto;Tuukka Leino;12.9.2024;10:02;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2421;5;0:12:51;0:08:39
+12.9.2024;10:11;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2421;Varaosien nouto;Tuukka Leino;12.9.2024;10:24;Vuorelankatu 5, 20320 Raisio, FIN;2428;6,7;0:13:11;0:09:16
+12.9.2024;10:34;Vuorelankatu 5, 20320 Raisio, FIN;2428;Varaosien nouto;Tuukka Leino;12.9.2024;10:54;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2437;9,1;0:20:09;1:27:50
+12.9.2024;12:22;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2437;Varaosien nouto;Tuukka Leino;12.9.2024;12:33;Vuorelankatu 5, 20320 Raisio, FIN;2443;5,8;0:11:16;0:09:43
+12.9.2024;12:43;Vuorelankatu 5, 20320 Raisio, FIN;2443;Varaosien nouto;Tuukka Leino;12.9.2024;12:56;EK3, Eeronkuja 3, 21200 Raisio, FIN;2449;6,5;0:13:04;167:19:57
+19.9.2024;12:16;EK3, Eeronkuja 3, 21200 Raisio, FIN;2450;Varaosien nouto;Tuukka Leino;19.9.2024;12:31;Orikedonkatu 5, 20380 Turku, FIN;2461;11,6;0:15:25;0:16:13
+19.9.2024;12:47;Orikedonkatu 5, 20380 Turku, FIN;2461;Varaosien nouto;Tuukka Leino;19.9.2024;12:57;Itäniityntie 13, 21280 Raisio, FIN;2469;7,7;0:09:27;0:20:41
+19.9.2024;13:17;Itäniityntie 13, 21280 Raisio, FIN;2469;Varaosien nouto;Tuukka Leino;19.9.2024;13:28;Martinkatu 2, 21200 Raisio, FIN;2474;4,6;0:10:09;0:00:10
+19.9.2024;13:28;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;2474;Varaosien nouto;Tuukka Leino;19.9.2024;13:50;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2484;10,7;0:22:24;0:28:23
+19.9.2024;14:19;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2484;Varaosien nouto;Tuukka Leino;19.9.2024;14:22;EK3, 21200 Raisio, FIN;2485;0,2;0:03:01;0:04:16
+19.9.2024;14:26;EK3, 21200 Raisio, FIN;2485;Varaosien nouto;Tuukka Leino;19.9.2024;14:30;EK3, Eeronkuja 3, 21200 Raisio, FIN;2485;0,3;0:03:55;2:45:25
+19.9.2024;17:15;EK3, 21200 Raisio, FIN;2485;Varaosien nouto;Tuukka Leino;19.9.2024;17:20;EK3, Eeronkuja 3, 21200 Raisio, FIN;2485;0,4;0:04:32;14:52:07
+20.9.2024;8:12;EK3, Eeronkuja 3, 21200 Raisio, FIN;2485;Varaosien nouto;Tuukka Leino;20.9.2024;8:20;EK3, Eeronkuja 3, 21200 Raisio, FIN;2486;0,6;0:07:58;265:18:10
+1.10.2024;9:38;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2486;Varaosien nouto;Tuukka Leino;1.10.2024;9:50;Vuorelankatu 5, 20320 Raisio, FIN;2492;5,9;0:12:15;0:07:22
+1.10.2024;9:58;Vuorelankatu 5, 20320 Raisio, FIN;2492;Varaosien nouto;Tuukka Leino;1.10.2024;10:10;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2499;6,7;0:12:02;26:37:37
+2.10.2024;12:47;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2499;Varaosien nouto;Tuukka Leino;2.10.2024;12:55;Voudinkatu 5, 21200 Raisio, FIN;2500;1,6;0:07:35;0:11:14
+2.10.2024;13:06;Voudinkatu 5, 21200 Raisio, FIN;2500;Varaosien nouto;Tuukka Leino;2.10.2024;13:13;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2503;2,5;0:06:30;20:39:50
+3.10.2024;9:52;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2503;Varaosien nouto;Tuukka Leino;3.10.2024;10:01;Tuotekatu 19, 21200 Raisio, FIN;2507;3,9;0:08:35;0:01:49
+3.10.2024;10:03;Tuotekatu 19, 21200 Raisio, FIN;2507;Varaosien nouto;Tuukka Leino;3.10.2024;10:11;EK3, Eeronkuja 3, 21200 Raisio, FIN;2510;3,6;0:07:57;1:05:14
+3.10.2024;11:16;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2510;Varaosien nouto;Tuukka Leino;3.10.2024;11:29;Ratatie 1, 21250 Masku, FIN;2521;10,7;0:13:19;0:00:31
+3.10.2024;11:30;Ratatie 2, 21250 Masku, FIN;2521;Varaosien nouto;Tuukka Leino;3.10.2024;11:43;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2531;10,2;0:13:26;0:41:17
+3.10.2024;12:25;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2531;Varaosien nouto;Tuukka Leino;3.10.2024;12:30;Voudinkatu 11, 21200 Raisio, FIN;2533;2;0:05:51;0:01:51
+3.10.2024;12:32;Voudinkatu 11, 21200 Raisio, FIN;2533;Varaosien nouto;Tuukka Leino;3.10.2024;12:39;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2535;2;0:07:03;93:38:34
+7.10.2024;10:18;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2535;Varaosien nouto;Tuukka Leino;7.10.2024;10:26;Tuotekatu 19, 21200 Raisio, FIN;2539;3,5;0:08:29;0:00:35
+7.10.2024;10:27;Tuotekatu 19, 21200 Raisio, FIN;2539;Varaosien nouto;Tuukka Leino;7.10.2024;10:32;Voudinkatu 11, 21200 Raisio, FIN;2541;2,5;0:05:21;0:12:26
+7.10.2024;10:45;Voudinkatu 11, 21200 Raisio, FIN;2541;Varaosien nouto;Tuukka Leino;7.10.2024;10:49;Martinkatu 2a, 21200 Raisio, FIN;2542;1;0:04:16;0:01:13
+7.10.2024;10:50;Martinkatu 2a, 21200 Raisio, FIN;2542;Varaosien nouto;Tuukka Leino;7.10.2024;10:56;EK3, Eeronkuja 3, 21200 Raisio, FIN;2543;1,2;0:05:48;21:45:00
+8.10.2024;8:41;EK3, Eeronkuja 3, 21200 Raisio, FIN;2543;Varaosien nouto;Tuukka Leino;8.10.2024;8:57;Helsinginkatu 27, 20100 Turku, FIN;2553;9,3;0:15:45;0:02:57
+8.10.2024;9:00;Helsinginkatu 27, 20100 Turku, FIN;2553;Varaosien nouto;Tuukka Leino;8.10.2024;9:08;Härkämäki 1, 20250 Turku, FIN;2555;2,2;0:07:55;0:08:00
+8.10.2024;9:16;Härkämäki 1, 20250 Turku, FIN;2555;Varaosien nouto;Tuukka Leino;8.10.2024;9:28;EK3, Eeronkuja 3, 21200 Raisio, FIN;2562;6,7;0:12:21;3:05:24
+8.10.2024;12:33;EK3, Eeronkuja 3, 21200 Raisio, FIN;2562;Varaosien nouto;Tuukka Leino;8.10.2024;12:50;Eteläkaari 6, 21420 Lieto, FIN;2577;15,4;0:16:55;0:04:03
+8.10.2024;12:54;Eteläkaari 6, 21420 Lieto, FIN;2577;Varaosien nouto;Tuukka Leino;8.10.2024;13:10;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2592;15,5;0:15:31;19:53:59
+9.10.2024;9:04;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2592;Varaosien nouto;Tuukka Leino;9.10.2024;9:16;Verstaskatu 1, 20360 Turku, FIN;2599;6,3;0:11:55;0:45:10
+9.10.2024;10:01;Verstaskatu 1, 20360 Turku, FIN;2599;Varaosien nouto;Tuukka Leino;9.10.2024;10:10;Tuotekatu 10, 21200 Raisio, FIN;2603;4;0:09:00;0:01:11
+9.10.2024;10:11;Tuotekatu 10, 21200 Raisio, FIN;2603;Varaosien nouto;Tuukka Leino;9.10.2024;10:20;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2606;3,2;0:09:08;2:03:39
+9.10.2024;12:24;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2606;Varaosien nouto;Tuukka Leino;9.10.2024;12:53;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2618;12,4;0:29:33;0:41:11
+9.10.2024;13:35;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2618;Varaosien nouto;Tuukka Leino;9.10.2024;13:54;Eteläkaari 6, 21420 Lieto, FIN;2634;15,5;0:19:05;0:03:55
+9.10.2024;13:58;Eteläkaari 6, 21420 Lieto, FIN;2634;Varaosien nouto;Tuukka Leino;9.10.2024;14:15;EK3, Eeronkuja 3, 21200 Raisio, FIN;2649;15,4;0:17:44;0:32:50
+9.10.2024;14:48;EK3, Eeronkuja 3, 21200 Raisio, FIN;2649;Varaosien nouto;Tuukka Leino;9.10.2024;15:11;EK3, Eeronkuja 3, 21200 Raisio, FIN;2661;11,6;0:22:31;21:52:09
+10.10.2024;13:03;EK3, Eeronkuja 3, 21200 Raisio, FIN;2661;Varaosien nouto;Tuukka Leino;10.10.2024;13:13;Vuorelankatu 5, 20320 Raisio, FIN;2667;5,7;0:10:40;0:09:38
+10.10.2024;13:23;Vuorelankatu 5, 20320 Raisio, FIN;2667;Varaosien nouto;Tuukka Leino;10.10.2024;13:36;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2672;5,6;0:12:25;259:12:46
+21.10.2024;8:48;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2672;Varaosien nouto;Tuukka Leino;21.10.2024;9:06;Eteläkaari 6, 21420 Lieto, FIN;2687;15,3;0:17:51;0:07:33
+21.10.2024;9:14;Eteläkaari 6, 21420 Lieto, FIN;2687;Varaosien nouto;Tuukka Leino;21.10.2024;9:25;Tiemestarinkatu 5, 20360 Turku, FIN;2697;9,6;0:11:11;0:10:40
+21.10.2024;9:36;Tiemestarinkatu 5, 20360 Turku, FIN;2697;Varaosien nouto;Tuukka Leino;21.10.2024;9:49;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2707;10,1;0:13:12;2:27:50
+21.10.2024;12:17;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2707;Varaosien nouto;Tuukka Leino;21.10.2024;12:27;Kuninkaanväylä 22, 20320 Raisio, FIN;2712;5,3;0:10:19;0:14:35
+21.10.2024;12:41;Kuninkaanväylä 22, 20320 Raisio, FIN;2712;Varaosien nouto;Tuukka Leino;21.10.2024;12:51;EK4, Eeronkuja 4, 21200 Raisio, FIN;2717;4,9;0:09:32;0:00:31
+21.10.2024;12:52;EK4, Eeronkuja 4, 21200 Raisio, FIN;2717;Varaosien nouto;Tuukka Leino;21.10.2024;12:54;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2718;0,3;0:02:45;25:26:54
+22.10.2024;14:21;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2718;Varaosien nouto;Tuukka Leino;22.10.2024;14:29;Haunistentie 15, 21280 Raisio, FIN;2720;2,6;0:07:59;0:25:44
+22.10.2024;14:55;Haunistentie 15, 21280 Raisio, FIN;2720;Varaosien nouto;Tuukka Leino;22.10.2024;15:01;Tasalanaukio 5 B, 21200 Raisio, FIN;2722;1,9;0:05:48;0:06:23
+22.10.2024;15:07;Tasalanaukio 5 B, 21200 Raisio, FIN;2722;Varaosien nouto;Tuukka Leino;22.10.2024;15:14;EK3, Eeronkuja 3, 21200 Raisio, FIN;2723;1,2;0:06:39;66:57:46
+25.10.2024;10:12;EK3, Eeronkuja 3, 21200 Raisio, FIN;2723;Varaosien nouto;Tuukka Leino;25.10.2024;10:17;Voudinkatu 11, 21200 Raisio, FIN;2725;1,8;0:05:13;0:05:10
+25.10.2024;10:22;Voudinkatu 11, 21200 Raisio, FIN;2725;Varaosien nouto;Tuukka Leino;25.10.2024;10:28;Tuotekatu 19, 21200 Raisio, FIN;2728;2,6;0:06:06;0:01:34
+25.10.2024;10:30;Tuotekatu 19, 21200 Raisio, FIN;2728;Varaosien nouto;Tuukka Leino;25.10.2024;10:36;Ruopankatu 8, 20360 Turku, FIN;2734;6,5;0:06:54;0:07:34
+25.10.2024;10:44;Ruopankatu 8, 20360 Turku, FIN;2734;Varaosien nouto;Tuukka Leino;25.10.2024;10:55;EK3, Eeronkuja 3, 21200 Raisio, FIN;2744;9,3;0:10:29;1:48:47
+25.10.2024;12:43;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2744;Varaosien nouto;Tuukka Leino;25.10.2024;12:56;Vajossuonkatu 7, 20360 Turku, FIN;2754;9,9;0:12:36;0:02:13
+25.10.2024;12:58;Vajossuonkatu 7, 20360 Turku, FIN;2754;Varaosien nouto;Tuukka Leino;25.10.2024;13:12;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2763;9,8;0:13:54;68:03:11
+28.10.2024;8:15;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2763;Varaosien nouto;Tuukka Leino;28.10.2024;8:18;EK3, Eeronkuja 3, 21200 Raisio, FIN;2764;0,3;0:02:55;0:10:55
+28.10.2024;8:29;EK3, 21200 Raisio, FIN;2764;Varaosien nouto;Tuukka Leino;28.10.2024;8:32;EK3, Eeronkuja 3, 21200 Raisio, FIN;2764;0,3;0:02:43;2:22:11
+28.10.2024;10:54;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2764;Varaosien nouto;Tuukka Leino;28.10.2024;11:04;Pläkkisepänkatu 2b, 20320 Turku, FIN;2769;4,7;0:09:35;0:33:22
+28.10.2024;11:37;Pläkkisepänkatu 2b, 20320 Turku, FIN;2769;Varaosien nouto;Tuukka Leino;28.10.2024;11:47;Kuninkaanväylä 35a, 20320 Raisio, FIN;2775;6,2;0:09:44;0:02:18
+28.10.2024;11:49;Kuninkaanväylä 35a, 20320 Raisio, FIN;2775;Varaosien nouto;Tuukka Leino;28.10.2024;11:58;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;2779;4,4;0:09:27;0:22:53
+28.10.2024;12:21;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;2779;Varaosien nouto;Tuukka Leino;28.10.2024;12:26;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2781;1,2;0:04:42;0:07:18
+28.10.2024;12:33;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2781;Varaosien nouto;Tuukka Leino;28.10.2024;12:45;Autokatu 1, 20380 Turku, FIN;2792;11,3;0:12:06;0:02:40
+28.10.2024;12:48;Autokatu 1, 20380 Turku, FIN;2792;Varaosien nouto;Tuukka Leino;28.10.2024;13:01;Nikkarinkatu 3, 21280 Raisio, FIN;2801;9;0:13:08;0:06:38
+28.10.2024;13:08;Nikkarinkatu 3, 21280 Raisio, FIN;2801;Varaosien nouto;Tuukka Leino;28.10.2024;13:19;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2806;4,6;0:10:48;20:32:24
+29.10.2024;9:51;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2806;Varaosien nouto;Tuukka Leino;29.10.2024;10:04;Nuppulantie 33, 20320 Turku, FIN;2811;5,6;0:13:15;0:00:03
+29.10.2024;10:04;Nuppulantie 30, 20320 Turku, FIN;2811;Varaosien nouto;Tuukka Leino;29.10.2024;10:18;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2817;5,6;0:13:27;2:06:28
+29.10.2024;12:24;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2817;Varaosien nouto;Tuukka Leino;29.10.2024;12:47;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2835;18,6;0:23:16;20:30:56
+30.10.2024;9:18;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2835;Varaosien nouto;Tuukka Leino;30.10.2024;9:28;Tuotekatu 10, 21200 Raisio, FIN;2839;3,2;0:09:13;0:22:00
+30.10.2024;9:50;Tuotekatu 10, 21200 Raisio, FIN;2839;Varaosien nouto;Tuukka Leino;30.10.2024;9:59;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2842;3,2;0:09:41;3:59:03
+30.10.2024;13:58;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2842;Varaosien nouto;Tuukka Leino;30.10.2024;14:09;Kuninkaanväylä 35a, 20320 Raisio, FIN;2847;5,7;0:10:58;0:03:53
+30.10.2024;14:13;Kuninkaanväylä 35a, 20320 Raisio, FIN;2847;Varaosien nouto;Tuukka Leino;30.10.2024;14:24;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2853;5,3;0:10:50;18:09:09
+31.10.2024;8:33;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2853;Varaosien nouto;Tuukka Leino;31.10.2024;8:43;Kuninkaanväylä 35a, 20320 Raisio, FIN;2858;5,7;0:09:24;0:07:25
+31.10.2024;8:50;Kuninkaanväylä 35a, 20320 Raisio, FIN;2858;Varaosien nouto;Tuukka Leino;31.10.2024;9:00;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2864;5,2;0:09:48;98:14:21
+4.11.2024;11:14;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2864;Varaosien nouto;Tuukka Leino;4.11.2024;11:24;Kuloistentie 1, 21280 Raisio, FIN;2867;3,9;0:09:51;0:14:15
+4.11.2024;11:38;Kuloistentie 1, 21280 Raisio, FIN;2868;Varaosien nouto;Tuukka Leino;4.11.2024;11:45;Kuninkaanväylä 31, 20320 Raisio, FIN;2871;2,9;0:06:35;0:08:22
+4.11.2024;11:53;Kuninkaanväylä 31, 20320 Raisio, FIN;2871;Varaosien nouto;Tuukka Leino;4.11.2024;12:03;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2876;5,1;0:09:40;22:03:47
+5.11.2024;10:07;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2876;Varaosien nouto;Tuukka Leino;5.11.2024;10:17;Ruopankatu 8, 20360 Turku, FIN;2885;9,2;0:10:22;0:03:53
+5.11.2024;10:21;Ruopankatu 8, 20360 Turku, FIN;2885;Varaosien nouto;Tuukka Leino;5.11.2024;10:34;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2894;9,4;0:12:41;0:39:55
+5.11.2024;11:14;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2894;Varaosien nouto;Tuukka Leino;5.11.2024;11:20;Raisiontori 11, 21200 Raisio, FIN;2896;1,5;0:06:36;0:04:41
+5.11.2024;11:25;Raisiontori 11, 21200 Raisio, FIN;2896;Varaosien nouto;Tuukka Leino;5.11.2024;11:33;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2897;1,5;0:07:43;51:20:22
+7.11.2024;14:53;EK3, Eeronkuja 3, 21200 Raisio, FIN;2897;Varaosien nouto;Tuukka Leino;7.11.2024;15:03;Kuninkaanväylä 22, 20320 Raisio, FIN;2903;5,6;0:10:16;0:04:25
+7.11.2024;15:08;Kuninkaanväylä 22, 20320 Raisio, FIN;2903;Varaosien nouto;Tuukka Leino;7.11.2024;15:18;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2908;5,3;0:10:46;120:45:41
+12.11.2024;16:04;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2908;Varaosien nouto;Tuukka Leino;12.11.2024;16:16;Nuppulantie 33, 20320 Turku, FIN;2914;5,5;0:11:50;0:01:45
+12.11.2024;16:18;Nuppulantie 33, 20320 Turku, FIN;2914;Varaosien nouto;Tuukka Leino;12.11.2024;16:24;Rieskalähteentie 89, 20300 Turku, FIN;2916;2,4;0:06:48;0:06:04
+12.11.2024;16:31;Rieskalähteentie 89, 20300 Turku, FIN;2916;Varaosien nouto;Tuukka Leino;12.11.2024;16:46;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2923;6,9;0:15:14;44:21:42
+14.11.2024;13:08;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2923;Varaosien nouto;Tuukka Leino;14.11.2024;13:17;Tuotekatu 19, 21200 Raisio, FIN;2927;4;0:09:48;0:00:10
+14.11.2024;13:17;Tuotekatu 19, 21200 Raisio, FIN;2927;Varaosien nouto;Tuukka Leino;14.11.2024;13:24;Sitomokuja 3, 21200 Raisio, FIN;2927;0,6;0:06:07;0:13:00
+14.11.2024;13:37;Sitomokuja 3, 21200 Raisio, FIN;2927;Varaosien nouto;Tuukka Leino;14.11.2024;13:45;EK3, Eeronkuja 3, 21200 Raisio, FIN;2931;3,9;0:08:35;116:06:52
+19.11.2024;9:52;EK3, Eeronkuja 3, 21200 Raisio, FIN;2931;Varaosien nouto;Tuukka Leino;19.11.2024;9:57;Martinkatu 2a, 21200 Raisio, FIN;2932;1;0:05:10;0:03:25
+19.11.2024;10:01;Martinkatu 2b, 21200 Raisio, FIN;2932;Varaosien nouto;Tuukka Leino;19.11.2024;10:11;Ruopankatu 8, 20360 Turku, FIN;2941;8,4;0:10:11;0:05:42
+19.11.2024;10:17;Ruopankatu 8, 20360 Turku, FIN;2941;Varaosien nouto;Tuukka Leino;19.11.2024;10:31;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2950;9,5;0:14:14;22:55:35
+20.11.2024;9:26;EK3, Käpsänkatu 6, 21200 Raisio, FIN;2950;Varaosien nouto;Tuukka Leino;20.11.2024;9:34;Tuotekatu 19, 21200 Raisio, FIN;2954;3,6;0:08:08;0:07:15
+20.11.2024;9:42;Tuotekatu 19, 21200 Raisio, FIN;2954;Varaosien nouto;Tuukka Leino;20.11.2024;9:54;EK3, Eeronkuja 3, 21200 Raisio, FIN;2958;4,3;0:12:29;0:11:11
+20.11.2024;10:05;EK3, Eeronkuja 3, 21200 Raisio, FIN;2958;Varaosien nouto;Tuukka Leino;20.11.2024;10:15;Haunistentie 15, 21280 Raisio, FIN;2961;2,7;0:09:16;0:06:16
+20.11.2024;10:21;Haunistentie 15, 21280 Raisio, FIN;2961;Varaosien nouto;Tuukka Leino;20.11.2024;10:31;EK3, Eeronkuja 3, 21200 Raisio, FIN;2964;2,8;0:10:10;2:43:06
+20.11.2024;13:14;EK3, Eeronkuja 3, 21200 Raisio, FIN;2964;Varaosien nouto;Tuukka Leino;20.11.2024;13:19;Alhaistentie 6, 21200 Raisio, FIN;2965;1;0:05:03;0:03:50
+20.11.2024;13:23;Kyläpajankatu 1, 21200 Raisio, FIN;2965;Varaosien nouto;Tuukka Leino;20.11.2024;13:29;EK3, Eeronkuja 3, 21200 Raisio, FIN;2966;1,1;0:05:46;20:20:13
+21.11.2024;9:49;EK3, Eeronkuja 3, 21200 Raisio, FIN;2966;Varaosien nouto;Tuukka Leino;21.11.2024;10:09;Korjasmäenkatu 1, 20360 Turku, FIN;2975;9,7;0:20:04;0:04:06
+21.11.2024;10:13;Korjasmäenkatu 1, 20360 Turku, FIN;2975;Varaosien nouto;Tuukka Leino;21.11.2024;10:28;EK3, Eeronkuja 3, 21200 Raisio, FIN;2985;9,1;0:14:58;0:40:21
+21.11.2024;11:09;EK3, Eeronkuja 3, 21200 Raisio, FIN;2985;Varaosien nouto;Tuukka Leino;21.11.2024;11:13;Martinkatu 2, 21200 Raisio, FIN;2986;1,2;0:04:37;0:22:52
+21.11.2024;11:36;Martinkatu 2, 21200 Raisio, FIN;2986;Varaosien nouto;Tuukka Leino;21.11.2024;11:42;EK3, Eeronkuja 3, 21200 Raisio, FIN;2987;1,3;0:05:35;0:26:49
+21.11.2024;12:08;EK3, Eeronkuja 3, 21200 Raisio, FIN;2987;Varaosien nouto;Tuukka Leino;21.11.2024;12:19;Pläkkisepänkatu 2b, 20320 Turku, FIN;2992;4,7;0:10:50;0:05:59
+21.11.2024;12:25;Pläkkisepänkatu 2b, 20320 Turku, FIN;2992;Varaosien nouto;Tuukka Leino;21.11.2024;12:34;Tuotekatu 19, 21200 Raisio, FIN;2996;4,6;0:08:27;0:01:46
+21.11.2024;12:35;Tuotekatu 19, 21200 Raisio, FIN;2996;Varaosien nouto;Tuukka Leino;21.11.2024;12:43;Alhaistentie 6, 21200 Raisio, FIN;3000;3,2;0:07:32;0:02:10
+21.11.2024;12:45;Alhaistentie 6, 21200 Raisio, FIN;3000;Varaosien nouto;Tuukka Leino;21.11.2024;12:51;EK3, Eeronkuja 3, 21200 Raisio, FIN;3001;1,1;0:05:55;0:15:03
+21.11.2024;13:06;EK3, Eeronkuja 3, 21200 Raisio, FIN;3001;Varaosien nouto;Tuukka Leino;21.11.2024;13:21;Rieskalähteentie 77, 20300 Turku, FIN;3008;7,4;0:14:47;0:01:52
+21.11.2024;13:23;Rieskalähteentie 77, 20300 Turku, FIN;3008;Varaosien nouto;Tuukka Leino;21.11.2024;13:42;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3017;9;0:19:11;19:58:46
+22.11.2024;9:41;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3017;Varaosien nouto;Tuukka Leino;22.11.2024;9:46;Martinkatu 2, 21200 Raisio, FIN;3018;1,2;0:05:17;0:03:39
+22.11.2024;9:50;Martinkatu 2, 21200 Raisio, FIN;3018;Varaosien nouto;Tuukka Leino;22.11.2024;9:57;Pläkkisepänkatu 2b, 20320 Turku, FIN;3022;3,6;0:07:03;0:15:39
+22.11.2024;10:12;Pläkkisepänkatu 2b, 20320 Turku, FIN;3022;Varaosien nouto;Tuukka Leino;22.11.2024;10:21;Tuotekatu 19, 21200 Raisio, FIN;3026;4,6;0:08:39;0:06:46
+22.11.2024;10:28;Tuotekatu 19, 21200 Raisio, FIN;3026;Varaosien nouto;Tuukka Leino;22.11.2024;10:36;EK3, Eeronkuja 3, 21200 Raisio, FIN;3030;3,5;0:07:45;0:46:38
+22.11.2024;11:22;EK3, Eeronkuja 3, 21200 Raisio, FIN;3030;Varaosien nouto;Tuukka Leino;22.11.2024;11:28;Martinkatu 2, 21200 Raisio, FIN;3031;1,2;0:05:19;0:19:19
+22.11.2024;11:47;Martinkatu 2, 21200 Raisio, FIN;3031;Varaosien nouto;Tuukka Leino;22.11.2024;12:02;Kolmikesäläntie 2 c, 21420 Lieto, FIN;3047;16,1;0:15:09;0:00:55
+22.11.2024;12:03;Kolmikesäläntie 2 c, 21420 Lieto, FIN;3047;Varaosien nouto;Tuukka Leino;22.11.2024;12:13;Ruopankatu 8, 20360 Turku, FIN;3057;9,2;0:10:04;0:09:12
+22.11.2024;12:22;Ruopankatu 8, 20360 Turku, FIN;3057;Varaosien nouto;Tuukka Leino;22.11.2024;12:35;EK3, Eeronkuja 3, 21200 Raisio, FIN;3066;9,3;0:12:33;0:00:57
+22.11.2024;12:36;EK3, Eeronkuja 3, 21200 Raisio, FIN;3066;Varaosien nouto;Tuukka Leino;22.11.2024;12:39;EK3, Eeronkuja 3, 21200 Raisio, FIN;3066;0,2;0:03:09;77:15:24
+25.11.2024;17:54;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3066;Varaosien nouto;Tuukka Leino;25.11.2024;18:03;Pläkkisepänkatu 2b, 20320 Turku, FIN;3070;3,5;0:08:52;0:08:30
+25.11.2024;18:12;Pläkkisepänkatu 2b, 20320 Turku, FIN;3070;Varaosien nouto;Tuukka Leino;25.11.2024;18:23;EK3, Eeronkuja 3, 21200 Raisio, FIN;3074;4,8;0:11:39;15:29:08
+26.11.2024;9:52;EK3, Eeronkuja 3, 21200 Raisio, FIN;3074;Varaosien nouto;Tuukka Leino;26.11.2024;9:57;Martinkatu 2, 21200 Raisio, FIN;3074;0,9;0:04:51;0:00:03
+26.11.2024;9:57;Martinkatu 2, 21200 Raisio, FIN;3074;Varaosien nouto;Tuukka Leino;26.11.2024;10:04;Pläkkisepänkatu 2b, 20320 Turku, FIN;3079;4,3;0:06:58;0:11:12
+26.11.2024;10:15;Pläkkisepänkatu 2b, 20320 Turku, FIN;3079;Varaosien nouto;Tuukka Leino;26.11.2024;10:27;Kuninkaanväylä 22, 20320 Raisio, FIN;3085;6,4;0:11:13;0:10:42
+26.11.2024;10:37;Kuninkaanväylä 22, 20320 Raisio, FIN;3085;Varaosien nouto;Tuukka Leino;26.11.2024;10:49;EK3, Eeronkuja 3, 21200 Raisio, FIN;3090;5,3;0:12:01;1:21:10
+26.11.2024;12:11;EK3, Eeronkuja 3, 21200 Raisio, FIN;3090;Varaosien nouto;Tuukka Leino;26.11.2024;12:19;Raisiontie 83, 21280 Raisio, FIN;3093;2,6;0:08:11;0:07:32
+26.11.2024;12:26;Raisiontie 83, 21280 Raisio, FIN;3093;Varaosien nouto;Tuukka Leino;26.11.2024;12:37;Vajossuonkatu 7b, 20360 Turku, FIN;3102;8,6;0:10:48;0:10:11
+26.11.2024;12:47;Vajossuonkatu 7b, 20360 Turku, FIN;3102;Varaosien nouto;Tuukka Leino;26.11.2024;12:59;EK3, Eeronkuja 3, 21200 Raisio, FIN;3111;9,3;0:11:21;20:53:03
+27.11.2024;9:52;EK3, Eeronkuja 3, 21200 Raisio, FIN;3111;Varaosien nouto;Tuukka Leino;27.11.2024;9:59;Raisiontie 93, 21280 Raisio, FIN;3113;2;0:07:31;0:15:06
+27.11.2024;10:14;Raisiontie 93, 21280 Raisio, FIN;3113;Varaosien nouto;Tuukka Leino;27.11.2024;10:22;EK3, Eeronkuja 3, 21200 Raisio, FIN;3115;2,4;0:07:46;2:45:02
+27.11.2024;13:07;EK3, Eeronkuja 3, 21200 Raisio, FIN;3115;Varaosien nouto;Tuukka Leino;27.11.2024;13:30;EK3, Eeronkuja 3, 21200 Raisio, FIN;3127;11,6;0:23:16;18:50:54
+28.11.2024;8:21;EK3, Eeronkuja 3, 21200 Raisio, FIN;3127;Varaosien nouto;Tuukka Leino;28.11.2024;8:39;Piiskakuja 10, 20380 Turku, FIN;3139;11,9;0:18:05;0:06:36
+28.11.2024;8:46;Piiskakuja 10, 20380 Turku, FIN;3139;Varaosien nouto;Tuukka Leino;28.11.2024;8:58;EK3, Eeronkuja 3, 21200 Raisio, FIN;3149;10,6;0:12:08;24:42:03
+29.11.2024;9:40;EK3, Eeronkuja 3, 21200 Raisio, FIN;3149;Varaosien nouto;Tuukka Leino;29.11.2024;9:48;Satakunnantie 164, 20320 Turku, FIN;3153;3,6;0:07:59;0:08:33
+29.11.2024;9:57;Satakunnantie 164, 20320 Turku, FIN;3153;Varaosien nouto;Tuukka Leino;29.11.2024;10:30;Kirkkoväärtinkuja 2, 21200 Raisio, FIN;3187;34,6;0:33:08;0:00:36
+29.11.2024;10:30;Martinkatu 2b, 21200 Raisio, FIN;3187;Varaosien nouto;Tuukka Leino;29.11.2024;10:35;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3189;1,1;0:04:41;69:47:46
+2.12.2024;8:23;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3189;Varaosien nouto;Tuukka Leino;2.12.2024;8:34;Kuninkaanväylä 10, 20320 Raisio, FIN;3195;6,3;0:11:31;0:06:00
+2.12.2024;8:40;Kuninkaanväylä 10, 20320 Raisio, FIN;3195;Varaosien nouto;Tuukka Leino;2.12.2024;8:45;Tuotekatu 8b, 21200 Aura, FIN;3197;1,7;0:04:45;0:03:02
+2.12.2024;8:48;Tuotekatu 8b, 21200 Raisio, FIN;3197;Varaosien nouto;Tuukka Leino;2.12.2024;9:00;Rieskalähteentie 75, 20300 Turku, FIN;3204;7;0:12:12;0:03:41
+2.12.2024;9:04;Rieskalähteentie 75, 20300 Turku, FIN;3204;Varaosien nouto;Tuukka Leino;2.12.2024;9:19;EK3, Eeronkuja 3, 21200 Raisio, FIN;3211;7,5;0:15:23;46:58:43
+4.12.2024;8:18;EK3, Eeronkuja 3, 21200 Raisio, FIN;3211;Varaosien nouto;Tuukka Leino;4.12.2024;8:33;Uimarannantie 1, 21420 Lieto, FIN;3227;16,3;0:15:02;0:06:21
+4.12.2024;8:40;Uimarannantie 1, 21420 Lieto, FIN;3227;Varaosien nouto;Tuukka Leino;4.12.2024;8:48;Ruopankatu 8, 20360 Turku, FIN;3236;8,8;0:08:40;0:05:58
+4.12.2024;8:54;Ruopankatu 8, 20360 Turku, FIN;3236;Varaosien nouto;Tuukka Leino;4.12.2024;9:01;Tuotekatu 19, 21200 Raisio, FIN;3242;6,2;0:07:13;0:00:25
+4.12.2024;9:02;Tuotekatu 19, 21200 Raisio, FIN;3242;Varaosien nouto;Tuukka Leino;4.12.2024;9:10;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3246;3,6;0:07:47;1:00:26
+4.12.2024;10:10;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3246;Varaosien nouto;Tuukka Leino;4.12.2024;10:19;Raumantie 49, 21200 Raisio, FIN;3248;2,2;0:08:56;0:03:20
+4.12.2024;10:22;Raumantie 51, 21200 Raisio, FIN;3248;Varaosien nouto;Tuukka Leino;4.12.2024;10:29;EK3, Eeronkuja 3, 21200 Raisio, FIN;3250;2,1;0:06:48;21:49:25
+5.12.2024;8:19;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3250;Varaosien nouto;Tuukka Leino;5.12.2024;8:28;Raisiontie 93, 21280 Raisio, FIN;3253;2,3;0:09:04;0:20:14
+5.12.2024;8:48;Raisiontie 93, 21280 Raisio, FIN;3253;Varaosien nouto;Tuukka Leino;5.12.2024;8:53;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3255;2,3;0:05:33;1:23:44
+5.12.2024;10:17;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3255;Varaosien nouto;Tuukka Leino;5.12.2024;10:27;Pajakatu 3, 20320 Raisio, FIN;3260;4,9;0:10:16;0:06:42
+5.12.2024;10:34;Pajakatu 3, 20320 Raisio, FIN;3260;Varaosien nouto;Tuukka Leino;5.12.2024;10:44;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3264;4,5;0:09:37;95:35:51
+9.12.2024;10:20;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3264;Varaosien nouto;Tuukka Leino;9.12.2024;10:37;20300 Turku, FIN;3272;8;0:16:57;0:07:02
+9.12.2024;10:44;Rieskalähteentie 89, 20300 Turku, FIN;3273;Varaosien nouto;Tuukka Leino;9.12.2024;10:54;Kuninkaanväylä 35a, 20320 Raisio, FIN;3277;4,7;0:10:09;0:00:05
+9.12.2024;10:54;Kuninkaanväylä 35a, 20320 Raisio, FIN;3277;Varaosien nouto;Tuukka Leino;9.12.2024;11:13;EK3, Eeronkuja 3, 21200 Raisio, FIN;3285;7,3;0:19:25;25:08:57
+10.12.2024;12:22;EK3, Eeronkuja 3, 21200 Raisio, FIN;3285;Varaosien nouto;Tuukka Leino;10.12.2024;12:33;Tuotekatu 19, 21200 Raisio, FIN;3289;4,4;0:10:44;0:00:37
+10.12.2024;12:34;Tuotekatu 19, 21200 Raisio, FIN;3289;Varaosien nouto;Tuukka Leino;10.12.2024;12:46;EK3, Eeronkuja 3, 21200 Raisio, FIN;3294;4,6;0:12:32;21:49:39
+11.12.2024;10:36;EK3, Eeronkuja 3, 21200 Raisio, FIN;3294;Varaosien nouto;Tuukka Leino;11.12.2024;10:51;Kuninkaanväylä 10, 20320 Raisio, FIN;3301;7,6;0:15:01;0:01:37
+11.12.2024;10:52;Kuninkaanväylä 10, 20320 Raisio, FIN;3301;Varaosien nouto;Tuukka Leino;11.12.2024;11:07;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3307;6;0:14:26;3:15:07
+11.12.2024;14:22;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3307;Varaosien nouto;Tuukka Leino;11.12.2024;14:32;Kuninkaanväylä 35a, 20320 Raisio, FIN;3313;5,9;0:10:21;0:06:29
+11.12.2024;14:39;Kuninkaanväylä 35a, 20320 Raisio, FIN;3313;Varaosien nouto;Tuukka Leino;11.12.2024;14:49;EK3, Eeronkuja 3, 21200 Raisio, FIN;3318;5;0:10:30;45:14:07
+13.12.2024;12:03;EK3, Eeronkuja 3, 21200 Raisio, FIN;3318;Varaosien nouto;Tuukka Leino;13.12.2024;12:14;Vuorelankatu 7, 20320 Turku, FIN;3324;5,8;0:10:18;0:04:30
+13.12.2024;12:18;Vuorelankatu 7, 20320 Turku, FIN;3324;Varaosien nouto;Tuukka Leino;13.12.2024;12:28;Tuotekatu 19, 21200 Raisio, FIN;3327;3,1;0:09:48;0:01:17
+13.12.2024;12:29;Tuotekatu 19, 21200 Raisio, FIN;3327;Varaosien nouto;Tuukka Leino;13.12.2024;12:41;EK3, Eeronkuja 3, 21200 Raisio, FIN;3332;4,5;0:11:44;68:55:21
+16.12.2024;9:36;EK3, Eeronkuja 3, 21200 Raisio, FIN;3332;Varaosien nouto;Tuukka Leino;16.12.2024;9:47;Kuninkaanväylä 35a, 20320 Raisio, FIN;3337;5,5;0:10:20;0:03:02
+16.12.2024;9:50;Kuninkaanväylä 35a, 20320 Raisio, FIN;3337;Varaosien nouto;Tuukka Leino;16.12.2024;10:03;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3342;5,3;0:13:08;22:57:38
+17.12.2024;9:01;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3342;Varaosien nouto;Tuukka Leino;17.12.2024;9:11;Pläkkisepänkatu 2, 20320 Turku, FIN;3347;4,6;0:10:11;0:09:11
+17.12.2024;9:20;Pläkkisepänkatu 2, 20320 Turku, FIN;3347;Varaosien nouto;Tuukka Leino;17.12.2024;9:30;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3352;4,6;0:09:59;26:42:15
+18.12.2024;12:12;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3352;Varaosien nouto;Tuukka Leino;18.12.2024;12:25;Raikonkuja 3, 20320 Turku, FIN;3358;6;0:12:51;0:03:38
+18.12.2024;12:29;Raikonkuja 3, 20320 Turku, FIN;3358;Varaosien nouto;Tuukka Leino;18.12.2024;12:44;Liekakatu 4, 20380 Turku, FIN;3367;9,1;0:14:58;0:01:44
+18.12.2024;12:45;Liekakatu 4, 20380 Turku, FIN;3367;Varaosien nouto;Tuukka Leino;18.12.2024;12:56;Kuninkaanväylä 19, 20320 Raisio, FIN;3375;8,1;0:10:41;0:14:44
+18.12.2024;13:11;Kuninkaanväylä 19, 20320 Raisio, FIN;3375;Varaosien nouto;Tuukka Leino;18.12.2024;13:14;Liekakatu 4, 20380 Turku, FIN;3381;6,6;0:03:03;0:13:00
+18.12.2024;13:27;Liekakatu 4, 20380 Turku, FIN;3381;Varaosien nouto;Tuukka Leino;18.12.2024;13:44;EK3, Eeronkuja 3, 21200 Raisio, FIN;3393;12,1;0:17:28;19:57:09
+19.12.2024;9:41;EK3, Eeronkuja 3, 21200 Raisio, FIN;3393;Varaosien nouto;Tuukka Leino;19.12.2024;9:46;Martinkatu 2a, 21200 Raisio, FIN;3394;0,8;0:04:50;0:00:14
+19.12.2024;9:46;Martinkatu 2a, 21200 Raisio, FIN;3394;Varaosien nouto;Tuukka Leino;19.12.2024;9:51;Voudinkatu 11, 21200 Raisio, FIN;3396;1,4;0:04:44;0:29:40
+19.12.2024;10:21;Voudinkatu 11, 21200 Raisio, FIN;3396;Varaosien nouto;Tuukka Leino;19.12.2024;10:26;EK3, Käpsänkatu 6, 21200 Raisio, FIN;3398;2;0:05:12;

@@ -326,7 +326,6 @@ app.get('/signOut', (req,res) => {
             res.render('signOutSuccess');
         }
     })
-    res.render('signOutSuccess')
 });
 
 // Different kind of tests
