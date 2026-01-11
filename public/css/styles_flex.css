@@ -15,6 +15,15 @@
     --shadow-raseko-pink:  rgb(232, 32, 112, 0.4);
     --shadow-raseko-blue:  rgb(27, 51, 89, 0.4);
     --color-raseko-highlighter:rgba(75, 188, 197, 0.3);
+    --color-map-light-green: #CBFACC;
+    --color-map-dark-green: #ADD19E;
+    --color-map-light-olive: #C8D7AB;
+    --color-map-dark-olive: #B0BE93;
+    --color-map-light-yellow: #FFFFE5;
+    --color-map-light-grey: #EEEEEE;
+     --color-map-dark-grey: #D9D0C9;
+    --color-map-headings: #759269;
+    --color-map-heading-bright: #6D955D;
 }
 
 /* Set size to follow parent's size. This is important so anything else will work. */
@@ -89,7 +98,6 @@ p {
 
 .card-vapaana {
     float: left;
-
     /* Set card width to 25% for 4 columns */
     width: 25%;
     margin: 1%;
@@ -154,6 +162,7 @@ p {
     text-decoration: none !important;
     font-size: 24px;
 }
+
 .ajossa-btn {
     display: block;
     margin: 0 auto;
@@ -165,6 +174,20 @@ p {
     text-align: center;
     text-decoration: none !important;
     font-size: 24px;
+}
+
+.paikanna-btn {
+    display: block;
+    margin: 0 auto;
+    background-color: var(--color-raseko-pink);
+    color: black;
+    border: 3px solid black;
+    border-radius: 5px;
+    border-spacing: 30px;
+    padding: 20px 30px;
+    text-align: center;
+    text-decoration: none !important;
+    font-size: 30px;
 }
 
 .icon-normal {
@@ -385,6 +408,110 @@ table {
   background-color: var(--color-raseko-blue);
   color: white;
 }
+
+/*--Leaflet karttojen asetukset--*/
+/* Scale imge according to its parent element */
+.scaled-image {
+  width: inherit;
+}
+/* A style for headings above maps */
+.modern-header {
+    font-size: 3rem;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: var(--color-map-heading-bright);
+
+}
+
+.big-list {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: x-large;
+}
+
+.olive-heading {
+  color: var(--color-map-headings);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: xx-large;
+  text-decoration: underline;
+}
+/* Setting to render map correctly */
+.map-frame {
+  height: 80vh; /* It's essential to define map height */
+  z-index: 0; /* Prevent maps to be drawn on top of menubar */
+}
+/* A style for hiding elements containing data for popups */
+.not-visible {
+    display: none;
+}
+
+.menu-bar {
+    flex-grow: 1;
+    background-color: var(--color-map-heading-bright);
+    color: whitesmoke;
+    font-size:34px;
+    padding-left: 20px
+}
+.menu-bar-item {
+    cursor: pointer !important;
+}
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: var(--color-map-headings); 
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 36px;
+  color: whitesmoke;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: var(--color-map-light-yellow);
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+
 
 
 /* Responsive adjustments for small screens*/

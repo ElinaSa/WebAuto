@@ -10,30 +10,39 @@
         {{!-- <img src="/icons/time.svg" alt="Lähtöaika"> --}}
         {{!-- <h2>{{otto}}</h2> --}}
 {{!-- </div> --}}
-
+ 
 
 
 {{!-- TARKISTA LISÄÄ MUOTOILUT Palkki lähti ja tuli takaisin kun jatkoin muotoilua. Aika näkyy mulla hullusti ja vaihda Mikan muotoilemat spritesikonit omiin?--}}
- <div class="container">
-    <img class="vehicle-detail-image" src="images/{{rekisterinumero}}.png" alt="Auto">
+    <div class="container">
+        <img class="vehicle-detail-image" src="images/{{rekisterinumero}}.png" alt="Auto">
 
-    <h1 class="big-text align-center">{{rekisterinumero}}</h1>
-    <div class="alignment-box">
-        <table class="drive-information">
-            <tr>
-                <td class="drive-information"><svg class="icon-huge icon-raseko-colors"><use href="icons/webAutoSprites.svg#driver" /></svg></td>
-                <td class="big-text drive-information">{{kuljettaja}}</td>
-            </tr>
-            <tr>
-                <td class="drive-information"><svg class="icon-huge icon-raseko-colors"><use href="icons/webAutoSprites.svg#reason" /></svg></td>
-                <td class="big-text drive-information">{{tarkoitus}}</td>
-            </tr>
-            <tr>
-                <td class="drive-information"><svg class="icon-huge icon-raseko-colors"><use href="icons/webAutoSprites.svg#time" /></svg></td>
-                <td class="big-text drive-information">{{otto}}</td>
-            </tr>
-        </table>
+        <h1 class="big-text align-center">{{rekisterinumero}}</h1>
+        <div class="alignment-box">
+            <table class="drive-information">
+                <tr>
+                    <td class="drive-information"><svg class="icon-huge icon-raseko-colors"><use href="icons/webAutoSprites.svg#driver" /></svg></td>
+                    <td class="big-text drive-information">{{kuljettaja}}</td>
+                </tr>
+                <tr>
+                    <td class="drive-information"><svg class="icon-huge icon-raseko-colors"><use href="icons/webAutoSprites.svg#reason" /></svg></td>
+                    <td class="big-text drive-information">{{tarkoitus}}</td>
+                </tr>
+                <tr>
+                    <td class="drive-information"><svg class="icon-huge icon-raseko-colors"><use href="icons/webAutoSprites.svg#time" /></svg></td>
+                    <td class="big-text drive-information">{{otto}}</td>
+                </tr>
+                <tr>
+                    <td class="drive-information"></td>
+                    <td class="paikanna-btn" href="http://localhost:8080/vehicleDetail?register={{rekisterinumero}}">Paikanna</a>
+                </tr>
+            </table>                             
         </div>
+
+        {{!-- <div class="alignment-box"> --}}
+            {{!-- <a class="ajossa-btn" href="http://localhost:8080/vehicleDetail?register={{rekisterinumero}}">Paikanna</a> --}}
+        {{!-- </div> --}}
+
     </div>
 </body>
 

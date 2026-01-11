@@ -317,6 +317,22 @@ app.get('/menu', (req,res) => {
     res.render('menu');
 });
 
+// Route to diary containing all vehicle data for tax administration
+app.get('/diaryTax', (req, res) => {
+    let user = req.session.user;
+    if (user) {
+        if (user.role == 'hallinto') {
+            pgtools.getTaxDiary().then((resultset) => {
+            res.render('diaryTax', {diaryData: resultset.rows});
+        })
+        } else {
+            res.render('notAuthorized')
+        }
+    } else {
+        res.render('notSignedIn')
+    }
+
+});
 // Route to sign out page
 app.get('/signOut', (req,res) => {
     req.session.destroy((err) => {
@@ -327,6 +343,44 @@ app.get('/signOut', (req,res) => {
         }
     })
 });
+
+// TODO: Muunna käyttämään oikeaa dataa fleet management -sovelluksesta
+app.get('/api/vehiclePositionData', (req,res) =>{
+
+    register = req.query.register
+
+    // Example data as JavaScript object from external source
+    // let data = {key: value}
+    let data = {lat: 60.4786,
+                lon: 22.1636,
+                register: register
+    }
+
+    // Convert data to JSON
+    let jsonData = JSON.stringify(data)
+
+    // Send JSON data as response
+    res.json(jsonData)
+})
+
+// TODO: data API for track data by register number
+// Ajoreitti eli track
+app.get('/api/vehicleTrackData', (req,res) =>{
+
+    register = req.query.register
+
+    // Read or create GeoJSON object to present a polyline as vehicle's track
+
+
+    // Send JSON data as response
+    res.json(jsonData)
+})
+
+// TODO: Route to vehicle's tracking page: location by register number
+app.get('/vehiclePosition')
+
+// TODO: Route to vehicle's tracking page: track by register number
+app.get('/vehicleTrack')
 
 // Different kind of tests
 // -----------------------
