@@ -284,6 +284,25 @@ app.get('/filteredDiary', (req, res) => {
 }  
 });
 
+// Route to diary containing all vehicle data for tax administration
+app.get('/diaryTax', (req, res) => {
+    let user = req.session.user;
+    if (user) {
+        if (user.role == 'hallinto') {     
+            pgtools.getTaxDiary().then((resultset) => {
+                // Lets give a key for the resultset and render it to the page
+                res.render('diaryTax', {diaryData: resultset.rows});
+            })
+}
+else {
+    res.render('notAuthorized')
+}
+} 
+else {
+    res.render('notSignedIn')
+}
+});
+
 app.get('/signOut', (req,res) =>{
     req.session.destroy((err) =>{
         if (err) {
@@ -295,6 +314,7 @@ app.get('/signOut', (req,res) =>{
         }
     })
 });
+
 
 // TODO: POISTETAAN TÄMÄ PÄTKÄ KUN KAIKKI ON VALMISTA
 // URL-reitti About-sivulle
