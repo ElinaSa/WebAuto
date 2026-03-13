@@ -174,7 +174,7 @@ app.get('/vehicleDiary', (req, res) => {
             res.render('notAuthorized');
         }                                                                 
     } else {
-        res.render('notSignIn')
+        res.render('notSignedIn')
     }
 });
 
@@ -276,8 +276,8 @@ app.get('/filteredDiary', (req, res) => {
             let cleanwhereClause = '';
             // console.log(whereClause.endsWith(' AND '))
             if (whereClause.endsWith(' AND ')) {
-                let position = whereClause.lastIndexOf(' AND ')
-                cleanwhereClause = whereClause.substring(0, position)
+                let position = whereClause.lastIndexOf(' AND ');
+                cleanwhereClause = whereClause.substring(0, position);
                 // console.log(position)
             }
             else {
@@ -346,7 +346,7 @@ app.get('/signOut', (req,res) => {
 
 // TODO: Muunna käyttämään oikeaa dataa fleet management -sovelluksesta
 app.get('/api/vehiclePositionData', (req,res) =>{
-
+    console.log(req.query)
     register = req.query.register
 
     // Example data as JavaScript object from external source
@@ -377,10 +377,13 @@ app.get('/api/vehicleTrackData', (req,res) =>{
 })
 
 // TODO: Route to vehicle's tracking page: location by register number
-app.get('/vehiclePosition')
+app.get('/vehiclePosition', (req, res) => {
+    let vehicleData = {register: req.query.register}
+    res.render('vehiclePosition', vehicleData)
+})
 
-// TODO: Route to vehicle's tracking page: track by register number
-app.get('/vehicleTrack')
+// TODO: EI TEHDÄ / AJOREITTI Route to vehicle's tracking page: track by register number
+// app.get('/vehicleTrack')
 
 // Different kind of tests
 // -----------------------

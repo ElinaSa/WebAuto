@@ -1,4 +1,4 @@
-<body>
+<body>   
     
     <div>
     {{> menu}}
@@ -6,30 +6,65 @@
 
     <div class="container">
         <div id="map">
-            <h1 class="modern-header">Auton {{rekisteri}} sijainti</h1>
+            <h1 id="register" class="modern-header">Auton sijainti{{register}}</h1>
 
             {{!-- It is very important to define height for the map and give a id for it --}}
             <div class="map-frame" id="mapid"></div>
 
             <script>
-                // Initialize the map and set its view to the specified coordinates and zoom level
-                let rasekomap = L.map('mapid').setView([{{lat}}, {{lon}}], 16);
+                // TODO: tarkista sisennykset ja sulkeet!!!
 
-                // Add a tile layer to the map (OpenStreetMap tiles)
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
-                    maxZoom: 19,
-                }).addTo(rasekomap);
+                // Async function to get data from server API
+                const loadJsonData = async() => {
 
-                // Add a marker at the specified coordinates
-                let marker = L.marker([{{lat}}, {{lon}}]).addTo(rasekomap);
+                    // Get vehicles registernumber and construct an api call
+                    let queryRegister = document.getElementById('register').innerHTML;
+                    let apicall = '/api/vehiclePositionData?register=' +queryRegister;
 
-                // Popup for the marker
-                // If data is sent directly to popup, it will handel it as name of variable
-                // Building ID is read from invisible elements in the begining of the page using getElementById method
-                // It can also be translated into strin using `{{buildingId}}`-form
-                let info = document.getElementById('bid')
-                marker.bindPopup(info).openPopup();
+                    // Use Javascript native fetch function to get data
+                    const response = await fetch(apicall);
+
+                    // Get data as json
+                    const jsonData = await response.json();
+
+                    // Convert it back to object
+                    const data = await JSON.parse(jsonData);
+                    
+                    // Get individual properties
+                    let latitude = data.lat;
+                    let longitude = data.lon;
+                    let register = data.register;
+
+                    console.log (register);
+
+                    //document.getElementById('register').innerHTML = data.register
+
+                    // Initialize the map and set its view to the specified coordinates and zoom level
+                    let rasekomap = L.map('mapid').setView([latitude, longitude], 16);
+
+                    // Add a tile layer to the map (OpenStreetMap tiles)
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+                        maxZoom: 19,
+                    }).addTo(rasekomap);
+
+                    // Add a marker at the specified coordinates                   
+                    let marker = L.marker([latitude, longitude]).addTo(rasekomap);
+
+                    // Popup for the marker
+                    // If data is sent directly to popup, it will handel it as name of variable
+                    // Building ID is read from invisible elements in the begining of the page using getElementById method
+                    // It can also be translated into string using `{{buildingId}}`-form
+                    //let info = document.getElementById('bid')
+                    //marker.bindPopup(info).openPopup();
+
+                    // Set the popup text by handlebars variable
+                    //marker.bindPopup(info)
+                    marker.bindPopup(`{{register}}`)
+                  
+                }   
+                // Call the function
+                loadJsonData();
             </script>
         </div>
     </div>
