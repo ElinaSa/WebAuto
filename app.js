@@ -56,11 +56,14 @@ app.use(express.urlencoded({extended: true}));
 // URL ROUTES
 // ----------
 
-// Route to home page
+
+
+// Route to home page: login
 app.get('/', (req, res) => {
     res.render('index')     
 });
 
+// Route to welcome page: compare credentials given at login to against the database
 app.post('/welcome', (req, res) => {
 
     // Collect login data from body
@@ -91,6 +94,8 @@ app.post('/welcome', (req, res) => {
             if (inputPassword == userPassword) {
 
                 // Success update session data and render welcome page
+                // Session data contains property user and has onlu userRole as value
+                // It is possible to store more user data by defining more key-value-pairs
                 sessionData.user= {role:userRole}
                 res.render('welcome',{user: inputEmail, role: userRole});
             }
@@ -168,14 +173,16 @@ app.get('/vehicleDiary', (req, res) => {
     if (user) {
         if (user.role == 'opettaja' || user.role == 'hallinto') {       
             pgtools.getVehicleDiary([register]).then((resultset) => {
-            res.render('vehicleDiary', {diaryData: resultset.rows});
-        }) 
+            res.render('vehicleDiary', {diaryData: resultset.rows})}) 
+
         } else {
             res.render('notAuthorized');
-        }                                                                 
+        }    
+
     } else {
-        res.render('notSignedIn')
+        res.render('notSignedIn');
     }
+
 });
 
 // Route to diary containing all vehicles
