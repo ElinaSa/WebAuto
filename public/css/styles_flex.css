@@ -328,3 +328,12 @@ color: var(--color-raseko-pink);
     } 
 }
   
+/* Setting to render map correctly */
+.map-frame {
+  height: 80vh; /* It's essential to define map height */
+  z-index: 0; /* Prevent maps to be drawn on top of menubar */
+}
+/* A style for hiding elements containing data for popups */
+.not-visible {
+    display: none;
+}

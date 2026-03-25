@@ -1,0 +1,48 @@
+
+<body>
+    
+    <div>
+    {{> menu}}
+    </div>
+
+    <div class="container">
+        <div id="map">
+            <h1 class="modern-header">Auton sijainti</h1>
+
+            {{!-- It is very important to define height for the map and give a id for it --}}
+            <div class="map-frame" id="mapid"></div>
+
+            <script>
+                // Asynk function to get data from server API
+                const loadJsonData = async() => {
+                    const response = await fetch('/api/vehiclePositionData');
+                    const jsonData = await response.json();
+
+                    // Convert it back to object
+                    const data = await JSON.parse(jsonData);
+                
+                // Get individual properties
+                let latitude = data.lat;
+                let longitude = data.lon;
+                let register = data.register;
+                // Initialize the map and set its view to the specified coordinates and zoom level
+                let rasekomap = L.map('mapid').setView([{{latitude}}, {{longitude}}], 16);
+
+                // Add a tile layer to the map (OpenStreetMap tiles)
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+                    maxZoom: 19,
+                }).addTo(rasekomap);
+
+                // Add a marker at the specified coordinates
+                let marker = L.marker([latitude, longitude]).addTo(rasekomap);
+                
+                marker.bindPopup(`{{register}}`);
+                }
+
+                // call  the function
+                loadJsonData();
+            </script>
+        </div>
+    </div>
+</body>

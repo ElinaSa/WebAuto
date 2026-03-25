@@ -315,6 +315,46 @@ app.get('/signOut', (req,res) =>{
     })
 });
 
+// TODO: Muunna käyttämään oikeaa dataa fleet management -sovelluksesta
+app.get('/api/vehiclePositionData', (req,res) =>{
+
+    register = req.query.register
+
+    // Example data as JavaScript object from external source
+    // let data = {key: value}
+    let data = {lat: 60.4786,
+                lon: 22.1636,
+                register: register
+    }
+
+    // Convert data to JSON
+    let jsonData = JSON.stringify(data)
+
+    // Send JSON data as response
+    res.json(jsonData)
+})
+
+// TODO: data API for track data by register number
+// Ajoreitti eli track
+app.get('/api/vehicleTrackData', (req,res) =>{
+
+    register = req.query.register
+
+    // Read or create GeoJSON object to present a polyline as vehicle's track
+
+
+    // Send JSON data as response
+    res.json(jsonData)
+})
+
+//route to vehicle tracking page: logation
+app.get('/vehiclePosition', (req, res) => {
+    res.render('vehiclePosition')
+})
+
+app.get('/vehigleTrack'), (req, res) => {
+
+}
 
 // TODO: POISTETAAN TÄMÄ PÄTKÄ KUN KAIKKI ON VALMISTA
 // URL-reitti About-sivulle
