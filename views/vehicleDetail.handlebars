@@ -1,19 +1,7 @@
 <body>
      {{> menu}} 
-{{!-- <div class "container"> --}}
-    {{!-- <img class="vehicle-image" src="/images/{{rekisterinumero}}.png" />  --}}
-       {{!-- <h1> Auto {{rekisterinumero}}</h1> --}}
-        {{!-- <img src="/icons/user.svg" alt="Kuljettaja"> --}}
-        {{!-- <h2>{{kuljettaja}}</h2> --}}
-        {{!-- <img src="/icons/reason.svg" alt="Ajon tarkoitus">         --}}
-        {{!-- <h2>{{tarkoitus}}</h2> --}}
-        {{!-- <img src="/icons/time.svg" alt="Lähtöaika"> --}}
-        {{!-- <h2>{{otto}}</h2> --}}
-{{!-- </div> --}}
- 
 
 
-{{!-- TARKISTA LISÄÄ MUOTOILUT Palkki lähti ja tuli takaisin kun jatkoin muotoilua. Aika näkyy mulla hullusti ja vaihda Mikan muotoilemat spritesikonit omiin?--}}
     <div class="container">
         <img class="vehicle-detail-image" src="images/{{rekisterinumero}}.png" alt="Auto">
 
@@ -32,16 +20,16 @@
                     <td class="drive-information"><svg class="icon-huge icon-raseko-colors"><use href="icons/webAutoSprites.svg#time" /></svg></td>
                     <td class="big-text drive-information">{{otto}}</td>
                 </tr>
-                <tr>
-                    <td class="drive-information"></td>
-                    <td class="paikanna-btn" href="http://localhost:8080/vehicleDetail?register={{rekisterinumero}}">Paikanna</a>
-                </tr>
+                
             </table>                             
         </div>
 
-        {{!-- <div class="alignment-box"> --}}
-            {{!-- <a class="ajossa-btn" href="http://localhost:8080/vehicleDetail?register={{rekisterinumero}}">Paikanna</a> --}}
-        {{!-- </div> --}}
+        <div class="alignment-box">
+            <div class="more-room">
+                <a class="ajossa-btn" href="/vehiclePosition?register={{rekisterinumero}}">Paikanna</a>
+            </div>
+                        
+        </div>
 
     </div>
 </body>
