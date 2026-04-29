@@ -11,6 +11,8 @@
     <div class="container">
         <div id="map">
             <h1 class="modern-header">Auton sijainti</h1>
+            <h1 id="register" class="modern-header">{{register}}</h1>
+            
 
             {{!-- It is very important to define height for the map and give a id for it --}}
             <div class="map-frame" id="mapid"></div>
@@ -18,6 +20,8 @@
             <script>
                 // Asynk function to get data from server API
                 const loadJsonData = async() => {
+                    let queryRegister = document.getElementById('register').innerHTML;
+                    let apicall = '/api/vehiclePositionData?register=' +queryRegister;
                     const response = await fetch('/api/vehiclePositionData');
                     const jsonData = await response.json();
 
