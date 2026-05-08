@@ -390,8 +390,8 @@ app.get('/vehiclePosition', (req, res) => {
 })
 
 // TODO: EI TEHDÄ / AJOREITTI Route to vehicle's tracking page: track by register number
-// app.get('/vehicleTrack')
-
+app.get('/vehicleTrack')
+// 
 // Different kind of tests
 // -----------------------
 app.get('/cookieTest', (req, res) => {
