@@ -33,6 +33,7 @@ const connection = {host: currentEnv.HOST,
 
 // Create pool object for transactions
 const pool = new Pool(connection);
+console.log("POOL CREATED");
 
 // CRUD FUNCTIONS
 
@@ -62,6 +63,7 @@ const selectQuery = async (sqlstatement) => {
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
+
 // TODO: Update data with SQL statement
 
 // TODO:Delete data with SQL statement
@@ -173,9 +175,6 @@ const getTaxDiary = async () => {
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
-selectQuery('SELECT * FROM public.ajopaivakirja_verottaja').then((resultset) => {
-    console.log(resultset.rows)
-})
 
 /** 
 * Get diary by register number.
