@@ -1,0 +1,90 @@
+
+CREATE TABLE lainaus (
+                lainausnumero INTEGER NOT NULL,
+                CONSTRAINT lainaus_pk PRIMARY KEY (lainausnumero)
+);
+
+
+CREATE TABLE webpaikkatieto (
+                PaikkatietoID INTEGER NOT NULL,
+                lainausnumero INTEGER NOT NULL,
+                a_kaupunki VARCHAR(30) NOT NULL,
+                a_katu VARCHAR(30) NOT NULL,
+                a_katunumero VARCHAR(10) NOT NULL,
+                b_katu VARCHAR(30) NOT NULL,
+                b_kaupunki VARCHAR(30) NOT NULL,
+                b_katunumero VARCHAR(10) NOT NULL,
+                alku_km INTEGER NOT NULL,
+                loppu_km INTEGER NOT NULL,
+                CONSTRAINT webpaikkatieto_pk PRIMARY KEY (PaikkatietoID)
+);
+COMMENT ON COLUMN webpaikkatieto.alku_km IS 'Matkamittarin lukema metreinä, jaa 1000:lla';
+COMMENT ON COLUMN webpaikkatieto.loppu_km IS 'Matkamittarin lukema metreinä, jaa 1000:lla';
+
+
+CREATE TABLE vastuuhenkilo (
+                vastuuhenkilo VARCHAR(30) NOT NULL,
+                CONSTRAINT vastuuhenkilo_pk PRIMARY KEY (vastuuhenkilo)
+);
+
+
+CREATE TABLE ajoneuvotyyppi (
+                tyyppi VARCHAR(30) NOT NULL,
+                CONSTRAINT ajoneuvotyyppi_pk PRIMARY KEY (tyyppi)
+);
+
+
+CREATE TABLE osasto (
+                osasto VARCHAR(30) NOT NULL,
+                CONSTRAINT osasto_pk PRIMARY KEY (osasto)
+);
+
+
+CREATE TABLE auto (
+                rekisterinumero VARCHAR(7) NOT NULL,
+                deviceid INTEGER NOT NULL,
+                kaytettavissa BOOLEAN NOT NULL,
+                merkki VARCHAR(20) NOT NULL,
+                malli VARCHAR(20) NOT NULL,
+                vuosimalli VARCHAR(4) NOT NULL,
+                kuva BLOB NOT NULL,
+                henkilomaara INTEGER NOT NULL,
+                automaatti BOOLEAN NOT NULL,
+                osasto VARCHAR(30) NOT NULL,
+                tyyppi VARCHAR(30) NOT NULL,
+                vastuuhenkilo VARCHAR(30) NOT NULL,
+                CONSTRAINT auto_pk PRIMARY KEY (rekisterinumero)
+);
+
+
+CREATE UNIQUE INDEX Auto_idx
+ ON auto
+ ( deviceid );
+
+ALTER TABLE webpaikkatieto ADD CONSTRAINT lainaus_webpaikkatieto_fk
+FOREIGN KEY (lainausnumero)
+REFERENCES lainaus (lainausnumero)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE auto ADD CONSTRAINT vastuuhenkilo_auto_fk
+FOREIGN KEY (vastuuhenkilo)
+REFERENCES vastuuhenkilo (vastuuhenkilo)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE auto ADD CONSTRAINT ajoneuvotyyppi_auto_fk
+FOREIGN KEY (tyyppi)
+REFERENCES ajoneuvotyyppi (tyyppi)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE auto ADD CONSTRAINT osasto_auto_fk
+FOREIGN KEY (osasto)
+REFERENCES osasto (osasto)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
