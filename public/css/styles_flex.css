@@ -369,7 +369,7 @@ table {
 /* Style the navigation menu */
 .topnav {
   overflow: hidden;
-  background-color: #333;
+  background-color: var(--color-raseko-grey);
   position: relative;
 }
 
@@ -380,17 +380,15 @@ table {
 
 /* Style navigation menu links */
 .topnav a {
-  color: white;
+  color: var(--color-raseko-pink);
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 25px;
   display: block;
 }
 
 /* Style the hamburger menu */
 .topnav a.icon {
-  /* background: #333; */
-  color: white;
   display: block;
   position: absolute;
   right: 0;
@@ -405,7 +403,7 @@ table {
 
 /* Style the active link (or home/logo) */
 .active {
-  background-color: var(--color-raseko-blue);
+  background-color: var(--color-raseko-grey);
   color: white;
 }
 
