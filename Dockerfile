@@ -1,29 +1,28 @@
-# Define the base image for application to be Debian 13 LTS and Node.js
+# Load Node.js LTS version based on Debian Trixie
 FROM node:lts-trixie-slim
 
-# Create directory for the app even if parent directory /opt does not exist (-p)
-RUN mkdir -p /opt/kobwentti
+#Create application directory even if does not exist
+RUN mkdir -p /opt/webauto
 
-# Give base image's builtin user and group node permissions to /opt/app directory and subdirectories (-R)
-RUN chown -R node:node /opt/kobwentti
+#give ownership of the application directory to the node user
+RUN chown -R node:node /opt/webauto
 
-# Make it the working directory
-WORKDIR /opt/kobwentti
+#Set working directory
+WORKDIR /opt/webauto
 
-# Copy installation instructions for dependencies package.json and package-lock.json to working directory
-COPY package*.json ./
+# Copy package.json annd package-lock.json files
+COPY --chown=node:node package*.json ./
 
-# Switch user to node who is not a root level user
+# Change to node user 
 USER node
-
-# Install dependencies as an ordinary user (node)
+# Install application dependencies
 RUN npm install
 
-# Copy all the source code to working directory and give node user and group permissions to files
+# Copy application source code 
 COPY --chown=node:node . .
 
-# Expose the port to be used
+#Expose application port 
 EXPOSE 8080
 
-# Start the app
-CMD [ "node", "app.js" ]
+# Start the application 
+CMD [ "node" , "app.js" ]
