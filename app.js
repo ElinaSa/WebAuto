@@ -20,6 +20,10 @@ const session = require('express-session');
 // ---------------------------
 const pgtools = require('./postgres-tools');
 
+// TODO tarkista 
+const { route } = require('express/lib/application'); 
+
+
 // INITIALIZATION
 // --------------
 
