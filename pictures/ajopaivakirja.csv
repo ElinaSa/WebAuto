@@ -1,0 +1,13 @@
+"rekisterinumero","merkki","tarkoitus","hetu","sukunimi","etunimi","otto","palautus"
+"XUX-682","Volkswagen","Materiaalin hankinta","121202A1234","Jalkanen","Jaana","2025-12-01 15:15:00",NULL
+"OXZ-915","Volkswagen","Asiakaskäynti","020297-1212","Salminen","Selma","2025-12-01 15:12:00",NULL
+"FNK-129","Ford","Työmaakäynti","010195-1111","Juonikas","Jaakko","2025-10-20 15:23:00","2025-10-21 08:03:00"
+"FPB-343","Mini","Asiakaskäynti","121202A1234","Jalkanen","Jaana","2025-10-20 15:21:00","2025-10-20 16:00:00"
+"FNK-129","Ford","Työmaakäynti","020297-1212","Salminen","Selma","2025-01-13 09:41:00","2025-01-13 09:52:00"
+"FNK-129","Ford","KOS- tai OPSO-käynti","121202A1234","Jalkanen","Jaana","2025-01-10 11:22:00","2025-01-10 11:26:00"
+"FNK-129","Ford","Materiaalin hankinta","010195-1111","Juonikas","Jaakko","2025-01-10 11:08:00","2025-01-10 11:13:00"
+"FNK-129","Ford","Materiaalin hankinta","111111A2222","Jantteri","Jonne","2025-01-09 12:44:00","2025-01-09 12:50:00"
+"FNK-129","Ford","Materiaalin hankinta","121202A1234","Jalkanen","Jaana","2025-01-09 10:13:00","2025-01-09 10:26:00"
+"FNK-129","Ford","Työmaakäynti","020297-1212","Salminen","Selma","2025-01-08 09:36:00","2025-01-08 09:48:00"
+"FNK-129","Ford","Materiaalin hankinta","010195-1111","Juonikas","Jaakko","2025-01-08 09:23:00","2025-01-08 09:33:00"
+"FNK-129","Ford","Asiakaskäynti","010195-1111","Juonikas","Jaakko","2025-01-07 09:42:00","2025-01-07 10:17:00"

@@ -1,0 +1,67 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.1 Chrome/142.0.7444.265 Electron/39.8.0 Safari/537.36" version="29.6.1">
+  <diagram name="Sivu-1" id="yfCzuS_dfAgWEo84tOL5">
+    <mxGraphModel dx="1042" dy="722" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="tUgPuVIukXxWHYModGzf-5" edge="1" parent="1" source="tUgPuVIukXxWHYModGzf-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tUgPuVIukXxWHYModGzf-2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tUgPuVIukXxWHYModGzf-7" connectable="0" parent="tUgPuVIukXxWHYModGzf-5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Fetch" vertex="1">
+          <mxGeometry relative="1" x="-0.045" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tUgPuVIukXxWHYModGzf-1" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=light-dark(#e5de1f, #ededed);" value="paikanna- sivun skripti" vertex="1">
+          <mxGeometry height="100" width="80" x="80" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="tUgPuVIukXxWHYModGzf-6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="tUgPuVIukXxWHYModGzf-3" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="132" as="sourcePoint" />
+            <mxPoint x="400" y="132" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tUgPuVIukXxWHYModGzf-8" connectable="0" parent="tUgPuVIukXxWHYModGzf-6" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Fetch" vertex="1">
+          <mxGeometry relative="1" x="0.005" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tUgPuVIukXxWHYModGzf-2" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=#FFB366;" value="api/paikanna&amp;nbsp; URL-reititys" vertex="1">
+          <mxGeometry height="100" width="80" x="253" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="tUgPuVIukXxWHYModGzf-9" edge="1" parent="1" source="tUgPuVIukXxWHYModGzf-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=-0.02;exitY=0.712;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.973;entryY=0.72;entryDx=0;entryDy=0;entryPerimeter=0;" target="tUgPuVIukXxWHYModGzf-2" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="151" />
+            </Array>
+            <mxPoint x="426" y="152" as="sourcePoint" />
+            <mxPoint x="340" y="152" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tUgPuVIukXxWHYModGzf-10" connectable="0" parent="tUgPuVIukXxWHYModGzf-9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Response" vertex="1">
+          <mxGeometry relative="1" x="0.0717" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tUgPuVIukXxWHYModGzf-3" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=#FFB366;" value="paikannin.com API" vertex="1">
+          <mxGeometry height="100" width="80" x="438" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="tUgPuVIukXxWHYModGzf-4" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;gradientColor=light-dark(#e8e034, #ededed);" value="karttasivun skripti" vertex="1">
+          <mxGeometry height="100" width="80" x="80" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="tUgPuVIukXxWHYModGzf-11" edge="1" parent="1" source="tUgPuVIukXxWHYModGzf-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=80;entryDy=65;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" target="tUgPuVIukXxWHYModGzf-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="293" y="305" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tUgPuVIukXxWHYModGzf-12" connectable="0" parent="tUgPuVIukXxWHYModGzf-11" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Render" vertex="1">
+          <mxGeometry relative="1" x="0.4922" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

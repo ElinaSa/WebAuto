@@ -1,0 +1,520 @@
+:root {
+    --icon-stroke-width: 1px;
+    --icon-stroke-color: black;
+    --icon-fill-color: none;
+    --icon-background-color: none;
+    --color-raseko-blue: rgb(27, 51, 89);
+    --color-raseko-turquoise-dark: rgb(0, 150, 179);
+    --color-raseko-tuorquoise-light: rgba(75, 188, 197, 0.8);
+    --color-raseko-pink: rgb(232, 32, 112);
+    --color-raseko-pink-lighter: rgba(232, 32, 112, 0.8);
+    --color-raseko-pink-light: rgba(232, 32, 112, 0.6);
+    --color-raseko-pink-verylight: rgba(232, 32, 112, 0.4);
+    --color-raseko-grey: rgb(239, 239, 239);
+    --color-info-box-bg: rgb(199, 221, 36);
+    --shadow-raseko-pink:  rgb(232, 32, 112, 0.4);
+    --shadow-raseko-blue:  rgb(27, 51, 89, 0.4);
+    --color-raseko-highlighter:rgba(75, 188, 197, 0.3);
+    --color-map-light-green: #CBFACC;
+    --color-map-dark-green: #ADD19E;
+    --color-map-light-olive: #C8D7AB;
+    --color-map-dark-olive: #B0BE93;
+    --color-map-light-yellow: #FFFFE5;
+    --color-map-light-grey: #EEEEEE;
+     --color-map-dark-grey: #D9D0C9;
+    --color-map-headings: #759269;
+    --color-map-heading-bright: #6D955D;
+}
+
+/* Set size to follow parent's size. This is important so anything else will work. */
+* {
+    box-sizing: border-box;
+}
+
+/* Basic styling for body and text elements */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #262626;
+    line-height: 1.6;
+}
+
+/* Common settings for Containers */
+.container {
+    width: 80%;
+    height: fit-content;
+    margin: auto;
+    overflow: auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+     /* Adjust width for smaller screens */
+    @media (max-width: 600px) {
+        width: 100%;
+    }
+}
+
+.align-center {
+    text-align: center;
+}
+
+.alignment-box {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Card layout for vehicle list */
+.card-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-ajossa {
+    float: left;
+    /* Set card width to 25% for 4 columns */
+    width: 25%;
+    margin: 1%;
+    border: 2px solid var(--color-raseko-pink);
+    border-radius: 20px;
+    box-shadow: 0 5px 8px var(--shadow-raseko-pink);
+    padding: 10px;
+    /* Adjust width for smaller screens */
+    @media (max-width: 600px) {
+        width: 100%;
+    }
+}
+
+.card-vapaana {
+    float: left;
+    /* Set card width to 25% for 4 columns */
+    width: 25%;
+    margin: 1%;
+    border: 2px solid var(--color-raseko-blue);
+    border-radius: 20px;
+    box-shadow: 0 5px 8px var(--shadow-raseko-blue);
+    padding: 10px;
+    /* Adjust width for smaller screens */
+    @media (max-width: 600px) {
+        width: 100%;
+    }
+}
+
+.vehicle-image {
+    /* Set image size relative to viewport width (4 columns)*/
+    width: 25vw;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    /* Adjust width for smaller screens */
+    @media (max-width: 600px) {
+        width: 80vw;
+    }
+}
+
+.vehicle-detail-image {
+    /* Set image size relative to viewport width (4 columns)*/
+    display: block; 
+    margin: auto;
+    /* width: 50%; */
+    min-width: 30%;
+    max-width: 75%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px; 
+}
+
+.card-text {
+    padding: 10px;
+    font-size: 14px;
+    background-color: #cfd1d5;
+    color: #151515;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Styling for dynamic buttons */
+.raseko-button {
+    font-size: larger;
+    text-decoration: none !important;
+    color: var(--color-raseko-grey);
+    background-color: var(--color-raseko-blue);
+    border-radius: 5px;
+    margin: 40px;
+    padding: 10px 30px; 
+}
+
+.vapaana-btn {
+    display: block;
+    margin: 0 auto;
+    background-color: var(--color-raseko-blue);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none !important;
+    font-size: 24px;
+}
+
+.ajossa-btn {
+    display: block;
+    margin: 0 auto;
+    background-color: var(--color-raseko-pink);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none !important;
+    font-size: 24px;
+}
+
+.paikanna-btn {
+    display: block;
+    margin: 0 auto;
+    background-color: var(--color-raseko-pink);
+    color: black;
+    border: 3px solid black;
+    border-radius: 5px;
+    border-spacing: 30px;
+    padding: 20px 30px;
+    text-align: center;
+    text-decoration: none !important;
+    font-size: 30px;
+}
+
+.icon-normal {
+    width: 1em;
+    height: 1em;
+}
+
+.icon-big{
+    width: 3em;
+    height: 3em;
+}
+
+.icon-medium{
+    width: 2em;
+    height: 2em;
+}
+
+.icon-huge{
+    width: 6em;
+    height: 6em;
+}
+
+.icon-enermous{
+    width: 8em;
+    height: 8em;
+}
+
+.icon-raseko-colors{
+    --icon-stroke-color:black;
+    --icon-fill-color: var(--color-raseko-pink);
+    --icon-background-color: var(--color-raseko-grey);
+}
+
+.icon-raseko-colors-dark{
+    --icon-stroke-color:var(--color-raseko-grey);
+    --icon-fill-color: var(--color-raseko-blue);
+    --icon-background-color: var(--color-raseko-grey);
+}
+
+.icon-percentage-size{
+    width: 20%;
+}
+
+.info-box {
+    width: 100;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: stretch;
+    justify-content: space-around;
+    column-gap: 30px;
+    background-color: var(--color-info-box-bg);
+    margin: 20px 0;
+    padding: 10px 20px;
+}
+
+.drive-information {
+    border: none !important;
+    background-color: white;
+    border-spacing: 30px;
+}
+
+.big-text {
+    font-size: 3em;
+}
+
+th {
+    padding: 10px;
+    font-size: small;
+    color: var(--color-raseko-grey);
+    background-color: var(--color-raseko-blue);
+    border: 1px solid var(--color-raseko-blue);
+}
+
+td {
+    padding: 10px;
+    font-size: small;
+    color: var(--color-raseko-blue);
+    border: 1px solid var(--color-raseko-turquoise-dark);
+}
+
+tr:nth-child(even) {
+    background-color: var(--color-raseko-grey);
+}
+
+
+.tr-highlighted:hover {
+    background-color: var(--color-raseko-highlighter);    
+}
+
+table {
+    width: auto;
+    /* border: 1px solid var(--color-raseko-turquoise-dark); */
+    border-collapse: collapse;
+}
+
+.input-field {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    margin-bottom: 20px;
+}
+
+.highlite-text{
+    font-weight: bold;
+    color: var(--color-raseko-pink);
+}
+
+/* td.centered { */
+    /* text-align: center; */
+/* } */
+/*  */
+.big-checkbox {
+    width: 20px;
+    height: 20px;
+    /* transform: scale(2); */
+    /* padding: 0px 20px; */
+}
+
+
+/* Vertical Mobile Navbar EXAMPLE */
+/* .mobile-container { */
+  /* max-width: 480px; */
+  /* margin: auto; */
+  /* background-color: #555; */
+  /* height: 500px; */
+  /* color: white; */
+  /* border-radius: 10px; */
+/* } */
+/*  */
+/* .topnav { */
+  /* overflow: hidden; */
+  /* background-color: #333; */
+  /* position: relative; */
+/* } */
+/*  */
+/* .topnav #myLinks { */
+  /* display: none; */
+/* } */
+/*  */
+/* .topnav a { */
+  /* color: white; */
+  /* padding: 14px 16px; */
+  /* text-decoration: none; */
+  /* font-size: 17px; */
+  /* display: block; */
+/* } */
+
+/* .topnav a.icon { */
+  /* background: black; */
+  /* display: block; */
+  /* position: absolute; */
+  /* right: 0; */
+  /* top: 0; */
+/* } */
+/*  */
+/* .topnav a:hover { */
+  /* background-color: #ddd; */
+  /* color: black; */
+/* } */
+/*  */
+/* .active { */
+  /* background-color: #04AA6D; */
+  /* color: white; */
+/* } */
+/*  */
+
+
+/* Style the navigation menu */
+.topnav {
+  overflow: hidden;
+  background-color: var(--color-raseko-grey);
+  position: relative;
+}
+
+/* Hide the links inside the navigation menu (except for logo/home) */
+.topnav #myLinks {
+  display: none;
+}
+
+/* Style navigation menu links */
+.topnav a {
+  color: var(--color-raseko-pink);
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  display: block;
+}
+
+/* Style the hamburger menu */
+.topnav a.icon {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* Add a grey background color on mouse-over */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the active link (or home/logo) */
+.active {
+  background-color: var(--color-raseko-grey);
+  color: white;
+}
+
+/*--Leaflet karttojen asetukset--*/
+/* Scale imge according to its parent element */
+.scaled-image {
+  width: inherit;
+}
+/* A style for headings above maps */
+.modern-header {
+    font-size: 3rem;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: var(--color-map-heading-bright);
+
+}
+
+.big-list {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: x-large;
+}
+
+.olive-heading {
+  color: var(--color-map-headings);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: xx-large;
+  text-decoration: underline;
+}
+/* Setting to render map correctly */
+.map-frame {
+  height: 80vh; /* It's essential to define map height */
+  z-index: 0; /* Prevent maps to be drawn on top of menubar */
+}
+/* A style for hiding elements containing data for popups */
+.not-visible {
+    display: none;
+}
+
+.menu-bar {
+    flex-grow: 1;
+    background-color: var(--color-map-heading-bright);
+    color: whitesmoke;
+    font-size:34px;
+    padding-left: 20px
+}
+.menu-bar-item {
+    cursor: pointer !important;
+}
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: var(--color-map-headings); 
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 36px;
+  color: whitesmoke;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: var(--color-map-light-yellow);
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+
+
+
+/* Responsive adjustments for small screens*/
+@media (max-width: 600px) {
+    .card {
+        flex: 100%;
+    } 
+}

@@ -1,4 +1,40 @@
-<h1>{{rekisterinumero}}</h1>
-<h2>Kuljettajana {{kuljettaja}}</h2>
-<h2>Ajon tarkoitus {{tarkoitus}}</h2>
-<h2>Lähtöaika {{otto}}</h2>
+<body>
+     {{> menu}} 
+
+
+    <div class="container">
+        <img class="vehicle-detail-image" src="images/{{rekisterinumero}}.png" alt="Auto">
+
+        <h1 class="big-text align-center">{{rekisterinumero}}</h1>
+        <div class="alignment-box">
+            <table class="drive-information">
+                <tr>
+                    <td class="drive-information"><svg class="icon-huge icon-raseko-colors"><use href="icons/webAutoSprites.svg#driver" /></svg></td>
+                    <td class="big-text drive-information">{{kuljettaja}}</td>
+                </tr>
+                <tr>
+                    <td class="drive-information"><svg class="icon-huge icon-raseko-colors"><use href="icons/webAutoSprites.svg#reason" /></svg></td>
+                    <td class="big-text drive-information">{{tarkoitus}}</td>
+                </tr>
+                <tr>
+                    <td class="drive-information"><svg class="icon-huge icon-raseko-colors"><use href="icons/webAutoSprites.svg#time" /></svg></td>
+                    <td class="big-text drive-information">{{otto}}</td>
+                </tr>
+                
+            </table>                             
+        </div>
+
+        <div class="alignment-box">
+            <div class="more-room">
+                <a class="ajossa-btn" href="/vehiclePosition?register={{rekisterinumero}}">Paikanna</a>
+            </div>
+                        
+        </div>
+
+    </div>
+</body>
+
+
+
+
+

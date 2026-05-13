@@ -9,21 +9,31 @@
 // Pg-pool 
 const Pool = require('pg').Pool;
 
+// Environment variables handling
+const dotenv =require('dotenv');
+
 // LOCAL LIBRARIES AND MODULES
 
 // DEFINITIONS
 // -----------
 
+// Initialize environment
+dotenv.config();
+
+// Read environment variables
+const currentEnv = process.env
+
 // Connection settings
-const connection = {host: '127.0.0.1',
-    port: '5432',
-    database: 'autolainaus',
-    user: 'websovellus',
-    password: 'Q2werty7'
+const connection = {host: currentEnv.HOST,
+    port: currentEnv.DB_PORT,
+    database: currentEnv.DB,
+    user: currentEnv.APP_USER,
+    password: currentEnv.APP_PASSWORD
 };
 
 // Create pool object for transactions
 const pool = new Pool(connection);
+console.log("POOL CREATED");
 
 // CRUD FUNCTIONS
 
@@ -53,6 +63,7 @@ const selectQuery = async (sqlstatement) => {
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
+
 // TODO: Update data with SQL statement
 
 // TODO:Delete data with SQL statement
@@ -60,13 +71,25 @@ const selectQuery = async (sqlstatement) => {
 // APP SPECIFIC QUERIES
 // --------------------
 /** 
+* Returns web users data by email address.
+* @param {string} values - Users email address
+* @return {Promise} Returns a promise that resolves to the result set of the query.
+*/
+
+const getWebUserData = async (values) => {
+    let sqlstatement = 'SELECT * FROM public.webuser WHERE email = $1';
+    let resultset = await pool.query(sqlstatement, values);
+    return resultset;
+}
+
+/** 
 * Get all current vehicles and their status.
-* @summary Reads vehicle information from view autojen_tila (vehicle status).
+* @summary Reads vehicle information from view web_autojen_tila (vehicle status).
 * @return {Promise} Returns a promise that resolves to the result set of the query.
 */
 
 const getVehicleData = async () => {
-    let sqlstatement = 'Select * FROM public.autojen_tila';
+    let sqlstatement = 'Select * FROM public.web_autojen_tila';
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
@@ -99,34 +122,21 @@ const getVehiclesInUse = async () => {
 
 /** 
 * Get vehicle details from database.
-* @summary Returns a row about vehivle currently in use by hard coded register number
-* @async
-* @return {Promise} Returns a promise that resolves to the result set of the query.
-*/
-
-const getVehicleDetails = async () => {
-    let sqlstatement = "SELECT * FROM public.aktiivinen_ajo WHERE rekisterinumero = 'XYZ-123'";
-    let resultset = await pool.query(sqlstatement);
-    return resultset;
-}
-
-/** 
-* Get vehicle details from database.
 * @summary Returns details about a vehicle currently in use
 * @async
 * @param {Array} values - Array of register numbers to be used in the query.
 * @return {Promise} Returns a promise that resolves to the result set of the query.
 */
 
-const getVehicleDetails2 = async (values) => {
-    let sqlstatement = 'SELECT * FROM public.aktiivinen_ajo WHERE rekisterinumero = $1';
+const getVehicleDetails = async (values) => {
+    let sqlstatement = 'SELECT * FROM public.webaktiivinen_ajo WHERE rekisterinumero = $1';
     let resultset = await pool.query(sqlstatement, values);
     return resultset;
 }
 
 // Vehicle details page - vehicle in use by register number: SQL + value 2nd method
 const query = {
-    text: 'SELECT * FROM public.aktiivinen_ajo WHERE rekisterinumero = $1',
+    text: 'SELECT * FROM public.webaktiivinen_ajo WHERE rekisterinumero = $1',
     values: ['XYZ-123']
 }
     
@@ -149,10 +159,38 @@ const runQueryWithValues = async (query) => {
 */
 
 const getDiary = async () => { 
-    let sqlstatement = 'SELECT * from public.ajopaivakirja';
+    let sqlstatement = 'SELECT * from public.webajopaivakirja';
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
+/** 
+* Get vehicle diaries from database.
+* @summary Returns all rows from view ajopaivakirja (diary).
+* @async
+* @return {Promise} Returns a promise that resolves to the result set of the query.
+*/
+
+const getTaxDiary = async () => { 
+    let sqlstatement = 'SELECT * from public.ajopaivakirja_verottaja';
+    let resultset = await pool.query(sqlstatement);
+    return resultset;
+}
+
+/** 
+* Get diary by register number.
+* @summary Returns diary of a vehicle identified by it's register number.
+* @param {Array} register - Register number in string array format.
+* @return {Promise} Rows from ajopaivakirja view (diary).
+*/
+
+const getVehicleDiary = async (register) => {
+    let sqlstatement = 'SELECT * from public.webajopaivakirja WHERE rekisterinumero = $1';
+    let resultset = await pool.query(sqlstatement, register);
+    return resultset;
+}
+
+
+
 // Location page - location by register number -> create a view for this
 
 /** 
@@ -168,7 +206,22 @@ const getLocationByReg = async (values) => {
     let resultset = await pool.query(sqlstatement, values);
     return resultset;
 }
+// TODO:Tarkista itseltä mikä tuohon ison T:n tilalle tulee, Mika lyhentänyt Timen jossain kohtaa näin
+/**
+ * Converts PostgreSQL timestamp to user friendly string format.
+ * @param {timestamp} timestamp - Timestamp to be converted to string
+ * @returns {object} Object containing date and time as string.
+ */
 
+const convertToDateTimeObject = (timestamp) => {
+    let isoTimestamp = timestamp.toISOString();
+    let splittedISOTimestamp = isoTimestamp.split('T');
+    let splittedTime = splittedISOTimestamp[1].split('.');
+    let result = {date: splittedISOTimestamp[0],
+        time: splittedTime[0]
+    };
+    return result;
+}
 /*selectQuery('SELECT * FROM jest_test').then((resultset) => {
     console.log(resultset.rows)
 })
@@ -177,4 +230,4 @@ const getLocationByReg = async (values) => {
 // ----------------
 
 // TODO: Export all functions and the pool itself. Jest needs the pool to run tests
-module.exports = {pool, insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getVehicleDetails2, getDiary, runQueryWithValues, getLocationByReg, getVehicleData};
+module.exports = {pool, insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getDiary, getTaxDiary, runQueryWithValues, getLocationByReg, getVehicleData, convertToDateTimeObject, getWebUserData, getVehicleDiary};
