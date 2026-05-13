@@ -20,6 +20,10 @@ const session = require('express-session');
 // ---------------------------
 const pgtools = require('./postgres-tools');
 
+// TODO tarkista 
+const { route } = require('express/lib/application'); 
+
+
 // INITIALIZATION
 // --------------
 
@@ -55,8 +59,6 @@ app.use(express.urlencoded({extended: true}));
 
 // URL ROUTES
 // ----------
-
-
 
 // Route to home page: login
 app.get('/', (req, res) => {
@@ -352,6 +354,7 @@ app.get('/signOut', (req,res) => {
 });
 
 // TODO: Muunna käyttämään oikeaa dataa fleet management -sovelluksesta
+// TODO: Käytä .env muuttujia API_KEY ja API_BASE_URL (tai API_URL) API-kutsun asetuksiin.
 app.get('/api/vehiclePositionData', (req,res) =>{
     console.log(req.query)
     register = req.query.register
@@ -389,8 +392,8 @@ app.get('/vehiclePosition', (req, res) => {
     res.render('vehiclePosition', vehicleData)
 })
 
-// TODO: EI TEHDÄ / AJOREITTI Route to vehicle's tracking page: track by register number
-app.get('/vehicleTrack')
+// EI TEHDÄ / AJOREITTI Route to vehicle's tracking page: track by register number
+// app.get('/vehicleTrack')
 // 
 // Different kind of tests
 // -----------------------
