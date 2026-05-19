@@ -1,56 +1,77 @@
 <head>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        #mapid {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
 </head>
+
+
 <body>
-    
+
     <div>
-    {{> menu}}
+        {{> menu}}
     </div>
 
     <div class="container">
         <div id="map">
             <h1 class="modern-header">Auton sijainti</h1>
             <h1 id="register" class="modern-header">{{register}}</h1>
-            
 
-            {{!-- It is very important to define height for the map and give a id for it --}}
-            <div class="map-frame" id="mapid"></div>
+            <!-- Kartta -->
+            <div id="mapid"></div>
 
             <script>
-                // Asynk function to get data from server API
-                const loadJsonData = async() => {
+                async function loadJsonData() {
+
+                    // Hae rekisterinumero DOM:ista
                     let queryRegister = document.getElementById('register').innerHTML;
-                    let apicall = '/api/vehiclePositionData?register=' +queryRegister;
-                    const response = await fetch('/api/vehiclePositionData');
-                    const jsonData = await response.json();
 
-                    // Convert it back to object
-                    const data = await JSON.parse(jsonData);
-                
-                // Get individual properties
-                let latitude = data.lat;
-                let longitude = data.lon;
-                let register = data.register;
-                // Initialize the map and set its view to the specified coordinates and zoom level
-                let rasekomap = L.map('mapid').setView([latitude, longitude], 16);
+                    // API-kutsu
+                    let apicall = '/api/vehiclePositionData?register=' + queryRegister;
 
+                    let data;
 
-                // Add a tile layer to the map (OpenStreetMap tiles)
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
-                    maxZoom: 19,
-                }).addTo(rasekomap);
+                    try {
+                        const response = await fetch(apicall);
+                        data = await response.json();
+                    } catch (err) {
+                        console.log("API ei vastaa → käytetään placeholder-sijaintia");
 
-                // Add a marker at the specified coordinates
-                let marker = L.marker([latitude, longitude]).addTo(rasekomap);
-                
-                marker.bindPopup('{{register}}');
+                        // Fallback (Turku)
+                        data = {
+                            lat: 60.4518,
+                            lon: 22.2666,
+                            register: queryRegister
+                        };
+                    }
+
+                    // Ota koordinaatit
+                    let latitude = data.lat;
+                    let longitude = data.lon;
+
+                    // Luo kartta
+                    let rasekomap = L.map('mapid').setView([latitude, longitude], 16);
+
+                    // Taustakartta
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: 'Map data © OpenStreetMap contributors',
+                        maxZoom: 19,
+                    }).addTo(rasekomap);
+
+                    // MARKER
+                    let marker = L.marker([latitude, longitude]).addTo(rasekomap);
+                    marker.bindPopup(data.register);
                 }
 
-                // call  the function
                 loadJsonData();
             </script>
+
         </div>
     </div>
+
 </body>

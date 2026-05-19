@@ -315,23 +315,21 @@ app.get('/signOut', (req,res) =>{
     })
 });
 
-app.get('/api/vehiclePositionData', (req, res) =>{
-    console.log(req.query)
-    register = req.query.register
-    
+app.get('/api/vehiclePositionData', (req, res) => {
+    console.log("API HIT", data)
 
-    // Example data as JavaScipt object from external source
-    let data = {lat: 60.4786,
-                lon: 22.1636,
-                register: register
+    console.log(req.query)
+    let register = req.query.register
+
+    let data = {
+        lat: 60.4786,
+        lon: 22.1636,
+        register: register
     }
 
-    // Convert data to JSON
-    let jsonData = JSON.stringify(data)
-    
-    // Send JSON-data as response
-    res.json(jsonData)
-});
+    res.json(data)   // <-- EI JSON.stringify !!!
+})
+
 
 // TODO: data API for track data by register number
 
