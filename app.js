@@ -252,40 +252,41 @@ app.get('/filterDiary', (req, res) => {
 });
 
 app.get('/filteredDiary', (req, res) => {
-    if (user) {
-        userRole = req.session.user.role;
+    //tää muuttu 
+    if (req.session.user) {
+        userRole = req.session.user.role
         if (userRole == 'opettaja' || userRole == 'hallinto') {
-    
             let registerFilter = req.query.rekisterinumero
             let registerFilterValid = req.query.rekisterisuodatus
             let reasonFilter = req.query.tarkoitus
             let reasonFilterValid = req.query.tarkoitussuodatus
             let driverFilter = req.query.nimi
-            let driverFilterValid = req.query.kuljettajasuodatus       
+            let driverFilterValid = req.query.kuljettajasuodatus
             let startFilter = req.query.alkaa
             let startFilterString = startFilter.toString()
-            // console.log(startFilterString)
+            //tän lisäsin
+            console.log(startFilterString)
+            console.log(req.query.alkaa)
             let endFilter = req.query.loppuu
             let dateFiltersValid = req.query.ottosuodatus
-        
+            
             let conditions = ''
             if (registerFilterValid == 'on') {
-                conditions = conditions + `rekisterinumero = '${registerFilter}'  AND `;
+                conditions = conditions + `rekisterinumero = '${registerFilter}' AND `;
             }
             if (reasonFilterValid == 'on') {
-                conditions = conditions + `tarkoitus  = '${reasonFilter}' AND `;
+                conditions = conditions + `tarkoitus = '${reasonFilter}' AND `;
             }
             if (driverFilterValid == 'on') {
-                conditions = conditions + `nimi =' '${driverFilter}' AND `;
+                conditions = conditions + `nimi = '${driverFilter}' AND `;
             }
             if (dateFiltersValid == 'on') {
-                conditions = conditions +  `otettu BETWEEN '${startFilter} ' AND ' ${endFilter}`;
-            }    
-        
-            // TODO:Tämä lauseen pitäisi siivota and pois näkyvistä, mutta ei toimi
-            let whereClause = 'WHERE' + conditions
+                conditions = conditions +  `otettu BETWEEN '${startFilter}' AND '${endFilter}'`;
+            }
+            // TODO:Tämä lauseen pitäisi siivota and pois näkyvistä, mutta ei toimi. 
+            let whereClause = 'WHERE ' + conditions;
             let cleanwhereClause = '';
-            // console.log(whereClause.endsWith(' AND '))
+             // console.log(whereClause.endsWith(' AND '))
             if (whereClause.endsWith(' AND ')) {
                 let position = whereClause.lastIndexOf(' AND ');
                 cleanwhereClause = whereClause.substring(0, position);
@@ -294,17 +295,23 @@ app.get('/filteredDiary', (req, res) => {
             else {
                 cleanwhereClause = whereClause
             }
-            console.log(cleanwhereClause);
-            let sqlstatement = 'SELECT * FROM public.ajopaivakirja' + cleanwhereClause
+        console.log(cleanwhereClause);
+        //webajopaivakirja 
+            let sqlstatement = 'SELECT * FROM public.webajopaivakirja ' + cleanwhereClause
             pgtools.selectQuery(sqlstatement).then((resultset) => {
-            res.render('filteredDiary', {diaryData: resultset.rows});
+                res.render('filteredDiary', {diaryData: resultset.rows});
+
             })
-        } else {
-            res.render('notAuthorized')
-        }
-    } else {
-    res.render('notSignedIn')
-    }    
+    }
+    else {
+        res.render('notAuthorized')
+    }
+}
+
+    else {
+        res.render('notSingnedIn')
+
+}  
 });
 
 // TODO: Route to vehicle's diary page: all entries for individual vehicle by register number
