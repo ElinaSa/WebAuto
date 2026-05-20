@@ -283,7 +283,7 @@ app.get('/filteredDiary', (req, res) => {
             if (dateFiltersValid == 'on') {
                 conditions = conditions +  `otettu BETWEEN '${startFilter}' AND '${endFilter}'`;
             }
-            // TODO:Tämä lauseen pitäisi siivota and pois näkyvistä, mutta ei toimi. 
+            //TODO  oli jääny joku vanha härpäke tähän hups.
             let whereClause = 'WHERE ' + conditions;
             let cleanwhereClause = '';
              // console.log(whereClause.endsWith(' AND '))
@@ -315,8 +315,33 @@ app.get('/filteredDiary', (req, res) => {
 });
 
 // TODO: Route to vehicle's diary page: all entries for individual vehicle by register number
+app.get('/vehicleDiary', (req, res) => {
+    let user = req.session.user;
+    let register = req.query.register
+    if (user){
+        if (user.role == 'opettaja' || user.role == 'hallinto') { 
+
+    pgtools.getVehicleDiary([register]).then((resultset) =>{
+        console.log(resultset.rows);
+        res.render('vehicleDiary', {diaryData: resultset.rows})
+    })
+}
+else {
+    res.render('notAuthorized')
+}
+}
+else {
+    res.render('notSignedIn')
+}
+});
+
 
 // TODO: Route to vehicle's tracking page: location by register number
+app.get('/vehiclePosition', (req, res) => {
+    let vehicleData = {register: req.query.register}
+    res.render('vehiclePosition', vehicleData)
+});
+
 
 
 app.get('/logout', (req, res) => {
@@ -339,24 +364,28 @@ app.get('/menu', (req,res) => {
 app.get('/diaryTax', (req, res) => {
     let user = req.session.user;
     if (user) {
-        if (user.role == 'hallinto') {
+        if (user.role == 'hallinto') {     
             pgtools.getTaxDiary().then((resultset) => {
-            res.render('diaryTax', {diaryData: resultset.rows});
-        })
-        } else {
-            res.render('notAuthorized')
-        }
-    } else {
-        res.render('notSignedIn')
-    }
-
+                // Lets give a key for the resultset and render it to the page
+                res.render('diaryTax', {diaryData: resultset.rows});
+            })
+}
+else {
+    res.render('notAuthorized')
+}
+} 
+else {
+    res.render('notSignedIn')
+}
 });
-// Route to sign out page
-app.get('/signOut', (req,res) => {
-    req.session.destroy((err) => {
+
+app.get('/signOut', (req,res) =>{
+    req.session.destroy((err) =>{
         if (err) {
             res.render('signOutError');
-        } else {
+
+        }
+        else {
             res.render('signOutSuccess');
         }
     })
@@ -394,11 +423,7 @@ app.get('/api/vehicleTrackData', (req,res) =>{
     res.json(jsonData)
 })
 
-// TODO: Route to vehicle's tracking page: location by register number
-app.get('/vehiclePosition', (req, res) => {
-    let vehicleData = {register: req.query.register}
-    res.render('vehiclePosition', vehicleData)
-})
+
 
 // TODO: EI TEHDÄ / AJOREITTI Route to vehicle's tracking page: track by register number
 app.get('/vehicleTrack')
