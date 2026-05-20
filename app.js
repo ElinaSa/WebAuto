@@ -60,8 +60,6 @@ app.use(express.urlencoded({extended: true}));
 // URL ROUTES
 // ----------
 
-
-
 // Route to home page: login
 app.get('/', (req, res) => {
     res.render('index')     
@@ -192,7 +190,7 @@ app.get('/vehicleDiary', (req, res) => {
 // Route to diary containing all vehicles
 app.get('/diary', (req, res) => {
     let user = req.session.user;
-    let register = req.query.register;
+    //let register = req.query.register;
     if (user) {
         if (user.role == 'opettaja' || user.role == 'hallinto') {
             pgtools.getDiary().then((resultset) => {
@@ -252,96 +250,64 @@ app.get('/filterDiary', (req, res) => {
 });
 
 app.get('/filteredDiary', (req, res) => {
-    //tää muuttu 
-    if (req.session.user) {
-        userRole = req.session.user.role
+    if (user) {
+        userRole = req.session.user.role;
         if (userRole == 'opettaja' || userRole == 'hallinto') {
+    
             let registerFilter = req.query.rekisterinumero
             let registerFilterValid = req.query.rekisterisuodatus
             let reasonFilter = req.query.tarkoitus
             let reasonFilterValid = req.query.tarkoitussuodatus
             let driverFilter = req.query.nimi
-            let driverFilterValid = req.query.kuljettajasuodatus
+            let driverFilterValid = req.query.kuljettajasuodatus       
             let startFilter = req.query.alkaa
             let startFilterString = startFilter.toString()
-            //tän lisäsin
             console.log(startFilterString)
             console.log(req.query.alkaa)
             let endFilter = req.query.loppuu
             let dateFiltersValid = req.query.ottosuodatus
-            
+        
             let conditions = ''
             if (registerFilterValid == 'on') {
-                conditions = conditions + `rekisterinumero = '${registerFilter}' AND `;
+                conditions = conditions + `rekisterinumero = '${registerFilter}'  AND `;
             }
             if (reasonFilterValid == 'on') {
-                conditions = conditions + `tarkoitus = '${reasonFilter}' AND `;
+                conditions = conditions + `tarkoitus  = '${reasonFilter}' AND `;
             }
             if (driverFilterValid == 'on') {
-                conditions = conditions + `nimi = '${driverFilter}' AND `;
+                conditions = conditions + `nimi =' '${driverFilter}' AND `;
             }
             if (dateFiltersValid == 'on') {
-                conditions = conditions +  `otettu BETWEEN '${startFilter}' AND '${endFilter}'`;
-            }
-            //TODO  oli jääny joku vanha härpäke tähän hups.
+                conditions = conditions +  `otettu BETWEEN '${startFilter} ' AND ' ${endFilter}`;
+            }    
+        
             let whereClause = 'WHERE ' + conditions;
             let cleanwhereClause = '';
-             // console.log(whereClause.endsWith(' AND '))
+            // console.log(whereClause.endsWith(' AND '))
             if (whereClause.endsWith(' AND ')) {
                 let position = whereClause.lastIndexOf(' AND ');
                 cleanwhereClause = whereClause.substring(0, position);
                 // console.log(position)
             }
             else {
-                cleanwhereClause = whereClause
+                cleanwhereClause = whereClause;
             }
-        console.log(cleanwhereClause);
-        //webajopaivakirja 
-            let sqlstatement = 'SELECT * FROM public.webajopaivakirja ' + cleanwhereClause
+            console.log(cleanwhereClause);
+            let sqlstatement = 'SELECT * FROM public.webajopaivakirja' + cleanwhereClause
             pgtools.selectQuery(sqlstatement).then((resultset) => {
-                res.render('filteredDiary', {diaryData: resultset.rows});
-
+            res.render('filteredDiary', {diaryData: resultset.rows});
             })
-    }
-    else {
-        res.render('notAuthorized')
-    }
-}
-
-    else {
-        res.render('notSingnedIn')
-
-}  
+        } else {
+            res.render('notAuthorized')
+        }
+    } else {
+    res.render('notSignedIn')
+    }    
 });
 
 // TODO: Route to vehicle's diary page: all entries for individual vehicle by register number
-app.get('/vehicleDiary', (req, res) => {
-    let user = req.session.user;
-    let register = req.query.register
-    if (user){
-        if (user.role == 'opettaja' || user.role == 'hallinto') { 
-
-    pgtools.getVehicleDiary([register]).then((resultset) =>{
-        console.log(resultset.rows);
-        res.render('vehicleDiary', {diaryData: resultset.rows})
-    })
-}
-else {
-    res.render('notAuthorized')
-}
-}
-else {
-    res.render('notSignedIn')
-}
-});
-
 
 // TODO: Route to vehicle's tracking page: location by register number
-app.get('/vehiclePosition', (req, res) => {
-    let vehicleData = {register: req.query.register}
-    res.render('vehiclePosition', vehicleData)
-});
-
 
 
 app.get('/logout', (req, res) => {
@@ -364,34 +330,50 @@ app.get('/menu', (req,res) => {
 app.get('/diaryTax', (req, res) => {
     let user = req.session.user;
     if (user) {
-        if (user.role == 'hallinto') {     
+        if (user.role == 'hallinto') {
             pgtools.getTaxDiary().then((resultset) => {
-                // Lets give a key for the resultset and render it to the page
-                res.render('diaryTax', {diaryData: resultset.rows});
-            })
-}
-else {
-    res.render('notAuthorized')
-}
-} 
-else {
-    res.render('notSignedIn')
-}
-});
+            res.render('diaryTax', {diaryData: resultset.rows});
+        })
+        } else {
+            res.render('notAuthorized')
+        }
+    } else {
+        res.render('notSignedIn')
+    }
 
-app.get('/signOut', (req,res) =>{
-    req.session.destroy((err) =>{
+});
+// Route to sign out page
+app.get('/signOut', (req,res) => {
+    req.session.destroy((err) => {
         if (err) {
             res.render('signOutError');
-
-        }
-        else {
+        } else {
             res.render('signOutSuccess');
         }
     })
 });
 
 // TODO: Muunna käyttämään oikeaa dataa fleet management -sovelluksesta
+
+// Alkuperäinen kovakoodattu
+// app.get('/api/vehiclePositionData', (req,res) =>{
+//     console.log(req.query)
+//     register = req.query.register
+
+//     // Example data as JavaScript object from external source
+//     // let data = {key: value}
+//     let data = {lat: 60.4786,
+//                 lon: 22.1636,
+//                 register: register
+//     }
+
+//     // Convert data to JSON
+//     let jsonData = JSON.stringify(data)
+
+//     // Send JSON data as response
+//     res.json(jsonData)
+// })
+//TODO: muokkaa tästä kopiosta sellainen mikä käyttää oikeaa dataa
 app.get('/api/vehiclePositionData', (req,res) =>{
     console.log(req.query)
     register = req.query.register
@@ -410,23 +392,71 @@ app.get('/api/vehiclePositionData', (req,res) =>{
     res.json(jsonData)
 })
 
-// TODO: data API for track data by register number
-// Ajoreitti eli track
-app.get('/api/vehicleTrackData', (req,res) =>{
+// Testi 
+// app.get('/api/vehiclePositionData', async (req, res) => {
+//     try {
+//         console.log(req.query);
 
-    register = req.query.register
+//         const register = req.query.register || req.query.deviceId;
 
-    // Read or create GeoJSON object to present a polyline as vehicle's track
+//         // Paikannin.com API URL
+//         const url = `https://api.paikannin.com/devices/${encodeURIComponent(register)}`;
+
+//         // HTTP-pyyntö ulkoiseen API:in
+//         const response = await fetch(url, {
+//             method: 'GET',
+//             headers: {
+//                 'Authorization': `Bearer ${process.env.API_KEY}`,
+//                 'Content-Type': 'application/json'
+//             }
+//         });
+
+//         if (!response.ok) {
+//             const errorText = await response.text();
+
+//             console.error('Paikannin API error:', errorText);
+
+//             return res.status(response.status).json({
+//                 error: 'Paikannin API failed',
+//                 details: errorText
+//             });
+//         }
+
+//         // JSON-data API:lta
+//         const apiData = await response.json();
+
+//         // Muunnetaan frontendin tarvitsemaan muotoon
+//         const data = {
+//             lat: apiData.lat,
+//             lon: apiData.lon,
+//             register: register,
+//             timestamp: apiData.timestamp,
+//             deviceName: apiData.deviceName
+//         };
+
+//         // Lähetetään frontendille
+//         res.json(data);
+
+//     } catch (err) {
+
+//         console.error(err);
+
+//         res.status(500).json({
+//             error: 'Server error',
+//             details: err.message
+//         });
+//     }
+// });
 
 
-    // Send JSON data as response
-    res.json(jsonData)
+
+// TODO: Route to vehicle's tracking page: location by register number
+app.get('/vehiclePosition', (req, res) => {
+    let vehicleData = {register: req.query.register}
+    res.render('vehiclePosition', vehicleData)
 })
 
 
-
-// TODO: EI TEHDÄ / AJOREITTI Route to vehicle's tracking page: track by register number
-app.get('/vehicleTrack')
 // 
 // Different kind of tests
 // -----------------------
