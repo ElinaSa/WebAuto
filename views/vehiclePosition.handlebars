@@ -6,7 +6,9 @@
 
     <div class="container">
         <div id="map">
-            <h1 id="register" class="modern-header">Auton {{register}} sijainti</h1>
+            <h1 id="register" class="modern-header">{{register}}</h1>
+
+            <div id="routeInfo" class="alignment-box"></div>
 
             {{!-- It is very important to define height for the map and give a id for it --}}
             <div class="map-frame" id="mapid"></div>
@@ -14,29 +16,42 @@
             <script>
                
                 // Async function to get data from server API
-                const loadJsonData = async() => {
+                const loadLocationData = async() => {
+                    const params = new URLSearchParams(window.location.search);
+                    const deviceId = params.get('deviceId') || register;
 
                     // Get vehicles registernumber and construct an api call
                     let queryRegister = document.getElementById('register').innerHTML;
                     let apicall = '/api/vehiclePositionData?register=' +queryRegister;
 
                     // Use Javascript native fetch function to get data
-                    const response = await fetch(apicall);
+                    const response = await fetch('/api/deviceLocation?deviceId=' + encodeURIComponent(deviceId));
+
+                    // Error Handling for HTTP error or Backend error
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        document.getElementById('routeInfo').innerHTML = '<p>Virhe HTTP:ssä tai backendissä: ' + response.status + '</p><pre>' + errorText + '</pre>';
+                        return; 
+                    }
 
                     // Get data as json
-                    const jsonData = await response.json();
+                    const location = await response.json();
 
-                    // Convert it back to object
-                    const data = await JSON.parse(jsonData);
+                    // Data Validation, checks if data and coordinates was found
+                    if (!location || location.lat == null || location.lon == null) {
+                        document.getElementById('routeInfo').innerHTML = '<p>Dataa ei löydy.</p>';
+                        return;
+                    }
+                   
                     
                     // Get individual properties
-                    let latitude = data.lat;
-                    let longitude = data.lon;
-                    let register = data.register;
+                    //let latitude = data.lat;
+                    //let longitude = data.lon;
+                    //let register = data.register;
 
-                    console.log (register);
+                    //console.log (register);
 
-                    //document.getElementById('register').innerHTML = data.register
+                    document.getElementById('register').innerHTML = data.register
 
                     // Initialize the map and set its view to the specified coordinates and zoom level
                     let rasekomap = L.map('mapid').setView([latitude, longitude], 16);
@@ -59,7 +74,10 @@
 
                     // Set the popup text by handlebars variable
                     //marker.bindPopup(info)
-                    marker.bindPopup(`{{register}}`)
+                    //marker.bindPopup(`{{register}}`)
+
+                    // Dynamic data from API
+                    .bindPopup(location.deviceName || register)
                   
                 }   
                 // Call the function

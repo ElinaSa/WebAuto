@@ -210,7 +210,7 @@ const getLocationByReg = async (values) => {
 /**
  * Converts PostgreSQL timestamp to user friendly string format.
  * @param {timestamp} timestamp - Timestamp to be converted to string
- * @returns {object} Object containing date and time as string.
+ * @return {object} Object containing date and time as string.
  */
 
 const convertToDateTimeObject = (timestamp) => {
