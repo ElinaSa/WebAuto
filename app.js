@@ -23,10 +23,6 @@ const pgtools = require('./postgres-tools');
 // TODO tarkista 
 const { route } = require('express/lib/application'); 
 
-// TODO Onko oikeassa kohtaa ja oikeassa muodossa
-// Entä Headerit?
-const apiKey = await getSetting('API_KEY');
-
 
 // INITIALIZATION
 // --------------
