@@ -250,7 +250,7 @@ app.get('/filterDiary', (req, res) => {
 });
 
 app.get('/filteredDiary', (req, res) => {
-    if (user) {
+    if (req.session.user) {
         userRole = req.session.user.role;
         if (userRole == 'opettaja' || userRole == 'hallinto') {
     
@@ -295,7 +295,7 @@ app.get('/filteredDiary', (req, res) => {
             console.log(cleanwhereClause);
             let sqlstatement = 'SELECT * FROM public.webajopaivakirja' + cleanwhereClause
             pgtools.selectQuery(sqlstatement).then((resultset) => {
-            res.render('filteredDiary', {diaryData: resultset.rows});
+                res.render('filteredDiary', {diaryData: resultset.rows});
             })
         } else {
             res.render('notAuthorized')
