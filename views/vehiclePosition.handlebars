@@ -8,24 +8,27 @@
         <div id="map">
             <h1 id="register" class="modern-header">{{register}}</h1>
 
-            <div id="routeInfo" class="alignment-box"></div>
+            {{!-- <div id="routeInfo" class="alignment-box"></div> --}}
 
             {{!-- It is very important to define height for the map and give a id for it --}}
             <div class="map-frame" id="mapid"></div>
 
             <script>
-               
+                               
                 // Async function to get data from server API
-                const loadLocationData = async() => {
-                    const params = new URLSearchParams(window.location.search);
-                    const deviceId = params.get('deviceId') || register;
+                const loadJsonData = async() => {
+                    //const params = new URLSearchParams(window.location.search);
+                    //const register = document.getElementById('register').innerHTML.trim();
+                    //const deviceId = params.get('deviceId') || register;
 
+                    TODO: tarkista tämä
                     // Get vehicles registernumber and construct an api call
                     let queryRegister = document.getElementById('register').innerHTML;
                     let apicall = '/api/vehiclePositionData?register=' +queryRegister;
 
                     // Use Javascript native fetch function to get data
-                    const response = await fetch('/api/deviceLocation?deviceId=' + encodeURIComponent(deviceId));
+                    //const response = await fetch('/api/deviceLocation?deviceId=' + encodeURIComponent(deviceId));
+                    const response = await fetch(apicall);
 
                     // Error Handling for HTTP error or Backend error
                     if (!response.ok) {
@@ -35,25 +38,35 @@
                     }
 
                     // Get data as json
-                    const location = await response.json();
+                    //const location = await response.json();
+                    const jsonData = await response.json();
 
                     // Data Validation, checks if data and coordinates was found
-                    if (!location || location.lat == null || location.lon == null) {
-                        document.getElementById('routeInfo').innerHTML = '<p>Dataa ei löydy.</p>';
-                        return;
-                    }
+                   // if (!location || location.lat == null || location.lon == null) {
+                     //   document.getElementById('routeInfo').innerHTML = '<p>Dataa ei löydy.</p>';
+                       // return;
+                    //}
                    
-                    
+                    document.getElementById('routeInfo').innerHTML = `
+                        <div class="drive-information">
+                            <p><strong>Ajoneuvo:</strong> ${location.deviceName || register}</p>
+                            <p><strong>Leveysaste:</strong> ${location.lat}</p>
+                            <p><strong>Pituusaste:</strong> ${location.lon}</p>
+                            <p><strong>Aikaleima:</strong> ${formatDateTime(location.timestamp)}</p>
+                            <p><strong>Nimetty paikka:</strong> ${(location.namedLocations || []).map(item => item.name).filter(Boolean).join(', ') || 'Ei nimettyä paikkaa'}</p>
+                        </div>
+                    `;
                     // Get individual properties
-                    //let latitude = data.lat;
-                    //let longitude = data.lon;
-                    //let register = data.register;
+                    let latitude = data.lat;
+                    let longitude = data.lon;
+                    let register = data.register;
 
-                    //console.log (register);
+                    console.log (register);
 
                     document.getElementById('register').innerHTML = data.register
 
                     // Initialize the map and set its view to the specified coordinates and zoom level
+                    //const rasekomap = L.map('mapid').setView([latitude, longitude], 16);
                     let rasekomap = L.map('mapid').setView([latitude, longitude], 16);
 
                     // Add a tile layer to the map (OpenStreetMap tiles)
@@ -63,23 +76,24 @@
                     }).addTo(rasekomap);
 
                     // Add a marker at the specified coordinates                   
+                    //L.marker([location.lat, location.lon]).addTo(rasekomap).bindPopup(location.deviceName || register).openPopup();
                     let marker = L.marker([latitude, longitude]).addTo(rasekomap);
 
                     // Popup for the marker
                     // If data is sent directly to popup, it will handel it as name of variable
                     // Building ID is read from invisible elements in the begining of the page using getElementById method
                     // It can also be translated into string using `{{buildingId}}`-form
-                    //let info = document.getElementById('bid')
-                    //marker.bindPopup(info).openPopup();
+                    let info = document.getElementById('bid')
+                    marker.bindPopup(info).openPopup();
 
                     // Set the popup text by handlebars variable
-                    //marker.bindPopup(info)
-                    //marker.bindPopup(`{{register}}`)
+                    marker.bindPopup(info)
+                    marker.bindPopup(`{{register}}`)
 
                     // Dynamic data from API
-                    .bindPopup(location.deviceName || register)
+                   .bindPopup(location.deviceName || register)
                   
-                }   
+                }  
                 // Call the function
                 loadJsonData();
             </script>

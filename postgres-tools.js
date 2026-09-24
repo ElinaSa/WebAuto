@@ -222,9 +222,22 @@ const convertToDateTimeObject = (timestamp) => {
     };
     return result;
 }
+
+const getSetting = async (settingName) => {
+    const sqlstatement = `
+        SELECT arvo
+        FROM public.app_asetus
+        WHERE avain = $1
+    `;
+
+    const resultset = await pool.query(sqlstatement, [settingName]);
+
+    return resultset.rows[0]?.arvo;
+};
 /*selectQuery('SELECT * FROM jest_test').then((resultset) => {
     console.log(resultset.rows)
 })
+
 */
 // EXPORT FUNCTIONS
 // ----------------
