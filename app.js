@@ -417,95 +417,94 @@ app.get('/api/testDeviceId', async (req, res) => {
     }
 });
 
-// TODO tee sisennykset
 // Vehicle position from Paikannin.com
 app.get('/api/vehiclePositionData', async (req, res) => {
-try {
-console.log(req.query);
+    try {
+        console.log(req.query);
 
-const register = req.query.register;
+        const register = req.query.register;
 
 
-// Haetaan auton Paikannin-laitetunnus tietokannasta
-const deviceId = await pgtools.getDeviceId(register);
+        // Haetaan auton Paikannin-laitetunnus tietokannasta
+        const deviceId = await pgtools.getDeviceId(register);
 
-if (!deviceId) {
-return res.status(404).json({
-error: 'Vehicle not found',
-details: 'No deviceId found for register ${register}'
-});
-}
+            if (!deviceId) {
+                return res.status(404).json({
+                    error: 'Vehicle not found',
+                    details: `No deviceId found for register ${register}`
+                });
+            }
 
-// Haetaan Paikannin API-avain tietokannasta
-const apiKey = (await pgtools.getSetting('API_KEY'))?.trim();
+        // Haetaan Paikannin API-avain tietokannasta
+        const apiKey = (await pgtools.getSetting('API_KEY'))?.trim();
 
-if (!apiKey) {
-return res.status(500).json({
-error: 'API key not found'
-});
-}
+            if (!apiKey) {
+                return res.status(500).json({
+                    error: 'API key not found'
+                });
+            }
 
-// Paikannin.com API URL
-const url = 'https://app.paikannin.com/public/api/devices/location/allpublic';
+        // Paikannin.com API URL
+        const url = 'https://app.paikannin.com/public/api/devices/location/allpublic';
 
-// HTTP-pyyntö Paikannin API:in
-const response = await fetch(url, {
-method: 'GET',
-headers: {
-'API_KEY': apiKey,
-'Accept': 'application/json',
-'Content-Type': 'application/json'
-}
-});
+        // HTTP-pyyntö Paikannin API:in
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'API_KEY': apiKey,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
 
-if (!response.ok) {
-const errorText = await response.text();
+        if (!response.ok) {
+            const errorText = await response.text();
 
-console.error('Paikannin API error:', errorText);
+            console.error('Paikannin API error:', errorText);
 
-return res.status(response.status).json({
-error: 'Paikannin API failed',
-details: errorText
-});
-}
+            return res.status(response.status).json({
+                error: 'Paikannin API failed',
+                details: errorText
+            });
+        }
 
-// JSON-data API:lta
-const apiData = await response.json();
+        // JSON-data API:lta
+        const apiData = await response.json();
 
-// Etsitään oikea auto deviceId:n perusteella
-const vehicle = apiData.find(device =>
-Number(device.deviceId) === Number(deviceId)
-);
+        // Etsitään oikea auto deviceId:n perusteella
+        const vehicle = apiData.find(device =>
+            Number(device.deviceId) === Number(deviceId)
+        );
 
-if (!vehicle) {
-return res.status(404).json({
-error: 'Vehicle location not found',
-register: register,
-deviceId: deviceId
-});
-}
+        if (!vehicle) {
+            return res.status(404).json({
+                error: 'Vehicle location not found',
+                register: register,
+                deviceId: deviceId
+            });
+        }
 
-// Lähetetään frontendille tarvittavat tiedot
-res.json({
-lat: vehicle.lat,
-lon: vehicle.lon,
-register: register,
-deviceId: vehicle.deviceId,
-timestamp: vehicle.timestamp,
-time: vehicle.time,
-deviceName: vehicle.deviceName,
-speed: vehicle.speed,
-heading: vehicle.heading
-});
+        // Lähetetään frontendille tarvittavat tiedot
+        res.json({
+            lat: vehicle.lat,
+            lon: vehicle.lon,
+            register: register,
+            deviceId: vehicle.deviceId,
+            timestamp: vehicle.timestamp,
+            time: vehicle.time,
+            deviceName: vehicle.deviceName,
+            speed: vehicle.speed,
+            heading: vehicle.heading
+        });
 
-} catch (err) {
-console.error(err);
+    } catch (err) {
+        console.error(err);
 
-res.status(500).json({
-error: 'Server error',
-details: err.message
-});
-}
+        res.status(500).json({
+            error: 'Server error',
+            details: err.message
+        });
+    }
 });
 
 
@@ -516,7 +515,7 @@ details: err.message
 app.get('/vehiclePosition', (req, res) => {
     let vehicleData = {register: req.query.register}
     res.render('vehiclePosition', vehicleData)
-})
+});
 
 
 // 

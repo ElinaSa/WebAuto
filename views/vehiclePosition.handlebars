@@ -5,7 +5,9 @@
     </div> 
 
     <div class="container">
+
         <div id="map">
+            
             <h1 id="register" class="modern-header">{{register}}</h1>
 
             {{!-- <div id="routeInfo" class="alignment-box"></div> --}}
@@ -17,84 +19,80 @@
 
                 const loadJsonData = async () => {
 
-                // Haetaan rekisterinumero sivulta
-                const register = document.getElementById('register').innerHTML.trim();
+                    // Haetaan rekisterinumero sivulta
+                    const register = document.getElementById('register').innerHTML.trim();
 
-                // Kutsutaan backendin APIa
-                const apicall = '/api/vehiclePositionData?register='
-                + encodeURIComponent(register);
+                    // Kutsutaan backendin APIa
+                    const apicall = '/api/vehiclePositionData?register='
+                    + encodeURIComponent(register);
 
-                console.log('Kutsutaan:', apicall);
+                    console.log('Kutsutaan:', apicall);
 
-                const response = await fetch(apicall);
+                    const response = await fetch(apicall);
 
-                // Tarkistetaan että backend vastasi onnistuneesti
-                if (!response.ok) {
-                const errorText = await response.text();
+                    // Tarkistetaan että backend vastasi onnistuneesti
+                    if (!response.ok) {
+                        const errorText = await response.text();
 
-                console.error(
-                'Backend-virhe:',
-                response.status,
-                errorText
-                );
+                        console.error(
+                            'Backend-virhe:',
+                            response.status,
+                            errorText
+                        );
+                        return;
+                    }
 
-                return;
-                }
+                    // Backend palauttaa JSONin.
+                    // response.json() muuttaa sen suoraan JavaScript-olioksi.
+                    const data = await response.json();
 
-                // Backend palauttaa JSONin.
-                // response.json() muuttaa sen suoraan JavaScript-olioksi.
-                const data = await response.json();
+                    console.log('Backendistä saatu data:', data);
 
-                console.log('Backendistä saatu data:', data);
+                    // Haetaan koordinaatit
+                    const latitude = data.lat;
+                    const longitude = data.lon;
 
-                // Haetaan koordinaatit
-                const latitude = data.lat;
-                const longitude = data.lon;
+                    // Tarkistetaan että koordinaatit löytyvät
+                    if (latitude == null || longitude == null) {
+                        console.error(
+                            'Sijaintidatasta puuttuu lat tai lon:',
+                            data
+                        );
+                        return;
+                    }
 
-                // Tarkistetaan että koordinaatit löytyvät
-                if (latitude == null || longitude == null) {
+                    console.log(
+                    'Sijainti:',
+                    latitude,
+                    longitude
+                    );
 
-                console.error(
-                'Sijaintidatasta puuttuu lat tai lon:',
-                data
-                );
+                    // Luodaan Leaflet-kartta
+                    const rasekomap = L.map('mapid').setView(
+                        [latitude, longitude],
+                        16
+                    );
 
-                return;
-                }
+                    // OpenStreetMap-karttataso
+                    L.tileLayer(
+                        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                        {
+                            attribution:
+                            'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+                            maxZoom: 19
+                        }
+                    ).addTo(rasekomap);
 
-                console.log(
-                'Sijainti:',
-                latitude,
-                longitude
-                );
+                    // Luodaan auton merkki
+                    const marker = L.marker(
+                        [latitude, longitude]
+                    ).addTo(rasekomap);
 
-                // Luodaan Leaflet-kartta
-                const rasekomap = L.map('mapid').setView(
-                [latitude, longitude],
-                16
-                );
-
-                // OpenStreetMap-karttataso
-                L.tileLayer(
-                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                {
-                attribution:
-                'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
-                maxZoom: 19
-                }
-                ).addTo(rasekomap);
-
-                // Luodaan auton merkki
-                const marker = L.marker(
-                [latitude, longitude]
-                ).addTo(rasekomap);
-
-                // Näytetään rekisterinumero popupissa
-                marker.bindPopup(
-                `<strong>${register}</strong><br>
-                Leveysaste: ${latitude}<br> 
-                Pituusaste: ${longitude}`
-                ).openPopup();
+                    // Näytetään rekisterinumero popupissa
+                    marker.bindPopup(
+                        `<strong>${register}</strong><br>
+                        Leveysaste: ${latitude}<br> Pituusaste: ${longitude}`
+                    ).openPopup();
 
                 };
 
@@ -102,7 +100,6 @@
                 loadJsonData();
 
             </script>
-        
         </div>
     </div>
 </body>
