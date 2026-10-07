@@ -373,80 +373,142 @@ app.get('/signOut', (req,res) => {
 //     // Send JSON data as response
 //     res.json(jsonData)
 // })
-//TODO: muokkaa tästä kopiosta sellainen mikä käyttää oikeaa dataa
-app.get('/api/vehiclePositionData', (req,res) =>{
-    console.log(req.query)
-    register = req.query.register
+// //TODO: muokkaa tästä kopiosta sellainen mikä käyttää oikeaa dataa
+// app.get('/api/vehiclePositionData', (req,res) =>{
+//     console.log(req.query);
+//     const register = req.query.register || req.query.deviceId;
 
-    // Example data as JavaScript object from external source
-    // let data = {key: value}
-    let data = {lat: 60.4786,
-                lon: 22.1636,
-                register: register
-    }
-
-    // Convert data to JSON
-    let jsonData = JSON.stringify(data)
-
-    // Send JSON data as response
-    res.json(jsonData)
-})
-
-// Testi 
-// app.get('/api/vehiclePositionData', async (req, res) => {
-//     try {
-//         console.log(req.query);
-
-//         const register = req.query.register || req.query.deviceId;
-
-//         // Paikannin.com API URL
-//         const url = `https://api.paikannin.com/devices/${encodeURIComponent(register)}`;
-
-//         // HTTP-pyyntö ulkoiseen API:in
-//         const response = await fetch(url, {
-//             method: 'GET',
-//             headers: {
-//                 'Authorization': `Bearer ${process.env.API_KEY}`,
-//                 'Content-Type': 'application/json'
-//             }
-//         });
-
-//         if (!response.ok) {
-//             const errorText = await response.text();
-
-//             console.error('Paikannin API error:', errorText);
-
-//             return res.status(response.status).json({
-//                 error: 'Paikannin API failed',
-//                 details: errorText
-//             });
-//         }
-
-//         // JSON-data API:lta
-//         const apiData = await response.json();
-
-//         // Muunnetaan frontendin tarvitsemaan muotoon
-//         const data = {
-//             lat: apiData.lat,
-//             lon: apiData.lon,
-//             register: register,
-//             timestamp: apiData.timestamp,
-//             deviceName: apiData.deviceName
-//         };
-
-//         // Lähetetään frontendille
-//         res.json(data);
-
-//     } catch (err) {
-
-//         console.error(err);
-
-//         res.status(500).json({
-//             error: 'Server error',
-//             details: err.message
-//         });
+//     // Example data as JavaScript object from external source
+//     // let data = {key: value}
+//     let data = {lat: 60.4786,
+//                 lon: 22.1636,
+//                 register: register
 //     }
-// });
+
+//     // Convert data to JSON
+//     let jsonData = JSON.stringify(data)
+
+//     // Send JSON data as response
+//     res.json(data)
+// })
+
+app.get('/api/testDeviceId', async (req, res) => {
+    try {
+        const register = req.query.register;
+
+        console.log("Haetaan deviceId rekisterillä:", register);
+
+        const deviceId = await pgtools.getDeviceId(register);
+
+        console.log("Löytynyt deviceId:", deviceId);
+
+        res.json({
+            register: register,
+            deviceId: deviceId
+        });
+
+    } catch (err) {
+        console.error(err);
+
+        res.status(500).json({
+            error: 'Database error',
+            details: err.message
+        });
+    }
+});
+
+// TODO tee sisennykset
+// Vehicle position from Paikannin.com
+app.get('/api/vehiclePositionData', async (req, res) => {
+try {
+console.log(req.query);
+
+const register = req.query.register;
+
+
+// Haetaan auton Paikannin-laitetunnus tietokannasta
+const deviceId = await pgtools.getDeviceId(register);
+
+if (!deviceId) {
+return res.status(404).json({
+error: 'Vehicle not found',
+details: 'No deviceId found for register ${register}'
+});
+}
+
+// Haetaan Paikannin API-avain tietokannasta
+const apiKey = (await pgtools.getSetting('API_KEY'))?.trim();
+
+if (!apiKey) {
+return res.status(500).json({
+error: 'API key not found'
+});
+}
+
+// Paikannin.com API URL
+const url = 'https://app.paikannin.com/public/api/devices/location/allpublic';
+
+// HTTP-pyyntö Paikannin API:in
+const response = await fetch(url, {
+method: 'GET',
+headers: {
+'API_KEY': apiKey,
+'Accept': 'application/json',
+'Content-Type': 'application/json'
+}
+});
+
+if (!response.ok) {
+const errorText = await response.text();
+
+console.error('Paikannin API error:', errorText);
+
+return res.status(response.status).json({
+error: 'Paikannin API failed',
+details: errorText
+});
+}
+
+// JSON-data API:lta
+const apiData = await response.json();
+
+// Etsitään oikea auto deviceId:n perusteella
+const vehicle = apiData.find(device =>
+Number(device.deviceId) === Number(deviceId)
+);
+
+if (!vehicle) {
+return res.status(404).json({
+error: 'Vehicle location not found',
+register: register,
+deviceId: deviceId
+});
+}
+
+// Lähetetään frontendille tarvittavat tiedot
+res.json({
+lat: vehicle.lat,
+lon: vehicle.lon,
+register: register,
+deviceId: vehicle.deviceId,
+timestamp: vehicle.timestamp,
+time: vehicle.time,
+deviceName: vehicle.deviceName,
+speed: vehicle.speed,
+heading: vehicle.heading
+});
+
+} catch (err) {
+console.error(err);
+
+res.status(500).json({
+error: 'Server error',
+details: err.message
+});
+}
+});
+
+
 
 
 

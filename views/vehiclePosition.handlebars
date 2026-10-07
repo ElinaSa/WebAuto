@@ -14,89 +14,95 @@
             <div class="map-frame" id="mapid"></div>
 
             <script>
-                               
-                // Async function to get data from server API
-                const loadJsonData = async() => {
-                    //const params = new URLSearchParams(window.location.search);
-                    //const register = document.getElementById('register').innerHTML.trim();
-                    //const deviceId = params.get('deviceId') || register;
 
-                    TODO: tarkista tämä
-                    // Get vehicles registernumber and construct an api call
-                    let queryRegister = document.getElementById('register').innerHTML;
-                    let apicall = '/api/vehiclePositionData?register=' +queryRegister;
+                const loadJsonData = async () => {
 
-                    // Use Javascript native fetch function to get data
-                    //const response = await fetch('/api/deviceLocation?deviceId=' + encodeURIComponent(deviceId));
-                    const response = await fetch(apicall);
+                // Haetaan rekisterinumero sivulta
+                const register = document.getElementById('register').innerHTML.trim();
 
-                    // Error Handling for HTTP error or Backend error
-                    if (!response.ok) {
-                        const errorText = await response.text();
-                        document.getElementById('routeInfo').innerHTML = '<p>Virhe HTTP:ssä tai backendissä: ' + response.status + '</p><pre>' + errorText + '</pre>';
-                        return; 
-                    }
+                // Kutsutaan backendin APIa
+                const apicall = '/api/vehiclePositionData?register='
+                + encodeURIComponent(register);
 
-                    // Get data as json
-                    //const location = await response.json();
-                    const jsonData = await response.json();
+                console.log('Kutsutaan:', apicall);
 
-                    // Data Validation, checks if data and coordinates was found
-                   // if (!location || location.lat == null || location.lon == null) {
-                     //   document.getElementById('routeInfo').innerHTML = '<p>Dataa ei löydy.</p>';
-                       // return;
-                    //}
-                   
-                    document.getElementById('routeInfo').innerHTML = `
-                        <div class="drive-information">
-                            <p><strong>Ajoneuvo:</strong> ${location.deviceName || register}</p>
-                            <p><strong>Leveysaste:</strong> ${location.lat}</p>
-                            <p><strong>Pituusaste:</strong> ${location.lon}</p>
-                            <p><strong>Aikaleima:</strong> ${formatDateTime(location.timestamp)}</p>
-                            <p><strong>Nimetty paikka:</strong> ${(location.namedLocations || []).map(item => item.name).filter(Boolean).join(', ') || 'Ei nimettyä paikkaa'}</p>
-                        </div>
-                    `;
-                    // Get individual properties
-                    let latitude = data.lat;
-                    let longitude = data.lon;
-                    let register = data.register;
+                const response = await fetch(apicall);
 
-                    console.log (register);
+                // Tarkistetaan että backend vastasi onnistuneesti
+                if (!response.ok) {
+                const errorText = await response.text();
 
-                    document.getElementById('register').innerHTML = data.register
+                console.error(
+                'Backend-virhe:',
+                response.status,
+                errorText
+                );
 
-                    // Initialize the map and set its view to the specified coordinates and zoom level
-                    //const rasekomap = L.map('mapid').setView([latitude, longitude], 16);
-                    let rasekomap = L.map('mapid').setView([latitude, longitude], 16);
+                return;
+                }
 
-                    // Add a tile layer to the map (OpenStreetMap tiles)
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
-                        maxZoom: 19,
-                    }).addTo(rasekomap);
+                // Backend palauttaa JSONin.
+                // response.json() muuttaa sen suoraan JavaScript-olioksi.
+                const data = await response.json();
 
-                    // Add a marker at the specified coordinates                   
-                    //L.marker([location.lat, location.lon]).addTo(rasekomap).bindPopup(location.deviceName || register).openPopup();
-                    let marker = L.marker([latitude, longitude]).addTo(rasekomap);
+                console.log('Backendistä saatu data:', data);
 
-                    // Popup for the marker
-                    // If data is sent directly to popup, it will handel it as name of variable
-                    // Building ID is read from invisible elements in the begining of the page using getElementById method
-                    // It can also be translated into string using `{{buildingId}}`-form
-                    let info = document.getElementById('bid')
-                    marker.bindPopup(info).openPopup();
+                // Haetaan koordinaatit
+                const latitude = data.lat;
+                const longitude = data.lon;
 
-                    // Set the popup text by handlebars variable
-                    marker.bindPopup(info)
-                    marker.bindPopup(`{{register}}`)
+                // Tarkistetaan että koordinaatit löytyvät
+                if (latitude == null || longitude == null) {
 
-                    // Dynamic data from API
-                   .bindPopup(location.deviceName || register)
-                  
-                }  
-                // Call the function
+                console.error(
+                'Sijaintidatasta puuttuu lat tai lon:',
+                data
+                );
+
+                return;
+                }
+
+                console.log(
+                'Sijainti:',
+                latitude,
+                longitude
+                );
+
+                // Luodaan Leaflet-kartta
+                const rasekomap = L.map('mapid').setView(
+                [latitude, longitude],
+                16
+                );
+
+                // OpenStreetMap-karttataso
+                L.tileLayer(
+                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                {
+                attribution:
+                'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+                maxZoom: 19
+                }
+                ).addTo(rasekomap);
+
+                // Luodaan auton merkki
+                const marker = L.marker(
+                [latitude, longitude]
+                ).addTo(rasekomap);
+
+                // Näytetään rekisterinumero popupissa
+                marker.bindPopup(
+                `<strong>${register}</strong><br>
+                Leveysaste: ${latitude}<br> 
+                Pituusaste: ${longitude}`
+                ).openPopup();
+
+                };
+
+                // Käynnistetään sijainnin haku
                 loadJsonData();
+
             </script>
+        
         </div>
     </div>
 </body>
