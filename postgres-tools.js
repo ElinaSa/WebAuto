@@ -159,7 +159,7 @@ const runQueryWithValues = async (query) => {
 */
 
 const getDiary = async () => { 
-    let sqlstatement = 'SELECT * from public.webajopaivakirja';
+    let sqlstatement = 'SELECT * from public.webajopaivakirja ';
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }

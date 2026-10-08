@@ -250,10 +250,17 @@ app.get('/filterDiary', (req, res) => {
 });
 
 app.get('/filteredDiary', (req, res) => {
+
+    console.log("=== FILTERED DIARY REITTIIN TULTU ===");
+    console.log(req.query);
+
     if (req.session.user) {
         userRole = req.session.user.role;
         if (userRole == 'opettaja' || userRole == 'hallinto') {
-    
+        
+            console.log("=== FILTERED DIARY EHTO LÄPI ");
+            console.log(req.query);
+
             let registerFilter = req.query.rekisterinumero
             let registerFilterValid = req.query.rekisterisuodatus
             let reasonFilter = req.query.tarkoitus
@@ -267,36 +274,71 @@ app.get('/filteredDiary', (req, res) => {
             let endFilter = req.query.loppuu
             let dateFiltersValid = req.query.ottosuodatus
         
-            let conditions = ''
+
+            let conditions = [];
+
             if (registerFilterValid == 'on') {
-                conditions = conditions + `rekisterinumero = '${registerFilter}'  AND `;
+                conditions.push(`rekisterinumero = '${registerFilter}'`);
             }
+
             if (reasonFilterValid == 'on') {
-                conditions = conditions + `tarkoitus  = '${reasonFilter}' AND `;
+                conditions.push(`tarkoitus = '${reasonFilter}'`);
             }
+
             if (driverFilterValid == 'on') {
-                conditions = conditions + `nimi =' '${driverFilter}' AND `;
+                conditions.push(`nimi = '${driverFilter}'`);
             }
+
             if (dateFiltersValid == 'on') {
-                conditions = conditions +  `otettu BETWEEN '${startFilter} ' AND ' ${endFilter}`;
-            }    
-        
-            let whereClause = 'WHERE ' + conditions;
-            let cleanwhereClause = '';
-            // console.log(whereClause.endsWith(' AND '))
-            if (whereClause.endsWith(' AND ')) {
-                let position = whereClause.lastIndexOf(' AND ');
-                cleanwhereClause = whereClause.substring(0, position);
-                // console.log(position)
+                conditions.push(`otettu BETWEEN '${startFilter}' AND '${endFilter}'`);
             }
-            else {
-                cleanwhereClause = whereClause;
+
+            let whereClause = '';
+
+            if (conditions.length > 0) {
+                whereClause = ' WHERE ' + conditions.join(' AND ');
             }
-            console.log(cleanwhereClause);
-            let sqlstatement = 'SELECT * FROM public.webajopaivakirja' + cleanwhereClause
+
+            console.log(whereClause);
+
+            let sqlstatement =
+                'SELECT * FROM public.webajopaivakirja' + whereClause;
+
             pgtools.selectQuery(sqlstatement).then((resultset) => {
-                res.render('filteredDiary', {diaryData: resultset.rows});
-            })
+                res.render('filteredDiary', {
+                    diaryData: resultset.rows
+                });
+            });
+            // let conditions = ''
+            // if (registerFilterValid == 'on') {
+            //     conditions = conditions + `rekisterinumero = '${registerFilter}'  AND `;
+            // }
+            // if (reasonFilterValid == 'on') {
+            //     conditions = conditions + `tarkoitus  = '${reasonFilter}' AND `;
+            // }
+            // if (driverFilterValid == 'on') {
+            //     conditions = conditions + `nimi = '${driverFilter}' AND `;
+            // }
+            // if (dateFiltersValid == 'on') {
+            //     conditions = conditions + `otettu BETWEEN '${startFilter}' AND '${endFilter}' AND `;
+            // }    
+        
+            // let whereClause = 'WHERE ' + conditions;
+            // let cleanwhereClause = '';
+            // // console.log(whereClause.endsWith(' AND '))
+            // if (whereClause.endsWith(' AND ')) {
+            //     let position = whereClause.lastIndexOf(' AND ');
+            //     cleanwhereClause = whereClause.substring(0, position);
+            //     // console.log(position)
+            // }
+            // else {
+            //     cleanwhereClause = whereClause;
+            // }
+            // console.log(cleanwhereClause);
+            // let sqlstatement = 'SELECT * FROM public.webajopaivakirja ' + cleanwhereClause
+            // pgtools.selectQuery(sqlstatement).then((resultset) => {
+            //     res.render('filteredDiary', {diaryData: resultset.rows});
+            // })
         } else {
             res.render('notAuthorized')
         }
