@@ -248,6 +248,12 @@ const getSetting = async (settingName) => {
     return resultset.rows[0]?.arvo;
 };
 
+const getDiaryTax = async () => {
+    let sqlstatement = `SELECT * FROM public.ajopaivakirja_verottaja`;
+    let resultset = await pool.query(sqlstatement);
+    return resultset;
+};
+
 /*selectQuery('SELECT * FROM jest_test').then((resultset) => {
     console.log(resultset.rows)
 })
@@ -257,4 +263,4 @@ const getSetting = async (settingName) => {
 // ----------------
 
 // TODO: Export all functions and the pool itself. Jest needs the pool to run tests
-module.exports = {pool, insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getDiary, getTaxDiary, runQueryWithValues, getLocationByReg, getVehicleData, convertToDateTimeObject, getWebUserData, getVehicleDiary, getSetting, getDeviceId};
+module.exports = {pool, insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getDiary, getTaxDiary, runQueryWithValues, getLocationByReg, getVehicleData, convertToDateTimeObject, getWebUserData, getVehicleDiary, getSetting, getDeviceId, getDiaryTax};

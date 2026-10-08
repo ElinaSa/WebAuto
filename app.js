@@ -331,7 +331,7 @@ app.get('/diaryTax', (req, res) => {
     let user = req.session.user;
     if (user) {
         if (user.role == 'hallinto') {
-            pgtools.getTaxDiary().then((resultset) => {
+            pgtools.getDiaryTax().then((resultset) => {
             res.render('diaryTax', {diaryData: resultset.rows});
         })
         } else {
