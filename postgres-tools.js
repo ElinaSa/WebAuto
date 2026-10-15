@@ -189,8 +189,7 @@ const getVehicleDiary = async (register) => {
     return resultset;
 }
 
-
-
+// TODO: tarkista
 // Location page - location by register number -> create a view for this
 
 /** 
@@ -206,6 +205,7 @@ const getLocationByReg = async (values) => {
     let resultset = await pool.query(sqlstatement, values);
     return resultset;
 }
+
 // TODO:Tarkista itseltä mikä tuohon ison T:n tilalle tulee, Mika lyhentänyt Timen jossain kohtaa näin
 /**
  * Converts PostgreSQL timestamp to user friendly string format.
@@ -229,12 +229,9 @@ const getDeviceId = async (register) => {
         FROM public.auto
         WHERE rekisterinumero = $1`
     ;
-
     const resultset = await pool.query(sqlstatement, [register]);
-
     return resultset.rows[0]?.deviceid;
 };
-
 
 const getSetting = async (settingName) => {
     const sqlstatement = `
@@ -242,9 +239,7 @@ const getSetting = async (settingName) => {
         FROM public.asetus
         WHERE avain = $1
     `;
-
     const resultset = await pool.query(sqlstatement, [settingName]);
-
     return resultset.rows[0]?.arvo;
 };
 
@@ -254,11 +249,6 @@ const getDiaryTax = async () => {
     return resultset;
 };
 
-/*selectQuery('SELECT * FROM jest_test').then((resultset) => {
-    console.log(resultset.rows)
-})
-
-*/
 // EXPORT FUNCTIONS
 // ----------------
 

@@ -100,8 +100,8 @@ app.post('/welcome', (req, res) => {
                 // It is possible to store more user data by defining more key-value-pairs
                 sessionData.user= {role:userRole}
                 res.render('welcome',{user: inputEmail, role: userRole});
-            }
-            else {
+
+            } else {
                  res.render('invalidPassword');
             }
 
@@ -109,7 +109,6 @@ app.post('/welcome', (req, res) => {
             res.render('invalidUserName', {user: inputEmail})
         }                
     });
-    
 });
 
 // Route to vehicle listing page: free vehicles and vehicles in use 
@@ -122,30 +121,10 @@ app.get('/vehiclelist', (req, res) => {
         // Lets give a key for the resultset and render it to the page
         res.render('vehiclelist', {vehicleList: resultset.rows});
     })  
-    }
-    else {
+    } else {
         res.render('notAuthorized');
     }
 });
-
-// TODO: TARKISTA NÄIDEN KOHTALO?
-// 
-// Route to vehicle listing page: free vehicles and vehicles in use as a table
-// app.get('/vehicles', (req, res) => {
-    // pgtools.getVehicleData().then((resultset) => {
-        // Lets give a key for the resultset and render it to the page
-        // res.render('vehicles', {vehicleList: resultset.rows});       
-    // })
-// });
-// 
-// Route to vehicle listing page: free vehicles and vehicles in use using cards
-// app.get('/vehiclelist', (req, res) => {
-    // pgtools.getVehicleData().then((resultset) => {
-        // Lets give a key for the resultset and render it to the page
-        // res.render('vehiclelist', {vehicleList: resultset.rows});
-    // })
-// });
-// 
 
 // Route to indivisual vehicle page: select vehicle by register number
 app.get('/vehicleDetail', (req, res) => {
@@ -161,11 +140,9 @@ app.get('/vehicleDetail', (req, res) => {
         } else {
             res.render('notAuthorized')
         }
-
-    }  else {
+    } else {
         res.render('notSignedIn')
     }  
-
 });
 
 // Route to diary of single vehicle by register number
@@ -176,7 +153,6 @@ app.get('/vehicleDiary', (req, res) => {
         if (user.role == 'opettaja' || user.role == 'hallinto') {       
             pgtools.getVehicleDiary([register]).then((resultset) => {
             res.render('vehicleDiary', {diaryData: resultset.rows})}) 
-
         } else {
             res.render('notAuthorized');
         }    
@@ -242,10 +218,7 @@ app.get('/filterDiary', (req, res) => {
     }
     else {
         res.render('notSignedIn')
-    }
-    
-
-    // Read session data                                     
+    }                              
    
 });
 
@@ -309,39 +282,11 @@ app.get('/filteredDiary', (req, res) => {
                     diaryData: resultset.rows
                 });
             });
-            // let conditions = ''
-            // if (registerFilterValid == 'on') {
-            //     conditions = conditions + `rekisterinumero = '${registerFilter}'  AND `;
-            // }
-            // if (reasonFilterValid == 'on') {
-            //     conditions = conditions + `tarkoitus  = '${reasonFilter}' AND `;
-            // }
-            // if (driverFilterValid == 'on') {
-            //     conditions = conditions + `nimi = '${driverFilter}' AND `;
-            // }
-            // if (dateFiltersValid == 'on') {
-            //     conditions = conditions + `otettu BETWEEN '${startFilter}' AND '${endFilter}' AND `;
-            // }    
-        
-            // let whereClause = 'WHERE ' + conditions;
-            // let cleanwhereClause = '';
-            // // console.log(whereClause.endsWith(' AND '))
-            // if (whereClause.endsWith(' AND ')) {
-            //     let position = whereClause.lastIndexOf(' AND ');
-            //     cleanwhereClause = whereClause.substring(0, position);
-            //     // console.log(position)
-            // }
-            // else {
-            //     cleanwhereClause = whereClause;
-            // }
-            // console.log(cleanwhereClause);
-            // let sqlstatement = 'SELECT * FROM public.webajopaivakirja ' + cleanwhereClause
-            // pgtools.selectQuery(sqlstatement).then((resultset) => {
-            //     res.render('filteredDiary', {diaryData: resultset.rows});
-            // })
+
         } else {
             res.render('notAuthorized')
         }
+
     } else {
     res.render('notSignedIn')
     }    
@@ -350,7 +295,6 @@ app.get('/filteredDiary', (req, res) => {
 // TODO: Route to vehicle's diary page: all entries for individual vehicle by register number
 
 // TODO: Route to vehicle's tracking page: location by register number
-
 
 app.get('/logout', (req, res) => {
     req.session.destroy((err) => {
@@ -379,11 +323,12 @@ app.get('/diaryTax', (req, res) => {
         } else {
             res.render('notAuthorized')
         }
+
     } else {
         res.render('notSignedIn')
     }
-
 });
+
 // Route to sign out page
 app.get('/signOut', (req,res) => {
     req.session.destroy((err) => {
@@ -394,45 +339,6 @@ app.get('/signOut', (req,res) => {
         }
     })
 });
-
-// TODO: Muunna käyttämään oikeaa dataa fleet management -sovelluksesta
-
-// Alkuperäinen kovakoodattu
-// app.get('/api/vehiclePositionData', (req,res) =>{
-//     console.log(req.query)
-//     register = req.query.register
-
-//     // Example data as JavaScript object from external source
-//     // let data = {key: value}
-//     let data = {lat: 60.4786,
-//                 lon: 22.1636,
-//                 register: register
-//     }
-
-//     // Convert data to JSON
-//     let jsonData = JSON.stringify(data)
-
-//     // Send JSON data as response
-//     res.json(jsonData)
-// })
-// //TODO: muokkaa tästä kopiosta sellainen mikä käyttää oikeaa dataa
-// app.get('/api/vehiclePositionData', (req,res) =>{
-//     console.log(req.query);
-//     const register = req.query.register || req.query.deviceId;
-
-//     // Example data as JavaScript object from external source
-//     // let data = {key: value}
-//     let data = {lat: 60.4786,
-//                 lon: 22.1636,
-//                 register: register
-//     }
-
-//     // Convert data to JSON
-//     let jsonData = JSON.stringify(data)
-
-//     // Send JSON data as response
-//     res.json(data)
-// })
 
 app.get('/api/testDeviceId', async (req, res) => {
     try {
@@ -549,85 +455,13 @@ app.get('/api/vehiclePositionData', async (req, res) => {
     }
 });
 
-
-
-
-
 // TODO: Route to vehicle's tracking page: location by register number
 app.get('/vehiclePosition', (req, res) => {
     let vehicleData = {register: req.query.register}
     res.render('vehiclePosition', vehicleData)
 });
 
-
-// 
-// Different kind of tests
-// -----------------------
-app.get('/cookieTest', (req, res) => {
-    // console.log('Istuntotiedot cookieTest-sivu:', req.session)
-    res.render('cookieTest', {sessionUser: req.session.user.username, //vai .role?
-        sessionEnds: req.session.cookie_expires
-    })
-});
-
-app.get('/menuTest', (req, res) => {
-    res.render('menuTest'); 
-});
-
-app.get('/vlistFlex', (req, res)=> {
-    res.render('vlistFlex');
-})
-
-app.get('/icontest', (req, res)=> {
-    res.render('icontest');
-})
-
-app.get('/svgtest', (req, res)=> {
-    res.render('svgtest');
-})
-
-app.get('/vlistColums', (req, res)=> {
-    res.render('vlistColumns');
-})
-
-app.get('/vlistFlex', (req, res) => {
-        res.render('vlistFlex');
-    })
-
-app.get('vlistColumns', (reg, res) => {
-    res.render('vlistColumns');
-})
-
-app.get('/iconList', (req, res) => {
-    res.render('iconList');
-})
-
-// TODO: POISTETAAN/MUOKATAAN TÄMÄ PÄTKÄ KUN KAIKKI ON VALMISTA
-// URL-reitti About-sivulle
-app.get('/about',(req, res) => {
-    // Simuloidaan dynaamista dataa   
-    let aboutData = {
-        'team': 'Elina, Kata, Heikki, Nikki ja Jonna.'
-    };
-    res.render('about', aboutData);
-});
-
-// A test route to test.handlebars page
-// TODO: muokkaa handlebars sivu! 
-app.get('/test', (req, res) => {
-    testData ={'testKey': 'Hippopotamus is virtahepo in Finnish'};
-    pgtools.selectQuery('SELECT * FROM public.vapaana').then((resultset) => {
-        console.log(resultset.rows)
-    })
-    res.render('test', testData)
-});
-
-app.get('/formTest', (req, res) => {
-    res.render('formtest');
-})
-
 // SERVER START
 // ------------
-
 app.listen(PORT);
 console.log(`Server started on port ${PORT}`);
