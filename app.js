@@ -432,6 +432,9 @@ app.get('/api/vehiclePositionData', async (req, res) => {
             });
         }
 
+        // Tarkistetaan että Paikannin.com palauttauttama tieto on API:ssa samalla nimellä
+        console.log("Vehicle data:", JSON.stringify(vehicle, null, 2));
+
         // Lähetetään frontendille tarvittavat tiedot
         res.json({
             lat: vehicle.lat,
@@ -442,7 +445,8 @@ app.get('/api/vehiclePositionData', async (req, res) => {
             time: vehicle.time,
             deviceName: vehicle.deviceName,
             speed: vehicle.speed,
-            heading: vehicle.heading
+            heading: vehicle.heading,
+            namedLocations: vehicle.namedLocations
         });
 
     } catch (err) {

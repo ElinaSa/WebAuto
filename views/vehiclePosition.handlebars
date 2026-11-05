@@ -46,11 +46,19 @@
                     // response.json() muuttaa sen suoraan JavaScript-olioksi.
                     const data = await response.json();
 
+                    console.log("API:n palauttama data:", data);
+                    console.log("Named locations:", data.namedLocations);
+
                     console.log('Backendistä saatu data:', data);
 
-                    // Haetaan koordinaatit
+                    // Haetaan koordinaatit ja nimetty sijainti
                     const latitude = data.lat;
                     const longitude = data.lon;
+
+                    const locationName = data.namedLocations
+                        ?.map(location => location.name)
+                        .filter(Boolean)
+                        .join(", ") || "Ei nimettyä sijaintia";
 
                     // Tarkistetaan että koordinaatit löytyvät
                     if (latitude == null || longitude == null) {
@@ -61,10 +69,14 @@
                         return;
                     }
 
+                    //if (locationName == null)
+                    //const locationName = data.namedLocations?.[0]?.name || "Ei nimettyä sijaintia";                
+                    //const locationName = namedLocations?.map(location => location.name).join(", ") || "Ei nimettyä sijaintia";
+                    
                     console.log(
-                    'Sijainti:',
-                    latitude,
-                    longitude
+                        'Sijainti:',
+                        latitude,
+                        longitude,
                     );
 
                     // Luodaan Leaflet-kartta
@@ -83,15 +95,17 @@
                         }
                     ).addTo(rasekomap);
 
-                    // Luodaan auton merkki
+                    // Luodaan auton paikkamerkki kartalle
                     const marker = L.marker(
                         [latitude, longitude]
                     ).addTo(rasekomap);
 
-                    // Näytetään rekisterinumero popupissa
+                    // Näytetään rekisterinumero ja sijainti popupissa
                     marker.bindPopup(
                         `<strong>${register}</strong><br>
-                        Leveysaste: ${latitude}<br> Pituusaste: ${longitude}`
+                        Leveysaste: ${latitude}<br> Pituusaste: ${longitude}<br>
+                        Nimetty sijainti: ${locationName}`
+                       
                     ).openPopup();
 
                 };
