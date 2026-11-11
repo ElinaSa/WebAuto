@@ -206,7 +206,6 @@ const getLocationByReg = async (values) => {
     return resultset;
 }
 
-// TODO:Tarkista itseltä mikä tuohon ison T:n tilalle tulee, Mika lyhentänyt Timen jossain kohtaa näin
 /**
  * Converts PostgreSQL timestamp to user friendly string format.
  * @param {timestamp} timestamp - Timestamp to be converted to string
@@ -252,5 +251,5 @@ const getDiaryTax = async () => {
 // EXPORT FUNCTIONS
 // ----------------
 
-// TODO: Export all functions and the pool itself. Jest needs the pool to run tests
+// Export all functions and the pool itself. Jest needs the pool to run tests
 module.exports = {pool, insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getDiary, getTaxDiary, runQueryWithValues, getLocationByReg, getVehicleData, convertToDateTimeObject, getWebUserData, getVehicleDiary, getSetting, getDeviceId, getDiaryTax};
