@@ -111,6 +111,8 @@ app.post('/welcome', (req, res) => {
     });
 });
 
+
+// TODO: miksi rivi 121 vehicleData on harmaalla
 // Route to vehicle listing page: free vehicles and vehicles in use 
 app.get('/vehiclelist', (req, res) => {
     userRole = req.session.user;
@@ -460,6 +462,7 @@ app.get('/api/vehiclePositionData', async (req, res) => {
 });
 
 // TODO: Route to vehicle's tracking page: location by register number
+// TODO: vehicleData undefined?
 app.get('/vehiclePosition', (req, res) => {
     let vehicleData = {register: req.query.register}
     res.render('vehiclePosition', vehicleData)
