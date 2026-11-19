@@ -21,7 +21,7 @@ const session = require('express-session');
 const pgtools = require('./postgres-tools');
 
 // TODO tarkista 
-const { route } = require('express/lib/application'); 
+const {route} = require('express/lib/application'); 
 
 
 // INITIALIZATION
@@ -314,6 +314,7 @@ app.get('/menu', (req,res) => {
     res.render('menu');
 });
 
+// TODO nyt hyvin suppeasti testidatasta, saako kuinka helposti kattavammaksi
 // Route to diary containing all vehicle data for tax administration
 app.get('/diaryTax', (req, res) => {
     let user = req.session.user;
@@ -467,6 +468,122 @@ app.get('/vehiclePosition', (req, res) => {
     let vehicleData = {register: req.query.register}
     res.render('vehiclePosition', vehicleData)
 });
+
+// TODO 19.11.2026 kokeilu, routeData vai vehicleData, toimiiko role tässä näin
+// Vehicle routes from Paikannin.com for tax administration
+// app.get('/api/vehicleRouteTax', async (req, res) => {
+//     let user = req.session.user;
+//     if (user) {
+//         if (user.role == 'hallinto') {
+//             pgtools.getvehicleRouteTax().then((resultset) => {
+//             res.render('vehicleRouteTax', {routeData: resultset.rows});
+//         })
+//         } else {
+//             res.render('notAuthorized')
+//         }
+
+//     } else {
+//         res.render('notSignedIn')
+//     }
+
+//     try {
+//         console.log(req.query);
+
+//         const register = req.query.register;
+
+//         // TODO nämä kopioitu vehicle positionista, voi vaatiia jumppaa enemmänkin
+//         // Haetaan auton Paikannin-laitetunnus tietokannasta
+//         const deviceId = await pgtools.getDeviceId(register);
+
+//             if (!deviceId) {
+//                 return res.status(404).json({
+//                     error: 'Vehicle not found',
+//                     details: `No deviceId found for register ${register}`
+//                 });
+//             }
+
+//         // Haetaan Paikannin API-avain tietokannasta
+//         const apiKey = (await pgtools.getSetting('API_KEY'))?.trim();
+
+//             if (!apiKey) {
+//                 return res.status(500).json({
+//                     error: 'API key not found'
+//                 });
+//             }
+
+        // Paikannin.com API URL
+        // TODO KyselyyN päivitetty HUOM! devices NYT routes
+    //     const url = 'https://app.paikannin.com/public/api/devices/routes/nopoints/{deviceId}/{startTime}/{endTime}';
+
+    //     // HTTP-pyyntö Paikannin API:in
+    //     const response = await fetch(url, {
+    //         method: 'GET',
+    //         headers: {
+    //             'API_KEY': apiKey,
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json'
+    //         }
+    //     });
+
+    //     if (!response.ok) {
+    //         const errorText = await response.text();
+
+    //         console.error('Paikannin API error:', errorText);
+
+    //         return res.status(response.status).json({
+    //             error: 'Paikannin API failed',
+    //             details: errorText
+    //         });
+    //     }
+
+    //     // JSON-data API:lta
+    //     const apiData = await response.json();
+
+    //     // Etsitään oikea auto deviceId:n perusteella
+    //     const vehicle = apiData.find(device =>
+    //         Number(device.deviceId) === Number(deviceId)
+    //     );
+
+    //     if (!vehicle) {
+    //         return res.status(404).json({
+    //             error: 'Vehicle location not found',
+    //             register: register,
+    //             deviceId: deviceId
+    //         });
+    //     }
+
+    //     // Tarkistetaan että Paikannin.com palauttauttama tieto on API:ssa samalla nimellä
+    //     console.log("Vehicle data:", JSON.stringify(vehicle, null, 2));
+
+    //     // Lähetetään frontendille tarvittavat tiedot
+    //     res.json({
+    //         lat: vehicle.lat,
+    //         lon: vehicle.lon,
+    //         register: register,
+    //         deviceId: vehicle.deviceId,
+    //         timestamp: vehicle.timestamp,
+    //         time: vehicle.time,
+    //         deviceName: vehicle.deviceName,
+    //         speed: vehicle.speed,
+    //         heading: vehicle.heading,
+    //         namedLocations: vehicle.namedLocations
+    //     });
+
+    // } catch (err) {
+    //     console.error(err);
+
+    //     res.status(500).json({
+    //         error: 'Server error',
+    //         details: err.message
+    //     });
+    // }
+// });
+
+// TODO testaaa ja tarkista tämän toimivuus
+// API:sta haettujen ajotapahtumien tallentaminen tietokantaan
+// for (const route of routes) {
+//     await pgtools.insertWebAjopaivakirja(route);
+// }
 
 // SERVER START
 // ------------

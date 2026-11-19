@@ -189,9 +189,6 @@ const getVehicleDiary = async (register) => {
     return resultset;
 }
 
-// TODO: tarkista
-// Location page - location by register number -> create a view for this
-
 /** 
 * Get vehicle location from database.
 * @summary Returns all rows from view sijainti (location).
@@ -248,8 +245,106 @@ const getDiaryTax = async () => {
     return resultset;
 };
 
+//TODO 19.11.2026 kokeilu testaa ja tarkista headerista saadun datan toimivuus
+// Testataan Headerilla APIsta haetun datan tallentamista tietokantaan uusi taulu web_ajapaivakirja
+
+// async function insertWebAjopaivakirja(route) {
+//     const startPosition = route.routeStartPosition || {};
+//     const stopPosition = route.routeStopPosition || {};
+
+//     // Muodostetaan osoitteet API:n palauttamista tiedoista
+//     const startAddress = [
+//         startPosition.street,
+//         startPosition.houseno,
+//         startPosition.zip,
+//         startPosition.city,
+//         startPosition.country
+//     ].filter(Boolean).join(" ");
+
+//     const stopAddress = [
+//         stopPosition.street,
+//         stopPosition.houseno,
+//         stopPosition.zip,
+//         stopPosition.city,
+//         stopPosition.country
+//     ].filter(Boolean).join(" ");
+
+//     const sql = `
+//         INSERT INTO public.web_ajopaivakirja (
+//             id,
+//             device_id,
+//             drive_start_id,
+//             drive_stop_id,
+//             start_time,
+//             stop_time,
+//             start_lat,
+//             start_lon,
+//             stop_lat,
+//             stop_lon,
+//             start_odo,
+//             stop_odo,
+//             distance,
+//             start_address,
+//             stop_address,
+//             driver_identification,
+//             job_number,
+//             job_description,
+//             raw_data
+//         )
+//         VALUES (
+//             $1, $2, $3, $4, $5, $6, $7, $8, $9, $10,
+//             $11, $12, $13, $14, $15, $16, $17, $18, $19
+//         )
+//         ON CONFLICT (id) DO UPDATE SET
+//             device_id = EXCLUDED.device_id,
+//             drive_start_id = EXCLUDED.drive_start_id,
+//             drive_stop_id = EXCLUDED.drive_stop_id,
+//             start_time = EXCLUDED.start_time,
+//             stop_time = EXCLUDED.stop_time,
+//             start_lat = EXCLUDED.start_lat,
+//             start_lon = EXCLUDED.start_lon,
+//             stop_lat = EXCLUDED.stop_lat,
+//             stop_lon = EXCLUDED.stop_lon,
+//             start_odo = EXCLUDED.start_odo,
+//             stop_odo = EXCLUDED.stop_odo,
+//             distance = EXCLUDED.distance,
+//             start_address = EXCLUDED.start_address,
+//             stop_address = EXCLUDED.stop_address,
+//             driver_identification = EXCLUDED.driver_identification,
+//             job_number = EXCLUDED.job_number,
+//             job_description = EXCLUDED.job_description,
+//             raw_data = EXCLUDED.raw_data;
+//     `;
+
+//     const values = [
+//         route.id,
+//         route.deviceId,
+//         route.driveStartId,
+//         route.driveStopId,
+//         route.driveStartTimest,
+//         route.driveStopTimest,
+//         route.driveStartLat,
+//         route.driveStartLon,
+//         route.driveStopLat,
+//         route.driveStopLon,
+//         route.driveStartOdo,
+//         route.driveStopOdo,
+//         route.driveTotalLen,
+//         startAddress,
+//         stopAddress,
+//         route.driverIdentification,
+//         route.jobNumber,
+//         route.jobDescription,
+//         JSON.stringify(route)
+//     ];
+
+//     return await pool.query(sql, values);
+// }
+
+
+
 // EXPORT FUNCTIONS
 // ----------------
 
 // Export all functions and the pool itself. Jest needs the pool to run tests
-module.exports = {pool, insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getDiary, getTaxDiary, runQueryWithValues, getLocationByReg, getVehicleData, convertToDateTimeObject, getWebUserData, getVehicleDiary, getSetting, getDeviceId, getDiaryTax};
+module.exports = {pool, insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getDiary, getTaxDiary, runQueryWithValues, getLocationByReg, getVehicleData, convertToDateTimeObject, getWebUserData, getVehicleDiary, getSetting, getDeviceId, getDiaryTax,};
