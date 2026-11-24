@@ -94,6 +94,22 @@ const getVehicleData = async () => {
     return resultset;
 }
 
+
+// Get vehicles by department
+const getVehicleDataByDepartment = async (department) => {
+    const sqlstatement = 'Select * FROM public.web_autojen_tila WHERE osasto = $1 ORDER BY rekisterinumero';
+    const resultset = await pool.query(sqlstatement, [department]);
+    return resultset;
+};
+
+// Get vehicle details by register number and department
+const getVehicleDetailsByDepartment = async (values) => {
+    const sqlstatement = 'Select * FROM public.webaktiivinen_ajo WHERE rekisterinumero = $1 AND osasto = $2';
+    const resultset = await pool.query(sqlstatement, values);
+    return resultset;
+};
+
+
 /** 
 * Get free vehicles from database.
 * @summary Returns all rows from view vapaana (free vehicles).
@@ -347,4 +363,4 @@ const getDiaryTax = async () => {
 // ----------------
 
 // Export all functions and the pool itself. Jest needs the pool to run tests
-module.exports = {pool, insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getDiary, getTaxDiary, runQueryWithValues, getLocationByReg, getVehicleData, convertToDateTimeObject, getWebUserData, getVehicleDiary, getSetting, getDeviceId, getDiaryTax,};
+module.exports = {pool, insertQuery, selectQuery, getFreeVehicles, getVehiclesInUse, getVehicleDetails, getDiary, getTaxDiary, runQueryWithValues, getLocationByReg, getVehicleData, convertToDateTimeObject, getWebUserData, getVehicleDiary, getSetting, getDeviceId, getDiaryTax, getVehicleDataByDepartment,getVehicleDetailsByDepartment, };

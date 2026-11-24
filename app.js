@@ -79,6 +79,7 @@ app.post('/welcome', (req, res) => {
     // Define variables for users Role and stored password
     let userRole = '';
     let userPassword = '';
+    let userDepartment = '';
 
     // Get user data from database using given email address
     pgtools.getWebUserData([inputEmail]).then((resultset) => {
@@ -91,6 +92,7 @@ app.post('/welcome', (req, res) => {
             userEmail = userData.email;
             userRole = userData.user_role; 
             userPassword = userData.password;
+            userDepartment = userData.department;
              
             // Check if given password matches stored password
             if (inputPassword == userPassword) {
@@ -98,8 +100,16 @@ app.post('/welcome', (req, res) => {
                 // Success update session data and render welcome page
                 // Session data contains property user and has onlu userRole as value
                 // It is possible to store more user data by defining more key-value-pairs
-                sessionData.user= {role:userRole}
-                res.render('welcome',{user: inputEmail, role: userRole});
+                sessionData.user = {
+                    email: userEmail, 
+                    role: userRole, 
+                    department: userDepartment
+                };
+                res.render('welcome',{
+                    user: inputEmail, 
+                    role: userRole, 
+                    department: userDepartment
+                });
 
             } else {
                  res.render('invalidPassword');
@@ -112,39 +122,157 @@ app.post('/welcome', (req, res) => {
 });
 
 
-// TODO: miksi rivi 121 vehicleData on harmaalla
+// TODO: miksi rivi 121 vehicleData on harmaalla POISTETTU RIVI 19.11.
+// TODO letit ja iffit???
 // Route to vehicle listing page: free vehicles and vehicles in use 
-app.get('/vehiclelist', (req, res) => {
-    userRole = req.session.user;
-    if (userRole) {
-        pgtools.getVehicleData().then((resultset) => {
-            let vehicleData = resultset.rows;
-           
-        // Lets give a key for the resultset and render it to the page
-        res.render('vehiclelist', {vehicleList: resultset.rows});
-    })  
-    } else {
-        res.render('notAuthorized');
+// Hallinto näkee kaikki autot, opettaja näkee vain oman osastonsa autot
+app.get('/vehiclelist', async (req, res) => {
+    // tarkistetaan kirjautuminen
+    const user = req.session.user;
+
+        if (!user) {
+        return res.render('notSignedIn');
     }
+
+    const userRole = user.role;
+    const userDepartment = user.department;
+
+    try {
+        let resultset;
+
+        // Hallinto näkee kaikki autot
+        if (userRole === 'hallinto') {
+
+            resultset = await pgtools.getVehicleData();
+
+        }
+
+        // Opettaja näkee vain oman osastonsa autot
+        else if (userRole === 'opettaja') {
+
+            if (!userDepartment) {
+                return res.render('notAuthorized');
+            }
+
+            resultset = await pgtools.getVehicleDataByDepartment(
+                userDepartment
+            );
+
+        }
+
+        // Muut käyttäjät eivät saa käyttöoikeutta
+        else {
+            return res.render('notAuthorized');
+        }
+
+        // Näytetään ajoneuvolista
+        return res.render('vehiclelist', {
+            vehicleList: resultset.rows
+        });
+
+    } catch (error) {
+        console.error('Virhe ajoneuvolistan haussa:', error);
+        return res.status(500).send('Ajoneuvojen haku epäonnistui.');
+    }
+
+    
+    // if (userRole) {
+    //     if (user.role == 'hallinto') {
+    //         pgtools.getVehicleData().then((resultset) => {
+         
+    //         // Lets give a key for the resultset and render it to the page
+    //         res.render('vehiclelist', {vehicleList: resultset.rows});
+    //     })  
+    //     } else {
+    //         res.render('notAuthorized');
+    //     }
+
+    //     if (user.role == 'opettaja' && webuser.department == vehicle.department) {
+    //         pgtools.getVehicleData().then((resultset) => {
+         
+    //         // Lets give a key for the resultset and render it to the page
+    //         res.render('vehiclelist', {vehicleList: resultset.rows});
+    //     })  
+    //     } else {
+    //         res.render('notAuthorized');
+    //     }
+    // }
 });
 
 // Route to indivisual vehicle page: select vehicle by register number
-app.get('/vehicleDetail', (req, res) => {
-    let user = req.session.user;
-    let register = req.query.register;
-    if (user.role) {
-        if (user.role == 'opettaja' || user.role == 'hallinto') {        
-            pgtools.getVehicleDetails([register]).then((resultset) => {
+app.get('/vehicleDetail', async (req, res) => {
+    const user = req.session.user;
+    const register = req.query.register;
 
-        // Render it to the page
-        res.render('vehicleDetail', resultset.rows[0]);  
-        }) 
-        } else {
-            res.render('notAuthorized')
+        if (!user) {
+        return res.render('notSignedIn');
+    }
+
+    try {
+        let resultset;
+
+        // Hallinto saa nähdä kaikkien autojen tiedot
+        if (user.role === 'hallinto') {
+
+            resultset = await pgtools.getVehicleDetails([register]);
+
         }
-    } else {
-        res.render('notSignedIn')
-    }  
+
+        // Opettaja saa nähdä vain oman osastonsa auton tiedot
+        else if (user.role === 'opettaja') {
+
+            resultset = await pgtools.getVehicleDetailsByDepartment([
+                register,
+                user.department
+            ]);
+
+        }
+
+        else {
+            return res.render('notAuthorized');
+        }
+
+        // Tarkistetaan löytyikö auto
+        if (resultset.rows.length === 0) {
+            return res.render('notAuthorized');
+        }
+
+        return res.render('vehicleDetail', resultset.rows[0]);
+
+    } catch (error) {
+        console.error('Virhe ajoneuvon tietojen haussa:', error);
+        return res.status(500).send('Ajoneuvon tietojen haku epäonnistui.');
+    }
+
+    
+    // if (user.role) {
+    //     if (user.role == 'hallinto' || user.role == 'opettaja') {        
+    //         pgtools.getVehicleDetails([register]).then((resultset) => {
+
+    //     // Render it to the page
+    //     res.render('vehicleDetail', resultset.rows[0]);  
+    //     }) 
+    //     } else {
+    //         res.render('notAuthorized')
+    //     }
+
+    //         if (user.role == 'opettaja') {     
+    //             const resultset =await pgtools.getVehicleDetailsByDepartment([
+    //                 register,
+    //                 user.department
+    //             ]); 
+    //             pgtools.getVehicleDetails([register]).then((resultset) => {
+
+    //     // Render it to the page
+    //     res.render('vehicleDetail', resultset.rows[0]);  
+    //     }) 
+    //     } else {
+    //         res.render('notAuthorized')
+    //     }
+    // } else {
+    //     res.render('notSignedIn')
+    // }  
+   
 });
 
 // Route to diary of single vehicle by register number
