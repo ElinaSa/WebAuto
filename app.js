@@ -309,20 +309,71 @@ app.get('/vehicleDiary', (req, res) => {
 });
 
 // Route to diary containing all vehicles
-app.get('/diary', (req, res) => {
-    let user = req.session.user;
-    //let register = req.query.register;
-    if (user) {
-        if (user.role == 'opettaja' || user.role == 'hallinto') {
-            pgtools.getDiary().then((resultset) => {
-            res.render('diary', {diaryData: resultset.rows});
-        })
-        } else {
-            res.render('notAuthorized')
+// app.get('/diary', (req, res) => {
+//     let user = req.session.user;
+//     //let register = req.query.register;
+//     if (user) {
+//         if (user.role == 'opettaja' || user.role == 'hallinto') {
+//             pgtools.getDiary().then((resultset) => {
+//             res.render('diary', {diaryData: resultset.rows});
+//         })
+//         } else {
+//             res.render('notAuthorized')
+//         }
+//     } else {
+//         res.render('notSignedIn')
+//     }    
+// });
+
+// Route to diary containing vehicle journeys
+app.get('/diary', async (req, res) => {
+
+    const user = req.session.user;
+
+    // Tarkistetaan kirjautuminen
+    if (!user) {
+        return res.render('notSignedIn');
+    }
+
+    try {
+        let resultset;
+
+        // Hallinto näkee kaikkien osastojen päiväkirjamerkinnät
+        if (user.role === 'hallinto') {
+
+            resultset = await pgtools.getDiary();
+
         }
-    } else {
-        res.render('notSignedIn')
-    }    
+
+        // Opettaja näkee vain oman osastonsa merkinnät
+        else if (user.role === 'opettaja') {
+
+            if (!user.department) {
+                return res.render('notAuthorized');
+            }
+
+            resultset = await pgtools.getDiaryByDepartment(
+                user.department
+            );
+
+        }
+
+        // Muut käyttäjäroolit eivät pääse sivulle
+        else {
+            return res.render('notAuthorized');
+        }
+
+        return res.render('diary', {
+            diaryData: resultset.rows
+        });
+
+    } catch (error) {
+        console.error('Virhe ajopäiväkirjan haussa:', error);
+
+        return res.status(500).send(
+            'Ajopäiväkirjan tietojen haku epäonnistui.'
+        );
+    }
 });
 
 app.get('/filterDiary', (req, res) => {
@@ -367,7 +418,7 @@ app.get('/filterDiary', (req, res) => {
    
 });
 
-app.get('/filteredDiary', (req, res) => {
+app.get('/filteredDiary', async(req, res) => {
 
     console.log("=== FILTERED DIARY REITTIIN TULTU ===");
     console.log(req.query);
