@@ -121,9 +121,6 @@ app.post('/welcome', (req, res) => {
     });
 });
 
-
-// TODO: miksi rivi 121 vehicleData on harmaalla POISTETTU RIVI 19.11.
-// TODO letit ja iffit???
 // Route to vehicle listing page: free vehicles and vehicles in use 
 // Hallinto näkee kaikki autot, opettaja näkee vain oman osastonsa autot
 app.get('/vehiclelist', async (req, res) => {
@@ -147,8 +144,8 @@ app.get('/vehiclelist', async (req, res) => {
 
         }
 
-        // Opettaja näkee vain oman osastonsa autot
-        else if (userRole === 'opettaja') {
+        // Opettaja tai opiseklija näkevät vain oman osastonsa autot
+        else if (userRole === 'opettaja' || userRole === 'opiskelija') {
 
             if (!userDepartment) {
                 return res.render('notAuthorized');
@@ -160,7 +157,7 @@ app.get('/vehiclelist', async (req, res) => {
 
         }
 
-        // Muut käyttäjät eivät saa käyttöoikeutta
+        // Muilla ei käyttöoikeutta
         else {
             return res.render('notAuthorized');
         }
@@ -202,32 +199,45 @@ app.get('/vehiclelist', async (req, res) => {
 // Route to indivisual vehicle page: select vehicle by register number
 app.get('/vehicleDetail', async (req, res) => {
     const user = req.session.user;
+    
     const register = req.query.register;
+
+    const userRole = user.role;
+    const userDepartment = user.department;
 
         if (!user) {
         return res.render('notSignedIn');
     }
 
+    console.log('Kirjautunut käyttäjä:', user);
+    console.log('Haettava rekisterinumero:', register);
+    console.log('Käyttäjän osasto:', user.department);
+
     try {
         let resultset;
 
         // Hallinto saa nähdä kaikkien autojen tiedot
-        if (user.role === 'hallinto') {
+        if (userRole === 'hallinto') {
 
             resultset = await pgtools.getVehicleDetails([register]);
 
         }
 
         // Opettaja saa nähdä vain oman osastonsa auton tiedot
-        else if (user.role === 'opettaja') {
+        else if (userRole === 'opettaja') {
+
+            if (!userDepartment) {
+                return res.render('notAuthorized');
+            }
 
             resultset = await pgtools.getVehicleDetailsByDepartment([
-                register,
+                register, 
                 user.department
             ]);
 
         }
 
+        // Muilla käyttäjillä ei ole käyttöoikeutta
         else {
             return res.render('notAuthorized');
         }
@@ -239,10 +249,15 @@ app.get('/vehicleDetail', async (req, res) => {
 
         return res.render('vehicleDetail', resultset.rows[0]);
 
+        
+
     } catch (error) {
         console.error('Virhe ajoneuvon tietojen haussa:', error);
+        console.error('Virheen viesti:', error.message);
         return res.status(500).send('Ajoneuvon tietojen haku epäonnistui.');
     }
+
+    
 
     
     // if (user.role) {

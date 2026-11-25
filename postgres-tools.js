@@ -77,7 +77,7 @@ const selectQuery = async (sqlstatement) => {
 */
 
 const getWebUserData = async (values) => {
-    let sqlstatement = 'SELECT * FROM public.webuser WHERE email = $1';
+    let sqlstatement = `SELECT * FROM public.webuser WHERE email = $1`;
     let resultset = await pool.query(sqlstatement, values);
     return resultset;
 }
@@ -89,7 +89,7 @@ const getWebUserData = async (values) => {
 */
 
 const getVehicleData = async () => {
-    let sqlstatement = 'Select * FROM public.web_autojen_tila';
+    let sqlstatement = `Select * FROM public.web_autojen_tila`;
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
@@ -97,14 +97,14 @@ const getVehicleData = async () => {
 
 // Get vehicles by department
 const getVehicleDataByDepartment = async (department) => {
-    const sqlstatement = 'Select * FROM public.web_autojen_tila WHERE osasto = $1 ORDER BY rekisterinumero';
+    const sqlstatement = `Select * FROM public.web_autojen_tila WHERE osasto = $1 ORDER BY rekisterinumero`;
     const resultset = await pool.query(sqlstatement, [department]);
     return resultset;
 };
 
 // Get vehicle details by register number and department
 const getVehicleDetailsByDepartment = async (values) => {
-    const sqlstatement = 'Select * FROM public.webaktiivinen_ajo WHERE rekisterinumero = $1 AND osasto = $2';
+    const sqlstatement = `Select * FROM public.webaktiivinen_ajo WHERE rekisterinumero = $1 AND osasto = $2`;
     const resultset = await pool.query(sqlstatement, values);
     return resultset;
 };
@@ -118,7 +118,7 @@ const getVehicleDetailsByDepartment = async (values) => {
 */
 
 const getFreeVehicles = async () => {
-    let sqlstatement = 'SELECT * FROM public.vapaana';
+    let sqlstatement = `SELECT * FROM public.vapaana`;
     let resultset = await pool.query(sqlstatement);
     return resultset;
 }
