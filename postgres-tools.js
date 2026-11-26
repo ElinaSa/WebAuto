@@ -49,7 +49,7 @@ console.log("POOL CREATED");
 const insertQuery = async (sqlstatement, values) => {
     let resultset = await pool.query(sqlstatement, values);
     return resultset;
-} 
+};
 
 /** 
 * Select data from database.
@@ -59,10 +59,11 @@ const insertQuery = async (sqlstatement, values) => {
 * @return {Promise} Returns a promise that resolves to the result set of the query.
 */
 
-const selectQuery = async (sqlstatement) => {
-    let resultset = await pool.query(sqlstatement);
+// Funktio on ottanut vastaan vain SQL-lauseen, muutetaan ottamaan vastaan myös parametrit lisäämällä values.
+const selectQuery = async (sqlstatement, values = []) => {
+    let resultset = await pool.query(sqlstatement, values);
     return resultset;
-}
+};
 
 // TODO: Update data with SQL statement
 
@@ -80,7 +81,7 @@ const getWebUserData = async (values) => {
     let sqlstatement = `SELECT * FROM public.webuser WHERE email = $1`;
     let resultset = await pool.query(sqlstatement, values);
     return resultset;
-}
+};
 
 /** 
 * Get all current vehicles and their status.
@@ -92,7 +93,7 @@ const getVehicleData = async () => {
     let sqlstatement = `Select * FROM public.web_autojen_tila`;
     let resultset = await pool.query(sqlstatement);
     return resultset;
-}
+};
 
 
 // Get vehicles by department
@@ -121,7 +122,7 @@ const getFreeVehicles = async () => {
     let sqlstatement = `SELECT * FROM public.vapaana`;
     let resultset = await pool.query(sqlstatement);
     return resultset;
-}
+};
 
 /** 
 * Get vehicles in use from database.
@@ -134,7 +135,7 @@ const getVehiclesInUse = async () => {
     let sqlstatement = 'SELECT * FROM public.ajossa';
     let resultset = await pool.query(sqlstatement);
     return resultset;
-}
+};
 
 /** 
 * Get vehicle details from database.
@@ -148,13 +149,13 @@ const getVehicleDetails = async (values) => {
     let sqlstatement = 'SELECT * FROM public.webaktiivinen_ajo WHERE rekisterinumero = $1';
     let resultset = await pool.query(sqlstatement, values);
     return resultset;
-}
+};
 
 // Vehicle details page - vehicle in use by register number: SQL + value 2nd method
 const query = {
     text: 'SELECT * FROM public.webaktiivinen_ajo WHERE rekisterinumero = $1',
     values: ['XYZ-123']
-}
+};
     
 /** 
 * A generic function to run a query with pre-structured statement and values.
@@ -166,7 +167,8 @@ const query = {
 const runQueryWithValues = async (query) => {
     let resultset = await pool.query(query);
     return resultset;
-}
+};
+
 /** 
 * Get vehicle diaries from database.
 * @summary Returns all rows from view ajopaivakirja (diary).
@@ -178,7 +180,7 @@ const getDiary = async () => {
     let sqlstatement = 'SELECT * from public.webajopaivakirja ';
     let resultset = await pool.query(sqlstatement);
     return resultset;
-}
+};
 
 /**
  * Get vehicle diaries by department.
@@ -209,7 +211,7 @@ const getTaxDiary = async () => {
     let sqlstatement = 'SELECT * from public.ajopaivakirja_verottaja';
     let resultset = await pool.query(sqlstatement);
     return resultset;
-}
+};
 
 /** 
 * Get diary by register number.
@@ -222,7 +224,7 @@ const getVehicleDiary = async (register) => {
     let sqlstatement = 'SELECT * from public.webajopaivakirja WHERE rekisterinumero = $1';
     let resultset = await pool.query(sqlstatement, register);
     return resultset;
-}
+};
 
 /** 
 * Get vehicle location from database.
@@ -236,7 +238,7 @@ const getLocationByReg = async (values) => {
     let sqlstatement = 'SELECT * FROM public.sijainti WHERE rekisterinumero = $1';
     let resultset = await pool.query(sqlstatement, values);
     return resultset;
-}
+};
 
 /**
  * Converts PostgreSQL timestamp to user friendly string format.
@@ -252,7 +254,7 @@ const convertToDateTimeObject = (timestamp) => {
         time: splittedTime[0]
     };
     return result;
-}
+};
 
 const getDeviceId = async (register) => {
     const sqlstatement = 
