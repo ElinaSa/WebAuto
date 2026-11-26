@@ -376,116 +376,195 @@ app.get('/diary', async (req, res) => {
     }
 });
 
-app.get('/filterDiary', (req, res) => {
-    
-    if (req.session.user) {
-        let userRole = req.session.user.role
-        if (userRole == 'opettaja' || userRole == 'hallinto') {
-           // Set query parameters
-            let options = {}
-            let registerList = []
-            let driverList = []
-            let reasonList = []     
-            
-            pgtools.selectQuery('SELECT * FROM public.webrekisterit;').then((resultset) => {
-            registerList = resultset.rows;
+// Route to filter diary page
+app.get('/filterDiary', async (req, res) => {
 
-            pgtools.selectQuery('SELECT * FROM public.webtarkoitukset;').then((resultset) => {
-            reasonList = resultset.rows; 
+    const user = req.session.user;
 
-            pgtools.selectQuery('SELECT * FROM public.webkuljettajat;').then((resultset) => {
-            driverList = resultset.rows;
+    if (!user) {
+        return res.render('notSignedIn');
+    }
 
-            options = {registers: registerList,
-                reasons: reasonList,
-                drivers: driverList
-            };
-            // console.log(options)
-                res.render('filterDiary', options)
+    if (user.role !== 'opettaja' && user.role !== 'hallinto') {
+        return res.render('notAuthorized');
+    }
 
-            })
-            })                     
-            }) 
+    if (user.role === 'opettaja' && !user.department) {
+        return res.render('notAuthorized');
+    }
+
+    try {
+        let registerList;
+        let reasonList;
+        let driverList;
+
+        if (user.role === 'hallinto') {
+
+            // Hallinto näkee kaikki vaihtoehdot
+            const registers = await pgtools.selectQuery(
+                'SELECT * FROM public.webrekisterit;'
+            );
+
+            const reasons = await pgtools.selectQuery(
+                'SELECT * FROM public.webtarkoitukset;'
+            );
+
+            const drivers = await pgtools.selectQuery(
+                'SELECT * FROM public.webkuljettajat;'
+            );
+
+            registerList = registers.rows;
+            reasonList = reasons.rows;
+            driverList = drivers.rows;
 
         } else {
-            res.render('notAuthorized')
-        }      
 
-    }
-    else {
-        res.render('notSignedIn')
-    }                              
-   
+            // Opettaja näkee vain oman osastonsa vaihtoehdot
+            const registers = await pgtools.selectQuery(`
+                SELECT DISTINCT rekisterinumero
+                FROM public.webajopaivakirja
+                WHERE osasto = $1
+                ORDER BY rekisterinumero;
+            `, [user.department]);
+
+            const reasons = await pgtools.selectQuery(`
+                SELECT DISTINCT tarkoitus
+                FROM public.webajopaivakirja
+                WHERE osasto = $1
+                ORDER BY tarkoitus;
+            `, [user.department]);
+
+            const drivers = await pgtools.selectQuery(`
+                SELECT DISTINCT nimi
+                FROM public.webajopaivakirja
+                WHERE osasto = $1
+                ORDER BY nimi;
+            `, [user.department]);
+
+            registerList = registers.rows;
+            reasonList = reasons.rows;
+            driverList = drivers.rows;
+        }
+
+        return res.render('filterDiary', {
+            registers: registerList,
+            reasons: reasonList,
+            drivers: driverList
+        });
+
+    } catch (error) {
+        console.error('Virhe suodatusvalintojen haussa:', error);
+
+        return res.status(500).send(
+            'Suodatusvalintojen haku epäonnistui.'
+        );
+    }  
 });
 
+// Route to filter vehicle diaries
 app.get('/filteredDiary', async(req, res) => {
 
     console.log("=== FILTERED DIARY REITTIIN TULTU ===");
     console.log(req.query);
 
-    if (req.session.user) {
-        userRole = req.session.user.role;
-        if (userRole == 'opettaja' || userRole == 'hallinto') {
-        
-            console.log("=== FILTERED DIARY EHTO LÄPI ");
-            console.log(req.query);
+        const user = req.session.user;
 
-            let registerFilter = req.query.rekisterinumero
-            let registerFilterValid = req.query.rekisterisuodatus
-            let reasonFilter = req.query.tarkoitus
-            let reasonFilterValid = req.query.tarkoitussuodatus
-            let driverFilter = req.query.nimi
-            let driverFilterValid = req.query.kuljettajasuodatus       
-            let startFilter = req.query.alkaa
-            let startFilterString = startFilter.toString()
-            console.log(startFilterString)
-            console.log(req.query.alkaa)
-            let endFilter = req.query.loppuu
-            let dateFiltersValid = req.query.ottosuodatus
-        
+    // Tarkistetaan kirjautuminen
+    if (!user) {
+        return res.render('notSignedIn');
+    }
 
-            let conditions = [];
+    // Tarkistetaan käyttäjärooli
+    if (user.role !== 'opettaja' && user.role !== 'hallinto') {
+        return res.render('notAuthorized');
+    }
 
-            if (registerFilterValid == 'on') {
-                conditions.push(`rekisterinumero = '${registerFilter}'`);
-            }
+    // Opettajalta täytyy löytyä osastotieto
+    if (user.role === 'opettaja' && !user.department) {
+        return res.render('notAuthorized');
+    }
 
-            if (reasonFilterValid == 'on') {
-                conditions.push(`tarkoitus = '${reasonFilter}'`);
-            }
+    try {
+        const conditions = [];
+        const values = [];
 
-            if (driverFilterValid == 'on') {
-                conditions.push(`nimi = '${driverFilter}'`);
-            }
-
-            if (dateFiltersValid == 'on') {
-                conditions.push(`otettu BETWEEN '${startFilter}' AND '${endFilter}'`);
-            }
-
-            let whereClause = '';
-
-            if (conditions.length > 0) {
-                whereClause = ' WHERE ' + conditions.join(' AND ');
-            }
-
-            console.log(whereClause);
-
-            let sqlstatement =
-                'SELECT * FROM public.webajopaivakirja' + whereClause;
-
-            pgtools.selectQuery(sqlstatement).then((resultset) => {
-                res.render('filteredDiary', {
-                    diaryData: resultset.rows
-                });
-            });
-
-        } else {
-            res.render('notAuthorized')
+        // Opettajan osasto lisätään aina pakolliseksi ehdoksi
+        if (user.role === 'opettaja') {
+            values.push(user.department);
+            conditions.push(`osasto = $${values.length}`);
         }
 
-    } else {
-    res.render('notSignedIn')
-    }    
+        // Rekisterinumerosuodatus
+        if (req.query.rekisterisuodatus === 'on' &&
+            req.query.rekisterinumero) {
+
+            values.push(req.query.rekisterinumero);
+            conditions.push(`rekisterinumero = $${values.length}`);
+        }
+
+        // Käyttötarkoitussuodatus
+        if (req.query.tarkoitussuodatus === 'on' &&
+            req.query.tarkoitus) {
+
+            values.push(req.query.tarkoitus);
+            conditions.push(`tarkoitus = $${values.length}`);
+        }
+
+        // Kuljettajasuodatus
+        if (req.query.kuljettajasuodatus === 'on' &&
+            req.query.nimi) {
+
+            values.push(req.query.nimi);
+            conditions.push(`nimi = $${values.length}`);
+        }
+
+        // Päivämääräsuodatus
+        if (req.query.ottosuodatus === 'on' &&
+            req.query.alkaa &&
+            req.query.loppuu) {
+
+            values.push(req.query.alkaa);
+            const startParameter = values.length;
+
+            values.push(req.query.loppuu);
+            const endParameter = values.length;
+
+            conditions.push(
+                `otettu BETWEEN $${startParameter} AND $${endParameter}`
+            );
+        }
+
+        // Muodostetaan WHERE-ehto
+        const whereClause = conditions.length > 0
+            ? ' WHERE ' + conditions.join(' AND ')
+            : '';
+
+        const sqlstatement = `
+            SELECT *
+            FROM public.webajopaivakirja
+            ${whereClause}
+            ORDER BY rekisterinumero, otettu DESC;
+        `;
+
+        console.log('SQL-kysely:', sqlstatement);
+        console.log('SQL-parametrit:', values);
+
+        const resultset = await pgtools.selectQuery(
+            sqlstatement,
+            values
+        );
+
+        return res.render('filteredDiary', {
+            diaryData: resultset.rows
+        });
+
+    } catch (error) {
+        console.error('Virhe suodatetun ajopäiväkirjan haussa:', error);
+
+        return res.status(500).send(
+            'Ajopäiväkirjan suodatus epäonnistui.'
+        );
+    }
 });
 
 // TODO: Route to vehicle's diary page: all entries for individual vehicle by register number
@@ -656,8 +735,7 @@ app.get('/api/vehiclePositionData', async (req, res) => {
     }
 });
 
-// TODO: Route to vehicle's tracking page: location by register number
-// TODO: vehicleData undefined?
+// Route to vehicle's tracking page: location by register number
 app.get('/vehiclePosition', (req, res) => {
     let vehicleData = {register: req.query.register}
     res.render('vehiclePosition', vehicleData)
