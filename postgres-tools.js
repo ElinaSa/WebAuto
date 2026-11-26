@@ -226,6 +226,56 @@ const getVehicleDiary = async (register) => {
     return resultset;
 };
 
+// TODO 26.11. Apista haetut ajopäiväkirjat
+
+const getApiDiary = async (register) => {
+    const sqlstatement = `
+        SELECT
+            a.id AS api_ajo_id,
+            a.device_id,
+            a.rekisterinumero,
+
+            -- Alkuperäiset API-tiedot
+            a.start_time AS alkuperainen_alkuaika,
+            a.stop_time AS alkuperainen_loppuaika,
+            a.start_odo AS alkuperainen_alkumittari,
+            a.stop_odo AS alkuperainen_loppumittari,
+            a.distance AS alkuperainen_matka,
+
+            -- Käytettävät tiedot
+            COALESCE(t.korjattu_alkuaika, a.start_time) AS alkuaika,
+            COALESCE(t.korjattu_loppuaika, a.stop_time) AS loppuaika,
+            COALESCE(t.korjattu_alkumittari, a.start_odo) AS alkumittari,
+            COALESCE(t.korjattu_loppumittari, a.stop_odo) AS loppumittari,
+            COALESCE(t.korjattu_matka, a.distance) AS matka,
+
+            -- Käyttäjän täydentämät tiedot
+            t.lainaaja_hetu,
+            l.etunimi,
+            l.sukunimi,
+            t.ajon_tarkoitus,
+            t.muokkaaja,
+            t.muokattu
+
+        FROM public.api_ajopaivakirja a
+
+        LEFT JOIN public.api_ajopaivakirja_taydennys t
+            ON a.id = t.api_ajo_id
+
+        LEFT JOIN public.lainaaja l
+            ON t.lainaaja_hetu = l.hetu
+
+        WHERE a.rekisterinumero = $1
+
+        ORDER BY a.start_time ASC;
+    `;
+
+    const resultset = await pool.query(sqlstatement, [register]);
+
+    return resultset;
+};
+
+
 /** 
 * Get vehicle location from database.
 * @summary Returns all rows from view sijainti (location).
@@ -280,6 +330,158 @@ const getDiaryTax = async () => {
     let sqlstatement = `SELECT * FROM public.ajopaivakirja_verottaja`;
     let resultset = await pool.query(sqlstatement);
     return resultset;
+};
+
+// TODO työn alla 26.11. Paikantimen ajotietojen hakufunktio
+async function getVehicleRoutes(deviceId, startTime, endTime) {
+
+    const apiKey = await getSetting('API_KEY');
+
+    const url =
+        `https://app.paikannin.com/public/api/devices/routes/nopoints/` +
+        `${deviceId}/${encodeURIComponent(startTime)}/${encodeURIComponent(endTime)}`;
+
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            API_KEY: apiKey,
+            Accept: '*/*'
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(
+            `Paikannin API error: ${response.status}`
+        );
+    }
+
+    return await response.json();
+}
+
+// TODO työn alla 26.11. Tallennetaan API:n ajopäiväkirjatiedot
+// Tallennetaan yksittäinen Paikantimen ajo tietokantaan
+const saveApiDiary = async (trip, register) => {
+
+    const query = `
+        INSERT INTO public.api_ajopaivakirja (
+            id,
+            device_id,
+            rekisterinumero,
+            drive_start_id,
+            drive_stop_id,
+            start_time,
+            stop_time,
+            start_lat,
+            start_lon,
+            stop_lat,
+            stop_lon,
+            start_odo,
+            stop_odo,
+            distance,
+            driver_identification,
+            job_number,
+            job_description,
+            missing_begin,
+            missing_end,
+            missing_data,
+            raw_data
+        )
+        VALUES (
+            $1, $2, $3, $4, $5,
+            $6, $7, $8, $9, $10,
+            $11, $12, $13, $14, $15,
+            $16, $17, $18, $19, $20, $21
+        )
+        ON CONFLICT (device_id, id)
+        DO UPDATE SET
+            rekisterinumero = EXCLUDED.rekisterinumero,
+            drive_start_id = EXCLUDED.drive_start_id,
+            drive_stop_id = EXCLUDED.drive_stop_id,
+            start_time = EXCLUDED.start_time,
+            stop_time = EXCLUDED.stop_time,
+            start_lat = EXCLUDED.start_lat,
+            start_lon = EXCLUDED.start_lon,
+            stop_lat = EXCLUDED.stop_lat,
+            stop_lon = EXCLUDED.stop_lon,
+            start_odo = EXCLUDED.start_odo,
+            stop_odo = EXCLUDED.stop_odo,
+            distance = EXCLUDED.distance,
+            driver_identification = EXCLUDED.driver_identification,
+            job_number = EXCLUDED.job_number,
+            job_description = EXCLUDED.job_description,
+            missing_begin = EXCLUDED.missing_begin,
+            missing_end = EXCLUDED.missing_end,
+            missing_data = EXCLUDED.missing_data,
+            raw_data = EXCLUDED.raw_data
+    `;
+
+    const values = [
+        trip.id,
+        trip.deviceId,
+        register,
+        trip.driveStartId ?? null,
+        trip.driveStopId ?? null,
+        trip.driveStartTimest ?? null,
+        trip.driveStopTimest ?? null,
+        trip.driveStartLat ?? null,
+        trip.driveStartLon ?? null,
+        trip.driveStopLat ?? null,
+        trip.driveStopLon ?? null,
+        trip.driveStartOdo ?? null,
+        trip.driveStopOdo ?? null,
+        trip.driveTotalLen ?? null,
+        trip.driverIdentification ?? null,
+        trip.jobNumber ?? null,
+        trip.jobDescription ?? null,
+        trip.driveMissingBegin ?? null,
+        trip.driveMissingEnd ?? null,
+        trip.driveMissingData ?? null,
+        JSON.stringify(trip)
+    ];
+
+    return await pool.query(query, values);
+};
+
+// Haetaan Paikantimen ajot ja tallennetaan ne tietokantaan
+const importApiDiary = async (register, startTime, endTime) => {
+
+    // Haetaan ajoneuvon Paikannin-laitetunnus
+    const deviceId = await getDeviceId(register);
+
+    if (!deviceId) {
+        throw new Error(
+            `Ajoneuvolle ${register} ei löytynyt Paikannin-laitetunnusta.`
+        );
+    }
+
+    // Haetaan ajot Paikantimen API:sta
+    const routes = await getVehicleRoutes(
+        deviceId,
+        startTime,
+        endTime
+    );
+
+    // Varmistetaan, että API palautti ajolistan taulukkona
+    if (!Array.isArray(routes)) {
+        throw new Error(
+            'Paikantimen API-vastaus ei ole odotetussa taulukkomuodossa.'
+        );
+    }
+
+    let savedCount = 0;
+
+    // Tallennetaan ajot yksitellen
+    for (const trip of routes) {
+        await saveApiDiary(trip, register);
+        savedCount++;
+    }
+
+    return {
+        register,
+        deviceId,
+        totalRoutes: routes.length,
+        savedCount
+    };
 };
 
 //TODO 19.11.2026 kokeilu testaa ja tarkista headerista saadun datan toimivuus
@@ -404,4 +606,9 @@ module.exports = {
     getDiaryTax, 
     getVehicleDataByDepartment,
     getVehicleDetailsByDepartment, 
-    getDiaryByDepartment, };
+    getDiaryByDepartment, 
+    getVehicleRoutes,
+    getApiDiary,
+    saveApiDiary,
+    importApiDiary,
+};

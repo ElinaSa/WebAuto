@@ -172,28 +172,6 @@ app.get('/vehiclelist', async (req, res) => {
         return res.status(500).send('Ajoneuvojen haku epäonnistui.');
     }
 
-    
-    // if (userRole) {
-    //     if (user.role == 'hallinto') {
-    //         pgtools.getVehicleData().then((resultset) => {
-         
-    //         // Lets give a key for the resultset and render it to the page
-    //         res.render('vehiclelist', {vehicleList: resultset.rows});
-    //     })  
-    //     } else {
-    //         res.render('notAuthorized');
-    //     }
-
-    //     if (user.role == 'opettaja' && webuser.department == vehicle.department) {
-    //         pgtools.getVehicleData().then((resultset) => {
-         
-    //         // Lets give a key for the resultset and render it to the page
-    //         res.render('vehiclelist', {vehicleList: resultset.rows});
-    //     })  
-    //     } else {
-    //         res.render('notAuthorized');
-    //     }
-    // }
 });
 
 // Route to indivisual vehicle page: select vehicle by register number
@@ -604,6 +582,153 @@ app.get('/diaryTax', (req, res) => {
         res.render('notSignedIn')
     }
 });
+
+//TODO 26.11. Route that retrieves the trips of a single vehicle from an API in a selected time interval and saves each trip in a database.
+app.get('/ApiDiary', async (req, res) => {
+
+    try {
+
+        // Tarkistetaan käyttäjän kirjautuminen
+        if (!req.session.user ||
+            req.session.user.role !== 'hallinto') {
+
+            return res.status(403).send('Ei käyttöoikeutta');
+        }
+
+        const register = req.query.register;
+        const startTime = req.query.startTime;
+        const endTime = req.query.endTime;
+
+        if (!register || !startTime || !endTime) {
+            return res.status(400).send(
+                'Rekisterinumero ja aikaväli vaaditaan.'
+            );
+        }
+
+        // Haetaan auton Paikannin-laite-ID
+        const deviceId = await pgtools.getDeviceId(register);
+
+        if (!deviceId) {
+            return res.status(404).send(
+                'Auton paikanninlaitetta ei löydy.'
+            );
+        }
+
+        // Haetaan ajot Paikannin-rajapinnasta
+        const trips = await pgtools.getVehicleRoutes(
+            deviceId,
+            startTime,
+            endTime
+        );
+
+        let savedCount = 0;
+
+        // Tallennetaan jokainen ajo
+        for (const trip of trips) {
+
+            await pgtools.saveApiDiary(
+                trip,
+                register
+            );
+
+            savedCount++;
+        }
+
+        res.json({
+            success: true,
+            register: register,
+            deviceId: deviceId,
+            savedCount: savedCount
+        });
+
+    } catch (error) {
+
+        console.error(
+            'Ajotietojen tallennus epäonnistui:',
+            error
+        );
+
+        res.status(500).json({
+            success: false,
+            message: 'Ajotietojen tallennus epäonnistui.'
+        });
+    }
+});
+
+// Hakee tallennetut ajot tieokannasta ja näyttää ne ApiDiary.hnadlebars-sivulla
+app.get('/apiDiaryList', async (req, res) => {
+
+    try {
+
+        // Tarkistetaan käyttäjän kirjautuminen ja käyttöoikeus
+        if (!req.session.user ||
+            req.session.user.role !== 'hallinto') {
+
+            return res.status(403).send('Ei käyttöoikeutta');
+        }
+
+        const register = req.query.register;
+
+        if (!register) {
+            return res.status(400).send(
+                'Rekisterinumero vaaditaan.'
+            );
+        }
+
+        // Haetaan tietokantaan tallennetut ajot
+        const resultset = await pgtools.getApiDiary(register);
+
+        const diaryData = resultset.rows;
+
+        // Lasketaan ajokilometrit
+        const totalDistance = diaryData.reduce((sum, trip) => {
+            return sum + Number(trip.matka || 0);
+        }, 0);
+
+        // Näytetään tiedot Handlebars-sivulla
+        res.render('ApiDiary', {
+            diaryData: diaryData,
+            register: register,
+            tripCount: diaryData.length,
+            totalDistance: (totalDistance / 1000).toFixed(2)
+        });
+
+    } catch (error) {
+
+        console.error(
+            'API-ajopäiväkirjan hakuvirhe:',
+            error
+        );
+
+        res.status(500).send(
+            'Ajopäiväkirjan hakeminen epäonnistui.'
+        );
+    }
+});
+
+// Testi, haettu yhden auton ajot selaimeen http://localhost:8080/testApiDiary
+
+// app.get('/testApiDiary', async (req, res) => {
+//     try {
+//         const resultset = await pgtools.getApiDiary('FNK-129');
+
+//         console.log('API-ajojen lukumäärä:', resultset.rows.length);
+//         console.log(resultset.rows);
+
+//         res.json({
+//             success: true,
+//             count: resultset.rows.length,
+//             data: resultset.rows
+//         });
+
+//     } catch (error) {
+//         console.error('API-ajopäiväkirjan hakuvirhe:', error);
+//         res.status(500).json({
+//             success: false,
+//             message: 'Ajopäiväkirjan haku epäonnistui.'
+//         });
+//     }
+// });
 
 // Route to sign out page
 app.get('/signOut', (req,res) => {

@@ -1,0 +1,56 @@
+
+<body>
+    {{> menu}}
+
+    <div class="container">
+        <h1>Todelliset ajotiedot verottajalle</h1>
+
+        <p>
+            Ajoneuvon {{register}} ajotiedot.
+            Tiedot perustuvat Paikannin-rajapinnasta haettuihin ajoihin.
+        </p>
+
+        <p>
+            Ajoja yhteensä: {{tripCount}} |
+            Matkaa yhteensä: {{totalDistance}} km
+        </p>
+
+        <table class="diary-table">
+            <thead>
+                <tr>
+                    <th>Auto</th>
+                    <th>Alkuaika</th>
+                    <th>Loppuaika</th>
+                    <th>Hetu</th>
+                    <th>Etunimi</th>
+                    <th>Sukunimi</th>
+                    <th>Tarkoitus</th>
+                    <th>Matka</th>
+                    <th>Mittari alussa</th>
+                    <th>Mittari lopussa</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each diaryData}}
+                <tr class="tr-highlighted">
+                    <td>{{rekisterinumero}}</td>
+                    <td>{{alkuaika}}</td>
+                    <td>{{loppuaika}}</td>
+                    <td>{{lainaaja_hetu}}</td>
+                    <td>{{etunimi}}</td>
+                    <td>{{sukunimi}}</td>
+                    <td>{{ajon_tarkoitus}}</td>
+                    <td>{{matka}}</td>
+                    <td>{{alkumittari}}</td>
+                    <td>{{loppumittari}}</td>
+                </tr>
+                {{else}}
+                <tr>
+                    <td colspan="10">Ajotietoja ei löytynyt.</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</body>
